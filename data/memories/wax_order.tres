@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="MemoryData" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/memory/memory_data.gd" id="1_mem"]
+
+[resource]
+script = ExtResource("1_mem")
+id = &"wax_order"
+title = "蜡像订单"
+description = "莫里斯留在工作台抽屉里的一张订单。纸已经发黄，边角被蜡浸透。"
+text = "订单：丰收祭游行，二百四十七尊。\n备注：人必须先看着，才能被做得像。\n签收人一栏是空的。"
+speaker = "莫里斯"
+category = 7
+unlock_condition = &"chapter:2"
+is_fragment = true
+double_meaning = "第一次读，是罪证：他照着活人做蜡像，等于提前给每个人判了刑；空白的签收栏则像“没有人活着来取货”。第五章后重读：二百四十七是当晚被背出火场的人数，莫里斯做的不是死刑名单，而是一份点名册——他要让每一个被背出去的人“看着”自己还活着。签收栏空白，是因为签字的笔一直握在主角自己手里，他每次都没写完。"

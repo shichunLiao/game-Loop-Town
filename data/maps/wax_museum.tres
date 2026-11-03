@@ -1,0 +1,29 @@
+[gd_resource type="Resource" script_class="MapData" load_steps=5 format=3]
+
+[ext_resource type="Script" path="res://scripts/world/map_data.gd" id="1_mapdata"]
+[ext_resource type="Script" path="res://scripts/world/map_exit_link.gd" id="2_exitlink"]
+
+[sub_resource type="Resource" id="exitlink_1"]
+script = ExtResource("2_exitlink")
+exit_id = &"back_lane"
+target_map_id = &"wax_lane"
+target_spawn_id = &"museum"
+
+[sub_resource type="Resource" id="exitlink_2"]
+script = ExtResource("2_exitlink")
+exit_id = &"basement"
+target_map_id = &"wax_basement"
+target_spawn_id = &"start"
+condition = &"flag:mirror_hint_seen"
+locked_message = "地下室的入口被一排蜡像挡着。它们都面朝墙壁。"
+
+[resource]
+script = ExtResource("1_mapdata")
+id = &"wax_museum"
+display_name = "蜡像馆"
+scene_path = "res://scenes/maps/wax_museum.tscn"
+map_size = Vector2i(4000, 1300)
+audio_area = &"Wax"
+reacts_to_world_state = true
+exits = [SubResource("exitlink_1"), SubResource("exitlink_2")]
+default_spawn_id = &"hall"

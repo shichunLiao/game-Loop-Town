@@ -1,0 +1,55 @@
+[gd_resource type="Resource" script_class="DialogueSequence" load_steps=10 format=3]
+
+[ext_resource type="Script" path="res://scripts/dialogue/dialogue_sequence.gd" id="1_seq"]
+[ext_resource type="Script" path="res://scripts/dialogue/dialogue_line.gd" id="2_line"]
+
+[sub_resource type="Resource" id="dl_1"]
+script = ExtResource("2_line")
+speaker = "莫里斯"
+text = "你来了。我正好做到脸。"
+emotion = &"intent"
+effects = PackedStringArray("sfx:mirror_turn")
+
+[sub_resource type="Resource" id="dl_2"]
+script = ExtResource("2_line")
+speaker = "莫里斯"
+text = "站起来，别动。让我看看。"
+
+[sub_resource type="Resource" id="dl_3"]
+script = ExtResource("2_line")
+speaker = "莫里斯"
+text = "……这尊蜡像，跟你一模一样。"
+emotion = &"shock"
+effects = PackedStringArray("sfx:wax_crack", "checkpoint")
+
+[sub_resource type="Resource" id="dl_4"]
+script = ExtResource("2_line")
+speaker = "莫里斯"
+text = "我刻了二百四十七尊。前面二百四十六尊，我都能收手。"
+emotion = &"grief"
+
+[sub_resource type="Resource" id="dl_5"]
+script = ExtResource("2_line")
+speaker = "莫里斯"
+text = "只有这一尊，我做了七年，还是没敢上完最后一刀。"
+condition = &"flag:chapter_1_cleared"
+emotion = &"grief"
+
+[sub_resource type="Resource" id="dl_6"]
+script = ExtResource("2_line")
+speaker = "莫里斯"
+text = "你总是把自己当成火。可是你点不着任何东西。"
+emotion = &"quiet"
+effects = PackedStringArray("memory:seven_selves")
+
+[sub_resource type="Resource" id="dl_7"]
+script = ExtResource("2_line")
+speaker = "莫里斯"
+text = "来吧。这一刀，总得有人替你上。"
+
+[resource]
+script = ExtResource("1_seq")
+id = &"morris_pre_boss"
+lines = Array[Resource]([SubResource("dl_1"), SubResource("dl_2"), SubResource("dl_3"), SubResource("dl_4"), SubResource("dl_5"), SubResource("dl_6"), SubResource("dl_7")])
+effects_on_finish = PackedStringArray("set:morris_duel_started", "sfx:boss_roar", "checkpoint")
+autosave_on_finish = true

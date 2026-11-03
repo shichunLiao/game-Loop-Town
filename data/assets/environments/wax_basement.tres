@@ -1,0 +1,29 @@
+[gd_resource type="Resource" script_class="EnvironmentDefinition" load_steps=7 format=3]
+
+[ext_resource type="Script" path="res://scripts/assets/environment_definition.gd" id="1_env"]
+[ext_resource type="Script" path="res://scripts/assets/environment_layer.gd" id="2_layer"]
+[ext_resource type="Texture2D" path="res://assets/environments/bg_wax_lane.png" id="1_bg"]
+[ext_resource type="Texture2D" path="res://assets/environments/bg_clocktower.png" id="2_bg"]
+
+[sub_resource type="Resource" id="layer_1"]
+script = ExtResource("2_layer")
+name = &"bg_wax_lane"
+texture_path = "res://assets/environments/bg_wax_lane.png"
+scroll_scale = 0.25
+offset_y = -180.0
+modulate_a = 0.5
+texture = ExtResource("1_bg")
+
+[sub_resource type="Resource" id="layer_2"]
+script = ExtResource("2_layer")
+name = &"bg_clocktower"
+texture_path = "res://assets/environments/bg_clocktower.png"
+scroll_scale = 0.5
+offset_y = -80.0
+modulate_a = 0.35
+texture = ExtResource("2_bg")
+
+[resource]
+script = ExtResource("1_env")
+map_id = &"wax_basement"
+layers = [SubResource("layer_1"), SubResource("layer_2")]

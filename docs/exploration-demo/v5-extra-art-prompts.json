@@ -1,0 +1,15 @@
+{
+  "generator": "built-in image_gen",
+  "assets": [
+    {
+      "id": "interior_furniture",
+      "folder": "interiors_props",
+      "prompt": "Use case: stylized-concept. Reusable 2D sidescroller gothic storybook game asset atlas. Hand inked black outlines, intricate dark painted wood and aged brass, muted desaturated teal shadows, amber accents. Strict 2x2 grid with generous transparent gutters, each object entire inside own cell. Transparent RGBA, no captions no people no UI. Orthographic straight-on side game view, no perspective ground.Four different domestic furniture clusters. TOP LEFT a low antique writing desk with drawers, papers, small blue glass lamp and closed books, chair tucked beside it. TOP RIGHT tall narrow bookcase with uneven books and storage shelves, small reading stand at bottom. BOTTOM LEFT florist potting bench with dried bouquets, tiny flowerpots, bags and cabinet. BOTTOM RIGHT old clockmaker's low workbench with gears, broken pocket watches, brass balance scale, small tool rack above. No outdoor street objects, no buildings, no room walls, no floor slab. Complete furniture sprites only."
+    },
+    {
+      "id": "gate_panels",
+      "folder": "gates",
+      "prompt": "Use case: stylized-concept. Reusable 2D sidescroller gothic storybook game asset atlas. Hand inked black outlines, intricate dark painted wood and aged brass, muted desaturated teal shadows, amber accents. Strict 2x2 grid with generous transparent gutters, each object entire inside own cell. Transparent RGBA, no captions no people no UI. Orthographic straight-on side game view, no perspective ground.Four heavy CLOSED DOOR LEAF sprites without walls, columns, surrounding architecture, no stairs or ground. Each rectangular panel vertical 2:3 aspect, separately isolated. TOP LEFT weathered gothic oak double doors with iron straps, round latch and brass padlock. TOP RIGHT red-painted theater fire doors with dull iron reinforcement, crossed thin crimson strings fastening two central handles, aged carving. BOTTOM LEFT copper clocktower double doors, large ornate round keyhole in center surrounded by miniature gears and 3 empty medallion sockets above. BOTTOM RIGHT wet dark stone-and-iron drainage hatch with round wheel handle, moss around edges and horizontal metal reinforcement bands. Entire panel visible, frame edge included, full closure. Not prison bars. No gate openings drawn."
+    }
+  ]
+}

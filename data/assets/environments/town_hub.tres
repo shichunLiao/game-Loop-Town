@@ -1,0 +1,39 @@
+[gd_resource type="Resource" script_class="EnvironmentDefinition" load_steps=9 format=3]
+
+[ext_resource type="Script" path="res://scripts/assets/environment_definition.gd" id="1_env"]
+[ext_resource type="Script" path="res://scripts/assets/environment_layer.gd" id="2_layer"]
+[ext_resource type="Texture2D" path="res://assets/environments/bg_town_far.png" id="1_bg"]
+[ext_resource type="Texture2D" path="res://assets/environments/bg_town_mid.png" id="2_bg"]
+[ext_resource type="Texture2D" path="res://assets/environments/bg_town_near.png" id="3_bg"]
+
+[sub_resource type="Resource" id="layer_1"]
+script = ExtResource("2_layer")
+name = &"bg_town_far"
+texture_path = "res://assets/environments/bg_town_far.png"
+scroll_scale = 0.15
+offset_y = -300.0
+modulate_a = 0.66
+texture = ExtResource("1_bg")
+
+[sub_resource type="Resource" id="layer_2"]
+script = ExtResource("2_layer")
+name = &"bg_town_mid"
+texture_path = "res://assets/environments/bg_town_mid.png"
+scroll_scale = 0.4
+offset_y = -140.0
+modulate_a = 0.8
+texture = ExtResource("2_bg")
+
+[sub_resource type="Resource" id="layer_3"]
+script = ExtResource("2_layer")
+name = &"bg_town_near"
+texture_path = "res://assets/environments/bg_town_near.png"
+scroll_scale = 0.65
+offset_y = 40.0
+modulate_a = 0.92
+texture = ExtResource("3_bg")
+
+[resource]
+script = ExtResource("1_env")
+map_id = &"town_hub"
+layers = [SubResource("layer_1"), SubResource("layer_2"), SubResource("layer_3")]

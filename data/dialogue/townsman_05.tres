@@ -1,0 +1,36 @@
+[gd_resource type="Resource" script_class="DialogueSequence" load_steps=7 format=3]
+
+[ext_resource type="Script" path="res://scripts/dialogue/dialogue_sequence.gd" id="1_seq"]
+[ext_resource type="Script" path="res://scripts/dialogue/dialogue_line.gd" id="2_line"]
+
+[sub_resource type="Resource" id="dl_1"]
+script = ExtResource("2_line")
+speaker = "守夜人"
+text = "你看上去……好眼熟。"
+emotion = &"uneasy"
+
+[sub_resource type="Resource" id="dl_2"]
+script = ExtResource("2_line")
+speaker = "守夜人"
+text = "那天晚上，我看见一个人往回跑。跑进火里，又背着人出来。"
+emotion = &"awe"
+
+[sub_resource type="Resource" id="dl_3"]
+script = ExtResource("2_line")
+speaker = "守夜人"
+text = "他背出来二百四十七个。他自己说，一个都没少。"
+
+[sub_resource type="Resource" id="dl_4"]
+script = ExtResource("2_line")
+speaker = "守夜人"
+text = "后来我才明白，他一共进去了二百四十七次。每一次，都少一个。"
+condition = &"flag:chapter_1_cleared"
+emotion = &"grief"
+effects = PackedStringArray("memory:the_247", "sfx:bell_distant")
+
+[resource]
+script = ExtResource("1_seq")
+id = &"townsman_05"
+lines = Array[Resource]([SubResource("dl_1"), SubResource("dl_2"), SubResource("dl_3"), SubResource("dl_4")])
+effects_on_finish = PackedStringArray("set:talked_townsman_05")
+autosave_on_finish = false

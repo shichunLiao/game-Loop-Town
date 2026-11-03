@@ -1,0 +1,190 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1680" height="1050" viewBox="0 0 1680 1050">
+<rect width="1680" height="1050" fill="#111d24"/>
+<g font-family="Microsoft YaHei, sans-serif" fill="#e4d7b6"><text x="48" y="50" font-size="28">回环镇 Demo 7 · 竖向建筑路线</text>
+<text x="48" y="80" font-size="15" fill="#9eb9ba">读取实际关卡数据：宽台分层 / 墙边挑台 / 侧廊调查 / 上层解锁的返程吊笼。各栏纵向比例独立。</text>
+<text x="50" y="122" font-size="21">上行楼梯 · passage_05</text>
+<text x="50" y="143" font-size="12" fill="#9eb9ba">1540 × 1900 / 4 个宽台层</text>
+<rect x="50.0" y="155.0" width="320.0" height="780.0" fill="#1c2c35"/>
+<rect x="50.0" y="869.3" width="320.0" height="65.7" fill="#c19a60"/>
+<rect x="223.5" y="824.2" width="104.9" height="18.1" fill="#c19a60"/>
+<rect x="91.6" y="779.0" width="98.7" height="18.1" fill="#c19a60"/>
+<rect x="91.6" y="733.8" width="104.9" height="18.1" fill="#c19a60"/>
+<rect x="227.7" y="688.7" width="100.8" height="18.1" fill="#c19a60"/>
+<rect x="91.6" y="643.5" width="236.9" height="25.5" fill="#c19a60"/>
+<rect x="91.6" y="592.2" width="104.9" height="18.1" fill="#c19a60"/>
+<rect x="227.7" y="540.9" width="100.8" height="18.1" fill="#c19a60"/>
+<rect x="223.5" y="489.6" width="104.9" height="18.1" fill="#c19a60"/>
+<rect x="91.6" y="438.3" width="236.9" height="25.5" fill="#c19a60"/>
+<rect x="91.6" y="388.2" width="104.9" height="18.1" fill="#c19a60"/>
+<rect x="91.6" y="337.7" width="98.7" height="18.1" fill="#c19a60"/>
+<rect x="223.5" y="287.2" width="104.9" height="18.1" fill="#c19a60"/>
+<rect x="91.6" y="237.1" width="236.9" height="25.5" fill="#c19a60"/>
+<rect x="50.0" y="869.3" width="58.2" height="23.8" fill="#c19a60"/>
+<rect x="50.0" y="155.0" width="41.6" height="615.8" fill="#3d5058"/>
+<rect x="50.0" y="891.9" width="41.6" height="43.1" fill="#3d5058"/>
+<rect x="328.4" y="155.0" width="41.6" height="780.0" fill="#3d5058"/>
+<circle cx="111.3" cy="638.5" r="4" fill="#c7e0ad"/>
+<circle cx="65.6" cy="862.3" r="7" fill="#e8ad7c"/><text x="57.6" y="849.3" font-size="13">出口</text>
+<circle cx="123.8" cy="230.1" r="7" fill="#e8ad7c"/><text x="115.8" y="217.1" font-size="13">出口</text>
+<text x="460" y="122" font-size="21">上行楼梯 · passage_08</text>
+<text x="460" y="143" font-size="12" fill="#9eb9ba">1540 × 1900 / 4 个宽台层</text>
+<rect x="460.0" y="155.0" width="320.0" height="780.0" fill="#1c2c35"/>
+<rect x="460.0" y="869.3" width="320.0" height="65.7" fill="#c19a60"/>
+<rect x="501.6" y="820.1" width="70.6" height="18.1" fill="#c19a60"/>
+<rect x="501.6" y="770.8" width="64.4" height="18.1" fill="#c19a60"/>
+<rect x="599.2" y="721.5" width="70.6" height="18.1" fill="#c19a60"/>
+<rect x="501.6" y="672.3" width="168.3" height="25.5" fill="#c19a60"/>
+<rect x="715.6" y="672.3" width="60.3" height="25.5" fill="#c19a60"/>
+<rect x="599.2" y="628.7" width="70.6" height="18.1" fill="#c19a60"/>
+<rect x="501.6" y="585.2" width="64.4" height="18.1" fill="#c19a60"/>
+<rect x="501.6" y="541.7" width="70.6" height="18.1" fill="#c19a60"/>
+<rect x="603.4" y="498.2" width="66.5" height="18.1" fill="#c19a60"/>
+<rect x="501.6" y="454.7" width="168.3" height="25.5" fill="#c19a60"/>
+<rect x="715.6" y="454.7" width="60.3" height="25.5" fill="#c19a60"/>
+<rect x="501.6" y="411.2" width="70.6" height="18.1" fill="#c19a60"/>
+<rect x="603.4" y="367.7" width="66.5" height="18.1" fill="#c19a60"/>
+<rect x="599.2" y="324.1" width="70.6" height="18.1" fill="#c19a60"/>
+<rect x="501.6" y="280.6" width="64.4" height="18.1" fill="#c19a60"/>
+<rect x="501.6" y="237.1" width="168.3" height="25.5" fill="#c19a60"/>
+<rect x="715.6" y="237.1" width="60.3" height="25.5" fill="#c19a60"/>
+<rect x="460.0" y="155.0" width="41.6" height="780.0" fill="#3d5058"/>
+<rect x="721.8" y="869.3" width="58.2" height="23.8" fill="#c19a60"/>
+<rect x="738.4" y="155.0" width="41.6" height="615.8" fill="#3d5058"/>
+<rect x="738.4" y="891.9" width="41.6" height="43.1" fill="#3d5058"/>
+<rect x="669.9" y="265.8" width="12.1" height="96.5" fill="#3d5058"/>
+<rect x="669.9" y="483.4" width="12.1" height="96.5" fill="#3d5058"/>
+<rect x="669.9" y="701.0" width="12.1" height="75.9" fill="#3d5058"/>
+<rect x="669.9" y="898.1" width="12.1" height="36.9" fill="#3d5058"/>
+<path d="M 692.7 237.1 V 869.3" fill="none" stroke="#81d0c9" stroke-width="4" stroke-dasharray="9 5"/>
+<circle cx="648.1" cy="667.3" r="4" fill="#c7e0ad"/>
+<circle cx="589.9" cy="232.1" r="4" fill="#81d0c9"/>
+<circle cx="642.9" cy="864.3" r="4" fill="#81d0c9"/>
+<circle cx="764.4" cy="862.3" r="7" fill="#e8ad7c"/><text x="756.4" y="849.3" font-size="13">出口</text>
+<circle cx="533.8" cy="230.1" r="7" fill="#e8ad7c"/><text x="525.8" y="217.1" font-size="13">出口</text>
+<text x="870" y="122" font-size="21">倒悬之井 · well_interior</text>
+<text x="870" y="143" font-size="12" fill="#9eb9ba">2200 × 3000 / 6 个宽台层</text>
+<rect x="870.0" y="155.0" width="320.0" height="780.0" fill="#1c2c35"/>
+<rect x="870.0" y="893.4" width="320.0" height="41.6" fill="#c19a60"/>
+<rect x="899.1" y="862.2" width="97.5" height="11.4" fill="#c19a60"/>
+<rect x="899.1" y="831.0" width="93.1" height="11.4" fill="#c19a60"/>
+<rect x="1015.5" y="799.8" width="97.5" height="11.4" fill="#c19a60"/>
+<rect x="1018.4" y="768.6" width="94.5" height="11.4" fill="#c19a60"/>
+<rect x="899.1" y="737.4" width="213.8" height="16.1" fill="#c19a60"/>
+<rect x="1144.9" y="737.4" width="42.2" height="16.1" fill="#c19a60"/>
+<rect x="1015.5" y="709.6" width="97.5" height="11.4" fill="#c19a60"/>
+<rect x="899.1" y="682.0" width="93.1" height="11.4" fill="#c19a60"/>
+<rect x="899.1" y="654.2" width="97.5" height="11.4" fill="#c19a60"/>
+<rect x="1018.4" y="626.4" width="94.5" height="11.4" fill="#c19a60"/>
+<rect x="899.1" y="598.8" width="97.5" height="11.4" fill="#c19a60"/>
+<rect x="899.1" y="571.0" width="213.8" height="16.1" fill="#c19a60"/>
+<rect x="1144.9" y="571.0" width="42.2" height="16.1" fill="#c19a60"/>
+<rect x="899.1" y="544.0" width="97.5" height="11.4" fill="#c19a60"/>
+<rect x="1018.4" y="516.9" width="94.5" height="11.4" fill="#c19a60"/>
+<rect x="1015.5" y="489.9" width="97.5" height="11.4" fill="#c19a60"/>
+<rect x="899.1" y="462.8" width="93.1" height="11.4" fill="#c19a60"/>
+<rect x="899.1" y="435.8" width="213.8" height="16.1" fill="#c19a60"/>
+<rect x="1144.9" y="435.8" width="42.2" height="16.1" fill="#c19a60"/>
+<rect x="899.1" y="406.7" width="97.5" height="11.4" fill="#c19a60"/>
+<rect x="899.1" y="377.6" width="93.1" height="11.4" fill="#c19a60"/>
+<rect x="1015.5" y="348.4" width="97.5" height="11.4" fill="#c19a60"/>
+<rect x="1018.4" y="319.3" width="94.5" height="11.4" fill="#c19a60"/>
+<rect x="899.1" y="290.2" width="213.8" height="16.1" fill="#c19a60"/>
+<rect x="1144.9" y="290.2" width="42.2" height="16.1" fill="#c19a60"/>
+<rect x="1015.5" y="261.6" width="97.5" height="11.4" fill="#c19a60"/>
+<rect x="899.1" y="233.0" width="93.1" height="11.4" fill="#c19a60"/>
+<rect x="899.1" y="204.4" width="213.8" height="16.1" fill="#c19a60"/>
+<rect x="1144.9" y="204.4" width="42.2" height="16.1" fill="#c19a60"/>
+<rect x="870.0" y="893.4" width="40.7" height="15.1" fill="#c19a60"/>
+<rect x="870.0" y="155.0" width="29.1" height="676.0" fill="#3d5058"/>
+<rect x="870.0" y="907.7" width="29.1" height="27.3" fill="#3d5058"/>
+<rect x="1149.3" y="204.4" width="40.7" height="15.1" fill="#c19a60"/>
+<rect x="1160.9" y="218.7" width="29.1" height="716.3" fill="#3d5058"/>
+<rect x="1112.9" y="222.6" width="8.4" height="9.1" fill="#3d5058"/>
+<rect x="1112.9" y="308.4" width="8.4" height="68.9" fill="#3d5058"/>
+<rect x="1112.9" y="454.0" width="8.4" height="58.5" fill="#3d5058"/>
+<rect x="1112.9" y="589.2" width="8.4" height="89.7" fill="#3d5058"/>
+<rect x="1112.9" y="755.6" width="8.4" height="79.3" fill="#3d5058"/>
+<rect x="1112.9" y="911.6" width="8.4" height="23.4" fill="#3d5058"/>
+<rect x="1028.5" y="290.2" width="64.0" height="12.0" fill="#c19a60"/>
+<path d="M 1128.9 204.4 V 893.4" fill="none" stroke="#81d0c9" stroke-width="4" stroke-dasharray="9 5"/>
+<circle cx="1114.4" cy="888.4" r="4" fill="#c7e0ad"/>
+<circle cx="1024.2" cy="888.4" r="4" fill="#c7e0ad"/>
+<circle cx="1030.0" cy="566.0" r="4" fill="#c7e0ad"/>
+<circle cx="1091.1" cy="199.4" r="4" fill="#81d0c9"/>
+<circle cx="1094.0" cy="888.4" r="4" fill="#81d0c9"/>
+<circle cx="876.5" cy="886.4" r="7" fill="#e8ad7c"/><text x="868.5" y="873.4" font-size="13">出口</text>
+<circle cx="1179.1" cy="197.4" r="7" fill="#e8ad7c"/><text x="1171.1" y="184.4" font-size="13">出口</text>
+<text x="1280" y="122" font-size="21">七层钟楼 · clock_tower</text>
+<text x="1280" y="143" font-size="12" fill="#9eb9ba">1800 × 5000 / 8 个宽台层</text>
+<rect x="1280.0" y="155.0" width="320.0" height="780.0" fill="#1c2c35"/>
+<rect x="1280.0" y="910.0" width="320.0" height="25.0" fill="#c19a60"/>
+<rect x="1315.6" y="890.4" width="83.6" height="6.9" fill="#c19a60"/>
+<rect x="1315.6" y="870.7" width="78.2" height="6.9" fill="#c19a60"/>
+<rect x="1422.2" y="851.1" width="83.6" height="6.9" fill="#c19a60"/>
+<rect x="1425.8" y="831.4" width="80.0" height="6.9" fill="#c19a60"/>
+<rect x="1315.6" y="811.8" width="190.2" height="9.7" fill="#c19a60"/>
+<rect x="1544.9" y="811.8" width="51.6" height="9.7" fill="#c19a60"/>
+<rect x="1422.2" y="792.7" width="83.6" height="6.9" fill="#c19a60"/>
+<rect x="1315.6" y="773.7" width="78.2" height="6.9" fill="#c19a60"/>
+<rect x="1315.6" y="754.7" width="83.6" height="6.9" fill="#c19a60"/>
+<rect x="1425.8" y="735.6" width="80.0" height="6.9" fill="#c19a60"/>
+<rect x="1315.6" y="716.6" width="190.2" height="9.7" fill="#c19a60"/>
+<rect x="1544.9" y="716.6" width="51.6" height="9.7" fill="#c19a60"/>
+<rect x="1315.6" y="696.9" width="83.6" height="6.9" fill="#c19a60"/>
+<rect x="1425.8" y="677.3" width="80.0" height="6.9" fill="#c19a60"/>
+<rect x="1422.2" y="657.6" width="83.6" height="6.9" fill="#c19a60"/>
+<rect x="1315.6" y="638.0" width="78.2" height="6.9" fill="#c19a60"/>
+<rect x="1315.6" y="618.3" width="190.2" height="9.7" fill="#c19a60"/>
+<rect x="1544.9" y="618.3" width="51.6" height="9.7" fill="#c19a60"/>
+<rect x="1315.6" y="599.1" width="83.6" height="6.9" fill="#c19a60"/>
+<rect x="1315.6" y="580.1" width="78.2" height="6.9" fill="#c19a60"/>
+<rect x="1422.2" y="560.9" width="83.6" height="6.9" fill="#c19a60"/>
+<rect x="1425.8" y="541.9" width="80.0" height="6.9" fill="#c19a60"/>
+<rect x="1315.6" y="522.7" width="83.6" height="6.9" fill="#c19a60"/>
+<rect x="1315.6" y="503.7" width="78.2" height="6.9" fill="#c19a60"/>
+<rect x="1315.6" y="484.5" width="190.2" height="9.7" fill="#c19a60"/>
+<rect x="1544.9" y="484.5" width="51.6" height="9.7" fill="#c19a60"/>
+<rect x="1422.2" y="465.4" width="83.6" height="6.9" fill="#c19a60"/>
+<rect x="1315.6" y="446.4" width="78.2" height="6.9" fill="#c19a60"/>
+<rect x="1315.6" y="427.4" width="83.6" height="6.9" fill="#c19a60"/>
+<rect x="1425.8" y="408.3" width="80.0" height="6.9" fill="#c19a60"/>
+<rect x="1315.6" y="389.3" width="83.6" height="6.9" fill="#c19a60"/>
+<rect x="1315.6" y="370.3" width="190.2" height="9.7" fill="#c19a60"/>
+<rect x="1544.9" y="370.3" width="51.6" height="9.7" fill="#c19a60"/>
+<rect x="1315.6" y="350.6" width="83.6" height="6.9" fill="#c19a60"/>
+<rect x="1425.8" y="331.0" width="80.0" height="6.9" fill="#c19a60"/>
+<rect x="1422.2" y="311.3" width="83.6" height="6.9" fill="#c19a60"/>
+<rect x="1315.6" y="291.7" width="78.2" height="6.9" fill="#c19a60"/>
+<rect x="1422.2" y="272.0" width="83.6" height="6.9" fill="#c19a60"/>
+<rect x="1315.6" y="252.3" width="190.2" height="9.7" fill="#c19a60"/>
+<rect x="1544.9" y="252.3" width="51.6" height="9.7" fill="#c19a60"/>
+<rect x="1315.6" y="235.5" width="83.6" height="6.9" fill="#c19a60"/>
+<rect x="1315.6" y="218.5" width="78.2" height="6.9" fill="#c19a60"/>
+<rect x="1422.2" y="201.5" width="83.6" height="6.9" fill="#c19a60"/>
+<rect x="1315.6" y="184.6" width="190.2" height="9.7" fill="#c19a60"/>
+<rect x="1544.9" y="184.6" width="51.6" height="9.7" fill="#c19a60"/>
+<rect x="1280.0" y="910.0" width="49.8" height="9.0" fill="#c19a60"/>
+<rect x="1280.0" y="155.0" width="35.6" height="717.6" fill="#3d5058"/>
+<rect x="1280.0" y="918.6" width="35.6" height="16.4" fill="#3d5058"/>
+<rect x="1550.2" y="184.6" width="49.8" height="9.0" fill="#c19a60"/>
+<rect x="1564.4" y="193.2" width="35.6" height="741.8" fill="#3d5058"/>
+<rect x="1505.8" y="195.6" width="10.3" height="21.7" fill="#3d5058"/>
+<rect x="1505.8" y="263.3" width="10.3" height="71.9" fill="#3d5058"/>
+<rect x="1505.8" y="381.2" width="10.3" height="68.2" fill="#3d5058"/>
+<rect x="1505.8" y="495.4" width="10.3" height="87.8" fill="#3d5058"/>
+<rect x="1505.8" y="629.2" width="10.3" height="52.3" fill="#3d5058"/>
+<rect x="1505.8" y="727.5" width="10.3" height="49.1" fill="#3d5058"/>
+<rect x="1505.8" y="822.7" width="10.3" height="52.3" fill="#3d5058"/>
+<rect x="1505.8" y="921.0" width="10.3" height="14.0" fill="#3d5058"/>
+<rect x="1425.8" y="507.6" width="78.2" height="7.2" fill="#c19a60"/>
+<path d="M 1525.3 184.6 V 910.0" fill="none" stroke="#81d0c9" stroke-width="4" stroke-dasharray="9 5"/>
+<circle cx="1395.6" cy="576.2" r="4" fill="#c7e0ad"/>
+<circle cx="1475.6" cy="711.6" r="4" fill="#c7e0ad"/>
+<circle cx="1475.6" cy="479.5" r="4" fill="#c7e0ad"/>
+<circle cx="1475.6" cy="247.3" r="4" fill="#c7e0ad"/>
+<circle cx="1479.1" cy="179.6" r="4" fill="#81d0c9"/>
+<circle cx="1482.7" cy="905.0" r="4" fill="#81d0c9"/>
+<circle cx="1288.0" cy="903.0" r="7" fill="#e8ad7c"/><text x="1280.0" y="890.0" font-size="13">出口</text>
+<circle cx="1586.7" cy="177.6" r="7" fill="#e8ad7c"/><text x="1578.7" y="164.6" font-size="13">出口</text>
+<text x="48" y="986" font-size="16">灰蓝：实体侧墙　金色：可站立地形　青线：返程吊笼　浅绿点：线索 / 路灯　橙点：实际换图出口</text>
+<text x="48" y="1017" font-size="14" fill="#9eb9ba">每段攀登先靠墙起步，再跨越中央空隙，进入宽台后继续下一层；支撑拱券和后景构件在游戏中呈现。</text></g></svg>

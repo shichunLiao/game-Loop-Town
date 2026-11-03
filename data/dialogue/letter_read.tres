@@ -1,0 +1,31 @@
+[gd_resource type="Resource" script_class="DialogueSequence" load_steps=9 format=3]
+
+[ext_resource type="Script" path="res://scripts/dialogue/dialogue_sequence.gd" id="1_seq"]
+[ext_resource type="Script" path="res://scripts/dialogue/dialogue_line.gd" id="2_line"]
+
+[sub_resource type="Resource" id="dl_1"]
+script = ExtResource("2_line")
+speaker = ""
+text = "信封里只有一张纸。字迹很急，收笔的地方划破了纸。"
+emotion = &"narration"
+effects = PackedStringArray("sfx:notebook_open")
+
+[sub_resource type="Resource" id="dl_2"]
+script = ExtResource("2_line")
+speaker = ""
+text = "请找到小铃，带她回家。"
+emotion = &"letter"
+effects = PackedStringArray("memory:letter_from_town", "sfx:bell_distant")
+
+[sub_resource type="Resource" id="dl_3"]
+script = ExtResource("2_line")
+speaker = ""
+text = "没有落款。纸的右下角，有一小片蜡。"
+emotion = &"narration"
+
+[resource]
+script = ExtResource("1_seq")
+id = &"letter_read"
+lines = Array[Resource]([SubResource("dl_1"), SubResource("dl_2"), SubResource("dl_3")])
+effects_on_finish = PackedStringArray("set:read_letter", "item:letter", "chapter:1", "checkpoint")
+autosave_on_finish = true

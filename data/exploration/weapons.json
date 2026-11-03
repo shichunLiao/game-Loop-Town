@@ -1,0 +1,62 @@
+[
+  {
+    "id": "notebook",
+    "name": "墨页短刃",
+    "requires": "",
+    "cell": -1,
+    "damage": 18,
+    "reach": 92,
+    "color": "b8f2e4",
+    "windup": 0.075,
+    "active": 0.14,
+    "recovery": 0.19
+  },
+  {
+    "id": "shears",
+    "name": "裁断大剪刀",
+    "requires": "scissors",
+    "cell": 0,
+    "damage": 28,
+    "reach": 128,
+    "color": "d8e2d0",
+    "windup": 0.1,
+    "active": 0.15,
+    "recovery": 0.22
+  },
+  {
+    "id": "thread",
+    "name": "红线双剪",
+    "requires": "theater_seal",
+    "cell": 1,
+    "damage": 32,
+    "reach": 142,
+    "color": "f28d9f",
+    "windup": 0.07,
+    "active": 0.17,
+    "recovery": 0.18
+  },
+  {
+    "id": "ember",
+    "name": "井火钩刃",
+    "requires": "well_seal",
+    "cell": 2,
+    "damage": 36,
+    "reach": 154,
+    "color": "76e8df",
+    "windup": 0.09,
+    "active": 0.18,
+    "recovery": 0.21
+  },
+  {
+    "id": "clock",
+    "name": "钟钥细剑",
+    "requires": "time_slow",
+    "cell": 3,
+    "damage": 40,
+    "reach": 172,
+    "color": "f4d08c",
+    "windup": 0.065,
+    "active": 0.14,
+    "recovery": 0.17
+  }
+]

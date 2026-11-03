@@ -1,0 +1,1301 @@
+{
+  "schema": 8,
+  "generated_with": "built-in image_gen",
+  "assets": [
+    {
+      "path": "assets/environments/exploration/actors/enemies_a.png",
+      "width": 1536,
+      "height": 1024,
+      "mode": "RGBA",
+      "bytes": 2514004,
+      "sha256": "0c30e7bae87fa9b1942d70351abbdd7cd320bd6eebc98d826303ec8bb0acc3c3",
+      "characters": true,
+      "alpha_extrema": [
+        0,
+        254
+      ],
+      "opaque_bounds": [
+        124,
+        8,
+        1494,
+        1010
+      ]
+    },
+    {
+      "path": "assets/environments/exploration/actors/enemies_b.png",
+      "width": 1536,
+      "height": 1024,
+      "mode": "RGBA",
+      "bytes": 2589185,
+      "sha256": "6b529fdc1177fc543e661b21f3bf0e3f4476fc7a06b0238aec763f1678bbcacf",
+      "characters": true,
+      "alpha_extrema": [
+        0,
+        254
+      ],
+      "opaque_bounds": [
+        40,
+        8,
+        1496,
+        1003
+      ]
+    },
+    {
+      "path": "assets/environments/exploration/actors/hero.png",
+      "width": 1161,
+      "height": 1355,
+      "mode": "RGBA",
+      "bytes": 1682333,
+      "sha256": "b161f098129a71704b5730a8c94581d7a9a7eb900c5f54f7b9bbb5c2c82d26ca",
+      "characters": true,
+      "alpha_extrema": [
+        0,
+        255
+      ],
+      "opaque_bounds": [
+        127,
+        17,
+        1079,
+        1331
+      ]
+    },
+    {
+      "path": "assets/environments/exploration/actors/morris.png",
+      "width": 1214,
+      "height": 1295,
+      "mode": "RGBA",
+      "bytes": 2028744,
+      "sha256": "1c35f446e86ed48def14148b8c6a9f51799e3a81335bca51a4e765611b450500",
+      "characters": true,
+      "alpha_extrema": [
+        0,
+        255
+      ],
+      "opaque_bounds": [
+        35,
+        13,
+        1203,
+        1271
+      ]
+    },
+    {
+      "path": "assets/environments/exploration/actors/morris_actions.png",
+      "width": 1536,
+      "height": 1024,
+      "mode": "RGBA",
+      "bytes": 2852088,
+      "sha256": "ffd344358be6637a0e519c5376ebe265f0869ac9ca8d321cf1f3b548cab460c4",
+      "characters": true,
+      "alpha_extrema": [
+        0,
+        254
+      ],
+      "opaque_bounds": [
+        17,
+        9,
+        1533,
+        999
+      ]
+    },
+    {
+      "path": "assets/environments/exploration/actors/morris_actions_v2.png",
+      "width": 1536,
+      "height": 1024,
+      "mode": "RGBA",
+      "bytes": 2529778,
+      "sha256": "906be145f59fa129eeb28644b74f81730179c7b2aad1d7540288c5a497b8f35e",
+      "characters": true,
+      "alpha_extrema": [
+        0,
+        254
+      ],
+      "opaque_bounds": [
+        80,
+        22,
+        1513,
+        975
+      ]
+    },
+    {
+      "path": "assets/environments/exploration/actors/morris_forms.png",
+      "width": 1340,
+      "height": 1174,
+      "mode": "RGBA",
+      "bytes": 2911235,
+      "sha256": "e6578319abe9b07135f1d57f073fe5645c1ab2b906a90f6c2e0419f04cbb040e",
+      "characters": true,
+      "alpha_extrema": [
+        0,
+        255
+      ],
+      "opaque_bounds": [
+        16,
+        10,
+        1334,
+        1159
+      ]
+    },
+    {
+      "path": "assets/environments/exploration/actors/morris_forms_v2.png",
+      "width": 1340,
+      "height": 1174,
+      "mode": "RGBA",
+      "bytes": 1977555,
+      "sha256": "62970ebcec5b0afe5c93fe3321fca7fe5a33dd16bed754b2d0df080e61d79e81",
+      "characters": true,
+      "alpha_extrema": [
+        0,
+        255
+      ],
+      "opaque_bounds": [
+        67,
+        59,
+        1298,
+        1122
+      ]
+    },
+    {
+      "path": "assets/environments/exploration/actors/npcs_a.png",
+      "width": 1238,
+      "height": 1271,
+      "mode": "RGBA",
+      "bytes": 1611337,
+      "sha256": "7b0db2b7ec79ed895095c8f257ffebcdb977564bd621a62f1eb931ee7333e0b0",
+      "characters": true,
+      "alpha_extrema": [
+        0,
+        255
+      ],
+      "opaque_bounds": [
+        140,
+        16,
+        1114,
+        1236
+      ]
+    },
+    {
+      "path": "assets/environments/exploration/actors/npcs_b.png",
+      "width": 1312,
+      "height": 1199,
+      "mode": "RGBA",
+      "bytes": 1505151,
+      "sha256": "e229a232e25198ac437b9392ea5043773c0ccb13365db8581a98e7e73b09f399",
+      "characters": true,
+      "alpha_extrema": [
+        0,
+        255
+      ],
+      "opaque_bounds": [
+        138,
+        7,
+        1189,
+        1190
+      ]
+    },
+    {
+      "path": "assets/environments/exploration/architecture/apothecary.png",
+      "width": 1536,
+      "height": 1024,
+      "mode": "RGBA",
+      "bytes": 1780256,
+      "sha256": "7227ea33d98b096a139710b8f95be6e4510f3bc7fc4501d844a8ebe2a0ea1543",
+      "characters": false,
+      "alpha_extrema": [
+        0,
+        254
+      ],
+      "opaque_bounds": [
+        487,
+        15,
+        1188,
+        976
+      ]
+    },
+    {
+      "path": "assets/environments/exploration/architecture/bakery.png",
+      "width": 1536,
+      "height": 1024,
+      "mode": "RGBA",
+      "bytes": 2640788,
+      "sha256": "1c2af21295a8d4c49b829a3b26e9ab33f4e7cc9cea1ecaef4afdf4120537eb95",
+      "characters": false,
+      "alpha_extrema": [
+        0,
+        254
+      ],
+      "opaque_bounds": [
+        116,
+        29,
+        1510,
+        955
+      ]
+    },
+    {
+      "path": "assets/environments/exploration/architecture/boardinghouse.png",
+      "width": 1536,
+      "height": 1024,
+      "mode": "RGBA",
+      "bytes": 2052154,
+      "sha256": "6257e48ab1b7c170b9ae7a9e69ac47059db11a9e6ae3f8e405d8ec40aa7cd6ec",
+      "characters": false,
+      "alpha_extrema": [
+        0,
+        254
+      ],
+      "opaque_bounds": [
+        303,
+        18,
+        1262,
+        969
+      ]
+    },
+    {
+      "path": "assets/environments/exploration/architecture/bookshop.png",
+      "width": 1536,
+      "height": 1024,
+      "mode": "RGBA",
+      "bytes": 2812820,
+      "sha256": "459069ebf0b9608741161db25d3d7f895ce83c9ab4aa01619ae5672820975c6e",
+      "characters": false,
+      "alpha_extrema": [
+        0,
+        254
+      ],
+      "opaque_bounds": [
+        131,
+        21,
+        1481,
+        954
+      ]
+    },
+    {
+      "path": "assets/environments/exploration/architecture/burnt_house.png",
+      "width": 1536,
+      "height": 1024,
+      "mode": "RGBA",
+      "bytes": 2575931,
+      "sha256": "a346dfc4a11cf7caeda78d5ff97080f3e5bde87b0df396a32a37416ad8d4337a",
+      "characters": false,
+      "alpha_extrema": [
+        0,
+        254
+      ],
+      "opaque_bounds": [
+        34,
+        35,
+        1484,
+        966
+      ]
+    },
+    {
+      "path": "assets/environments/exploration/architecture/clock_works.png",
+      "width": 1536,
+      "height": 1024,
+      "mode": "RGBA",
+      "bytes": 1977668,
+      "sha256": "90fdc4ec3ad2904faf396cc8328943c657050a0fdf298b4c687b4f252893fb23",
+      "characters": false,
+      "alpha_extrema": [
+        0,
+        254
+      ],
+      "opaque_bounds": [
+        286,
+        16,
+        1269,
+        972
+      ]
+    },
+    {
+      "path": "assets/environments/exploration/architecture/clockshop.png",
+      "width": 1536,
+      "height": 1024,
+      "mode": "RGBA",
+      "bytes": 2034527,
+      "sha256": "3083c04ea00bcc16e7594749ee759e5c1a6209154129f8877e8ccc2ba15ea3ba",
+      "characters": false,
+      "alpha_extrema": [
+        0,
+        254
+      ],
+      "opaque_bounds": [
+        251,
+        5,
+        1285,
+        969
+      ]
+    },
+    {
+      "path": "assets/environments/exploration/architecture/costume_shop.png",
+      "width": 1536,
+      "height": 1024,
+      "mode": "RGBA",
+      "bytes": 2673320,
+      "sha256": "8ba9a2dfe69979325847dc74ae44c9b0e744007a7867d7acab7251d7209dbe71",
+      "characters": false,
+      "alpha_extrema": [
+        0,
+        254
+      ],
+      "opaque_bounds": [
+        43,
+        7,
+        1493,
+        939
+      ]
+    },
+    {
+      "path": "assets/environments/exploration/architecture/florist.png",
+      "width": 1536,
+      "height": 1024,
+      "mode": "RGBA",
+      "bytes": 2814583,
+      "sha256": "e767ba3373331ce4de764d3a80ad26e0bf8aec0097105b65491f138c065cc7dc",
+      "characters": false,
+      "alpha_extrema": [
+        0,
+        254
+      ],
+      "opaque_bounds": [
+        58,
+        58,
+        1490,
+        937
+      ]
+    },
+    {
+      "path": "assets/environments/exploration/architecture/postoffice.png",
+      "width": 1536,
+      "height": 1024,
+      "mode": "RGBA",
+      "bytes": 2528303,
+      "sha256": "028160997adf442f31fb4136014f66d81b9194b5e7f9fd0b3e50d74acc888b9d",
+      "characters": false,
+      "alpha_extrema": [
+        0,
+        254
+      ],
+      "opaque_bounds": [
+        28,
+        79,
+        1512,
+        912
+      ]
+    },
+    {
+      "path": "assets/environments/exploration/architecture/station_office.png",
+      "width": 1536,
+      "height": 1024,
+      "mode": "RGBA",
+      "bytes": 2508398,
+      "sha256": "90ef3c89b4c2c1e5428d53d5594be6e9a395e984a45dba9a77cfa92e40f2e907",
+      "characters": false,
+      "alpha_extrema": [
+        0,
+        254
+      ],
+      "opaque_bounds": [
+        22,
+        113,
+        1515,
+        895
+      ]
+    },
+    {
+      "path": "assets/environments/exploration/architecture/theater_entry.png",
+      "width": 1536,
+      "height": 1024,
+      "mode": "RGBA",
+      "bytes": 2329139,
+      "sha256": "4d9e3d4d8eb3151242d398ad9f91b8ad77656b995c80336e09493ab1475a0a3a",
+      "characters": false,
+      "alpha_extrema": [
+        0,
+        254
+      ],
+      "opaque_bounds": [
+        258,
+        16,
+        1279,
+        930
+      ]
+    },
+    {
+      "path": "assets/environments/exploration/architecture/watermill.png",
+      "width": 1536,
+      "height": 1024,
+      "mode": "RGBA",
+      "bytes": 2278902,
+      "sha256": "783a015d431e1f3e478490bb64ed1c2f1ed1fee13d618ee1bda664b246d21e99",
+      "characters": false,
+      "alpha_extrema": [
+        0,
+        254
+      ],
+      "opaque_bounds": [
+        32,
+        109,
+        1511,
+        849
+      ]
+    },
+    {
+      "path": "assets/environments/exploration/architecture/wax_shop.png",
+      "width": 1428,
+      "height": 1102,
+      "mode": "RGBA",
+      "bytes": 1877155,
+      "sha256": "2f48fb43fda6ad60f1ff14f314073ad850760ab8f20e38969a4394da504e27d3",
+      "characters": false,
+      "alpha_extrema": [
+        0,
+        255
+      ],
+      "opaque_bounds": [
+        166,
+        17,
+        1261,
+        1044
+      ]
+    },
+    {
+      "path": "assets/environments/exploration/architecture/wax_workshop.png",
+      "width": 1698,
+      "height": 926,
+      "mode": "RGBA",
+      "bytes": 2027985,
+      "sha256": "8e39cb126a09db4ccd17eef7a1245995c395814f299a5b04faf354b3f18db05e",
+      "characters": false,
+      "alpha_extrema": [
+        0,
+        255
+      ],
+      "opaque_bounds": [
+        27,
+        63,
+        1669,
+        843
+      ]
+    },
+    {
+      "path": "assets/environments/exploration/architecture/well_shelter.png",
+      "width": 1536,
+      "height": 1024,
+      "mode": "RGBA",
+      "bytes": 2379524,
+      "sha256": "f72dfd9cdfb7b05ce038cd908b9bc7359b4b3afe3d4b8b7fd2b7ca376b804df8",
+      "characters": false,
+      "alpha_extrema": [
+        0,
+        254
+      ],
+      "opaque_bounds": [
+        98,
+        77,
+        1469,
+        928
+      ]
+    },
+    {
+      "path": "assets/environments/exploration/backgrounds/backstage.png",
+      "width": 1672,
+      "height": 941,
+      "mode": "RGB",
+      "bytes": 2909485,
+      "sha256": "77469a418b1be386598cca9ac8a17a5d217a77e3582678ff3e0ef3bb59965049",
+      "characters": false
+    },
+    {
+      "path": "assets/environments/exploration/backgrounds/basement.png",
+      "width": 1672,
+      "height": 941,
+      "mode": "RGB",
+      "bytes": 2817154,
+      "sha256": "9ade7122ef4d07202a272fafed7e1cbc143e6e1fd21a54c633f00063f36c187a",
+      "characters": false
+    },
+    {
+      "path": "assets/environments/exploration/backgrounds/clocktower.png",
+      "width": 1672,
+      "height": 941,
+      "mode": "RGB",
+      "bytes": 2693036,
+      "sha256": "dd390b80e11017660093ee59165366391f133895cfcc6b6ba5740364be31bda4",
+      "characters": false
+    },
+    {
+      "path": "assets/environments/exploration/backgrounds/dry_well.png",
+      "width": 1672,
+      "height": 941,
+      "mode": "RGB",
+      "bytes": 2771328,
+      "sha256": "ef8633363560639c1686fc1e491f69fc0f6e0eefb5411ec4fd1b276778fce775",
+      "characters": false
+    },
+    {
+      "path": "assets/environments/exploration/backgrounds/fire.png",
+      "width": 1672,
+      "height": 941,
+      "mode": "RGB",
+      "bytes": 2507813,
+      "sha256": "8e09b31336bff4bf1c8386ba62d040fad2be3dc2cd5099d82a25dae491e4e026",
+      "characters": false
+    },
+    {
+      "path": "assets/environments/exploration/backgrounds/museum.png",
+      "width": 1672,
+      "height": 941,
+      "mode": "RGB",
+      "bytes": 2893495,
+      "sha256": "82e0f3f48cc8d965022fd2e64586a7b0b92056ffbaa5ad37c472e7e2c88a7405",
+      "characters": false
+    },
+    {
+      "path": "assets/environments/exploration/backgrounds/station.png",
+      "width": 1672,
+      "height": 941,
+      "mode": "RGB",
+      "bytes": 3021157,
+      "sha256": "6e68dbd20f4afe208c87d82b9a55e1f08c766bb62d317f4cd456cafc7917b69a",
+      "characters": false
+    },
+    {
+      "path": "assets/environments/exploration/backgrounds/theater.png",
+      "width": 1672,
+      "height": 941,
+      "mode": "RGB",
+      "bytes": 2834771,
+      "sha256": "a31aff36d473f1a74294002804dd4899d4847df9c93575720310088e22080f6e",
+      "characters": false
+    },
+    {
+      "path": "assets/environments/exploration/backgrounds/town.png",
+      "width": 1672,
+      "height": 941,
+      "mode": "RGB",
+      "bytes": 2566752,
+      "sha256": "ba9029d40ed270c003fca1b40f0fe7c21171605396209a3e10119d608e78ff24",
+      "characters": false
+    },
+    {
+      "path": "assets/environments/exploration/backgrounds/wax.png",
+      "width": 1672,
+      "height": 941,
+      "mode": "RGB",
+      "bytes": 2792453,
+      "sha256": "dc386bbf892d4e5871daf8f973efe629d4a77f9217e23caa327b3ef07e609004",
+      "characters": false
+    },
+    {
+      "path": "assets/environments/exploration/backgrounds/well.png",
+      "width": 1672,
+      "height": 941,
+      "mode": "RGB",
+      "bytes": 3133247,
+      "sha256": "792451e60762740c9c1840bfd5c5569eee5d3386e9536a42eba5be0c5609efa3",
+      "characters": false
+    },
+    {
+      "path": "assets/environments/exploration/depth/clock_shaft.png",
+      "width": 1024,
+      "height": 1536,
+      "mode": "RGB",
+      "bytes": 3408884,
+      "sha256": "61e64c9642d543b61af545e96e4d0d27ba541e66301bcb13a264ee53753ad883",
+      "characters": false
+    },
+    {
+      "path": "assets/environments/exploration/depth/wax_shaft.png",
+      "width": 1024,
+      "height": 1536,
+      "mode": "RGB",
+      "bytes": 3227660,
+      "sha256": "8a893c61392890c18423c1d23d0b375b0ea5740971380a39c30a0d268e93de7d",
+      "characters": false
+    },
+    {
+      "path": "assets/environments/exploration/depth/well_shaft.png",
+      "width": 1024,
+      "height": 1536,
+      "mode": "RGB",
+      "bytes": 3811105,
+      "sha256": "7af89656a78c15df57a34863a5e9190e10edd18463b2a209f96166d2fb6f3f6e",
+      "characters": false
+    },
+    {
+      "path": "assets/environments/exploration/gates/gate_panels.png",
+      "width": 1024,
+      "height": 1536,
+      "mode": "RGBA",
+      "bytes": 3333032,
+      "sha256": "dd890b90d9ee12ef0577392561e49b13d0289057234efa13596397b755526adc",
+      "characters": false,
+      "alpha_extrema": [
+        0,
+        254
+      ],
+      "opaque_bounds": [
+        35,
+        11,
+        998,
+        1485
+      ]
+    },
+    {
+      "path": "assets/environments/exploration/interiors/mechanical_room.png",
+      "width": 1774,
+      "height": 887,
+      "mode": "RGBA",
+      "bytes": 2372417,
+      "sha256": "8af8ed1ca45287446faf46318951577901307ac63802c0d193453845c0b982da",
+      "characters": false,
+      "alpha_extrema": [
+        0,
+        255
+      ],
+      "opaque_bounds": [
+        4,
+        81,
+        1770,
+        775
+      ]
+    },
+    {
+      "path": "assets/environments/exploration/interiors/theater_room.png",
+      "width": 1774,
+      "height": 887,
+      "mode": "RGBA",
+      "bytes": 2091633,
+      "sha256": "3ca91f35759dfeaca078667395d3b1ad027769ce641a74bcf6cf2f3de8a25276",
+      "characters": false,
+      "alpha_extrema": [
+        0,
+        255
+      ],
+      "opaque_bounds": [
+        25,
+        102,
+        1749,
+        774
+      ]
+    },
+    {
+      "path": "assets/environments/exploration/interiors/town_room.png",
+      "width": 1774,
+      "height": 887,
+      "mode": "RGBA",
+      "bytes": 2002054,
+      "sha256": "5219358a26fa9816d22d728f9082069160b6cf30fc2e7864ea82787b2b91426e",
+      "characters": false,
+      "alpha_extrema": [
+        0,
+        255
+      ],
+      "opaque_bounds": [
+        20,
+        98,
+        1755,
+        781
+      ]
+    },
+    {
+      "path": "assets/environments/exploration/interiors/wax_room.png",
+      "width": 1774,
+      "height": 887,
+      "mode": "RGBA",
+      "bytes": 2200658,
+      "sha256": "f93d87ff5c4611821ba98d42cacd27fb2256dce55b037269d9c4bf6d9bd0dcc0",
+      "characters": false,
+      "alpha_extrema": [
+        0,
+        255
+      ],
+      "opaque_bounds": [
+        11,
+        108,
+        1764,
+        727
+      ]
+    },
+    {
+      "path": "assets/environments/exploration/interiors_props/interior_furniture.png",
+      "width": 1536,
+      "height": 1024,
+      "mode": "RGBA",
+      "bytes": 2554826,
+      "sha256": "86a38efddca17d608840eaddfc267373376892a02b2968f8fee45870b948e110",
+      "characters": false,
+      "alpha_extrema": [
+        0,
+        254
+      ],
+      "opaque_bounds": [
+        52,
+        10,
+        1487,
+        1003
+      ]
+    },
+    {
+      "path": "assets/environments/exploration/masonry/masonry_tiles_v7.png",
+      "width": 1254,
+      "height": 1254,
+      "mode": "RGB",
+      "bytes": 3570631,
+      "sha256": "bab032e8634dfd04f86a37c151a8685da1b6a8ac1487970b33637b1333aa6da6",
+      "characters": false
+    },
+    {
+      "path": "assets/environments/exploration/midgrounds/clock_mid.png",
+      "width": 1536,
+      "height": 1024,
+      "mode": "RGBA",
+      "bytes": 2990396,
+      "sha256": "03121d29ba65c0f00b044174e57f7901c4c64d9d34c674d477d02b96da4b80d6",
+      "characters": false,
+      "alpha_extrema": [
+        0,
+        254
+      ],
+      "opaque_bounds": [
+        18,
+        7,
+        1512,
+        1007
+      ]
+    },
+    {
+      "path": "assets/environments/exploration/midgrounds/fire_mid.png",
+      "width": 1536,
+      "height": 1024,
+      "mode": "RGBA",
+      "bytes": 2600656,
+      "sha256": "a53a2fe823e60d6ec0e526f8340979ea3dc8009c52791e402f3ff1b58ba50777",
+      "characters": false,
+      "alpha_extrema": [
+        0,
+        254
+      ],
+      "opaque_bounds": [
+        8,
+        6,
+        1528,
+        987
+      ]
+    },
+    {
+      "path": "assets/environments/exploration/midgrounds/rear_regions.png",
+      "width": 1536,
+      "height": 1024,
+      "mode": "RGBA",
+      "bytes": 3301458,
+      "sha256": "ca36bd2a553458d3c0424fc0c1a02d116ced663476475828baf14d4949ac3c0b",
+      "characters": false,
+      "alpha_extrema": [
+        0,
+        254
+      ],
+      "opaque_bounds": [
+        10,
+        3,
+        1525,
+        1018
+      ]
+    },
+    {
+      "path": "assets/environments/exploration/midgrounds/rear_town.png",
+      "width": 1536,
+      "height": 1024,
+      "mode": "RGBA",
+      "bytes": 2969975,
+      "sha256": "07949e588f5fd89288333bcd517508f4a75bedb6b1701cf84c3bf0537ea4754c",
+      "characters": false,
+      "alpha_extrema": [
+        0,
+        254
+      ],
+      "opaque_bounds": [
+        13,
+        11,
+        1524,
+        1001
+      ]
+    },
+    {
+      "path": "assets/environments/exploration/midgrounds/stage_depth_v7.png",
+      "width": 1536,
+      "height": 1024,
+      "mode": "RGBA",
+      "bytes": 2180084,
+      "sha256": "5302574be7630aa69f626fad51f53e8af18b47b678c6af9ffa4de3fb46d4115b",
+      "characters": false,
+      "alpha_extrema": [
+        0,
+        254
+      ],
+      "opaque_bounds": [
+        255,
+        0,
+        1302,
+        1018
+      ]
+    },
+    {
+      "path": "assets/environments/exploration/midgrounds/station_mid.png",
+      "width": 1536,
+      "height": 1024,
+      "mode": "RGBA",
+      "bytes": 2530806,
+      "sha256": "88e29e23090a0e37b900c8314f3999fca5b4c83c28d710707278f8ce5c36d323",
+      "characters": false,
+      "alpha_extrema": [
+        0,
+        254
+      ],
+      "opaque_bounds": [
+        35,
+        12,
+        1519,
+        1000
+      ]
+    },
+    {
+      "path": "assets/environments/exploration/midgrounds/street_props_a.png",
+      "width": 1536,
+      "height": 1024,
+      "mode": "RGBA",
+      "bytes": 2359956,
+      "sha256": "5429014008c6ef27ff08a13a36cd9592d8be2af32dc8b30fab82f2ddb2829a32",
+      "characters": false,
+      "alpha_extrema": [
+        0,
+        254
+      ],
+      "opaque_bounds": [
+        90,
+        19,
+        1447,
+        975
+      ]
+    },
+    {
+      "path": "assets/environments/exploration/midgrounds/street_props_b.png",
+      "width": 1536,
+      "height": 1024,
+      "mode": "RGBA",
+      "bytes": 2316808,
+      "sha256": "ed6bc9cf78c3fd9b1b9d21ae6e97f8064709ff431d60b61c0f35ab659d6b633e",
+      "characters": false,
+      "alpha_extrema": [
+        0,
+        254
+      ],
+      "opaque_bounds": [
+        84,
+        25,
+        1497,
+        984
+      ]
+    },
+    {
+      "path": "assets/environments/exploration/midgrounds/theater_mid.png",
+      "width": 1536,
+      "height": 1024,
+      "mode": "RGBA",
+      "bytes": 2871754,
+      "sha256": "bfcc286a0c7103b440a2f0cee42e37deb08fba7357ced237c59b13c669e230e1",
+      "characters": false,
+      "alpha_extrema": [
+        0,
+        254
+      ],
+      "opaque_bounds": [
+        25,
+        4,
+        1505,
+        989
+      ]
+    },
+    {
+      "path": "assets/environments/exploration/midgrounds/town_depth_v7.png",
+      "width": 1536,
+      "height": 1024,
+      "mode": "RGBA",
+      "bytes": 3098254,
+      "sha256": "1c190abd77d7a44c6b977abad60c99de75f77196686494b53db251fe7f074401",
+      "characters": false,
+      "alpha_extrema": [
+        0,
+        254
+      ],
+      "opaque_bounds": [
+        12,
+        13,
+        1519,
+        975
+      ]
+    },
+    {
+      "path": "assets/environments/exploration/midgrounds/town_mid.png",
+      "width": 1536,
+      "height": 1024,
+      "mode": "RGBA",
+      "bytes": 3082565,
+      "sha256": "a7c1e441112a68b2b318e37520bf13fe3c23ea0abd9c30515392477a09ac4388",
+      "characters": false,
+      "alpha_extrema": [
+        0,
+        254
+      ],
+      "opaque_bounds": [
+        6,
+        4,
+        1529,
+        1004
+      ]
+    },
+    {
+      "path": "assets/environments/exploration/midgrounds/wax_depth_v7.png",
+      "width": 1536,
+      "height": 1024,
+      "mode": "RGBA",
+      "bytes": 2601294,
+      "sha256": "ad303ae766e28a1944c8ad4ce7dbc33d79879795b889bbc013b47ebced33c5d5",
+      "characters": false,
+      "alpha_extrema": [
+        0,
+        254
+      ],
+      "opaque_bounds": [
+        10,
+        0,
+        1531,
+        988
+      ]
+    },
+    {
+      "path": "assets/environments/exploration/midgrounds/wax_mid.png",
+      "width": 1536,
+      "height": 1024,
+      "mode": "RGBA",
+      "bytes": 3089271,
+      "sha256": "bd7f55857bd3640a4671293be1d8ac081abdc79213ed0fbbdd0bea21a2b6f0b9",
+      "characters": false,
+      "alpha_extrema": [
+        0,
+        254
+      ],
+      "opaque_bounds": [
+        7,
+        2,
+        1533,
+        995
+      ]
+    },
+    {
+      "path": "assets/environments/exploration/midgrounds/well_depth_v7.png",
+      "width": 1536,
+      "height": 1024,
+      "mode": "RGBA",
+      "bytes": 3030194,
+      "sha256": "1e57cab20fafa9d2270e05b62cdb3a2f5417f87722469535dc2eb6e18f0f12a7",
+      "characters": false,
+      "alpha_extrema": [
+        0,
+        254
+      ],
+      "opaque_bounds": [
+        25,
+        7,
+        1482,
+        1007
+      ]
+    },
+    {
+      "path": "assets/environments/exploration/midgrounds/well_mid.png",
+      "width": 1536,
+      "height": 1024,
+      "mode": "RGBA",
+      "bytes": 2856440,
+      "sha256": "61f97a5fa2f6a645626a1ddd5cbd8d9676f1f46c8f034bc2a2d07f471d14e795",
+      "characters": false,
+      "alpha_extrema": [
+        0,
+        254
+      ],
+      "opaque_bounds": [
+        35,
+        28,
+        1490,
+        986
+      ]
+    },
+    {
+      "path": "assets/environments/exploration/props/arch.png",
+      "width": 1024,
+      "height": 1536,
+      "mode": "RGBA",
+      "bytes": 2375529,
+      "sha256": "bd394e638a1d469490d4bbd7742614cd5a755189caaa4d23297c7979ce9b9945",
+      "characters": false,
+      "alpha_extrema": [
+        0,
+        254
+      ],
+      "opaque_bounds": [
+        73,
+        13,
+        951,
+        1507
+      ]
+    },
+    {
+      "path": "assets/environments/exploration/props/foreground.png",
+      "width": 1536,
+      "height": 1024,
+      "mode": "RGBA",
+      "bytes": 1943379,
+      "sha256": "49dcb6372b18893103ced9fa5e3adbf2c114fb8b0ea4b06b1309dfad1ea4a917",
+      "characters": false,
+      "alpha_extrema": [
+        0,
+        254
+      ],
+      "opaque_bounds": [
+        0,
+        0,
+        1534,
+        1018
+      ]
+    },
+    {
+      "path": "assets/environments/exploration/props/lantern.png",
+      "width": 724,
+      "height": 2172,
+      "mode": "RGBA",
+      "bytes": 808638,
+      "sha256": "1ca8d8bfe06f4a63b71fbe59e9230f1f9b2baee192ea00d05970a4a2d8b5f5e1",
+      "characters": false,
+      "alpha_extrema": [
+        0,
+        255
+      ],
+      "opaque_bounds": [
+        89,
+        24,
+        642,
+        2129
+      ]
+    },
+    {
+      "path": "assets/environments/exploration/props/mirror.png",
+      "width": 1024,
+      "height": 1536,
+      "mode": "RGBA",
+      "bytes": 2391537,
+      "sha256": "0b8976b6a1dda0e9fe07a802be77d9d0f7279c62632948780cd6bb2f4281f746",
+      "characters": false,
+      "alpha_extrema": [
+        0,
+        254
+      ],
+      "opaque_bounds": [
+        126,
+        8,
+        897,
+        1511
+      ]
+    },
+    {
+      "path": "assets/environments/exploration/terrain/brass.png",
+      "width": 2172,
+      "height": 724,
+      "mode": "RGBA",
+      "bytes": 1094867,
+      "sha256": "12988aac4b9655f0312c6ef3b57a14eca9e545bcb0bb842e3109790549c4a86f",
+      "characters": false,
+      "alpha_extrema": [
+        0,
+        255
+      ],
+      "opaque_bounds": [
+        30,
+        228,
+        2145,
+        508
+      ],
+      "atlas_region": [
+        45,
+        229,
+        2080,
+        279
+      ],
+      "collision_top_in_atlas": 0,
+      "canonical_display_height": 110
+    },
+    {
+      "path": "assets/environments/exploration/terrain/brass_variants.png",
+      "width": 1774,
+      "height": 887,
+      "mode": "RGBA",
+      "bytes": 1414716,
+      "sha256": "b6222cdad0199349e760136638bc596e6937fb5abf62cb5c2d40c9145b44a546",
+      "characters": false,
+      "alpha_extrema": [
+        0,
+        255
+      ],
+      "opaque_bounds": [
+        7,
+        214,
+        1766,
+        797
+      ]
+    },
+    {
+      "path": "assets/environments/exploration/terrain/stone.png",
+      "width": 2172,
+      "height": 724,
+      "mode": "RGBA",
+      "bytes": 1155076,
+      "sha256": "824bceaafca6c1166763ab743d9cbb5d3343faa78ef10ba8fda1dbaf1aebf7c5",
+      "characters": false,
+      "alpha_extrema": [
+        0,
+        255
+      ],
+      "opaque_bounds": [
+        31,
+        242,
+        2140,
+        486
+      ],
+      "atlas_region": [
+        64,
+        242,
+        2040,
+        244
+      ],
+      "collision_top_in_atlas": 0,
+      "canonical_display_height": 110
+    },
+    {
+      "path": "assets/environments/exploration/terrain/stone_variants.png",
+      "width": 1774,
+      "height": 887,
+      "mode": "RGBA",
+      "bytes": 2059365,
+      "sha256": "7232150ea2382c76d57d21557009e4be8ffbf2cc8ce1d4947decfc40146b1dcd",
+      "characters": false,
+      "alpha_extrema": [
+        0,
+        255
+      ],
+      "opaque_bounds": [
+        9,
+        97,
+        1764,
+        812
+      ]
+    },
+    {
+      "path": "assets/environments/exploration/terrain/wood.png",
+      "width": 2172,
+      "height": 724,
+      "mode": "RGBA",
+      "bytes": 1248643,
+      "sha256": "0da45848c5d382cecba0ea0d37b6b9fd786a92e92eaf308b3917a380a11c4728",
+      "characters": false,
+      "alpha_extrema": [
+        0,
+        255
+      ],
+      "opaque_bounds": [
+        11,
+        219,
+        2161,
+        501
+      ],
+      "atlas_region": [
+        30,
+        220,
+        2100,
+        281
+      ],
+      "collision_top_in_atlas": 0,
+      "canonical_display_height": 110
+    },
+    {
+      "path": "assets/environments/exploration/terrain/wood_variants.png",
+      "width": 1774,
+      "height": 887,
+      "mode": "RGBA",
+      "bytes": 1364771,
+      "sha256": "75ede0522b08110e776d6e8071c53e7398f38c9f6486eb6348f52e22d4fcd161",
+      "characters": false,
+      "alpha_extrema": [
+        0,
+        255
+      ],
+      "opaque_bounds": [
+        22,
+        131,
+        1753,
+        779
+      ]
+    },
+    {
+      "path": "assets/environments/exploration/weapons/stage_weapons.png",
+      "width": 1774,
+      "height": 887,
+      "mode": "RGBA",
+      "bytes": 1363916,
+      "sha256": "56b07985e6066a6d5566983937f85121d0ba6cdadc24ad19cf3a58c409d87ebb",
+      "characters": false,
+      "alpha_extrema": [
+        0,
+        255
+      ],
+      "opaque_bounds": [
+        23,
+        49,
+        1759,
+        830
+      ]
+    }
+  ],
+  "png_count": 73,
+  "rooms": 69,
+  "directed_exits": 92,
+  "main_regions": 18,
+  "physical_corridors": 23,
+  "npc_types": 8,
+  "npc_placements": 47,
+  "enemy_types": 8,
+  "bosses": 1,
+  "boss_phases": 3,
+  "boss_skills": 6,
+  "safe_village_regions": 10,
+  "independent_interiors": 28,
+  "main_quest_steps": 10,
+  "resident_requests": 8,
+  "gate_groups": 14,
+  "weapon_stages": 5,
+  "fixed_structures": 45,
+  "enterable_houses": 28,
+  "unique_structure_visuals": 33,
+  "vertical_rooms": 17,
+  "manual_return_lifts": 7,
+  "shaft_investigations": 15,
+  "grid_unit": 64,
+  "collision": "Gameplay bodies and combat areas; background art is non-colliding",
+  "layers": [
+    "BG_04_Far (horizontal distant parallax; vertical world-fixed)",
+    "WorldRearScenery (fixed)",
+    "WorldArchitecture (fixed)",
+    "WorldStreetDetails (fixed)",
+    "Gameplay",
+    "Actors",
+    "Foreground"
+  ]
+}

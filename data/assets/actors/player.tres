@@ -1,0 +1,90 @@
+[gd_resource type="Resource" script_class="ActorDefinition" load_steps=21 format=3]
+
+[ext_resource type="Script" path="res://scripts/assets/actor_definition.gd" id="1_def"]
+[ext_resource type="Script" path="res://scripts/assets/animation_entry.gd" id="2_anim"]
+[ext_resource type="Texture2D" path="res://assets/characters/player/player_idle.png" id="1_tex"]
+[ext_resource type="Texture2D" path="res://assets/characters/player/player_run.png" id="2_tex"]
+[ext_resource type="Texture2D" path="res://assets/characters/player/player_jump.png" id="3_tex"]
+[ext_resource type="Texture2D" path="res://assets/characters/player/player_fall.png" id="4_tex"]
+[ext_resource type="Texture2D" path="res://assets/characters/player/player_attack.png" id="5_tex"]
+[ext_resource type="Texture2D" path="res://assets/characters/player/player_hit.png" id="6_tex"]
+[ext_resource type="Texture2D" path="res://assets/characters/player/player_death.png" id="7_tex"]
+[ext_resource type="Texture2D" path="res://assets/characters/player/player_interact.png" id="8_tex"]
+[ext_resource type="Texture2D" path="res://assets/characters/player/player_climb.png" id="9_tex"]
+
+[sub_resource type="Resource" id="anim_idle"]
+script = ExtResource("2_anim")
+name = &"idle"
+path = "res://assets/characters/player/player_idle.png"
+frames = 6
+texture = ExtResource("1_tex")
+
+[sub_resource type="Resource" id="anim_run"]
+script = ExtResource("2_anim")
+name = &"run"
+path = "res://assets/characters/player/player_run.png"
+frames = 8
+texture = ExtResource("2_tex")
+
+[sub_resource type="Resource" id="anim_jump"]
+script = ExtResource("2_anim")
+name = &"jump"
+path = "res://assets/characters/player/player_jump.png"
+frames = 3
+texture = ExtResource("3_tex")
+
+[sub_resource type="Resource" id="anim_fall"]
+script = ExtResource("2_anim")
+name = &"fall"
+path = "res://assets/characters/player/player_fall.png"
+frames = 3
+texture = ExtResource("4_tex")
+
+[sub_resource type="Resource" id="anim_attack"]
+script = ExtResource("2_anim")
+name = &"attack"
+path = "res://assets/characters/player/player_attack.png"
+frames = 6
+texture = ExtResource("5_tex")
+
+[sub_resource type="Resource" id="anim_hit"]
+script = ExtResource("2_anim")
+name = &"hit"
+path = "res://assets/characters/player/player_hit.png"
+frames = 2
+texture = ExtResource("6_tex")
+
+[sub_resource type="Resource" id="anim_death"]
+script = ExtResource("2_anim")
+name = &"death"
+path = "res://assets/characters/player/player_death.png"
+frames = 6
+texture = ExtResource("7_tex")
+
+[sub_resource type="Resource" id="anim_interact"]
+script = ExtResource("2_anim")
+name = &"interact"
+path = "res://assets/characters/player/player_interact.png"
+frames = 4
+texture = ExtResource("8_tex")
+
+[sub_resource type="Resource" id="anim_climb"]
+script = ExtResource("2_anim")
+name = &"climb"
+path = "res://assets/characters/player/player_climb.png"
+frames = 4
+texture = ExtResource("9_tex")
+
+[resource]
+script = ExtResource("1_def")
+id = &"player"
+kind = 0
+display_name = "侦探（主角）"
+source_dir = "assets/characters/player"
+script_path = "res://scripts/player/player_controller.gd"
+frame_size = 64
+body_size = Vector2(26, 46)
+states_dir = "res://scripts/player/states"
+state_names = PackedStringArray("idle", "run", "jump", "fall", "attack", "hit", "death", "interact", "climb")
+note = "巨大侦探帽 + 右脸烧伤 + 空白笔记本。帽檐下只见琥珀色眼部高光。"
+animations = [SubResource("anim_idle"), SubResource("anim_run"), SubResource("anim_jump"), SubResource("anim_fall"), SubResource("anim_attack"), SubResource("anim_hit"), SubResource("anim_death"), SubResource("anim_interact"), SubResource("anim_climb")]

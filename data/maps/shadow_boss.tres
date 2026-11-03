@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="MapData" load_steps=3 format=3]
+
+[ext_resource type="Script" path="res://scripts/world/map_data.gd" id="1_mapdata"]
+[ext_resource type="Script" path="res://scripts/world/map_exit_link.gd" id="2_exitlink"]
+
+[resource]
+script = ExtResource("1_mapdata")
+id = &"shadow_boss"
+display_name = "钟楼顶"
+scene_path = "res://scenes/maps/shadow_boss.tscn"
+map_size = Vector2i(2200, 1300)
+audio_area = &"Fire"
+reacts_to_world_state = true
+exits = []
+default_spawn_id = &"start"

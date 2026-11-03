@@ -1,0 +1,19 @@
+[gd_scene format=3 uid="uid://bfpae87orb2wu"]
+
+[ext_resource type="Texture2D" uid="uid://f5tmcggnwjne" path="res://comscene/village/Tile_06.png" id="1_0e48y"]
+[ext_resource type="Texture2D" uid="uid://cll2dlij7g7of" path="res://comscene/village/Tile_17.png" id="2_epypp"]
+
+[node name="Node2D" type="Node2D" unique_id=1266664406 groups=["特效分组"]]
+position = Vector2(0, 1)
+
+[node name="Tile06" type="Sprite2D" parent="." unique_id=387882004]
+texture = ExtResource("1_0e48y")
+
+[node name="Tile17" type="Sprite2D" parent="." unique_id=1401240787]
+position = Vector2(80, 15)
+rotation = -0.0018878387
+texture = ExtResource("2_epypp")
+
+[node name="Tile07" type="Sprite2D" parent="." unique_id=1731713481]
+position = Vector2(16, -17)
+texture = ExtResource("1_0e48y")

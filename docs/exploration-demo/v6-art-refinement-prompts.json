@@ -1,0 +1,15 @@
+{
+  "generator": "built-in image_gen",
+  "assets": [
+    {
+      "id": "morris_actions_v2",
+      "source": "morris_actions",
+      "prompt": "Re-layout this pose sheet for a strict production sprite atlas. Preserve SAME four Morris character poses, identity, clothing, coloring and art. CRITICAL: exact 2 columns by 2 rows, each sprite wholly inside its own quadrant, shrink each figure to at most 78% of quadrant width and 82% of quadrant height, leave HUGE truly transparent gutters between sprites and transparent border margins. No hand, wax claw, coat, glow or foot crosses a quadrant boundary. All sprites face left, baseline and body size consistent. True transparent RGBA, no colored glow background cloud. Reduce horizontal reach of arms to fit, keeping clearly raised claw / horizontal sweep / casting / ground punch. No text, no lines."
+    },
+    {
+      "id": "morris_forms_v2",
+      "source": "morris_forms",
+      "prompt": "Re-layout the supplied four Morris forms into a strict 2x2 production sprite atlas. Preserve SAME boss identity and the two molten stages. TOP LEFT phase2 standing, TOP RIGHT phase2 attacking; BOTTOM LEFT phase3 exposed furnace ribs standing, BOTTOM RIGHT phase3 attacking. CRITICAL reduce each full figure including wax arm to max 75% width and max 80% height of its quadrant, leaving HUGE EMPTY transparent gutters on all four sides within each cell. Every full sprite wholly inside its own quadrant. No appendage crosses the center boundaries. No overlap. Maintain all bodies equal height and feet baseline inside each quadrant. Transparent RGBA, remove any background mist/glow, no labels, no grid lines."
+    }
+  ]
+}

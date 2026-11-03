@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="MemoryData" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/memory/memory_data.gd" id="1_mem"]
+
+[resource]
+script = ExtResource("1_mem")
+id = &"pierrot_voice"
+title = "皮埃罗的声音"
+description = "后台铜喇叭里剩下的一点声音。放完就没了，不会再放第二遍。"
+text = "他们说，要在『丰收祭』当晚演一出戏。它也来了，却没有看舞台。『它』看着他们，他们再也看不见它。"
+speaker = "皮埃罗"
+category = 3
+unlock_condition = &"chapter:3"
+is_fragment = false
+double_meaning = "第一次读，“它”像是一个凶手或恶灵，看谁谁就死，剧场成了集体消失的现场。第五章后重读：那一晚来的是烟。“它”不看舞台，是因为它在数人；而“他们再也看不见它”，说的不是死去的人，是被救出去的人——记忆把那一晚整段抹掉了，连烟都看不见了。皮埃罗描述的不是谋杀，是一次失忆。"

@@ -1,0 +1,120 @@
+[gd_scene load_steps=4 format=3 uid="uid://8b4jpsu39lxqv"]
+
+[ext_resource type="Script" path="res://scripts/ui/hud.gd" id="1_hud"]
+[ext_resource type="Texture2D" path="res://assets/ui/hat_icon.png" id="2_hat"]
+
+[node name="HUD" type="CanvasLayer"]
+layer = 10
+script = ExtResource("1_hud")
+
+[node name="Root" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="HPBar" type="HBoxContainer" parent="Root"]
+layout_mode = 1
+anchors_preset = 0
+offset_left = 32.0
+offset_top = 28.0
+offset_right = 232.0
+offset_bottom = 52.0
+mouse_filter = 2
+theme_override_constants/separation = 8
+
+[node name="HatIcon" type="TextureRect" parent="Root/HPBar"]
+custom_minimum_size = Vector2(24, 24)
+layout_mode = 2
+size_flags_vertical = 4
+mouse_filter = 2
+texture = ExtResource("2_hat")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Pips" type="HBoxContainer" parent="Root/HPBar"]
+layout_mode = 2
+size_flags_vertical = 4
+mouse_filter = 2
+theme_override_constants/separation = 4
+
+[node name="MemoryCounter" type="HBoxContainer" parent="Root"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -232.0
+offset_top = 28.0
+offset_right = -32.0
+offset_bottom = 52.0
+grow_horizontal = 0
+mouse_filter = 2
+
+[node name="MemoryLabel" type="Label" parent="Root/MemoryCounter"]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 4
+mouse_filter = 2
+theme_override_colors/font_color = Color(0.909804, 0.784314, 0.478431, 1)
+theme_override_font_sizes/font_size = 20
+text = "记忆  0/7"
+horizontal_alignment = 2
+
+[node name="ItemSlot" type="PanelContainer" parent="Root"]
+custom_minimum_size = Vector2(220, 64)
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 32.0
+offset_top = -96.0
+offset_right = 252.0
+offset_bottom = -32.0
+grow_vertical = 0
+mouse_filter = 2
+theme_override_constants/margin_left = 14
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 14
+theme_override_constants/margin_bottom = 10
+
+[node name="ItemLabel" type="Label" parent="Root/ItemSlot"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_font_sizes/font_size = 18
+text = "—"
+vertical_alignment = 1
+
+[node name="InteractPrompt" type="Label" parent="Root"]
+visible = false
+modulate = Color(0.941176, 0.662745, 0.231373, 1)
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -212.0
+offset_bottom = -180.0
+grow_horizontal = 2
+grow_vertical = 0
+mouse_filter = 2
+theme_override_font_sizes/font_size = 22
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="AreaName" type="Label" parent="Root"]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -300.0
+offset_top = 40.0
+offset_right = 300.0
+offset_bottom = 76.0
+grow_horizontal = 2
+mouse_filter = 2
+theme_override_font_sizes/font_size = 26
+horizontal_alignment = 1

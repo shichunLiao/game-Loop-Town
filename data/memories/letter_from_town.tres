@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="MemoryData" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/memory/memory_data.gd" id="1_mem"]
+
+[resource]
+script = ExtResource("1_mem")
+id = &"letter_from_town"
+title = "不请自来的信"
+description = "夹在镇口木门缝里的信。没有邮票，没有署名，蜡封上有一枚指印。"
+text = "我知道你会回来。\n所以我没有写名字。\n如果你读到这里，说明你又忘了一次。\n那就从这一句开始记：这里的人，是被一个个背出去的。"
+speaker = ""
+category = 0
+unlock_condition = &""
+is_fragment = false
+double_meaning = "第一次读，像是一封写着“你是放火的人、所以你才会回来”的告罪信，读的人以为全镇都在等他认罪。第五章后重读：写信的是被他背出去的人之一，信里没有指控，只有一句提醒——别再把这段记忆丢掉。“没有写名字”是因为他知道主角连自己的名字都记不住了。"

@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="MemoryData" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/memory/memory_data.gd" id="1_mem"]
+
+[resource]
+script = ExtResource("1_mem")
+id = &"summer_camp_photo"
+title = "夏令营合照"
+description = "一张被折过三次的合照。六个人，其中一张脸被水晕开了。"
+text = "最后一天，他说要玩一个游戏。\n规则只有一条：不管听见什么，都不要回头。\n照片背面还有半行字，被水泡坏了：谁回……"
+speaker = ""
+category = 7
+unlock_condition = &"chapter:4"
+is_fragment = true
+double_meaning = "第一次读，“游戏”像是有人把孩子骗进危险的玩法，被水晕开的脸暗示其中一个孩子出事了，写字的半句像遗言。第五章后重读：这个游戏的目的是让孩子背对火跑、不要因为回头而停下；水晕开的不是死者的脸，是拍照时按快门的人——他一直站在照片外面，因为要数人头才能放下相机。"

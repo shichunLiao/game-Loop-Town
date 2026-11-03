@@ -1,0 +1,390 @@
+{
+  "root": "assets",
+  "seed": 20240517,
+  "files": [
+    {
+      "path": "characters/player/player_idle.png",
+      "frame_w": 64,
+      "frame_h": 64,
+      "frames": 6,
+      "width": 384,
+      "height": 64
+    },
+    {
+      "path": "characters/player/player_run.png",
+      "frame_w": 64,
+      "frame_h": 64,
+      "frames": 8,
+      "width": 512,
+      "height": 64
+    },
+    {
+      "path": "characters/player/player_jump.png",
+      "frame_w": 64,
+      "frame_h": 64,
+      "frames": 3,
+      "width": 192,
+      "height": 64
+    },
+    {
+      "path": "characters/player/player_fall.png",
+      "frame_w": 64,
+      "frame_h": 64,
+      "frames": 3,
+      "width": 192,
+      "height": 64
+    },
+    {
+      "path": "characters/player/player_attack.png",
+      "frame_w": 64,
+      "frame_h": 64,
+      "frames": 6,
+      "width": 384,
+      "height": 64
+    },
+    {
+      "path": "characters/player/player_hit.png",
+      "frame_w": 64,
+      "frame_h": 64,
+      "frames": 2,
+      "width": 128,
+      "height": 64
+    },
+    {
+      "path": "characters/player/player_death.png",
+      "frame_w": 64,
+      "frame_h": 64,
+      "frames": 6,
+      "width": 384,
+      "height": 64
+    },
+    {
+      "path": "characters/player/player_interact.png",
+      "frame_w": 64,
+      "frame_h": 64,
+      "frames": 4,
+      "width": 256,
+      "height": 64
+    },
+    {
+      "path": "characters/player/player_climb.png",
+      "frame_w": 64,
+      "frame_h": 64,
+      "frames": 4,
+      "width": 256,
+      "height": 64
+    },
+    {
+      "path": "enemies/wax_dummy_idle.png",
+      "frame_w": 64,
+      "frame_h": 64,
+      "frames": 4,
+      "width": 256,
+      "height": 64
+    },
+    {
+      "path": "enemies/wax_dummy_walk.png",
+      "frame_w": 64,
+      "frame_h": 64,
+      "frames": 6,
+      "width": 384,
+      "height": 64
+    },
+    {
+      "path": "enemies/wax_dummy_attack.png",
+      "frame_w": 64,
+      "frame_h": 64,
+      "frames": 5,
+      "width": 320,
+      "height": 64
+    },
+    {
+      "path": "enemies/wax_dummy_hit.png",
+      "frame_w": 64,
+      "frame_h": 64,
+      "frames": 2,
+      "width": 128,
+      "height": 64
+    },
+    {
+      "path": "enemies/wax_dummy_death.png",
+      "frame_w": 64,
+      "frame_h": 64,
+      "frames": 5,
+      "width": 320,
+      "height": 64
+    },
+    {
+      "path": "enemies/child_ghost_idle.png",
+      "frame_w": 64,
+      "frame_h": 64,
+      "frames": 4,
+      "width": 256,
+      "height": 64
+    },
+    {
+      "path": "enemies/child_ghost_float.png",
+      "frame_w": 64,
+      "frame_h": 64,
+      "frames": 4,
+      "width": 256,
+      "height": 64
+    },
+    {
+      "path": "enemies/townsman_idle.png",
+      "frame_w": 64,
+      "frame_h": 64,
+      "frames": 4,
+      "width": 256,
+      "height": 64
+    },
+    {
+      "path": "enemies/townsman_task.png",
+      "frame_w": 64,
+      "frame_h": 64,
+      "frames": 6,
+      "width": 384,
+      "height": 64
+    },
+    {
+      "path": "enemies/townsman_dazed.png",
+      "frame_w": 64,
+      "frame_h": 64,
+      "frames": 3,
+      "width": 192,
+      "height": 64
+    },
+    {
+      "path": "enemies/morris_idle.png",
+      "frame_w": 128,
+      "frame_h": 128,
+      "frames": 4,
+      "width": 512,
+      "height": 128
+    },
+    {
+      "path": "enemies/morris_spray.png",
+      "frame_w": 128,
+      "frame_h": 128,
+      "frames": 6,
+      "width": 768,
+      "height": 128
+    },
+    {
+      "path": "enemies/morris_summon.png",
+      "frame_w": 128,
+      "frame_h": 128,
+      "frames": 5,
+      "width": 640,
+      "height": 128
+    },
+    {
+      "path": "enemies/morris_hit.png",
+      "frame_w": 128,
+      "frame_h": 128,
+      "frames": 2,
+      "width": 256,
+      "height": 128
+    },
+    {
+      "path": "enemies/morris_death.png",
+      "frame_w": 128,
+      "frame_h": 128,
+      "frames": 8,
+      "width": 1024,
+      "height": 128
+    },
+    {
+      "path": "props/letter.png",
+      "frame_w": 32,
+      "frame_h": 32,
+      "frames": 1,
+      "width": 32,
+      "height": 32
+    },
+    {
+      "path": "props/notebook.png",
+      "frame_w": 32,
+      "frame_h": 32,
+      "frames": 1,
+      "width": 32,
+      "height": 32
+    },
+    {
+      "path": "props/wax_statue_a.png",
+      "frame_w": 32,
+      "frame_h": 32,
+      "frames": 1,
+      "width": 32,
+      "height": 32
+    },
+    {
+      "path": "props/wax_statue_b.png",
+      "frame_w": 32,
+      "frame_h": 32,
+      "frames": 1,
+      "width": 32,
+      "height": 32
+    },
+    {
+      "path": "props/wax_statue_c.png",
+      "frame_w": 32,
+      "frame_h": 32,
+      "frames": 1,
+      "width": 32,
+      "height": 32
+    },
+    {
+      "path": "props/mirror.png",
+      "frame_w": 32,
+      "frame_h": 32,
+      "frames": 1,
+      "width": 32,
+      "height": 32
+    },
+    {
+      "path": "props/checkpoint_lamp.png",
+      "frame_w": 64,
+      "frame_h": 64,
+      "frames": 1,
+      "width": 64,
+      "height": 64
+    },
+    {
+      "path": "props/signboard.png",
+      "frame_w": 64,
+      "frame_h": 64,
+      "frames": 1,
+      "width": 64,
+      "height": 64
+    },
+    {
+      "path": "props/big_scissors.png",
+      "frame_w": 64,
+      "frame_h": 64,
+      "frames": 1,
+      "width": 64,
+      "height": 64
+    },
+    {
+      "path": "props/button.png",
+      "frame_w": 32,
+      "frame_h": 32,
+      "frames": 1,
+      "width": 32,
+      "height": 32
+    },
+    {
+      "path": "props/rag_doll.png",
+      "frame_w": 32,
+      "frame_h": 32,
+      "frames": 1,
+      "width": 32,
+      "height": 32
+    },
+    {
+      "path": "vfx/marker_interact.png",
+      "frame_w": 32,
+      "frame_h": 32,
+      "frames": 1,
+      "width": 32,
+      "height": 32
+    },
+    {
+      "path": "vfx/marker_danger.png",
+      "frame_w": 32,
+      "frame_h": 32,
+      "frames": 1,
+      "width": 32,
+      "height": 32
+    },
+    {
+      "path": "vfx/hit_spark.png",
+      "frame_w": 32,
+      "frame_h": 32,
+      "frames": 4,
+      "width": 128,
+      "height": 32
+    },
+    {
+      "path": "vfx/white_flash.png",
+      "frame_w": 64,
+      "frame_h": 64,
+      "frames": 1,
+      "width": 64,
+      "height": 64
+    },
+    {
+      "path": "ui/panel_dark.png",
+      "frame_w": 64,
+      "frame_h": 64,
+      "frames": 1,
+      "width": 64,
+      "height": 64
+    },
+    {
+      "path": "ui/hp_pip_full.png",
+      "frame_w": 24,
+      "frame_h": 24,
+      "frames": 1,
+      "width": 24,
+      "height": 24
+    },
+    {
+      "path": "ui/hp_pip_empty.png",
+      "frame_w": 24,
+      "frame_h": 24,
+      "frames": 1,
+      "width": 24,
+      "height": 24
+    },
+    {
+      "path": "ui/hat_icon.png",
+      "frame_w": 24,
+      "frame_h": 24,
+      "frames": 1,
+      "width": 24,
+      "height": 24
+    },
+    {
+      "path": "environments/bg_town_far.png",
+      "frame_w": 1920,
+      "frame_h": 1080,
+      "frames": 1,
+      "width": 1920,
+      "height": 1080
+    },
+    {
+      "path": "environments/bg_town_mid.png",
+      "frame_w": 1920,
+      "frame_h": 1080,
+      "frames": 1,
+      "width": 1920,
+      "height": 1080
+    },
+    {
+      "path": "environments/bg_town_near.png",
+      "frame_w": 1920,
+      "frame_h": 1080,
+      "frames": 1,
+      "width": 1920,
+      "height": 1080
+    },
+    {
+      "path": "environments/bg_wax_lane.png",
+      "frame_w": 1920,
+      "frame_h": 1080,
+      "frames": 1,
+      "width": 1920,
+      "height": 1080
+    },
+    {
+      "path": "environments/bg_clocktower.png",
+      "frame_w": 1920,
+      "frame_h": 1080,
+      "frames": 1,
+      "width": 1920,
+      "height": 1080
+    }
+  ]
+}

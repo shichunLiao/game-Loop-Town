@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="PropDefinition" load_steps=3 format=3]
+
+[ext_resource type="Script" path="res://scripts/assets/prop_definition.gd" id="1_prop"]
+[ext_resource type="Texture2D" path="res://assets/props/rag_doll.png" id="2_icon"]
+
+[resource]
+script = ExtResource("1_prop")
+id = &"rag_doll"
+display_name = "双马尾女孩布偶"
+texture_path = "res://assets/props/rag_doll.png"
+icon_size = 32
+usage = "全场唯一没有破损的布偶。第三章交给井底的小铃。"
+icon = ExtResource("2_icon")

@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="PropDefinition" load_steps=3 format=3]
+
+[ext_resource type="Script" path="res://scripts/assets/prop_definition.gd" id="1_prop"]
+[ext_resource type="Texture2D" path="res://assets/props/wax_statue_c.png" id="2_icon"]
+
+[resource]
+script = ExtResource("1_prop")
+id = &"wax_statue_c"
+display_name = "蜡像 · 姿势 C"
+texture_path = "res://assets/props/wax_statue_c.png"
+icon_size = 32
+usage = "同上，三种姿势之一。"
+icon = ExtResource("2_icon")

@@ -1,0 +1,45 @@
+{
+ "map_id": "dry_well",
+ "ground_y": 1200.0,
+ "items": [
+  {
+   "kind": "fog",
+   "x": 0.0,
+   "coverage": [
+    4000,
+    800
+   ],
+   "bands": 5,
+   "alpha": 0.2,
+   "y": 1160.0
+  },
+  {
+   "kind": "parallax",
+   "x": 0.0,
+   "layers": [
+    [
+     "res://assets/environments/bg_town_far.png",
+     0.2,
+     -260.0,
+     0.5
+    ]
+   ],
+   "y": 1160.0
+  },
+  {
+   "kind": "signboard",
+   "x": 1500.0,
+   "prompt": "查看",
+   "flag": "well_note",
+   "message": "所有的树都朝同一个方向弯。\n叶子踩上去的声音，像有人在哭。",
+   "y": 1160.0
+  },
+  {
+   "kind": "memory_pickup",
+   "x": 2900.0,
+   "memory": "summer_camp_photo",
+   "prompt": "拾起照片",
+   "y": 1160.0
+  }
+ ]
+}

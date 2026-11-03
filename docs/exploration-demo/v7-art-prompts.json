@@ -1,0 +1,37 @@
+[
+  {
+    "id": "town_depth_v7",
+    "folder": "midgrounds",
+    "transparent": true,
+    "prompt": "Use case: stylized-concept. Production reusable 2D SIDE VIEW Gothic hand inked game environment assets, intricate painted stone, dark outlines, restrained blue-grey teal shadows and amber details. STRICT 2x2 atlas, four fully isolated complete objects inside quadrants, generous empty transparent gutters, actual RGBA transparent background. No people, no text, no UI, no perspective ground plane. Object interiors fully opaque, no background mist or glow clouds. Keep every whole silhouette inside its own cell. Four different world-anchored REAR COURTYARD structures, front elevation. Top left a low walled winter garden with an iron greenhouse roof and ivy doorway. Top right a covered stone laundry arcade with hanging empty clotheslines and little chimney. Bottom left old canal sluice house rear wall with wooden wheel, pipe spouts and mossy masonry. Bottom right a ruined chapel garden wall with pointed blind niches and crooked cypress branches. Entire clusters no foreground houses, no huge clock towers. Each wide and modest, opaque stone wall contours, readable at game scale.",
+    "provider": "built-in imagegen"
+  },
+  {
+    "id": "wax_depth_v7",
+    "folder": "midgrounds",
+    "transparent": true,
+    "prompt": "Use case: stylized-concept. Production reusable 2D SIDE VIEW Gothic hand inked game environment assets, intricate painted stone, dark outlines, restrained blue-grey teal shadows and amber details. STRICT 2x2 atlas, four fully isolated complete objects inside quadrants, generous empty transparent gutters, actual RGBA transparent background. No people, no text, no UI, no perspective ground plane. Object interiors fully opaque, no background mist or glow clouds. Keep every whole silhouette inside its own cell. Four different wall-attached WAX MUSEUM structural clusters. Top left heavy furnace chimney and brick buttress with cooled wax rivulets and a small arched oven niche. Top right tall connected copper pipe risers, valves and a maintenance balcony with metal corbels. Bottom left recessed sculpture storage arcade with covered wax busts, closed cabinets and stacked molds. Bottom right suspended service gallery frame supported on two masonry piers, wheel hoist and hanging empty chain. Side-on orthographic construction, all structures physically rooted, no floating masonry blocks.",
+    "provider": "built-in imagegen"
+  },
+  {
+    "id": "well_depth_v7",
+    "folder": "midgrounds",
+    "transparent": true,
+    "prompt": "Use case: stylized-concept. Production reusable 2D SIDE VIEW Gothic hand inked game environment assets, intricate painted stone, dark outlines, restrained blue-grey teal shadows and amber details. STRICT 2x2 atlas, four fully isolated complete objects inside quadrants, generous empty transparent gutters, actual RGBA transparent background. No people, no text, no UI, no perspective ground plane. Object interiors fully opaque, no background mist or glow clouds. Keep every whole silhouette inside its own cell. Four different ANCIENT WELL wall structural clusters. Top left massive cracked retaining stone arch entwined with roots growing all the way down its piers. Top right abandoned pump assembly and horizontal wooden winch on heavy masonry footing. Bottom left cistern alcove with iron drainage grille, hanging root tendrils and carved wet stone sill. Bottom right battered stone buttress with deep block layers, a broken gutter and clinging moss, suitable as support beneath a walkable ledge. No blue glow mist, no ghost characters.",
+    "provider": "built-in imagegen"
+  },
+  {
+    "id": "stage_depth_v7",
+    "folder": "midgrounds",
+    "transparent": true,
+    "prompt": "Use case: stylized-concept. Production reusable 2D SIDE VIEW Gothic hand inked game environment assets, intricate painted stone, dark outlines, restrained blue-grey teal shadows and amber details. STRICT 2x2 atlas, four fully isolated complete objects inside quadrants, generous empty transparent gutters, actual RGBA transparent background. No people, no text, no UI, no perspective ground plane. Object interiors fully opaque, no background mist or glow clouds. Keep every whole silhouette inside its own cell. Four different CLOCK TOWER and THEATER wall supports. Top left immense vertical iron gear drive shaft, brass bearings and masonry base, a detailed structural column. Top right stone clockwork balcony support with bronze corbel, small cogs and an empty maintenance recess. Bottom left theater fly-tower counterweight rack, hanging ropes, weighted blocks and heavy timber lower brace. Bottom right old theater side-box structure with burgundy torn curtains, shuttered balcony and stone supporting arch. No actors, no baked in playable characters. Complete grounded structural silhouettes.",
+    "provider": "built-in imagegen"
+  },
+  {
+    "id": "masonry_tiles_v7",
+    "folder": "masonry",
+    "transparent": false,
+    "prompt": "Use case: stylized-concept. A production material atlas for a hand inked Gothic 2D game. FOUR FULLY OPAQUE rectangular material tiles in exact 2x2 equal quadrants, NO gutters, NO labels, NO border, no transparency, no isolated objects. Every pixel covered with richly painted material. Top left small rough gray-blue foundation stones with dark grout and worn edges, subdued value. Top right soot-dark brick masonry with a few narrow aged copper joints, no large features. Bottom left oxidized dark iron structural panels with small brass rivets and shallow seams. Bottom right damp old limestone and compact bedrock with roots embedded in cracks. Frontal flat orthographic texture, no lighting gradient, no horizon, no floor plane, no windows, no arches, no debris silhouettes. Tileable-looking restrained patterns, small varied units, legible at 256 pixel tiles, painterly comic black outlines matching dark storybook architecture.",
+    "provider": "built-in imagegen"
+  }
+]

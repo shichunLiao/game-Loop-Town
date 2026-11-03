@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="MemoryData" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/memory/memory_data.gd" id="1_mem"]
+
+[resource]
+script = ExtResource("1_mem")
+id = &"fire_brigade_tag"
+title = "被磨掉的编号"
+description = "一枚消防队编号牌。号码后面被磨掉了一截，边缘发亮。"
+text = "二百四十七。\n后面的数字被人用手磨掉了。\n磨掉的部分很薄，像是被拇指反复蹭过。"
+speaker = ""
+category = 6
+unlock_condition = &"chapter:4"
+is_fragment = true
+double_meaning = "第一次读，磨掉编号像是在毁掉身份，说明有人想从名册上消失——是畏罪的人在抹掉自己。第五章后重读：磨掉的部分不是编号，是“次数”。他把自己的编号蹭花了，因为每重来一次，他都要重新确认一次：这一次，还是他进去。牌子上留下的二百四十七，是他背出来的人数，他把它当成自己的名字。"

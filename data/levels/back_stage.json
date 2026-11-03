@@ -1,0 +1,24 @@
+{
+ "map_id": "back_stage",
+ "ground_y": 800.0,
+ "items": [
+  {
+   "kind": "fog",
+   "x": 0.0,
+   "coverage": [
+    2600,
+    600
+   ],
+   "bands": 3,
+   "alpha": 0.14,
+   "y": 760.0
+  },
+  {
+   "kind": "memory_pickup",
+   "x": 900.0,
+   "memory": "four_children_voices",
+   "prompt": "拿起那只布偶",
+   "y": 760.0
+  }
+ ]
+}

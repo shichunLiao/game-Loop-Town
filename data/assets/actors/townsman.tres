@@ -1,0 +1,63 @@
+[gd_resource type="Resource" script_class="ActorDefinition" load_steps=12 format=3]
+
+[ext_resource type="Script" path="res://scripts/assets/actor_definition.gd" id="1_def"]
+[ext_resource type="Script" path="res://scripts/assets/animation_entry.gd" id="2_anim"]
+[ext_resource type="Texture2D" path="res://assets/enemies/townsman_idle.png" id="1_tex"]
+[ext_resource type="Texture2D" path="res://assets/enemies/townsman_task.png" id="2_tex"]
+[ext_resource type="Texture2D" path="res://assets/enemies/townsman_dazed.png" id="3_tex"]
+
+[sub_resource type="Resource" id="anim_idle"]
+script = ExtResource("2_anim")
+name = &"idle"
+path = "res://assets/enemies/townsman_idle.png"
+frames = 4
+texture = ExtResource("1_tex")
+
+[sub_resource type="Resource" id="anim_task"]
+script = ExtResource("2_anim")
+name = &"task"
+path = "res://assets/enemies/townsman_task.png"
+frames = 6
+texture = ExtResource("2_tex")
+
+[sub_resource type="Resource" id="anim_walk"]
+script = ExtResource("2_anim")
+name = &"walk"
+path = "res://assets/enemies/townsman_idle.png"
+frames = 4
+texture = ExtResource("1_tex")
+
+[sub_resource type="Resource" id="anim_dazed"]
+script = ExtResource("2_anim")
+name = &"dazed"
+path = "res://assets/enemies/townsman_dazed.png"
+frames = 3
+texture = ExtResource("3_tex")
+
+[sub_resource type="Resource" id="anim_hit"]
+script = ExtResource("2_anim")
+name = &"hit"
+path = "res://assets/enemies/townsman_dazed.png"
+frames = 3
+texture = ExtResource("3_tex")
+
+[sub_resource type="Resource" id="anim_death"]
+script = ExtResource("2_anim")
+name = &"death"
+path = "res://assets/enemies/townsman_dazed.png"
+frames = 3
+texture = ExtResource("3_tex")
+
+[resource]
+script = ExtResource("1_def")
+id = &"townsman"
+kind = 2
+display_name = "镇民"
+source_dir = "assets/enemies"
+script_path = "res://scripts/npc/townsman.gd"
+frame_size = 64
+body_size = Vector2(28, 54)
+states_dir = "res://scripts/npc/states"
+state_names = PackedStringArray("task", "staggered", "dazed", "chase", "hit", "death")
+note = "灰衣。三种情绪：可对话 / 只看你 / 敌对；被击败后变茫然（不是自愿攻击）。"
+animations = [SubResource("anim_idle"), SubResource("anim_task"), SubResource("anim_walk"), SubResource("anim_dazed"), SubResource("anim_hit"), SubResource("anim_death")]

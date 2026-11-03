@@ -1,0 +1,32 @@
+{
+ "map_id": "final_fire_town",
+ "ground_y": 1300.0,
+ "items": [
+  {
+   "kind": "parallax",
+   "x": 0.0,
+   "layers": [
+    [
+     "res://assets/environments/bg_town_far.png",
+     0.15,
+     -300.0,
+     0.55
+    ],
+    [
+     "res://assets/environments/bg_town_mid.png",
+     0.4,
+     -140.0,
+     0.72
+    ]
+   ],
+   "y": 1260.0
+  },
+  {
+   "kind": "memory_pickup",
+   "x": 3000.0,
+   "memory": "seven_selves",
+   "prompt": "看清",
+   "y": 1260.0
+  }
+ ]
+}

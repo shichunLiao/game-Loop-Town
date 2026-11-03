@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="MemoryData" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/memory/memory_data.gd" id="1_mem"]
+
+[resource]
+script = ExtResource("1_mem")
+id = &"the_247"
+title = "247"
+description = "笔记本第一页上的三枚数字，反复描过，纸都快破了。"
+text = "二百四十七个人。\n二百四十七次。\n一样多，不是巧合，是我数错了。"
+speaker = ""
+category = 8
+unlock_condition = &"chapter:5"
+is_fragment = false
+double_meaning = "第一次读，“一样多，是我数错了”像认罪：他承认自己把人和次数混在一起，等于承认他把人命当成了数字。第五章后重读：他数的是被背出去的人，二百四十七个，一个没少；二百四十七次是他回去的次数。他之所以说“数错了”，是因为他每次都少数了一个——少的那一个，是他自己。"

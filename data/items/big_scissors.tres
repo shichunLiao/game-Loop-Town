@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="ItemData" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/inventory/item_data.gd" id="1_item"]
+
+[resource]
+script = ExtResource("1_item")
+id = &"big_scissors"
+display_name = "大剪刀"
+description = "裁缝铺的旧剪刀，刃口被磨得很亮。\n馆里那些红色的控制线，不是绳子，也剪不断——除非用一把只剪过布的剪刀。"
+icon = null
+kind = 0
+max_stack = 1
+attack_damage = 6
+grants_flag = &"has_scissors"
+opens_notebook = false

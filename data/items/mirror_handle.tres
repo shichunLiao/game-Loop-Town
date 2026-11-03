@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="ItemData" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/inventory/item_data.gd" id="1_item"]
+
+[resource]
+script = ExtResource("1_item")
+id = &"mirror_handle"
+display_name = "镜面摇柄"
+description = "黄铜摇柄，握柄上有一层被手掌磨出来的光。\n插进镜座以后转半圈，光就会转向它该去的地方。转满一圈，一切就会重新开始。"
+icon = null
+kind = 0
+max_stack = 1
+attack_damage = 0
+grants_flag = &"has_mirror_handle"
+opens_notebook = false

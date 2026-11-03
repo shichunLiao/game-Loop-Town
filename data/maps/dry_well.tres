@@ -1,0 +1,27 @@
+[gd_resource type="Resource" script_class="MapData" load_steps=5 format=3]
+
+[ext_resource type="Script" path="res://scripts/world/map_data.gd" id="1_mapdata"]
+[ext_resource type="Script" path="res://scripts/world/map_exit_link.gd" id="2_exitlink"]
+
+[sub_resource type="Resource" id="exitlink_1"]
+script = ExtResource("2_exitlink")
+exit_id = &"back_town"
+target_map_id = &"town_hub"
+target_spawn_id = &"dry_well"
+
+[sub_resource type="Resource" id="exitlink_2"]
+script = ExtResource("2_exitlink")
+exit_id = &"well"
+target_map_id = &"well_interior"
+target_spawn_id = &"top"
+
+[resource]
+script = ExtResource("1_mapdata")
+id = &"dry_well"
+display_name = "枯井区域"
+scene_path = "res://scenes/maps/dry_well.tscn"
+map_size = Vector2i(3500, 1400)
+audio_area = &"Well"
+reacts_to_world_state = true
+exits = [SubResource("exitlink_1"), SubResource("exitlink_2")]
+default_spawn_id = &"start"

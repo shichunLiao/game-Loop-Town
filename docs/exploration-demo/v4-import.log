@@ -1,0 +1,110 @@
+Godot Engine v4.6.3.stable.official.7d41c59c4 - https://godotengine.org
+
+[   0% ] [90m[1mfirst_scan_filesystem[22m | Started 项目初始化 (5 steps)[39m[0m
+[   0% ] [90m[1mfirst_scan_filesystem[22m | 正在扫描文件结构……[39m[0m
+[  16% ] [90m[1mfirst_scan_filesystem[22m | 正在加载全局类名……[39m[0m
+[  33% ] [90m[1mfirst_scan_filesystem[22m | 正在校验 GDExtension……[39m[0m
+[  50% ] [90m[1mfirst_scan_filesystem[22m | 正在创建自动加载脚本……[39m[0m
+[  66% ] [90m[1mfirst_scan_filesystem[22m | 正在初始化插件……[39m[0m
+MCP | plugin disabled in headless mode
+[  83% ] [90m[1mfirst_scan_filesystem[22m | 正在启动文件扫描……[39m[0m
+[92m[ DONE ][39m [1mfirst_scan_filesystem[22m
+[0m
+[   0% ] [90m[1mupdate_scripts_classes[22m | Started 正在注册全局类…… (7 steps)[39m[0m
+[   0% ] [90m[1mupdate_scripts_classes[22m | ExplorationActions[39m[0m
+[  12% ] [90m[1mupdate_scripts_classes[22m | ExplorationBackdrop[39m[0m
+[  25% ] [90m[1mupdate_scripts_classes[22m | ExplorationBuilding[39m[0m
+[  37% ] [90m[1mupdate_scripts_classes[22m | ExplorationBuildingFeature[39m[0m
+[  50% ] [90m[1mupdate_scripts_classes[22m | [39m[0m
+[  62% ] [90m[1mupdate_scripts_classes[22m | ExplorationHitArea[39m[0m
+[  75% ] [90m[1mupdate_scripts_classes[22m | ExplorationRoom[39m[0m
+[92m[ DONE ][39m [1mupdate_scripts_classes[22m
+[0m
+[   0% ] [90m[1m_update_scan_actions[22m | Started 正在扫描动作…… (22 steps)[39m[0m
+[   0% ] [90m[1m_update_scan_actions[22m | apothecary.png[39m[0m
+[   4% ] [90m[1m_update_scan_actions[22m | bakery.png[39m[0m
+[   8% ] [90m[1m_update_scan_actions[22m | boardinghouse.png[39m[0m
+[  13% ] [90m[1m_update_scan_actions[22m | bookshop.png[39m[0m
+[  17% ] [90m[1m_update_scan_actions[22m | burnt_house.png[39m[0m
+[  21% ] [90m[1m_update_scan_actions[22m | clockshop.png[39m[0m
+[  26% ] [90m[1m_update_scan_actions[22m | clock_works.png[39m[0m
+[  30% ] [90m[1m_update_scan_actions[22m | costume_shop.png[39m[0m
+[  34% ] [90m[1m_update_scan_actions[22m | florist.png[39m[0m
+[  39% ] [90m[1m_update_scan_actions[22m | postoffice.png[39m[0m
+[  43% ] [90m[1m_update_scan_actions[22m | station_office.png[39m[0m
+[  47% ] [90m[1m_update_scan_actions[22m | theater_entry.png[39m[0m
+[  52% ] [90m[1m_update_scan_actions[22m | watermill.png[39m[0m
+[  56% ] [90m[1m_update_scan_actions[22m | wax_shop.png[39m[0m
+[  60% ] [90m[1m_update_scan_actions[22m | wax_workshop.png[39m[0m
+[  65% ] [90m[1m_update_scan_actions[22m | well_shelter.png[39m[0m
+[  69% ] [90m[1m_update_scan_actions[22m | mechanical_room.png[39m[0m
+[  73% ] [90m[1m_update_scan_actions[22m | theater_room.png[39m[0m
+[  78% ] [90m[1m_update_scan_actions[22m | town_room.png[39m[0m
+[  82% ] [90m[1m_update_scan_actions[22m | wax_room.png[39m[0m
+[  86% ] [90m[1m_update_scan_actions[22m | street_props_a.png[39m[0m
+[  91% ] [90m[1m_update_scan_actions[22m | street_props_b.png[39m[0m
+[92m[ DONE ][39m [1m_update_scan_actions[22m
+[0m
+[   0% ] [90m[1mreimport[22m | Started 正在导入或重新导入资产 (22 steps)[39m[0m
+[   0% ] [90m[1mreimport[22m | 正在准备重新导入文件……[39m[0m
+[   4% ] [90m[1mreimport[22m | 正在准备重新导入文件……[39m[0m
+[   8% ] [90m[1mreimport[22m | 正在准备重新导入文件……[39m[0m
+[  13% ] [90m[1mreimport[22m | 正在准备重新导入文件……[39m[0m
+[  17% ] [90m[1mreimport[22m | 正在准备重新导入文件……[39m[0m
+[  21% ] [90m[1mreimport[22m | 正在准备重新导入文件……[39m[0m
+[  26% ] [90m[1mreimport[22m | 正在准备重新导入文件……[39m[0m
+[  30% ] [90m[1mreimport[22m | 正在准备重新导入文件……[39m[0m
+[  34% ] [90m[1mreimport[22m | 正在准备重新导入文件……[39m[0m
+[  39% ] [90m[1mreimport[22m | 正在准备重新导入文件……[39m[0m
+[  43% ] [90m[1mreimport[22m | 正在准备重新导入文件……[39m[0m
+[  47% ] [90m[1mreimport[22m | 正在准备重新导入文件……[39m[0m
+[  52% ] [90m[1mreimport[22m | 正在准备重新导入文件……[39m[0m
+[  56% ] [90m[1mreimport[22m | 正在准备重新导入文件……[39m[0m
+[  60% ] [90m[1mreimport[22m | 正在准备重新导入文件……[39m[0m
+[  65% ] [90m[1mreimport[22m | 正在准备重新导入文件……[39m[0m
+[  69% ] [90m[1mreimport[22m | 正在准备重新导入文件……[39m[0m
+[  73% ] [90m[1mreimport[22m | 正在准备重新导入文件……[39m[0m
+[  78% ] [90m[1mreimport[22m | 正在准备重新导入文件……[39m[0m
+[  82% ] [90m[1mreimport[22m | 正在准备重新导入文件……[39m[0m
+[  86% ] [90m[1mreimport[22m | 正在准备重新导入文件……[39m[0m
+[  91% ] [90m[1mreimport[22m | 正在准备重新导入文件……[39m[0m
+[   0% ] [90m[1mreimport[22m | 正在执行重新导入的前置操作……[39m[0m
+[   0% ] [90m[1mreimport[22m | street_props_b.png[39m[0m
+[   0% ] [90m[1mreimport[22m | street_props_b.png[39m[0m
+[   4% ] [90m[1mreimport[22m | street_props_a.png[39m[0m
+[   8% ] [90m[1mreimport[22m | wax_room.png[39m[0m
+[  13% ] [90m[1mreimport[22m | town_room.png[39m[0m
+[  17% ] [90m[1mreimport[22m | theater_room.png[39m[0m
+[  21% ] [90m[1mreimport[22m | mechanical_room.png[39m[0m
+[  26% ] [90m[1mreimport[22m | well_shelter.png[39m[0m
+[  30% ] [90m[1mreimport[22m | wax_workshop.png[39m[0m
+[  34% ] [90m[1mreimport[22m | wax_shop.png[39m[0m
+[  39% ] [90m[1mreimport[22m | watermill.png[39m[0m
+[  43% ] [90m[1mreimport[22m | theater_entry.png[39m[0m
+[  47% ] [90m[1mreimport[22m | station_office.png[39m[0m
+[  52% ] [90m[1mreimport[22m | postoffice.png[39m[0m
+[  56% ] [90m[1mreimport[22m | florist.png[39m[0m
+[  60% ] [90m[1mreimport[22m | costume_shop.png[39m[0m
+[  65% ] [90m[1mreimport[22m | clock_works.png[39m[0m
+[  69% ] [90m[1mreimport[22m | clockshop.png[39m[0m
+[  73% ] [90m[1mreimport[22m | burnt_house.png[39m[0m
+[  78% ] [90m[1mreimport[22m | bookshop.png[39m[0m
+[  82% ] [90m[1mreimport[22m | boardinghouse.png[39m[0m
+[  86% ] [90m[1mreimport[22m | bakery.png[39m[0m
+[  91% ] [90m[1mreimport[22m | apothecary.png[39m[0m
+[  95% ] [90m[1mreimport[22m | 正在结束资产导入……[39m[0m
+[92m[ DONE ][39m [1mreimport[22m
+[0m
+[   0% ] [90m[1mreimport[22m | Started 正在导入或重新导入资产 (22 steps)[39m[0m
+[   0% ] [90m[1mreimport[22m | 正在执行重新导入的后置操作……[39m[0m
+[92m[ DONE ][39m [1mreimport[22m
+[0m
+[   0% ] [90m[1mloading_editor_layout[22m | Started 正在加载编辑器 (5 steps)[39m[0m
+[   0% ] [90m[1mloading_editor_layout[22m | 正在加载编辑器布局……[39m[0m
+[  16% ] [90m[1mloading_editor_layout[22m | 正在加载停靠面板……[39m[0m
+[  33% ] [90m[1mloading_editor_layout[22m | 正在重新打开场景……[39m[0m
+[  50% ] [90m[1mloading_editor_layout[22m | 正在加载中央编辑器布局……[39m[0m
+[  66% ] [90m[1mloading_editor_layout[22m | 正在加载插件窗口布局……[39m[0m
+[  83% ] [90m[1mloading_editor_layout[22m | 编辑器布局就绪。[39m[0m
+[92m[ DONE ][39m [1mloading_editor_layout[22m
+[0m

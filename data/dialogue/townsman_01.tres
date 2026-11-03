@@ -1,0 +1,40 @@
+[gd_resource type="Resource" script_class="DialogueSequence" load_steps=10 format=3]
+
+[ext_resource type="Script" path="res://scripts/dialogue/dialogue_sequence.gd" id="1_seq"]
+[ext_resource type="Script" path="res://scripts/dialogue/dialogue_line.gd" id="2_line"]
+
+[sub_resource type="Resource" id="dl_1"]
+script = ExtResource("2_line")
+speaker = "村民"
+text = "你看上去……好眼熟。"
+emotion = &"uneasy"
+
+[sub_resource type="Resource" id="dl_2"]
+script = ExtResource("2_line")
+speaker = "村民"
+text = "我是不是在哪里见过你。不是这条街，是在别的地方。"
+emotion = &"uneasy"
+
+[sub_resource type="Resource" id="dl_3"]
+script = ExtResource("2_line")
+speaker = "村民"
+text = "算了。像你这样的人，来镇上总不会是为了看蜡像的。"
+
+[sub_resource type="Resource" id="dl_4"]
+script = ExtResource("2_line")
+speaker = "村民"
+text = "你手背上那块烫伤，跟我的一样。我们是一起烫的。"
+condition = &"flag:chapter_1_cleared"
+emotion = &"recall"
+
+[sub_resource type="Resource" id="dl_5"]
+script = ExtResource("2_line")
+speaker = "村民"
+text = "别走那么快。你每次走得都太快，我们跟不上。"
+
+[resource]
+script = ExtResource("1_seq")
+id = &"townsman_01"
+lines = Array[Resource]([SubResource("dl_1"), SubResource("dl_2"), SubResource("dl_3"), SubResource("dl_4"), SubResource("dl_5")])
+effects_on_finish = PackedStringArray("set:talked_townsman_01")
+autosave_on_finish = false

@@ -1,0 +1,629 @@
+{
+ "actors": [
+  {
+   "id": "player",
+   "kind": "player",
+   "display_name": "侦探（主角）",
+   "dir": "assets/characters/player",
+   "frame_size": 64,
+   "collision": [
+    26,
+    46
+   ],
+   "script": "res://scripts/player/player_controller.gd",
+   "animations": {
+    "idle": 6,
+    "run": 8,
+    "jump": 3,
+    "fall": 3,
+    "attack": 6,
+    "hit": 2,
+    "death": 6,
+    "interact": 4,
+    "climb": 4
+   },
+   "definition": "data/assets/actors/player.tres",
+   "note": "巨大侦探帽 + 右脸烧伤 + 空白笔记本。帽檐下只见琥珀色眼部高光。"
+  },
+  {
+   "id": "wax_dummy",
+   "kind": "enemy",
+   "display_name": "蜡像敌人",
+   "dir": "assets/enemies",
+   "frame_size": 64,
+   "collision": [
+    26,
+    52
+   ],
+   "script": "res://scripts/enemy/wax_dummy.gd",
+   "animations": {
+    "idle": 4,
+    "walk": 6,
+    "attack": 5,
+    "hit": 2,
+    "death": 5
+   },
+   "definition": "data/assets/actors/wax_dummy.tres",
+   "note": "淡蜡黄、边缘融化滴落、**没有眼睛**。三种变体：拳击 / 跳扑 / 包围。"
+  },
+  {
+   "id": "child_ghost",
+   "kind": "enemy",
+   "display_name": "孩童幽灵",
+   "dir": "assets/enemies",
+   "frame_size": 64,
+   "collision": [
+    22,
+    40
+   ],
+   "script": "res://scripts/enemy/enemy_base.gd",
+   "animations": {
+    "idle": 4,
+    "float": 4
+   },
+   "definition": "data/assets/actors/child_ghost.tres",
+   "note": "半透明低 alpha、拖尾雾丝。第三章枯井区域使用。"
+  },
+  {
+   "id": "townsman",
+   "kind": "npc",
+   "display_name": "镇民",
+   "dir": "assets/enemies",
+   "frame_size": 64,
+   "collision": [
+    28,
+    54
+   ],
+   "script": "res://scripts/npc/townsman.gd",
+   "animations": {
+    "idle": 4,
+    "task": 6,
+    "walk": 4,
+    "dazed": 3,
+    "hit": 3,
+    "death": 3
+   },
+   "definition": "data/assets/actors/townsman.tres",
+   "note": "灰衣。三种情绪：可对话 / 只看你 / 敌对；被击败后变茫然（不是自愿攻击）。"
+  },
+  {
+   "id": "morris",
+   "kind": "boss",
+   "display_name": "莫里斯（第一章 Boss · 蜡像师）",
+   "dir": "assets/enemies",
+   "frame_size": 128,
+   "collision": [
+    30,
+    62
+   ],
+   "script": "res://scripts/boss/morris.gd",
+   "animations": {
+    "idle": 4,
+    "spray": 6,
+    "summon": 5,
+    "hit": 2,
+    "death": 8
+   },
+   "definition": "data/assets/actors/morris.tres",
+   "note": "右脸黑色烧伤印记 + 全镇唯一穿彩色衣服（青绿围裙）。**眼里有琥珀色高光，替身没有** —— 这是二阶段解谜的唯一线索。"
+  }
+ ],
+ "environments": [
+  {
+   "map_id": "town_entrance",
+   "layers": [
+    {
+     "sheet": "bg_town_far",
+     "path": "assets/environments/bg_town_far.png",
+     "scroll_scale": 0.15,
+     "offset_y": -260.0,
+     "modulate_a": 0.62
+    },
+    {
+     "sheet": "bg_town_mid",
+     "path": "assets/environments/bg_town_mid.png",
+     "scroll_scale": 0.35,
+     "offset_y": -120.0,
+     "modulate_a": 0.78
+    },
+    {
+     "sheet": "bg_town_near",
+     "path": "assets/environments/bg_town_near.png",
+     "scroll_scale": 0.6,
+     "offset_y": 40.0,
+     "modulate_a": 0.9
+    }
+   ],
+   "definition": "data/assets/environments/town_entrance.tres"
+  },
+  {
+   "map_id": "town_hub",
+   "layers": [
+    {
+     "sheet": "bg_town_far",
+     "path": "assets/environments/bg_town_far.png",
+     "scroll_scale": 0.15,
+     "offset_y": -300.0,
+     "modulate_a": 0.66
+    },
+    {
+     "sheet": "bg_town_mid",
+     "path": "assets/environments/bg_town_mid.png",
+     "scroll_scale": 0.4,
+     "offset_y": -140.0,
+     "modulate_a": 0.8
+    },
+    {
+     "sheet": "bg_town_near",
+     "path": "assets/environments/bg_town_near.png",
+     "scroll_scale": 0.65,
+     "offset_y": 40.0,
+     "modulate_a": 0.92
+    }
+   ],
+   "definition": "data/assets/environments/town_hub.tres"
+  },
+  {
+   "map_id": "wax_lane",
+   "layers": [
+    {
+     "sheet": "bg_wax_lane",
+     "path": "assets/environments/bg_wax_lane.png",
+     "scroll_scale": 0.2,
+     "offset_y": -220.0,
+     "modulate_a": 0.7
+    },
+    {
+     "sheet": "bg_town_mid",
+     "path": "assets/environments/bg_town_mid.png",
+     "scroll_scale": 0.45,
+     "offset_y": -100.0,
+     "modulate_a": 0.55
+    },
+    {
+     "sheet": "bg_town_near",
+     "path": "assets/environments/bg_town_near.png",
+     "scroll_scale": 0.6,
+     "offset_y": 40.0,
+     "modulate_a": 0.88
+    }
+   ],
+   "definition": "data/assets/environments/wax_lane.tres"
+  },
+  {
+   "map_id": "wax_museum",
+   "layers": [
+    {
+     "sheet": "bg_wax_lane",
+     "path": "assets/environments/bg_wax_lane.png",
+     "scroll_scale": 0.2,
+     "offset_y": -240.0,
+     "modulate_a": 0.6
+    },
+    {
+     "sheet": "bg_clocktower",
+     "path": "assets/environments/bg_clocktower.png",
+     "scroll_scale": 0.45,
+     "offset_y": -120.0,
+     "modulate_a": 0.45
+    },
+    {
+     "sheet": "bg_town_near",
+     "path": "assets/environments/bg_town_near.png",
+     "scroll_scale": 0.62,
+     "offset_y": 40.0,
+     "modulate_a": 0.85
+    }
+   ],
+   "definition": "data/assets/environments/wax_museum.tres"
+  },
+  {
+   "map_id": "wax_basement",
+   "layers": [
+    {
+     "sheet": "bg_wax_lane",
+     "path": "assets/environments/bg_wax_lane.png",
+     "scroll_scale": 0.25,
+     "offset_y": -180.0,
+     "modulate_a": 0.5
+    },
+    {
+     "sheet": "bg_clocktower",
+     "path": "assets/environments/bg_clocktower.png",
+     "scroll_scale": 0.5,
+     "offset_y": -80.0,
+     "modulate_a": 0.35
+    }
+   ],
+   "definition": "data/assets/environments/wax_basement.tres"
+  },
+  {
+   "map_id": "old_theater",
+   "layers": [
+    {
+     "sheet": "bg_clocktower",
+     "path": "assets/environments/bg_clocktower.png",
+     "scroll_scale": 0.3,
+     "offset_y": -200.0,
+     "modulate_a": 0.55
+    },
+    {
+     "sheet": "bg_wax_lane",
+     "path": "assets/environments/bg_wax_lane.png",
+     "scroll_scale": 0.55,
+     "offset_y": -60.0,
+     "modulate_a": 0.45
+    }
+   ],
+   "definition": "data/assets/environments/old_theater.tres"
+  },
+  {
+   "map_id": "back_stage",
+   "layers": [
+    {
+     "sheet": "bg_wax_lane",
+     "path": "assets/environments/bg_wax_lane.png",
+     "scroll_scale": 0.3,
+     "offset_y": -180.0,
+     "modulate_a": 0.5
+    }
+   ],
+   "definition": "data/assets/environments/back_stage.tres"
+  },
+  {
+   "map_id": "dry_well",
+   "layers": [
+    {
+     "sheet": "bg_town_far",
+     "path": "assets/environments/bg_town_far.png",
+     "scroll_scale": 0.2,
+     "offset_y": -260.0,
+     "modulate_a": 0.6
+    },
+    {
+     "sheet": "bg_town_mid",
+     "path": "assets/environments/bg_town_mid.png",
+     "scroll_scale": 0.48,
+     "offset_y": -120.0,
+     "modulate_a": 0.45
+    }
+   ],
+   "definition": "data/assets/environments/dry_well.tres"
+  },
+  {
+   "map_id": "well_interior",
+   "layers": [
+    {
+     "sheet": "bg_clocktower",
+     "path": "assets/environments/bg_clocktower.png",
+     "scroll_scale": 0.25,
+     "offset_y": -400.0,
+     "modulate_a": 0.55
+    }
+   ],
+   "definition": "data/assets/environments/well_interior.tres"
+  },
+  {
+   "map_id": "clock_tower",
+   "layers": [
+    {
+     "sheet": "bg_clocktower",
+     "path": "assets/environments/bg_clocktower.png",
+     "scroll_scale": 0.3,
+     "offset_y": -200.0,
+     "modulate_a": 0.6
+    },
+    {
+     "sheet": "bg_town_far",
+     "path": "assets/environments/bg_town_far.png",
+     "scroll_scale": 0.6,
+     "offset_y": -60.0,
+     "modulate_a": 0.35
+    }
+   ],
+   "definition": "data/assets/environments/clock_tower.tres"
+  },
+  {
+   "map_id": "final_fire_town",
+   "layers": [
+    {
+     "sheet": "bg_town_far",
+     "path": "assets/environments/bg_town_far.png",
+     "scroll_scale": 0.15,
+     "offset_y": -300.0,
+     "modulate_a": 0.7
+    },
+    {
+     "sheet": "bg_town_mid",
+     "path": "assets/environments/bg_town_mid.png",
+     "scroll_scale": 0.4,
+     "offset_y": -140.0,
+     "modulate_a": 0.8
+    },
+    {
+     "sheet": "bg_town_near",
+     "path": "assets/environments/bg_town_near.png",
+     "scroll_scale": 0.65,
+     "offset_y": 40.0,
+     "modulate_a": 0.9
+    }
+   ],
+   "definition": "data/assets/environments/final_fire_town.tres"
+  },
+  {
+   "map_id": "shadow_boss",
+   "layers": [
+    {
+     "sheet": "bg_clocktower",
+     "path": "assets/environments/bg_clocktower.png",
+     "scroll_scale": 0.3,
+     "offset_y": -200.0,
+     "modulate_a": 0.65
+    }
+   ],
+   "definition": "data/assets/environments/shadow_boss.tres"
+  },
+  {
+   "map_id": "train_station",
+   "layers": [
+    {
+     "sheet": "bg_town_far",
+     "path": "assets/environments/bg_town_far.png",
+     "scroll_scale": 0.15,
+     "offset_y": -300.0,
+     "modulate_a": 0.5
+    },
+    {
+     "sheet": "bg_town_mid",
+     "path": "assets/environments/bg_town_mid.png",
+     "scroll_scale": 0.42,
+     "offset_y": -140.0,
+     "modulate_a": 0.4
+    }
+   ],
+   "definition": "data/assets/environments/train_station.tres"
+  }
+ ],
+ "props": [
+  {
+   "id": "letter",
+   "display_name": "居民的信",
+   "path": "assets/props/letter.png",
+   "icon_size": 32,
+   "usage": "序幕拾取，开启主线：请找到小铃，带她回家。",
+   "definition": "data/assets/props/letter.tres"
+  },
+  {
+   "id": "notebook",
+   "display_name": "空白笔记本",
+   "path": "assets/props/notebook.png",
+   "icon_size": 32,
+   "usage": "主角随身物，每获得线索自动浮现文字；Tab 打开。",
+   "definition": "data/assets/props/notebook.tres"
+  },
+  {
+   "id": "big_scissors",
+   "display_name": "大剪刀",
+   "path": "assets/props/big_scissors.png",
+   "icon_size": 64,
+   "usage": "第二章核心道具，用于剪断皮埃罗控制木偶的红线。",
+   "definition": "data/assets/props/big_scissors.tres"
+  },
+  {
+   "id": "button",
+   "display_name": "纽扣",
+   "path": "assets/props/button.png",
+   "icon_size": 32,
+   "usage": "第二章纽扣眼谜题，插入玩偶缺失的右眼。",
+   "definition": "data/assets/props/button.tres"
+  },
+  {
+   "id": "rag_doll",
+   "display_name": "双马尾女孩布偶",
+   "path": "assets/props/rag_doll.png",
+   "icon_size": 32,
+   "usage": "全场唯一没有破损的布偶。第三章交给井底的小铃。",
+   "definition": "data/assets/props/rag_doll.tres"
+  },
+  {
+   "id": "mirror",
+   "display_name": "立式镜子",
+   "path": "assets/props/mirror.png",
+   "icon_size": 32,
+   "usage": "蜡像馆地下室镜面反射谜题，可旋转八档。",
+   "definition": "data/assets/props/mirror.tres"
+  },
+  {
+   "id": "mirror_handle",
+   "display_name": "镜面摇柄",
+   "path": "assets/props/mirror.png",
+   "icon_size": 32,
+   "usage": "转动镜子的工具（预留）。",
+   "definition": "data/assets/props/mirror_handle.tres"
+  },
+  {
+   "id": "wax_statue_a",
+   "display_name": "蜡像 · 姿势 A",
+   "path": "assets/props/wax_statue_a.png",
+   "icon_size": 32,
+   "usage": "蜡像巷路边的装饰蜡像，会缓慢转头、换姿势、逼近玩家。",
+   "definition": "data/assets/props/wax_statue_a.tres"
+  },
+  {
+   "id": "wax_statue_b",
+   "display_name": "蜡像 · 姿势 B",
+   "path": "assets/props/wax_statue_b.png",
+   "icon_size": 32,
+   "usage": "同上，三种姿势之一。",
+   "definition": "data/assets/props/wax_statue_b.tres"
+  },
+  {
+   "id": "wax_statue_c",
+   "display_name": "蜡像 · 姿势 C",
+   "path": "assets/props/wax_statue_c.png",
+   "icon_size": 32,
+   "usage": "同上，三种姿势之一。",
+   "definition": "data/assets/props/wax_statue_c.tres"
+  },
+  {
+   "id": "checkpoint_lamp",
+   "display_name": "街灯（存档点）",
+   "path": "assets/props/checkpoint_lamp.png",
+   "icon_size": 64,
+   "usage": "存档点。激活后灯光变暖变亮。",
+   "definition": "data/assets/props/checkpoint_lamp.tres"
+  },
+  {
+   "id": "signboard",
+   "display_name": "木牌",
+   "path": "assets/props/signboard.png",
+   "icon_size": 64,
+   "usage": "环境叙事载体：镇口欢迎牌、海报、公告栏。",
+   "definition": "data/assets/props/signboard.tres"
+  }
+ ],
+ "vfx": [
+  {
+   "id": "hit_spark",
+   "display_name": "命中火花",
+   "path": "assets/vfx/hit_spark.png",
+   "frames": 4,
+   "frame_size": 32,
+   "usage": "攻击命中时的溅射特效。"
+  },
+  {
+   "id": "white_flash",
+   "display_name": "受击闪白",
+   "path": "assets/vfx/white_flash.png",
+   "frames": 1,
+   "frame_size": 64,
+   "usage": "受击时覆盖在角色上的纯白剪影。"
+  },
+  {
+   "id": "marker_interact",
+   "display_name": "交互标记",
+   "path": "assets/vfx/marker_interact.png",
+   "frames": 1,
+   "frame_size": 32,
+   "usage": "可交互物上方的提示标记。"
+  },
+  {
+   "id": "marker_danger",
+   "display_name": "危险标记",
+   "path": "assets/vfx/marker_danger.png",
+   "frames": 1,
+   "frame_size": 32,
+   "usage": "战斗单位上方的警示标记。"
+  }
+ ],
+ "ui": [
+  {
+   "id": "panel_dark",
+   "display_name": "深色面板",
+   "path": "assets/ui/panel_dark.png",
+   "size": 64,
+   "usage": "对话框 / 笔记本 / 暂停菜单的九宫格底。"
+  },
+  {
+   "id": "hp_pip_full",
+   "display_name": "生命容器（满）",
+   "path": "assets/ui/hp_pip_full.png",
+   "size": 24,
+   "usage": "HUD 生命面具，已填充状态。"
+  },
+  {
+   "id": "hp_pip_empty",
+   "display_name": "生命容器（空）",
+   "path": "assets/ui/hp_pip_empty.png",
+   "size": 24,
+   "usage": "HUD 生命面具，空槽状态。"
+  },
+  {
+   "id": "hat_icon",
+   "display_name": "帽子图标",
+   "path": "assets/ui/hat_icon.png",
+   "size": 24,
+   "usage": "HUD 上的主角标识。"
+  }
+ ],
+ "audio": {
+  "sfx": {
+   "description": "音效：玩家动作、敌人、Boss、叙事音（钟声 / 童谣 / 火焰 / 风声）",
+   "dir": "assets/audio/sfx",
+   "files": [
+    "sfx_attack_hit.wav",
+    "sfx_attack_swing.wav",
+    "sfx_bell.wav",
+    "sfx_bell_distant.wav",
+    "sfx_boss_roar.wav",
+    "sfx_clock_tick.wav",
+    "sfx_damage_blocked.wav",
+    "sfx_death.wav",
+    "sfx_doll_snap.wav",
+    "sfx_enemy_death.wav",
+    "sfx_enemy_hit.wav",
+    "sfx_fire_crackle.wav",
+    "sfx_furnace_overheat.wav",
+    "sfx_ghost_whisper.wav",
+    "sfx_hurt.wav",
+    "sfx_interact.wav",
+    "sfx_jump.wav",
+    "sfx_land.wav",
+    "sfx_light_focus.wav",
+    "sfx_mirror_turn.wav",
+    "sfx_notebook_open.wav",
+    "sfx_notebook_write.wav",
+    "sfx_nursery_rhyme.wav",
+    "sfx_nursery_rhyme_reversed.wav",
+    "sfx_pickup.wav",
+    "sfx_ui_click.wav",
+    "sfx_ui_move.wav",
+    "sfx_wax_crack.wav",
+    "sfx_wax_spray.wav",
+    "sfx_wind.wav"
+   ]
+  },
+  "music": {
+   "description": "音乐：按区域与章节，全部无缝循环 24 秒",
+   "dir": "assets/audio/music",
+   "files": [
+    "mus_clocktower.wav",
+    "mus_deformed.wav",
+    "mus_ending.wav",
+    "mus_fire.wav",
+    "mus_morning.wav",
+    "mus_night.wav",
+    "mus_theater.wav",
+    "mus_town.wav",
+    "mus_wax.wav",
+    "mus_well.wav"
+   ]
+  },
+  "ambient": {
+   "description": "环境声：按区域与世界状态，无缝循环 20 秒",
+   "dir": "assets/audio/ambient",
+   "files": [
+    "amb_clocktower.wav",
+    "amb_ending.wav",
+    "amb_fire.wav",
+    "amb_morning.wav",
+    "amb_theater.wav",
+    "amb_town.wav",
+    "amb_town_deformed.wav",
+    "amb_town_dusk.wav",
+    "amb_town_night.wav",
+    "amb_wax.wav",
+    "amb_well.wav"
+   ]
+  }
+ },
+ "tiles": {
+  "dir": "comscene",
+  "description": "小镇图块集（224 张 32×32），来自外部素材包",
+  "subdirs": [
+   "floar",
+   "soil",
+   "village"
+  ]
+ }
+}

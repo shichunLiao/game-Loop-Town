@@ -1,0 +1,58 @@
+[gd_resource type="Resource" script_class="ActorDefinition" load_steps=13 format=3]
+
+[ext_resource type="Script" path="res://scripts/assets/actor_definition.gd" id="1_def"]
+[ext_resource type="Script" path="res://scripts/assets/animation_entry.gd" id="2_anim"]
+[ext_resource type="Texture2D" path="res://assets/enemies/morris_idle.png" id="1_tex"]
+[ext_resource type="Texture2D" path="res://assets/enemies/morris_spray.png" id="2_tex"]
+[ext_resource type="Texture2D" path="res://assets/enemies/morris_summon.png" id="3_tex"]
+[ext_resource type="Texture2D" path="res://assets/enemies/morris_hit.png" id="4_tex"]
+[ext_resource type="Texture2D" path="res://assets/enemies/morris_death.png" id="5_tex"]
+
+[sub_resource type="Resource" id="anim_idle"]
+script = ExtResource("2_anim")
+name = &"idle"
+path = "res://assets/enemies/morris_idle.png"
+frames = 4
+texture = ExtResource("1_tex")
+
+[sub_resource type="Resource" id="anim_spray"]
+script = ExtResource("2_anim")
+name = &"spray"
+path = "res://assets/enemies/morris_spray.png"
+frames = 6
+texture = ExtResource("2_tex")
+
+[sub_resource type="Resource" id="anim_summon"]
+script = ExtResource("2_anim")
+name = &"summon"
+path = "res://assets/enemies/morris_summon.png"
+frames = 5
+texture = ExtResource("3_tex")
+
+[sub_resource type="Resource" id="anim_hit"]
+script = ExtResource("2_anim")
+name = &"hit"
+path = "res://assets/enemies/morris_hit.png"
+frames = 2
+texture = ExtResource("4_tex")
+
+[sub_resource type="Resource" id="anim_death"]
+script = ExtResource("2_anim")
+name = &"death"
+path = "res://assets/enemies/morris_death.png"
+frames = 8
+texture = ExtResource("5_tex")
+
+[resource]
+script = ExtResource("1_def")
+id = &"morris"
+kind = 3
+display_name = "莫里斯（第一章 Boss · 蜡像师）"
+source_dir = "assets/enemies"
+script_path = "res://scripts/boss/morris.gd"
+frame_size = 128
+body_size = Vector2(30, 62)
+states_dir = "res://scripts/boss/morris/states"
+state_names = PackedStringArray("idle", "chase", "melee", "spray", "summon", "hurt", "death")
+note = "右脸黑色烧伤印记 + 全镇唯一穿彩色衣服（青绿围裙）。**眼里有琥珀色高光，替身没有** —— 这是二阶段解谜的唯一线索。"
+animations = [SubResource("anim_idle"), SubResource("anim_spray"), SubResource("anim_summon"), SubResource("anim_hit"), SubResource("anim_death")]

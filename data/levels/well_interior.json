@@ -1,0 +1,24 @@
+{
+ "map_id": "well_interior",
+ "ground_y": 2800.0,
+ "items": [
+  {
+   "kind": "fog",
+   "x": 0.0,
+   "coverage": [
+    2600,
+    2600
+   ],
+   "bands": 6,
+   "alpha": 0.22,
+   "y": 2760.0
+  },
+  {
+   "kind": "memory_pickup",
+   "x": 900.0,
+   "y": 2200.0,
+   "memory": "well_full_memory",
+   "prompt": "想起"
+  }
+ ]
+}

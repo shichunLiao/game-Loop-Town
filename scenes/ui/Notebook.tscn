@@ -1,0 +1,113 @@
+[gd_scene load_steps=2 format=3 uid="uid://knq4sxugrr7wv"]
+
+[ext_resource type="Script" path="res://scripts/ui/notebook.gd" id="1_notebook"]
+
+[node name="Notebook" type="CanvasLayer"]
+groups=["notebook_ui"]
+process_mode = 3
+layer = 40
+script = ExtResource("1_notebook")
+
+[node name="Dim" type="ColorRect" parent="."]
+modulate = Color(1, 1, 1, 0.85)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="Book" type="PanelContainer" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 120.0
+offset_top = 120.0
+offset_right = -120.0
+offset_bottom = -120.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 16
+
+[node name="HBox" type="HBoxContainer" parent="Book"]
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="LeftPage" type="PanelContainer" parent="Book/HBox"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/margin_left = 18
+theme_override_constants/margin_top = 18
+theme_override_constants/margin_right = 18
+theme_override_constants/margin_bottom = 18
+
+[node name="CategoryList" type="VBoxContainer" parent="Book/HBox/LeftPage"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="CategoryTitle" type="Label" parent="Book/HBox/LeftPage/CategoryList"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 22
+text = "线索分类"
+
+[node name="Categories" type="ItemList" parent="Book/HBox/LeftPage/CategoryList"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="VSep" type="VSeparator" parent="Book/HBox"]
+layout_mode = 2
+
+[node name="RightPage" type="PanelContainer" parent="Book/HBox"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/margin_left = 18
+theme_override_constants/margin_top = 18
+theme_override_constants/margin_right = 18
+theme_override_constants/margin_bottom = 18
+
+[node name="VBox" type="VBoxContainer" parent="Book/HBox/RightPage"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="EntryTitle" type="Label" parent="Book/HBox/RightPage/VBox"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 28
+text = "—"
+
+[node name="EntrySpeaker" type="Label" parent="Book/HBox/RightPage/VBox"]
+modulate = Color(1, 1, 1, 0.7)
+layout_mode = 2
+theme_override_font_sizes/font_size = 18
+
+[node name="Scroll" type="ScrollContainer" parent="Book/HBox/RightPage/VBox"]
+layout_mode = 2
+size_flags_vertical = 3
+horizontal_scroll_mode = 0
+
+[node name="EntryText" type="Label" parent="Book/HBox/RightPage/VBox/Scroll"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_font_sizes/font_size = 20
+autowrap_mode = 3
+
+[node name="EmptyHint" type="Label" parent="Book/HBox/RightPage/VBox"]
+modulate = Color(1, 1, 1, 0.6)
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "笔记本还是空白的。"
+
+[node name="Close" type="Button" parent="."]
+custom_minimum_size = Vector2(160, 44)
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -192.0
+offset_top = 24.0
+offset_right = -32.0
+offset_bottom = 68.0
+grow_horizontal = 0
+text = "关闭  (Tab)"

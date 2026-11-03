@@ -1,0 +1,19 @@
+{
+ "map_id": "shadow_boss",
+ "ground_y": 1100.0,
+ "items": [
+  {
+   "kind": "parallax",
+   "x": 0.0,
+   "layers": [
+    [
+     "res://assets/environments/bg_clocktower.png",
+     0.3,
+     -200.0,
+     0.6
+    ]
+   ],
+   "y": 1060.0
+  }
+ ]
+}

@@ -1,0 +1,21 @@
+[gd_resource type="Resource" script_class="MapData" load_steps=4 format=3]
+
+[ext_resource type="Script" path="res://scripts/world/map_data.gd" id="1_mapdata"]
+[ext_resource type="Script" path="res://scripts/world/map_exit_link.gd" id="2_exitlink"]
+
+[sub_resource type="Resource" id="exitlink_1"]
+script = ExtResource("2_exitlink")
+exit_id = &"out"
+target_map_id = &"dry_well"
+target_spawn_id = &"well"
+
+[resource]
+script = ExtResource("1_mapdata")
+id = &"well_interior"
+display_name = "井底"
+scene_path = "res://scenes/maps/well_interior.tscn"
+map_size = Vector2i(2200, 3000)
+audio_area = &"Well"
+reacts_to_world_state = true
+exits = [SubResource("exitlink_1")]
+default_spawn_id = &"top"

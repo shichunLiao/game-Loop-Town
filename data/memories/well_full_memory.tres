@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="MemoryData" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/memory/memory_data.gd" id="1_mem"]
+
+[resource]
+script = ExtResource("1_mem")
+id = &"well_full_memory"
+title = "井底的完整记忆"
+description = "下到井底才听得全的一句话。上面缺失的那半句，一直在这里等着。"
+text = "来不及了，再进去就出不来了——把他拉出来！"
+speaker = ""
+category = 4
+unlock_condition = &"chapter:5"
+is_fragment = true
+double_meaning = "第一次读，它像是判决：来不及了，有人没被救出来，说这句话的人在指认他迟到。第五章后重读：这是一句对他喊的话，主语被他自己听错了——“把他拉出来”里的“他”就是他。从来没有人指控他；是七个人一起按着他，不让他第八次走进火里。他把一句救命的呼喊，记成了自己的罪状。"

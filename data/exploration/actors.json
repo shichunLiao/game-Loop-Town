@@ -1,0 +1,236 @@
+{
+  "npcs": {
+    "lamplighter": {
+      "id": "lamplighter",
+      "name": "点灯人",
+      "atlas": "npcs_a",
+      "cell": 0,
+      "lines": [
+        "灯会记得你走过的路。别怕绕远，我总会在这里点亮下一盏。",
+        "我认得这顶帽子……钟声一响，我又想不起来了。"
+      ]
+    },
+    "mother": {
+      "id": "mother",
+      "name": "抱着布包的女人",
+      "atlas": "npcs_a",
+      "cell": 1,
+      "lines": [
+        "我在等一个人。他每一次都说，还有最后一趟。",
+        "你的右脸……不，对不起。我又说错了。"
+      ]
+    },
+    "waterman": {
+      "id": "waterman",
+      "name": "提水老人",
+      "atlas": "npcs_a",
+      "cell": 2,
+      "lines": [
+        "水桶是空的，我还是得把它送过去。西边的楼梯通向蜡像巷。",
+        "楼梯一层一层地走。你从前背着人，也这样走过。"
+      ]
+    },
+    "seamstress": {
+      "id": "seamstress",
+      "name": "缝衣匠",
+      "atlas": "npcs_a",
+      "cell": 3,
+      "lines": [
+        "红线绷得太紧了。大剪刀能剪开它们，也能挡开那些坏掉的木偶。",
+        "后台那只双马尾布偶，眼睛一直完好。"
+      ]
+    },
+    "bookseller": {
+      "id": "bookseller",
+      "name": "旧书商",
+      "atlas": "npcs_b",
+      "cell": 0,
+      "lines": [
+        "七面镜子，七个方向。被烧掉的书页里，还压着一枚金属牌。",
+        "纸上的指控，和纸上的证词，有时是同一句话。"
+      ]
+    },
+    "usher": {
+      "id": "usher",
+      "name": "检票人",
+      "atlas": "npcs_b",
+      "cell": 1,
+      "lines": [
+        "戏还没散场。顺着红线往上，找到后台的门。",
+        "最后一张票不卖。那是给一个不该被忘记的人留的。"
+      ]
+    },
+    "clocksmith": {
+      "id": "clocksmith",
+      "name": "钟表修理匠",
+      "atlas": "npcs_b",
+      "cell": 2,
+      "lines": [
+        "三枚印记才开得了钟楼。发条外庭的楼梯通往上层，不要跳过台阶。",
+        "你听得见齿轮的间隙了吗？握住那一瞬，时间就会慢下来。"
+      ]
+    },
+    "conductor": {
+      "id": "conductor",
+      "name": "站务员",
+      "atlas": "npcs_b",
+      "cell": 3,
+      "lines": [
+        "有一班车，一直在等一个肯摘下帽子的人。",
+        "这一次，可以出发了。"
+      ]
+    }
+  },
+  "enemies": {
+    "wax_walker": {
+      "id": "wax_walker",
+      "name": "踉跄蜡像",
+      "atlas": "enemies_a",
+      "cell": 0,
+      "hp": 50,
+      "speed": 64,
+      "damage": 12,
+      "behavior": "patrol",
+      "height": 98,
+      "range": 80
+    },
+    "wax_spitter": {
+      "id": "wax_spitter",
+      "name": "烛泪喷吐者",
+      "atlas": "enemies_a",
+      "cell": 1,
+      "hp": 65,
+      "speed": 25,
+      "damage": 14,
+      "behavior": "ranged",
+      "height": 110,
+      "range": 420
+    },
+    "puppet": {
+      "id": "puppet",
+      "name": "断线木偶",
+      "atlas": "enemies_a",
+      "cell": 2,
+      "hp": 45,
+      "speed": 105,
+      "damage": 13,
+      "behavior": "lunge",
+      "height": 104,
+      "range": 140
+    },
+    "red_moth": {
+      "id": "red_moth",
+      "name": "红线飞蛾",
+      "atlas": "enemies_a",
+      "cell": 3,
+      "hp": 30,
+      "speed": 90,
+      "damage": 9,
+      "behavior": "fly",
+      "height": 64,
+      "range": 110
+    },
+    "mud_crawler": {
+      "id": "mud_crawler",
+      "name": "黑泥爬行者",
+      "atlas": "enemies_b",
+      "cell": 0,
+      "hp": 60,
+      "speed": 88,
+      "damage": 14,
+      "behavior": "patrol",
+      "height": 67,
+      "range": 76
+    },
+    "well_wisp": {
+      "id": "well_wisp",
+      "name": "井底回声",
+      "atlas": "enemies_b",
+      "cell": 1,
+      "hp": 35,
+      "speed": 68,
+      "damage": 10,
+      "behavior": "fly",
+      "height": 100,
+      "range": 125
+    },
+    "gear_sentry": {
+      "id": "gear_sentry",
+      "name": "发条哨兵",
+      "atlas": "enemies_b",
+      "cell": 2,
+      "hp": 95,
+      "speed": 50,
+      "damage": 19,
+      "behavior": "guard",
+      "height": 116,
+      "range": 105
+    },
+    "ember_resident": {
+      "id": "ember_resident",
+      "name": "火中的居民",
+      "atlas": "enemies_b",
+      "cell": 3,
+      "hp": 40,
+      "speed": 42,
+      "damage": 3,
+      "behavior": "hesitant",
+      "height": 103,
+      "range": 70
+    }
+  },
+  "boss": {
+    "id": "morris",
+    "name": "莫里斯 · 第 247 张脸",
+    "hp": 840,
+    "damage": 22,
+    "height": 210,
+    "phases": 3,
+    "attacks": [
+      "fan",
+      "cleave",
+      "slam",
+      "rush",
+      "copies",
+      "rain"
+    ]
+  },
+  "skills": [
+    {
+      "id": "notebook",
+      "stage": "初到镇口",
+      "keys": "J / 方向 + J",
+      "name": "笔记本挥击"
+    },
+    {
+      "id": "scissors",
+      "stage": "蜡像馆",
+      "keys": "J / K",
+      "name": "剪刃连击 / 剪刃突进"
+    },
+    {
+      "id": "double_jump",
+      "stage": "剧院后台",
+      "keys": "Space × 2",
+      "name": "记忆二段跳"
+    },
+    {
+      "id": "vine",
+      "stage": "剧院后台",
+      "keys": "W / S",
+      "name": "藤蔓攀爬"
+    },
+    {
+      "id": "dash",
+      "stage": "井底",
+      "keys": "Shift",
+      "name": "余烬冲刺"
+    },
+    {
+      "id": "time_slow",
+      "stage": "钟楼中层",
+      "keys": "Q",
+      "name": "发条缓时"
+    }
+  ]
+}

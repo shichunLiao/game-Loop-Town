@@ -1,0 +1,45 @@
+[gd_resource type="Resource" script_class="MapData" load_steps=8 format=3]
+
+[ext_resource type="Script" path="res://scripts/world/map_data.gd" id="1_mapdata"]
+[ext_resource type="Script" path="res://scripts/world/map_exit_link.gd" id="2_exitlink"]
+
+[sub_resource type="Resource" id="exitlink_1"]
+script = ExtResource("2_exitlink")
+exit_id = &"west_gate"
+target_map_id = &"town_entrance"
+target_spawn_id = &"east"
+
+[sub_resource type="Resource" id="exitlink_2"]
+script = ExtResource("2_exitlink")
+exit_id = &"wax_lane"
+target_map_id = &"wax_lane"
+target_spawn_id = &"start"
+
+[sub_resource type="Resource" id="exitlink_3"]
+script = ExtResource("2_exitlink")
+exit_id = &"theater"
+target_map_id = &"old_theater"
+target_spawn_id = &"foyer"
+
+[sub_resource type="Resource" id="exitlink_4"]
+script = ExtResource("2_exitlink")
+exit_id = &"dry_well"
+target_map_id = &"dry_well"
+target_spawn_id = &"start"
+
+[sub_resource type="Resource" id="exitlink_5"]
+script = ExtResource("2_exitlink")
+exit_id = &"clock_tower"
+target_map_id = &"clock_tower"
+target_spawn_id = &"base"
+
+[resource]
+script = ExtResource("1_mapdata")
+id = &"town_hub"
+display_name = "回环镇 · 中央广场"
+scene_path = "res://scenes/maps/town_hub.tscn"
+map_size = Vector2i(6000, 1500)
+audio_area = &"Town"
+reacts_to_world_state = true
+exits = [SubResource("exitlink_1"), SubResource("exitlink_2"), SubResource("exitlink_3"), SubResource("exitlink_4"), SubResource("exitlink_5")]
+default_spawn_id = &"center"

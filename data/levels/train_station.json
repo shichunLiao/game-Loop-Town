@@ -1,0 +1,26 @@
+{
+ "map_id": "train_station",
+ "ground_y": 800.0,
+ "items": [
+  {
+   "kind": "parallax",
+   "x": 0.0,
+   "layers": [
+    [
+     "res://assets/environments/bg_town_far.png",
+     0.15,
+     -300.0,
+     0.4
+    ]
+   ],
+   "y": 760.0
+  },
+  {
+   "kind": "memory_pickup",
+   "x": 1200.0,
+   "memory": "suzu_is_alive",
+   "prompt": "站起来",
+   "y": 760.0
+  }
+ ]
+}

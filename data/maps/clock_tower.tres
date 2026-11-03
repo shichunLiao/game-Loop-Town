@@ -1,0 +1,27 @@
+[gd_resource type="Resource" script_class="MapData" load_steps=5 format=3]
+
+[ext_resource type="Script" path="res://scripts/world/map_data.gd" id="1_mapdata"]
+[ext_resource type="Script" path="res://scripts/world/map_exit_link.gd" id="2_exitlink"]
+
+[sub_resource type="Resource" id="exitlink_1"]
+script = ExtResource("2_exitlink")
+exit_id = &"base"
+target_map_id = &"town_hub"
+target_spawn_id = &"clock_tower"
+
+[sub_resource type="Resource" id="exitlink_2"]
+script = ExtResource("2_exitlink")
+exit_id = &"top"
+target_map_id = &"shadow_boss"
+target_spawn_id = &"start"
+
+[resource]
+script = ExtResource("1_mapdata")
+id = &"clock_tower"
+display_name = "大钟楼"
+scene_path = "res://scenes/maps/clock_tower.tscn"
+map_size = Vector2i(1800, 5000)
+audio_area = &"ClockTower"
+reacts_to_world_state = true
+exits = [SubResource("exitlink_1"), SubResource("exitlink_2")]
+default_spawn_id = &"base"

@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="PropDefinition" load_steps=3 format=3]
+
+[ext_resource type="Script" path="res://scripts/assets/prop_definition.gd" id="1_prop"]
+[ext_resource type="Texture2D" path="res://assets/props/signboard.png" id="2_icon"]
+
+[resource]
+script = ExtResource("1_prop")
+id = &"signboard"
+display_name = "木牌"
+texture_path = "res://assets/props/signboard.png"
+icon_size = 64
+usage = "环境叙事载体：镇口欢迎牌、海报、公告栏。"
+icon = ExtResource("2_icon")

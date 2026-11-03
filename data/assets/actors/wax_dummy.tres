@@ -1,0 +1,58 @@
+[gd_resource type="Resource" script_class="ActorDefinition" load_steps=13 format=3]
+
+[ext_resource type="Script" path="res://scripts/assets/actor_definition.gd" id="1_def"]
+[ext_resource type="Script" path="res://scripts/assets/animation_entry.gd" id="2_anim"]
+[ext_resource type="Texture2D" path="res://assets/enemies/wax_dummy_idle.png" id="1_tex"]
+[ext_resource type="Texture2D" path="res://assets/enemies/wax_dummy_walk.png" id="2_tex"]
+[ext_resource type="Texture2D" path="res://assets/enemies/wax_dummy_attack.png" id="3_tex"]
+[ext_resource type="Texture2D" path="res://assets/enemies/wax_dummy_hit.png" id="4_tex"]
+[ext_resource type="Texture2D" path="res://assets/enemies/wax_dummy_death.png" id="5_tex"]
+
+[sub_resource type="Resource" id="anim_idle"]
+script = ExtResource("2_anim")
+name = &"idle"
+path = "res://assets/enemies/wax_dummy_idle.png"
+frames = 4
+texture = ExtResource("1_tex")
+
+[sub_resource type="Resource" id="anim_walk"]
+script = ExtResource("2_anim")
+name = &"walk"
+path = "res://assets/enemies/wax_dummy_walk.png"
+frames = 6
+texture = ExtResource("2_tex")
+
+[sub_resource type="Resource" id="anim_attack"]
+script = ExtResource("2_anim")
+name = &"attack"
+path = "res://assets/enemies/wax_dummy_attack.png"
+frames = 5
+texture = ExtResource("3_tex")
+
+[sub_resource type="Resource" id="anim_hit"]
+script = ExtResource("2_anim")
+name = &"hit"
+path = "res://assets/enemies/wax_dummy_hit.png"
+frames = 2
+texture = ExtResource("4_tex")
+
+[sub_resource type="Resource" id="anim_death"]
+script = ExtResource("2_anim")
+name = &"death"
+path = "res://assets/enemies/wax_dummy_death.png"
+frames = 5
+texture = ExtResource("5_tex")
+
+[resource]
+script = ExtResource("1_def")
+id = &"wax_dummy"
+kind = 1
+display_name = "蜡像敌人"
+source_dir = "assets/enemies"
+script_path = "res://scripts/enemy/wax_dummy.gd"
+frame_size = 64
+body_size = Vector2(26, 52)
+states_dir = "res://scripts/enemy/states"
+state_names = PackedStringArray("idle", "patrol", "chase", "jump_lunge", "attack", "hit", "death")
+note = "淡蜡黄、边缘融化滴落、**没有眼睛**。三种变体：拳击 / 跳扑 / 包围。"
+animations = [SubResource("anim_idle"), SubResource("anim_walk"), SubResource("anim_attack"), SubResource("anim_hit"), SubResource("anim_death")]

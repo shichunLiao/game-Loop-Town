@@ -1,0 +1,34 @@
+{
+ "map_id": "wax_basement",
+ "ground_y": 700.0,
+ "items": [
+  {
+   "kind": "parallax",
+   "x": 0.0,
+   "layers": [
+    [
+     "res://assets/environments/bg_wax_lane.png",
+     0.25,
+     -180.0,
+     0.45
+    ]
+   ],
+   "y": 660.0
+  },
+  {
+   "kind": "mirror_puzzle",
+   "x": 200.0,
+   "puzzle_id": "wax_basement_mirrors",
+   "solve_flag": "mirrors_solved",
+   "reward_memory": "fire_brigade_tag",
+   "y": 660.0
+  },
+  {
+   "kind": "memory_pickup",
+   "x": 1300.0,
+   "memory": "fire_brigade_tag",
+   "prompt": "拾取金属牌",
+   "y": 660.0
+  }
+ ]
+}

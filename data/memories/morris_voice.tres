@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="MemoryData" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/memory/memory_data.gd" id="1_mem"]
+
+[resource]
+script = ExtResource("1_mem")
+id = &"morris_voice"
+title = "莫里斯的声音"
+description = "博物馆地下室的一段声音。找不出发声的位置，只有蜡的味道。"
+text = "ta 让我做蜡像，说是为了『丰收祭游行』。快做完的那天晚上，大家就消失了。我不知道他们去了哪里。我只知道，如果我停下制作，蜡像就会开始流血。"
+speaker = "莫里斯"
+category = 2
+unlock_condition = &"chapter:2"
+is_fragment = false
+double_meaning = "第一次读，莫里斯像是在替某个东西做事，蜡像流血则像是被掩盖的尸体。第五章后重读：莫里斯从来没有替谁做事；“ta”只是他记不住名字时留下的空位。他不停手，是因为蜡像一旦做完，就意味着这一轮真的结束了、真的有人没被背出来——血是他自己的手在抖。"

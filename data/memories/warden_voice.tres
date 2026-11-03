@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="MemoryData" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/memory/memory_data.gd" id="1_mem"]
+
+[resource]
+script = ExtResource("1_mem")
+id = &"warden_voice"
+title = "看守的话"
+description = "钟楼顶层，齿轮之间的一句话。说得很慢，像是在等齿轮转完。"
+text = "你想让钟往回走。\n齿轮会咬住你的手。\n我数过了。你已经问过这个问题二百四十七次。"
+speaker = "看守"
+category = 5
+unlock_condition = &"chapter:5"
+is_fragment = false
+double_meaning = "第一次读，看守像审判者，把他的循环当成罪行的次数来宣读，二百四十七次就是二百四十七次作案。第五章后重读：看守是负责记数的人，他数的不是罪，是他每次把手伸进齿轮的次数——每一次循环都是他自己把手放进去的。“往回走”不是逃罪，是想把同一个人再救一次。"

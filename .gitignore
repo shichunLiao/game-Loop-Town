@@ -1,0 +1,15 @@
+# Godot 4+ specific ignores
+.godot/
+/android/
+
+# dsh Godot plugin
+.env
+.venv/
+.uv-cache/
+.uv-python/
+.dsh_godot/
+__pycache__/
+*.pyc
+
+# Build outputs (exe/pck/zip exceed GitHub 100 MB limit)
+/dist/

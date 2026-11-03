@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="MemoryData" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/memory/memory_data.gd" id="1_mem"]
+
+[resource]
+script = ExtResource("1_mem")
+id = &"final_ticket"
+title = "最后的戏票"
+description = "旧剧场售票口最里面的一张票根。撕口整齐，从来没有被检过。"
+text = "戏票 二百四十七号。\n座位：多余的人，不用留座。\n背面有一行铅笔字：给别人留一个位置。"
+speaker = ""
+category = 7
+unlock_condition = &"chapter:3"
+is_fragment = true
+double_meaning = "第一次读，“多余的人”像是有人被宣判为不配存在，票根是从没被使用过的遗物。第五章后重读：二百四十七号是最后一个被背出火场的人，写票的人把“不用留座”划掉又补了一句——那个人不需要座位，因为他一直是站着把人往外送的那个。撕口整齐，说明票是被人小心留下的，不是没用过。"

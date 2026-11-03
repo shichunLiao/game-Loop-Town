@@ -1,0 +1,19 @@
+[remap]
+
+importer="csv_translation"
+type="Translation"
+uid="uid://bxo0gad34hfmn"
+
+[deps]
+
+files=["res://tools/audio_inventory.group.translation", "res://tools/audio_inventory.seconds.translation", "res://tools/audio_inventory.peak.translation", "res://tools/audio_inventory.seam.translation", "res://tools/audio_inventory.max.translation", "res://tools/audio_inventory.seam.translation"]
+
+source_file="res://tools/audio_inventory.csv"
+dest_files=["res://tools/audio_inventory.group.translation", "res://tools/audio_inventory.seconds.translation", "res://tools/audio_inventory.peak.translation", "res://tools/audio_inventory.seam.translation", "res://tools/audio_inventory.max.translation", "res://tools/audio_inventory.seam.translation"]
+
+[params]
+
+compress=1
+delimiter=0
+unescape_keys=false
+unescape_translations=true

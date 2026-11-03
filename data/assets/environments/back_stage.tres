@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="EnvironmentDefinition" load_steps=5 format=3]
+
+[ext_resource type="Script" path="res://scripts/assets/environment_definition.gd" id="1_env"]
+[ext_resource type="Script" path="res://scripts/assets/environment_layer.gd" id="2_layer"]
+[ext_resource type="Texture2D" path="res://assets/environments/bg_wax_lane.png" id="1_bg"]
+
+[sub_resource type="Resource" id="layer_1"]
+script = ExtResource("2_layer")
+name = &"bg_wax_lane"
+texture_path = "res://assets/environments/bg_wax_lane.png"
+scroll_scale = 0.3
+offset_y = -180.0
+modulate_a = 0.5
+texture = ExtResource("1_bg")
+
+[resource]
+script = ExtResource("1_env")
+map_id = &"back_stage"
+layers = [SubResource("layer_1")]

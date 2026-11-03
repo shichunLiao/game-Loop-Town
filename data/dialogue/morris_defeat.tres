@@ -1,0 +1,63 @@
+[gd_resource type="Resource" script_class="DialogueSequence" load_steps=10 format=3]
+
+[ext_resource type="Script" path="res://scripts/dialogue/dialogue_sequence.gd" id="1_seq"]
+[ext_resource type="Script" path="res://scripts/dialogue/dialogue_line.gd" id="2_line"]
+
+[sub_resource type="Resource" id="dl_1"]
+script = ExtResource("2_line")
+speaker = ""
+text = "钟响了。第一下。"
+emotion = &"narration"
+effects = PackedStringArray("bell", "sfx:wax_crack")
+
+[sub_resource type="Resource" id="dl_2"]
+script = ExtResource("2_line")
+speaker = "莫里斯"
+text = "这是……？"
+
+[sub_resource type="Resource" id="dl_3"]
+script = ExtResource("2_line")
+speaker = ""
+text = "第二下。蜡像的脸上裂开一条线。"
+emotion = &"narration"
+effects = PackedStringArray("bell", "sfx:doll_snap")
+
+[sub_resource type="Resource" id="dl_4"]
+script = ExtResource("2_line")
+speaker = "莫里斯"
+text = "原来不是你在数他们。"
+emotion = &"quiet"
+
+[sub_resource type="Resource" id="dl_5"]
+script = ExtResource("2_line")
+speaker = "莫里斯"
+text = "是他们一直在数你。"
+emotion = &"quiet"
+
+[sub_resource type="Resource" id="dl_6"]
+script = ExtResource("2_line")
+speaker = "莫里斯"
+text = "第三下之后，我就会忘掉你说过的所有话。"
+condition = &"flag:chapter_1_cleared"
+emotion = &"grief"
+
+[sub_resource type="Resource" id="dl_7"]
+script = ExtResource("2_line")
+speaker = "莫里斯"
+text = "所以你听好。你背出去的那二百四十七个人，没有一个怪你。"
+emotion = &"grief"
+effects = PackedStringArray("memory:four_children_voices", "memory:well_full_memory")
+
+[sub_resource type="Resource" id="dl_8"]
+script = ExtResource("2_line")
+speaker = ""
+text = "第三下。工作台上的蜡像，终于做完了。"
+emotion = &"narration"
+effects = PackedStringArray("bell", "sfx:clock_tick", "checkpoint")
+
+[resource]
+script = ExtResource("1_seq")
+id = &"morris_defeat"
+lines = Array[Resource]([SubResource("dl_1"), SubResource("dl_2"), SubResource("dl_3"), SubResource("dl_4"), SubResource("dl_5"), SubResource("dl_6"), SubResource("dl_7"), SubResource("dl_8")])
+effects_on_finish = PackedStringArray("set:morris_defeated", "item:big_scissors", "chapter:3", "checkpoint")
+autosave_on_finish = true

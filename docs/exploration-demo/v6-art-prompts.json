@@ -1,0 +1,35 @@
+{
+  "generator": "built-in image_gen",
+  "assets": [
+    {
+      "id": "wax_shaft",
+      "folder": "depth",
+      "transparent": false,
+      "prompt": "Use case: stylized-concept. Production background for a 2D side scrolling Gothic hand inked storybook game. Intricate hand painted aged surfaces, charcoal outlines, muted blue teal with restrained amber light. FULLY OPAQUE rectangular background, no transparency, no floating cutout panels, no text, no UI, no characters, no playable platforms baked in. A SINGLE CONTINUOUS VERY TALL PORTRAIT wall elevation, fill every edge. Top, middle and bottom belong to same physical shaft but have clearly DIFFERENT architectural landmarks. Straight on orthographic elevation, not a perspective tunnel, not a three panel collage. Wax museum service shaft: top has dusty display-gallery stained glass and cabinets behind masonry, middle has heavy riveted ventilation ducts, connected iron galleries and wax storage niches, bottom has furnace refractory stone and warm amber oven slits with cooled wax channels. Continuous structural pillars bind all levels together. Camera will move UP and DOWN across this image. Very tall portrait composition. Distant depth, no bright foreground."
+    },
+    {
+      "id": "well_shaft",
+      "folder": "depth",
+      "transparent": false,
+      "prompt": "Use case: stylized-concept. Production background for a 2D side scrolling Gothic hand inked storybook game. Intricate hand painted aged surfaces, charcoal outlines, muted blue teal with restrained amber light. FULLY OPAQUE rectangular background, no transparency, no floating cutout panels, no text, no UI, no characters, no playable platforms baked in. A SINGLE CONTINUOUS VERY TALL PORTRAIT wall elevation, fill every edge. Top, middle and bottom belong to same physical shaft but have clearly DIFFERENT architectural landmarks. Straight on orthographic elevation, not a perspective tunnel, not a three panel collage. Ancient inverted well: top weathered rounded stone masonry, abandoned waterwheel axle and thin roots under dim cyan daylight; middle deep drainage arches and tangled mature roots around empty alcoves; bottom sediment dark stones, submerged barred culvert mouths and weak cold mint reflections. All zones seamlessly connected by vertical masonry and descending roots. No humanoid faces. Very tall portrait composition, textured wall fully fills image."
+    },
+    {
+      "id": "clock_shaft",
+      "folder": "depth",
+      "transparent": false,
+      "prompt": "Use case: stylized-concept. Production background for a 2D side scrolling Gothic hand inked storybook game. Intricate hand painted aged surfaces, charcoal outlines, muted blue teal with restrained amber light. FULLY OPAQUE rectangular background, no transparency, no floating cutout panels, no text, no UI, no characters, no playable platforms baked in. A SINGLE CONTINUOUS VERY TALL PORTRAIT wall elevation, fill every edge. Top, middle and bottom belong to same physical shaft but have clearly DIFFERENT architectural landmarks. Straight on orthographic elevation, not a perspective tunnel, not a three panel collage. Seven-story interior clock tower elevation. Top has enormous back of pale gold clock face, fine upper escapement and cool tall arched windows. Middle has great interlocking aged bronze gears with dark iron structural trusses, pendulum gallery, copper shafts. Bottom has wound spring drums, gear storage, boiler maintenance chambers and amber lamp niches. Different silhouettes at every height, one connected continuous opaque wall. Very tall portrait composition."
+    },
+    {
+      "id": "morris_actions",
+      "folder": "actors",
+      "transparent": true,
+      "prompt": "Use case: stylized-concept. Create a 2x2 character animation pose atlas using the supplied Morris image as the CHARACTER IDENTITY reference, not as a background. Same elderly gaunt wax sculptor, swept tied grey hair, long grey pointed beard, burned left face with orange glowing eye, burgundy old coat, dirty beige apron, dripping gold wax shoulder portraits and candles, boots. Hand inked gothic 2D game art. ALL FOUR fully visible separate full-body poses facing LEFT, same body size and baseline within each quadrant, generous transparent gutters, RGBA background. TOP LEFT anticipation: lowers body and pulls large molten wax claw far back above shoulder. TOP RIGHT active: powerful low horizontal sweep, elongated wax claw reaching LEFT, coat swings right. BOTTOM LEFT casting: upright body with both palms projecting a wax sphere LEFT, arched bent knees. BOTTOM RIGHT ground slam: crouching with giant wax fist planted to the LEFT on floor level, wax splashes tightly around fist. No ground plane, no text, no UI, no grid lines. Each body including arm fits entirely within own cell. No semi-transparent character."
+    },
+    {
+      "id": "morris_forms",
+      "folder": "actors",
+      "transparent": true,
+      "prompt": "Use case: stylized-concept. 2x2 full-body boss transformation sprite atlas using supplied Morris as CHARACTER IDENTITY reference. Gothic hand inked 2D game, elderly bearded wax sculptor in burgundy coat, dirty apron, candles and wax portrait heads on shoulder, burnt half face and orange eye. Four separated full-body sprites facing LEFT, same body size and baseline, transparent RGBA, generous transparent gutters, no text no floor no UI. TOP LEFT phase TWO idle: coat split with visible glowing amber wax seams, molten forearm elongated, extra wax dripping from shoulder heads, original face identifiable. TOP RIGHT phase TWO attack: same molten form lunging LEFT with massive candlewax blade arm extended, coat whips back. BOTTOM LEFT phase THREE idle: broken wax shell hanging from half collapsed coat, dark ember-lit rib-like furnace core exposed through apron, burned crown of small candles and bright eyes, threatening stooped silhouette, original grey beard retained. BOTTOM RIGHT phase THREE attack: same exposed molten core form twists and throws a wide claw sweep LEFT, orange fissures across arm and shoulders. Entire bodies and arms inside own cells, all appendages separated from adjacent sprites."
+    }
+  ]
+}

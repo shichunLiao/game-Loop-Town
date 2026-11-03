@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/exploration/exploration_room.gd" id="1"]
+
+[node name="ring_west" type="Node2D"]
+script = ExtResource("1")
+room_id = "ring_west"

@@ -1,0 +1,109 @@
+{
+ "map_id": "town_hub",
+ "ground_y": 1300.0,
+ "items": [
+  {
+   "kind": "fog",
+   "x": 0.0,
+   "coverage": [
+    6600,
+    800
+   ],
+   "bands": 6,
+   "alpha": 0.15,
+   "y": 1260.0
+  },
+  {
+   "kind": "parallax",
+   "x": 0.0,
+   "layers": [
+    [
+     "res://assets/environments/bg_town_far.png",
+     0.15,
+     -300.0,
+     0.6
+    ],
+    [
+     "res://assets/environments/bg_town_mid.png",
+     0.4,
+     -140.0,
+     0.75
+    ],
+    [
+     "res://assets/environments/bg_town_near.png",
+     0.65,
+     40.0,
+     0.9
+    ]
+   ],
+   "y": 1260.0
+  },
+  {
+   "kind": "townsman",
+   "x": 700.0,
+   "mood": 1,
+   "dialogue": "res://data/dialogue/townsman_01.tres",
+   "y": 1260.0
+  },
+  {
+   "kind": "townsman",
+   "x": 1150.0,
+   "mood": 0,
+   "dialogue": "res://data/dialogue/townsman_02.tres",
+   "y": 1260.0
+  },
+  {
+   "kind": "townsman",
+   "x": 1700.0,
+   "mood": 0,
+   "dialogue": "res://data/dialogue/townsman_03.tres",
+   "y": 1260.0
+  },
+  {
+   "kind": "townsman",
+   "x": 2300.0,
+   "mood": 1,
+   "dialogue": "res://data/dialogue/townsman_04.tres",
+   "y": 1260.0
+  },
+  {
+   "kind": "townsman",
+   "x": 2900.0,
+   "mood": 2,
+   "y": 1260.0
+  },
+  {
+   "kind": "townsman",
+   "x": 3500.0,
+   "mood": 0,
+   "dialogue": "res://data/dialogue/townsman_05.tres",
+   "y": 1260.0
+  },
+  {
+   "kind": "townsman",
+   "x": 4200.0,
+   "mood": 0,
+   "dialogue": "res://data/dialogue/townsman_06.tres",
+   "y": 1260.0
+  },
+  {
+   "kind": "townsman",
+   "x": 4800.0,
+   "mood": 2,
+   "y": 1260.0
+  },
+  {
+   "kind": "memory_pickup",
+   "x": 5300.0,
+   "memory": "the_247",
+   "prompt": "查看公告栏",
+   "y": 1260.0
+  },
+  {
+   "kind": "townsman",
+   "x": 5650.0,
+   "mood": 1,
+   "y": 1260.0
+  }
+ ]
+}

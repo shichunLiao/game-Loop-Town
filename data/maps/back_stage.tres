@@ -1,0 +1,21 @@
+[gd_resource type="Resource" script_class="MapData" load_steps=4 format=3]
+
+[ext_resource type="Script" path="res://scripts/world/map_data.gd" id="1_mapdata"]
+[ext_resource type="Script" path="res://scripts/world/map_exit_link.gd" id="2_exitlink"]
+
+[sub_resource type="Resource" id="exitlink_1"]
+script = ExtResource("2_exitlink")
+exit_id = &"back"
+target_map_id = &"old_theater"
+target_spawn_id = &"back_stage"
+
+[resource]
+script = ExtResource("1_mapdata")
+id = &"back_stage"
+display_name = "剧院 · 后台"
+scene_path = "res://scenes/maps/back_stage.tscn"
+map_size = Vector2i(2200, 1000)
+audio_area = &"Theater"
+reacts_to_world_state = true
+exits = [SubResource("exitlink_1")]
+default_spawn_id = &"start"

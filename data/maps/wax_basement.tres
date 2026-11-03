@@ -1,0 +1,21 @@
+[gd_resource type="Resource" script_class="MapData" load_steps=4 format=3]
+
+[ext_resource type="Script" path="res://scripts/world/map_data.gd" id="1_mapdata"]
+[ext_resource type="Script" path="res://scripts/world/map_exit_link.gd" id="2_exitlink"]
+
+[sub_resource type="Resource" id="exitlink_1"]
+script = ExtResource("2_exitlink")
+exit_id = &"up"
+target_map_id = &"wax_museum"
+target_spawn_id = &"basement"
+
+[resource]
+script = ExtResource("1_mapdata")
+id = &"wax_basement"
+display_name = "蜡像馆 · 地下室"
+scene_path = "res://scenes/maps/wax_basement.tscn"
+map_size = Vector2i(1800, 900)
+audio_area = &"Wax"
+reacts_to_world_state = true
+exits = [SubResource("exitlink_1")]
+default_spawn_id = &"start"

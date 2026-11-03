@@ -1,0 +1,52 @@
+{
+ "map_id": "old_theater",
+ "ground_y": 1200.0,
+ "items": [
+  {
+   "kind": "fog",
+   "x": 0.0,
+   "coverage": [
+    5000,
+    700
+   ],
+   "bands": 3,
+   "alpha": 0.12,
+   "y": 1160.0
+  },
+  {
+   "kind": "parallax",
+   "x": 0.0,
+   "layers": [
+    [
+     "res://assets/environments/bg_clocktower.png",
+     0.3,
+     -200.0,
+     0.45
+    ]
+   ],
+   "y": 1160.0
+  },
+  {
+   "kind": "signboard",
+   "x": 900.0,
+   "prompt": "查看海报",
+   "flag": "theater_note",
+   "message": "剧院的大门锁着。\n海报上写着《丰收祭之夜》，纸边被燎焦了。",
+   "y": 1160.0
+  },
+  {
+   "kind": "wax_dummy",
+   "x": 1800.0,
+   "variant": 0,
+   "detection": 300.0,
+   "y": 1160.0
+  },
+  {
+   "kind": "wax_dummy",
+   "x": 2400.0,
+   "variant": 2,
+   "detection": 300.0,
+   "y": 1160.0
+  }
+ ]
+}

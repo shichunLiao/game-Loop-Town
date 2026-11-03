@@ -1,0 +1,119 @@
+WorkerThreadPool: 20 threads, 6 max low-priority.
+Godot Engine v4.6.3.stable.official.7d41c59c4 - https://godotengine.org
+TextServer: Added interface "Dummy"
+TextServer: Added interface "ICU / HarfBuzz / Graphite (Built-in)"
+Unrecognized output string "misc2" in mapping:
+030000008a2e0000dd10000000000000,Hand Held Legend GC Ultimate,a:b0,b:b2,back:b17,dpdown:b5,dpleft:b6,dpright:b7,dpup:b4,guide:b18,leftshoulder:b10,leftstick:b8,lefttrigger:a3,leftx:a0,lefty:a1,misc1:b19,misc2:b24,paddle1:b13,paddle2:b12,rightshoulder:b11,rightstick:b9,righttrigger:a4,rightx:a2,righty:a5,start:b16,x:b1,y:b3,platform:Windows,
+Unrecognized output string "misc2" in mapping:
+030000000d0f00000202000000000000,Horipad O Nintendo Switch 2 Controller,a:b1,b:b0,back:b8,dpdown:h0.4,dpleft:h0.8,dpright:h0.2,dpup:h0.1,guide:b12,leftshoulder:b4,leftstick:b10,lefttrigger:b6,leftx:a0,lefty:a1,misc1:b13,misc2:b14,rightshoulder:b5,rightstick:b11,righttrigger:b7,rightx:a2,righty:a3,start:b9,x:b3,y:b2,platform:Windows,
+Unrecognized output string "misc2" in mapping:
+030000000d0f00009601000000000000,Horipad Steam,a:b0,b:b1,back:b10,dpdown:h0.4,dpleft:h0.8,dpright:h0.2,dpup:h0.1,guide:b12,leftshoulder:b6,leftstick:b13,lefttrigger:b8,leftx:a0,lefty:a1,misc2:b2,paddle1:b5,paddle2:b15,paddle3:b18,paddle4:b19,rightshoulder:b7,rightstick:b14,righttrigger:b9,rightx:a3,righty:a4,start:b11,x:b3,y:b4,platform:Windows,
+Unrecognized output string "misc2" in mapping:
+030000007e0500006920000000000000,Nintendo Switch 2 Pro Controller,a:b0,b:b1,back:b14,dpdown:b8,dpleft:b10,dpright:b9,dpup:b11,guide:b16,leftshoulder:b12,leftstick:b15,lefttrigger:b13,leftx:a0,lefty:a1~,misc1:b17,misc2:b20,paddle1:b18,paddle2:b19,rightshoulder:b4,rightstick:b7,righttrigger:b5,rightx:a2,righty:a3~,start:b6,x:b2,y:b3,platform:Windows,
+Wacom tablet config found at "C:/Users/Administrator/AppData/Roaming/WTablet/Wacom_Tablet.dat", Windows Ink support is enabled.
+Native OpenGL API detected: 3.3: NVIDIA - NVIDIA GeForce RTX 4070 Ti
+NVAPI: Init OK!
+NVAPI: Application not found in profile, creating...
+NVAPI: Error creating application: NVAPI_EXECUTABLE_ALREADY_IN_USE(code -167)
+Accessibility: window 0 adapter created.
+SDL: Init OK!
+Accessibility: window 0 adapter activated.
+Using "winink" pen tablet driver...
+Shader 'CanvasSdfShaderGLES3' SHA256: 3cbc82b2d865f311f5e49e7437389593c39dc30de988b8b388d09061fe9649c2
+Shader 'SkeletonShaderGLES3' SHA256: 34d175b1c7af57f49c0292d8c131a4ca586610985de68dcdc42d31950522a714
+Shader 'ParticlesShaderGLES3' SHA256: c3da11de172df3c7c8fe12afe1598dffcfbdfbbb42a79c42af76ae441ffa31ab
+Shader 'ParticlesCopyShaderGLES3' SHA256: 33e0cbca67e9c30c8703fc05155c2c59f66cb64288fa1ea8d7f603f32229c7e2
+Shader 'CopyShaderGLES3' SHA256: ef6210e00d4344e134e5e72928013611304db81ff992e2d86c888befa545f4c9
+Shader 'CubemapFilterShaderGLES3' SHA256: c5f79c10161cd2c4b511be54b43a35130182eddffe753f2469a070d4e4112ff8
+Shader 'GlowShaderGLES3' SHA256: bba2bcff96361f70ac521df496cf3205bd00e16b4463efa6e92159c9d789eb1c
+Shader 'PostShaderGLES3' SHA256: cce792eaeb53d24a0070bf8ec9e0a457078c062f98aa7fb2e32c0935b88a9665
+Shader 'FeedShaderGLES3' SHA256: b3359403d2bf1df71e5c08a990444c62b3861e57196c60d80d33a2de2a83222e
+Shader 'CanvasShaderGLES3' SHA256: b12e872c188ed6a05d8ee4356e6394eb6da432907cce8e374825de6f29ec28ee
+Shader 'CanvasOcclusionShaderGLES3' SHA256: 3ba7f3a3d63b0b20764c1e2174532dfb5424ed2386be97f13d21d9e33794fb53
+Shader 'SceneShaderGLES3' SHA256: afbfd209ecf68a2e88d4d7c0004e3e763c1b2e1f20bd35321c8c0f273f84660d
+Shader 'SkyShaderGLES3' SHA256: 86a6641ec9027079fcbac0a0b18a24551fe0725ea988cc6689caf2e3593567c6
+OpenGL API 3.3.0 NVIDIA 610.88 - Compatibility - Using Device: NVIDIA - NVIDIA GeForce RTX 4070 Ti
+WASAPI: Activated output_device using IAudioClient3 interface
+WASAPI: wFormatTag = 65534
+WASAPI: nChannels = 2
+WASAPI: nSamplesPerSec = 48000
+WASAPI: nAvgBytesPerSec = 384000
+WASAPI: nBlockAlign = 8
+WASAPI: wBitsPerSample = 32
+WASAPI: cbSize = 22
+WASAPI: mix_rate = 48000
+WASAPI: fundamental_period_frames = 480
+WASAPI: min_period_frames = 480
+WASAPI: max_period_frames = 480
+WASAPI: selected a period frame size of 480
+WASAPI: detected 2 channels
+WASAPI: audio buffer frames: 480 calculated latency: 10ms
+
+TextServer: Primary interface set to: "ICU / HarfBuzz / Graphite (Built-in)".
+Loading resource: res://assets/audio/default_bus_layout.tres
+CORE API HASH: 2475187701
+EDITOR API HASH: 3867286884
+SceneTreeFTI: traversal method DEFAULT
+Loading resource: res://autoload/ScreenTransition.gd
+Loading resource: res://autoload/CombatManager.gd
+Loading resource: res://autoload/DialogueManager.gd
+Loading resource: res://addons/godot_ai/runtime/game_helper.gd
+Loaded system CA certificates
+Loading resource: res://scenes/exploration/ExplorationDemo.tscn
+Loading resource: res://scripts/exploration/exploration_demo.gd
+Loading resource: res://data/memories/final_ticket.tres
+Loading resource: res://data/memories/fire_brigade_tag.tres
+Loading resource: res://data/memories/four_children_voices.tres
+Loading resource: res://data/memories/letter_from_town.tres
+Loading resource: res://data/memories/morris_voice.tres
+Loading resource: res://data/memories/pierrot_voice.tres
+Loading resource: res://data/memories/seven_selves.tres
+Loading resource: res://data/memories/summer_camp_photo.tres
+Loading resource: res://data/memories/suzu_is_alive.tres
+Loading resource: res://data/memories/the_247.tres
+Loading resource: res://data/memories/warden_voice.tres
+Loading resource: res://data/memories/wax_order.tres
+Loading resource: res://data/memories/well_full_memory.tres
+[godot_ai game_helper] registered mcp capture (debugger active=false, logger=true)
+Loading resource: res://assets/ui/exploration/chinese.tres
+Loading resource: res://assets/environments/exploration/backgrounds/town.png
+Loading resource: res://.godot/imported/town.png-5d7129f6ec32a23d3b2b1480d092634a.ctex
+Loading resource: res://scenes/exploration/maps/passage_08.tscn
+Loading resource: res://assets/environments/exploration/depth/wax_shaft.png
+Loading resource: res://.godot/imported/wax_shaft.png-757f747e2d1fd5b45394e1973019d2ea.ctex
+Loading resource: res://assets/environments/exploration/midgrounds/wax_depth_v7.png
+Loading resource: res://.godot/imported/wax_depth_v7.png-6e1c37dc6ba784f553047b1ee0190d53.ctex
+Loading resource: res://assets/environments/exploration/architecture/opaque_scenery.gdshader
+Loading resource: res://assets/environments/exploration/masonry/masonry_tiles_v7.png
+Loading resource: res://.godot/imported/masonry_tiles_v7.png-2479e4cf3420ef87425fa044a320fac0.ctex
+Loading resource: res://assets/environments/exploration/terrain/stone.png
+Loading resource: res://.godot/imported/stone.png-beed56b55bfc2d3b9aae878a4cc4986e.ctex
+Loading resource: res://assets/environments/exploration/terrain/wood.png
+Loading resource: res://.godot/imported/wood.png-33f88bb9905dbbe28682a707e120fa0a.ctex
+Loading resource: res://assets/environments/exploration/props/arch.png
+Loading resource: res://.godot/imported/arch.png-9f78ed24fe508aa6ca3c4cebc6c9122a.ctex
+Loading resource: res://assets/environments/exploration/props/lantern.png
+Loading resource: res://.godot/imported/lantern.png-c31999df5750d3689abc370a85eb5306.ctex
+Loading resource: res://assets/environments/exploration/props/mirror.png
+Loading resource: res://.godot/imported/mirror.png-622960e71a0eee7f0a6c527f34b14c65.ctex
+Loading resource: res://assets/environments/exploration/gates/gate_panels.png
+Loading resource: res://.godot/imported/gate_panels.png-2be722ed0a3f7f77659e7f98d9f09eb1.ctex
+Loading resource: res://assets/environments/exploration/props/foreground.png
+Loading resource: res://.godot/imported/foreground.png-fd0012ed7b3696ea04708b5765b90d78.ctex
+Loading resource: res://assets/environments/exploration/actors/hero.png
+Loading resource: res://.godot/imported/hero.png-5ede5fb78a71ee717632c9430391b19a.ctex
+Loading resource: res://assets/environments/exploration/actors/rim_light.gdshader
+Loading resource: res://assets/audio/music/mus_wax.wav
+Loading resource: res://.godot/imported/mus_wax.wav-c8b899b8e1e3893595543b9344a6f345.sample
+Loading resource: res://assets/audio/ambient/amb_wax.wav
+Loading resource: res://.godot/imported/amb_wax.wav-6310d90c7f8ae5df2865e8755e24cc0c.sample
+Loading resource: res://assets/environments/exploration/terrain/stone_variants.png
+Loading resource: res://.godot/imported/stone_variants.png-f696350f5be965c6c8f4dafabf2d2219.ctex
+Loading resource: res://assets/environments/exploration/terrain/wood_variants.png
+Loading resource: res://.godot/imported/wood_variants.png-4d64709724c0179016115198b68fa4ab.ctex
+Loading resource: res://assets/audio/sfx/sfx_land.wav
+Loading resource: res://.godot/imported/sfx_land.wav-7b6d4b1bc69b6675fc4fcac6b60dd0bd.sample
+XR: Clearing primary interface
+XR: Removed interface "Native mobile"
+XR: Removed interface "OpenXR"
+Accessibility: window 0 adapter destroyed.

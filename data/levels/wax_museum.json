@@ -1,0 +1,99 @@
+{
+ "map_id": "wax_museum",
+ "ground_y": 1100.0,
+ "items": [
+  {
+   "kind": "fog",
+   "x": 0.0,
+   "coverage": [
+    4500,
+    700
+   ],
+   "bands": 3,
+   "alpha": 0.1,
+   "y": 1060.0
+  },
+  {
+   "kind": "parallax",
+   "x": 0.0,
+   "layers": [
+    [
+     "res://assets/environments/bg_wax_lane.png",
+     0.2,
+     -240.0,
+     0.5
+    ],
+    [
+     "res://assets/environments/bg_town_near.png",
+     0.6,
+     40.0,
+     0.8
+    ]
+   ],
+   "y": 1060.0
+  },
+  {
+   "kind": "statue_row",
+   "x": 600.0,
+   "count": 6,
+   "spacing": 380,
+   "y": 1060.0
+  },
+  {
+   "kind": "wax_dummy",
+   "x": 1100.0,
+   "variant": 0,
+   "detection": 300.0,
+   "y": 1060.0
+  },
+  {
+   "kind": "wax_dummy",
+   "x": 1350.0,
+   "variant": 1,
+   "detection": 340.0,
+   "y": 1060.0
+  },
+  {
+   "kind": "signboard",
+   "x": 700.0,
+   "prompt": "查看台阶",
+   "flag": "mirror_hint_seen",
+   "message": "展廊尽头有一道向下的台阶，被一排蜡像挡着。\n它们全都面朝墙壁，像是在看什么不该看的东西。",
+   "y": 1060.0
+  },
+  {
+   "kind": "arena_gate",
+   "x": 2550.0,
+   "y": 1060.0
+  },
+  {
+   "kind": "morris",
+   "x": 3450.0,
+   "y": 1060.0
+  },
+  {
+   "kind": "furnace",
+   "x": 3760.0,
+   "y": 1060.0
+  },
+  {
+   "kind": "arena_gate",
+   "x": 4180.0,
+   "y": 1060.0
+  },
+  {
+   "kind": "memory_pickup",
+   "x": 3500.0,
+   "memory": "morris_voice",
+   "prompt": "倾听",
+   "y": 1060.0
+  },
+  {
+   "kind": "memory_pickup",
+   "x": 3820.0,
+   "memory": "wax_order",
+   "prompt": "拾取订单",
+   "y": 1060.0
+  }
+ ]
+}

@@ -1,0 +1,35 @@
+[gd_resource type="Resource" script_class="DialogueSequence" load_steps=7 format=3]
+
+[ext_resource type="Script" path="res://scripts/dialogue/dialogue_sequence.gd" id="1_seq"]
+[ext_resource type="Script" path="res://scripts/dialogue/dialogue_line.gd" id="2_line"]
+
+[sub_resource type="Resource" id="dl_1"]
+script = ExtResource("2_line")
+speaker = "老妇"
+text = "你看上去……好眼熟。"
+emotion = &"uneasy"
+
+[sub_resource type="Resource" id="dl_2"]
+script = ExtResource("2_line")
+speaker = "老妇"
+text = "那天晚上，是不是你把我背出去的。"
+emotion = &"trembling"
+
+[sub_resource type="Resource" id="dl_3"]
+script = ExtResource("2_line")
+speaker = "老妇"
+text = "不记得也没关系。我只记得有人一直在数数。"
+
+[sub_resource type="Resource" id="dl_4"]
+script = ExtResource("2_line")
+speaker = "老妇"
+text = "数到二百四十七的时候，他就没声音了。"
+condition = &"flag:chapter_1_cleared"
+emotion = &"quiet"
+
+[resource]
+script = ExtResource("1_seq")
+id = &"townsman_02"
+lines = Array[Resource]([SubResource("dl_1"), SubResource("dl_2"), SubResource("dl_3"), SubResource("dl_4")])
+effects_on_finish = PackedStringArray("set:talked_townsman_02")
+autosave_on_finish = false

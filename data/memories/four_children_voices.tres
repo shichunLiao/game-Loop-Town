@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="MemoryData" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/memory/memory_data.gd" id="1_mem"]
+
+[resource]
+script = ExtResource("1_mem")
+id = &"four_children_voices"
+title = "四个孩子的声音"
+description = "井房墙缝里回响的四段童声，几乎重叠在一起。"
+text = "他让我们不要回头，一直往镇口跑。他说谁要是停下来，下一个就是谁——下一个被他背出去的人。我们跑出去了。小铃还在井房那边。然后那天晚上，镇上来了一个『东西』。"
+speaker = "孩子们"
+category = 1
+unlock_condition = &"chapter:4"
+is_fragment = false
+double_meaning = "第一次读，“下一个就是谁”像威胁与排序，孩子们像在被筛选，末尾的“东西”像凶手登场。第五章后重读：“下一个被他背出去的人”是字面意思——他一个一个往外背，谁停下谁就耽误下一个人；那句威胁是他对着火喊的，被他喊的人全都活着。“东西”是他的影子：孩子们最后一次看见他时，他已经烧得不像人了。这段话里没有一个孩子死去。"

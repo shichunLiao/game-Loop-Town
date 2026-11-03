@@ -1,0 +1,93 @@
+{
+ "map_id": "wax_lane",
+ "ground_y": 800.0,
+ "items": [
+  {
+   "kind": "fog",
+   "x": 0.0,
+   "coverage": [
+    4000,
+    700
+   ],
+   "bands": 4,
+   "alpha": 0.12,
+   "y": 760.0
+  },
+  {
+   "kind": "parallax",
+   "x": 0.0,
+   "layers": [
+    [
+     "res://assets/environments/bg_wax_lane.png",
+     0.2,
+     -220.0,
+     0.62
+    ],
+    [
+     "res://assets/environments/bg_town_near.png",
+     0.55,
+     40.0,
+     0.85
+    ]
+   ],
+   "y": 760.0
+  },
+  {
+   "kind": "statue_row",
+   "x": 520.0,
+   "count": 9,
+   "spacing": 330,
+   "y": 760.0
+  },
+  {
+   "kind": "wax_director",
+   "trigger_positions": [
+    900,
+    1500,
+    2100,
+    2700,
+    3150
+   ],
+   "ambush_after": 3,
+   "ambush_count": 4,
+   "x": 0.0,
+   "y": 760.0
+  },
+  {
+   "kind": "wax_dummy",
+   "x": 1700.0,
+   "variant": 0,
+   "detection": 280.0,
+   "y": 760.0
+  },
+  {
+   "kind": "wax_dummy",
+   "x": 1980.0,
+   "variant": 1,
+   "detection": 320.0,
+   "y": 760.0
+  },
+  {
+   "kind": "wax_dummy",
+   "x": 2600.0,
+   "variant": 0,
+   "detection": 280.0,
+   "y": 760.0
+  },
+  {
+   "kind": "wax_dummy",
+   "x": 2880.0,
+   "variant": 2,
+   "detection": 300.0,
+   "y": 760.0
+  },
+  {
+   "kind": "signboard",
+   "x": 1200.0,
+   "prompt": "查看",
+   "flag": "wax_lane_note",
+   "message": "巷子两边全是蜡像。它们的脸朝着街心。\n每一张脸都不一样。",
+   "y": 760.0
+  }
+ ]
+}

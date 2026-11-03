@@ -1,0 +1,50 @@
+[gd_resource type="Resource" script_class="DialogueSequence" load_steps=9 format=3]
+
+[ext_resource type="Script" path="res://scripts/dialogue/dialogue_sequence.gd" id="1_seq"]
+[ext_resource type="Script" path="res://scripts/dialogue/dialogue_line.gd" id="2_line"]
+
+[sub_resource type="Resource" id="dl_1"]
+script = ExtResource("2_line")
+speaker = ""
+text = "博物馆的门开着。里面没有灯，只有蜡的味道。"
+emotion = &"narration"
+
+[sub_resource type="Resource" id="dl_2"]
+script = ExtResource("2_line")
+speaker = "莫里斯"
+text = "别碰。手上再重一点，就成了。"
+emotion = &"working"
+
+[sub_resource type="Resource" id="dl_3"]
+script = ExtResource("2_line")
+speaker = "莫里斯"
+text = "二百四十六。二百四十七。\n二百四十七这一尊，我修了很多年。"
+emotion = &"quiet"
+effects = PackedStringArray("memory:morris_voice", "sfx:wax_crack")
+
+[sub_resource type="Resource" id="dl_4"]
+script = ExtResource("2_line")
+speaker = "莫里斯"
+text = "ta 让我做蜡像，说是为了『丰收祭游行』。快做完的那天晚上，大家就消失了。"
+condition = &"flag:read_letter"
+emotion = &"recall"
+
+[sub_resource type="Resource" id="dl_5"]
+script = ExtResource("2_line")
+speaker = "莫里斯"
+text = "我只知道，如果我停下制作，蜡像就会开始流血。"
+condition = &"flag:read_letter"
+emotion = &"grief"
+
+[sub_resource type="Resource" id="dl_6"]
+script = ExtResource("2_line")
+speaker = "莫里斯"
+text = "你看上去……好眼熟。"
+emotion = &"uneasy"
+
+[resource]
+script = ExtResource("1_seq")
+id = &"morris_intro"
+lines = Array[Resource]([SubResource("dl_1"), SubResource("dl_2"), SubResource("dl_3"), SubResource("dl_4"), SubResource("dl_5"), SubResource("dl_6")])
+effects_on_finish = PackedStringArray("set:met_morris", "memory:wax_order", "chapter:2")
+autosave_on_finish = true

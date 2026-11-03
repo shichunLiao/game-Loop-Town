@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="ItemData" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/inventory/item_data.gd" id="1_item"]
+
+[resource]
+script = ExtResource("1_item")
+id = &"rag_doll"
+display_name = "双马尾女孩布偶"
+description = "唯一一只两只眼睛都还在的布偶。干净的，没有裂痕。\n它被放在别的布偶中间，像是被人反复摆正过。"
+icon = null
+kind = 0
+max_stack = 1
+attack_damage = 0
+grants_flag = &"has_rag_doll"
+opens_notebook = false

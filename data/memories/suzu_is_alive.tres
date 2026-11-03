@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="MemoryData" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/memory/memory_data.gd" id="1_mem"]
+
+[resource]
+script = ExtResource("1_mem")
+id = &"suzu_is_alive"
+title = "站台对面"
+description = "真结局限定。只有在集齐全部核心碎片、并且选择不再重来一次之后，这一条才会浮现在笔记本最后。"
+text = "你不需要被原谅。你只是需要，终于记得自己做过什么。\n对面站着一个女孩，头发扎成两束。她抬起左手，手背上有烧伤的疤。\n他也抬起手。火车进站了。"
+speaker = "小铃"
+category = 9
+unlock_condition = &"and:chapter:5|memory:well_full_memory"
+is_fragment = false
+double_meaning = "这是唯一一条揭破真相的记忆：小铃活着，被拉出来了，和他坐同一班车。她抬起的是左手——那只手在井房里拉过他的衣袖。“你不需要被原谅”不是安慰，是把“罪”这个前提整条拆掉：他从来没有杀人，他只是记不住自己救过谁。此条只在真结局出现，第五章之前绝不显示。"

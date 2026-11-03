@@ -1,0 +1,29 @@
+[gd_resource type="Resource" script_class="DialogueSequence" load_steps=6 format=3]
+
+[ext_resource type="Script" path="res://scripts/dialogue/dialogue_sequence.gd" id="1_seq"]
+[ext_resource type="Script" path="res://scripts/dialogue/dialogue_line.gd" id="2_line"]
+
+[sub_resource type="Resource" id="dl_1"]
+script = ExtResource("2_line")
+speaker = "学徒"
+text = "再和一遍。这一遍火候不对。"
+emotion = &"loop"
+
+[sub_resource type="Resource" id="dl_2"]
+script = ExtResource("2_line")
+speaker = "学徒"
+text = "你看上去……好眼熟。等一下，我先和完这一遍。"
+emotion = &"loop"
+
+[sub_resource type="Resource" id="dl_3"]
+script = ExtResource("2_line")
+speaker = "学徒"
+text = "再和一遍。这一遍火候不对。"
+emotion = &"loop"
+
+[resource]
+script = ExtResource("1_seq")
+id = &"townsman_03"
+lines = Array[Resource]([SubResource("dl_1"), SubResource("dl_2"), SubResource("dl_3")])
+effects_on_finish = PackedStringArray("set:talked_townsman_03")
+autosave_on_finish = false

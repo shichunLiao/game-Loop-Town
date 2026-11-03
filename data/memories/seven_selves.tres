@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="MemoryData" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/memory/memory_data.gd" id="1_mem"]
+
+[resource]
+script = ExtResource("1_mem")
+id = &"seven_selves"
+title = "七个自己"
+description = "蜡像馆最深处的展位。没有说明牌，只有七尊背对出口的蜡像。"
+text = "第七次，一共七次。\n每次都是同一句话：『再进去就出不来了。』\n说这句话的人，每次都换了一个。"
+speaker = ""
+category = 8
+unlock_condition = &"chapter:5"
+is_fragment = true
+double_meaning = "第一次读，他承认自己反复回到火场，像是反复回到犯罪现场确认痕迹。第五章后重读：七尊蜡像全都背对出口，因为每一次他都选择再进去；“换了一个”是说每一次站住不走、喊出那句话的人，都是被他背出去的人——轮到谁被留下来劝他，谁就换一个。这不是七次罪，是七次同样的选择。"

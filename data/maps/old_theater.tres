@@ -1,0 +1,29 @@
+[gd_resource type="Resource" script_class="MapData" load_steps=5 format=3]
+
+[ext_resource type="Script" path="res://scripts/world/map_data.gd" id="1_mapdata"]
+[ext_resource type="Script" path="res://scripts/world/map_exit_link.gd" id="2_exitlink"]
+
+[sub_resource type="Resource" id="exitlink_1"]
+script = ExtResource("2_exitlink")
+exit_id = &"back_town"
+target_map_id = &"town_hub"
+target_spawn_id = &"theater"
+
+[sub_resource type="Resource" id="exitlink_2"]
+script = ExtResource("2_exitlink")
+exit_id = &"back_stage"
+target_map_id = &"back_stage"
+target_spawn_id = &"start"
+condition = &"flag:pierrot_defeated"
+locked_message = "后台的门从里面锁着。"
+
+[resource]
+script = ExtResource("1_mapdata")
+id = &"old_theater"
+display_name = "旧剧院"
+scene_path = "res://scenes/maps/old_theater.tscn"
+map_size = Vector2i(4500, 1400)
+audio_area = &"Theater"
+reacts_to_world_state = true
+exits = [SubResource("exitlink_1"), SubResource("exitlink_2")]
+default_spawn_id = &"foyer"

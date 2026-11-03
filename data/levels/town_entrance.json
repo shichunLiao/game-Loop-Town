@@ -1,0 +1,99 @@
+{
+ "map_id": "town_entrance",
+ "ground_y": 1200.0,
+ "items": [
+  {
+   "kind": "fog",
+   "x": 0.0,
+   "coverage": [
+    5600,
+    800
+   ],
+   "bands": 6,
+   "alpha": 0.18,
+   "y": 1160.0
+  },
+  {
+   "kind": "parallax",
+   "x": 0.0,
+   "layers": [
+    [
+     "res://assets/environments/bg_town_far.png",
+     0.15,
+     -260.0,
+     0.55
+    ],
+    [
+     "res://assets/environments/bg_town_mid.png",
+     0.35,
+     -120.0,
+     0.72
+    ],
+    [
+     "res://assets/environments/bg_town_near.png",
+     0.6,
+     40.0,
+     0.85
+    ]
+   ],
+   "y": 1160.0
+  },
+  {
+   "kind": "signboard",
+   "x": 620.0,
+   "prompt": "查看木牌",
+   "flag": "saw_welcome_sign",
+   "message": "「欢迎来到回环镇」\n牌子锈得很厉害，字却是新刻上去的。",
+   "y": 1160.0
+  },
+  {
+   "kind": "memory_pickup",
+   "x": 880.0,
+   "memory": "letter_from_town",
+   "prompt": "拾起那封信",
+   "y": 1160.0
+  },
+  {
+   "kind": "townsman",
+   "x": 1500.0,
+   "mood": 1,
+   "dialogue": "res://data/dialogue/townsman_01.tres",
+   "y": 1160.0
+  },
+  {
+   "kind": "townsman",
+   "x": 1850.0,
+   "mood": 0,
+   "dialogue": "res://data/dialogue/townsman_02.tres",
+   "y": 1160.0
+  },
+  {
+   "kind": "wax_dummy",
+   "x": 2450.0,
+   "variant": 2,
+   "detection": 220.0,
+   "y": 1160.0
+  },
+  {
+   "kind": "townsman",
+   "x": 3000.0,
+   "mood": 0,
+   "dialogue": "res://data/dialogue/townsman_03.tres",
+   "y": 1160.0
+  },
+  {
+   "kind": "wax_dummy",
+   "x": 3500.0,
+   "variant": 0,
+   "detection": 240.0,
+   "y": 1160.0
+  },
+  {
+   "kind": "townsman",
+   "x": 4100.0,
+   "mood": 1,
+   "dialogue": "res://data/dialogue/townsman_04.tres",
+   "y": 1160.0
+  }
+ ]
+}

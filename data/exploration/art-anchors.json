@@ -1,0 +1,402 @@
+{
+  "clock_mid/0": {
+    "foot_y": 505,
+    "height": 505,
+    "bottom_gap": 0
+  },
+  "clock_mid/1": {
+    "foot_y": 506,
+    "height": 506,
+    "bottom_gap": 0
+  },
+  "clock_mid/2": {
+    "foot_y": 426,
+    "height": 495,
+    "bottom_gap": 69
+  },
+  "clock_mid/3": {
+    "foot_y": 494,
+    "height": 495,
+    "bottom_gap": 1
+  },
+  "fire_mid/0": {
+    "foot_y": 483,
+    "height": 506,
+    "bottom_gap": 23
+  },
+  "fire_mid/1": {
+    "foot_y": 481,
+    "height": 482,
+    "bottom_gap": 1
+  },
+  "fire_mid/2": {
+    "foot_y": 457,
+    "height": 464,
+    "bottom_gap": 7
+  },
+  "fire_mid/3": {
+    "foot_y": 467,
+    "height": 469,
+    "bottom_gap": 2
+  },
+  "rear_regions/0": {
+    "foot_y": 496,
+    "height": 497,
+    "bottom_gap": 1
+  },
+  "rear_regions/1": {
+    "foot_y": 488,
+    "height": 491,
+    "bottom_gap": 3
+  },
+  "rear_regions/2": {
+    "foot_y": 499,
+    "height": 503,
+    "bottom_gap": 4
+  },
+  "rear_regions/3": {
+    "foot_y": 499,
+    "height": 501,
+    "bottom_gap": 2
+  },
+  "rear_town/0": {
+    "foot_y": 444,
+    "height": 498,
+    "bottom_gap": 54
+  },
+  "rear_town/1": {
+    "foot_y": 445,
+    "height": 501,
+    "bottom_gap": 56
+  },
+  "rear_town/2": {
+    "foot_y": 489,
+    "height": 490,
+    "bottom_gap": 1
+  },
+  "rear_town/3": {
+    "foot_y": 486,
+    "height": 486,
+    "bottom_gap": 0
+  },
+  "stage_depth_v7/0": {
+    "foot_y": 501,
+    "height": 501,
+    "bottom_gap": 0
+  },
+  "stage_depth_v7/1": {
+    "foot_y": 504,
+    "height": 504,
+    "bottom_gap": 0
+  },
+  "stage_depth_v7/2": {
+    "foot_y": 494,
+    "height": 495,
+    "bottom_gap": 1
+  },
+  "stage_depth_v7/3": {
+    "foot_y": 505,
+    "height": 506,
+    "bottom_gap": 1
+  },
+  "station_mid/0": {
+    "foot_y": 422,
+    "height": 500,
+    "bottom_gap": 78
+  },
+  "station_mid/1": {
+    "foot_y": 400,
+    "height": 457,
+    "bottom_gap": 57
+  },
+  "station_mid/2": {
+    "foot_y": 480,
+    "height": 485,
+    "bottom_gap": 5
+  },
+  "station_mid/3": {
+    "foot_y": 485,
+    "height": 488,
+    "bottom_gap": 3
+  },
+  "street_props_a/0": {
+    "foot_y": 493,
+    "height": 493,
+    "bottom_gap": 0
+  },
+  "street_props_a/1": {
+    "foot_y": 445,
+    "height": 445,
+    "bottom_gap": 0
+  },
+  "street_props_a/2": {
+    "foot_y": 449,
+    "height": 462,
+    "bottom_gap": 13
+  },
+  "street_props_a/3": {
+    "foot_y": 462,
+    "height": 463,
+    "bottom_gap": 1
+  },
+  "street_props_b/0": {
+    "foot_y": 436,
+    "height": 487,
+    "bottom_gap": 51
+  },
+  "street_props_b/1": {
+    "foot_y": 392,
+    "height": 392,
+    "bottom_gap": 0
+  },
+  "street_props_b/2": {
+    "foot_y": 470,
+    "height": 470,
+    "bottom_gap": 0
+  },
+  "street_props_b/3": {
+    "foot_y": 449,
+    "height": 452,
+    "bottom_gap": 3
+  },
+  "theater_mid/0": {
+    "foot_y": 505,
+    "height": 505,
+    "bottom_gap": 0
+  },
+  "theater_mid/1": {
+    "foot_y": 508,
+    "height": 508,
+    "bottom_gap": 0
+  },
+  "theater_mid/2": {
+    "foot_y": 473,
+    "height": 477,
+    "bottom_gap": 4
+  },
+  "theater_mid/3": {
+    "foot_y": 471,
+    "height": 474,
+    "bottom_gap": 3
+  },
+  "town_depth_v7/0": {
+    "foot_y": 431,
+    "height": 457,
+    "bottom_gap": 26
+  },
+  "town_depth_v7/1": {
+    "foot_y": 435,
+    "height": 453,
+    "bottom_gap": 18
+  },
+  "town_depth_v7/2": {
+    "foot_y": 505,
+    "height": 505,
+    "bottom_gap": 0
+  },
+  "town_depth_v7/3": {
+    "foot_y": 485,
+    "height": 485,
+    "bottom_gap": 0
+  },
+  "town_mid/0": {
+    "foot_y": 505,
+    "height": 505,
+    "bottom_gap": 0
+  },
+  "town_mid/1": {
+    "foot_y": 505,
+    "height": 507,
+    "bottom_gap": 2
+  },
+  "town_mid/2": {
+    "foot_y": 482,
+    "height": 482,
+    "bottom_gap": 0
+  },
+  "town_mid/3": {
+    "foot_y": 489,
+    "height": 490,
+    "bottom_gap": 1
+  },
+  "wax_depth_v7/0": {
+    "foot_y": 512,
+    "height": 512,
+    "bottom_gap": 0
+  },
+  "wax_depth_v7/1": {
+    "foot_y": 501,
+    "height": 501,
+    "bottom_gap": 0
+  },
+  "wax_depth_v7/2": {
+    "foot_y": 476,
+    "height": 476,
+    "bottom_gap": 0
+  },
+  "wax_depth_v7/3": {
+    "foot_y": 476,
+    "height": 476,
+    "bottom_gap": 0
+  },
+  "wax_mid/0": {
+    "foot_y": 506,
+    "height": 506,
+    "bottom_gap": 0
+  },
+  "wax_mid/1": {
+    "foot_y": 511,
+    "height": 511,
+    "bottom_gap": 0
+  },
+  "wax_mid/2": {
+    "foot_y": 483,
+    "height": 483,
+    "bottom_gap": 0
+  },
+  "wax_mid/3": {
+    "foot_y": 483,
+    "height": 484,
+    "bottom_gap": 1
+  },
+  "well_depth_v7/0": {
+    "foot_y": 485,
+    "height": 486,
+    "bottom_gap": 1
+  },
+  "well_depth_v7/1": {
+    "foot_y": 489,
+    "height": 490,
+    "bottom_gap": 1
+  },
+  "well_depth_v7/2": {
+    "foot_y": 484,
+    "height": 491,
+    "bottom_gap": 7
+  },
+  "well_depth_v7/3": {
+    "foot_y": 474,
+    "height": 479,
+    "bottom_gap": 5
+  },
+  "well_mid/0": {
+    "foot_y": 490,
+    "height": 511,
+    "bottom_gap": 21
+  },
+  "well_mid/1": {
+    "foot_y": 501,
+    "height": 503,
+    "bottom_gap": 2
+  },
+  "well_mid/2": {
+    "foot_y": 447,
+    "height": 448,
+    "bottom_gap": 1
+  },
+  "well_mid/3": {
+    "foot_y": 393,
+    "height": 419,
+    "bottom_gap": 26
+  },
+  "apothecary/-1": {
+    "foot_y": 961,
+    "height": 961,
+    "bottom_gap": 0
+  },
+  "bakery/-1": {
+    "foot_y": 926,
+    "height": 926,
+    "bottom_gap": 0
+  },
+  "boardinghouse/-1": {
+    "foot_y": 952,
+    "height": 952,
+    "bottom_gap": 0
+  },
+  "bookshop/-1": {
+    "foot_y": 933,
+    "height": 933,
+    "bottom_gap": 0
+  },
+  "burnt_house/-1": {
+    "foot_y": 930,
+    "height": 931,
+    "bottom_gap": 1
+  },
+  "clock_works/-1": {
+    "foot_y": 956,
+    "height": 956,
+    "bottom_gap": 0
+  },
+  "clockshop/-1": {
+    "foot_y": 964,
+    "height": 964,
+    "bottom_gap": 0
+  },
+  "costume_shop/-1": {
+    "foot_y": 932,
+    "height": 932,
+    "bottom_gap": 0
+  },
+  "florist/-1": {
+    "foot_y": 879,
+    "height": 879,
+    "bottom_gap": 0
+  },
+  "postoffice/-1": {
+    "foot_y": 833,
+    "height": 833,
+    "bottom_gap": 0
+  },
+  "station_office/-1": {
+    "foot_y": 782,
+    "height": 782,
+    "bottom_gap": 0
+  },
+  "theater_entry/-1": {
+    "foot_y": 915,
+    "height": 915,
+    "bottom_gap": 0
+  },
+  "watermill/-1": {
+    "foot_y": 738,
+    "height": 740,
+    "bottom_gap": 2
+  },
+  "wax_shop/-1": {
+    "foot_y": 1027,
+    "height": 1027,
+    "bottom_gap": 0
+  },
+  "wax_workshop/-1": {
+    "foot_y": 780,
+    "height": 780,
+    "bottom_gap": 0
+  },
+  "well_shelter/-1": {
+    "foot_y": 851,
+    "height": 851,
+    "bottom_gap": 0
+  },
+  "interior_furniture/0": {
+    "foot_y": 419,
+    "height": 445,
+    "bottom_gap": 26
+  },
+  "interior_furniture/1": {
+    "foot_y": 502,
+    "height": 502,
+    "bottom_gap": 0
+  },
+  "interior_furniture/2": {
+    "foot_y": 470,
+    "height": 472,
+    "bottom_gap": 2
+  },
+  "interior_furniture/3": {
+    "foot_y": 468,
+    "height": 491,
+    "bottom_gap": 23
+  }
+}
