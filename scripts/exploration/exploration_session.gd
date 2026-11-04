@@ -106,12 +106,21 @@ func restore() -> bool:
 		items["time_slow"] = true
 	if has("wax_seal"):
 		items["boss_morris"] = true
+	# Story 1.1 moved dash to the theater and the keeper's choice before the well.
+	if has("theater_seal"):
+		items["dash"] = true
+	if has("clock_memory") and (visited.has("fire_town") or has("true_memory")):
+		items["keeper_truth"] = true
 	changed.emit()
 	return true
 
 func objective() -> String:
-	if stage >= 4:
-		return "丰收祭之夜 · 重访井底，或前往停钟之处"
+	if has("well_seal") and has("keeper_truth"):
+		return "倒悬之井 · 回到井底深处，想起那天真正发生的事"
+	if has("keeper_truth"):
+		return "丰收祭之夜 · 穿过安静的小镇，回到枯井"
+	if has("clock_memory"):
+		return "钟楼顶 · 守钟人在等你做出选择"
 	if not has("scissors"):
 		return "沿小镇西环前往美术馆 · 找到美工刀"
 	if not has("wax_seal"):
@@ -120,6 +129,4 @@ func objective() -> String:
 		return "美术馆地下画室 · 按墙上的刻度转动七面镜子"
 	if not has("theater_seal"):
 		return "旧剧院 · 剪断三道红线，找回完整布偶"
-	if not has("well_seal"):
-		return "枯井 · 带着布偶开启井盖，寻找井底的合照"
-	return "三枚记忆印记已齐 · 返回广场，进入钟楼"
+	return "两枚记忆印记已齐 · 返回广场，进入钟楼"

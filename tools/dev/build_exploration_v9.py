@@ -1,7 +1,8 @@
-"""Rewrite every player-facing text for story 1.1 (Jerry, Ling, the harvest festival).
+"""Story 1.1 (Jerry, Ling, the harvest festival): rewrite player-facing text and
+reorder the main route to art museum, theater, clock tower, then the well.
 
-Run after build_exploration_v8.py. Only display text changes: room, flag, gate,
-NPC and item ids stay the same, so routes, quests and old saves keep working.
+Run after build_exploration_v8.py. Room, flag, gate, NPC and item ids stay the
+same; only gate requirements, two relic grants and the main quest list change.
 """
 from pathlib import Path
 import json
@@ -49,6 +50,7 @@ STORY={
     '七面镜子，七个方向。被烧掉的书页里，还压着一枚金属牌。':'七面镜子，七个方向。旧报纸堆里，还压着一张没人领回的寻人启事。',
     '最后一张票不卖。那是给一个不该被忘记的人留的。':'丰收祭那晚的演出，有两个孩子一直没有来。',
     '有一班车，一直在等一个肯摘下帽子的人。':'早班车七点开。离开，或者留下来把事情弄清楚，都可以。',
+    '三枚印记才开得了钟楼。发条外庭的楼梯通往上层，不要跳过台阶。':'两枚印记就开得了钟楼。发条外庭的楼梯通往上层，不要跳过台阶。',
     # Enemies, boss, abilities and weapons.
     '踉跄蜡像':'僵硬的雕像',
     '烛泪喷吐者':'泼墨画像',
@@ -76,7 +78,7 @@ STORY={
     '留给帽子的位置':'窗边的一束花',
     '进入莫里斯的工棚，寻找「擦拭过的工具」，再回来交谈。':'进入梅·莫里的画室，寻找「擦拭过的工具」，再回来交谈。',
     '蜡像馆地窖门':'美术馆地窖门',
-    '蜡像馆、剧院、井底各有一枚印记。收齐三枚后回广场，按 E 转动大门的钟钥。':'美术馆、剧院、井底各有一枚印记。收齐三枚后回广场，按 E 转动大门的钟钥。',
+    '蜡像馆、剧院、井底各有一枚印记。收齐三枚后回广场，按 E 转动大门的钟钥。':'美术馆与剧院各有一枚印记。收齐两枚后回广场，按 E 转动大门的钟钥。',
     '先击败莫里斯，再拿大剪刀剪开门轴蜡封，按 E 打开地窖门。':'先击败梅·莫里，再用美工刀割开门轴上的封条，按 E 打开地窖门。',
     '井底左侧有排水拉杆。先拉闸，再从排水隧道返回蜡像地下室。':'井底左侧有排水拉杆。先拉闸，再从排水隧道返回美术馆地下画室。',
     '大剪刀在蜡像馆。拿到后可切开门锁旁的红线，按 E 推开侧门。':'美工刀在美术馆。拿到后可割断门锁旁的红线，按 E 推开侧门。',
@@ -85,8 +87,11 @@ STORY={
     '先在熔炉战场击败莫里斯，镜室的机械锁才会松开。':'先在无尽走廊击败梅·莫里，镜室的机械锁才会松开。',
     '上方档案室需要蜡像印记和二段跳':'上方档案室需要美术馆印记和二段跳',
     '门缝被红线封住，需要大剪刀':'门缝被红线封住，需要美工刀',
-    '先带回蜡像与剧院的两枚印记':'先带回美术馆与剧院的两枚印记',
+    '先带回蜡像与剧院的两枚印记':'先在钟楼顶回应守钟人',
     '火海中的旧井房':'丰收祭夜的旧井房',
+    '钟楼门上还缺三枚记忆印记':'钟楼门上还缺两枚记忆印记',
+    '先触碰发条旁的记忆':'先回应钟楼顶的守钟人',
+    '触碰顶层记忆后，钟顶通往旧日街道的门才会回应。':'在钟楼顶回应守钟人之后，通往丰收祭之夜的门才会打开。',
     # Interactable titles.
     '一封没有署名的信':'刑警留下的传唤单',
     '大剪刀':'美工刀',
@@ -99,6 +104,8 @@ STORY={
     '那句话的后半截':'那天真正发生的事',
     '七年前 · 那一夜':'丰收祭 · 那一夜',
     '我帮你拧发条':'听守钟人的话',
+    '摘下帽子':'守钟人留下的帽子',
+    '举起武器':'让钟声倒带',
     '最后一趟':'最后一眼',
     '七个自己':'分出去的自己',
     '第零次循环':'清晨',
@@ -125,7 +132,7 @@ STORY={
     '来不及了，再进去就出不来了——把他拉出来！':'她挡在你前面，被推倒，头撞在井口。弗瑞他们逼你一起把她抬起来……你看见她的手，好像还在动。',
     # Longer room texts.
     '西环的上行楼梯通向蜡像馆；东环的上层通向剧院，下层通向枯井。三枚印记能开启钟楼。地图只标记路线，所有道路都需实际走过。':
-        '西环的上行楼梯通向美术馆；东环的上层通向剧院，下层通向枯井。三枚印记能开启钟楼。地图只标记路线，所有道路都需实际走过。',
+        '西环的上行楼梯通向美术馆；东环的上层通向剧院，下层通向枯井。两枚印记能开启钟楼。地图只标记路线，所有道路都需实际走过。',
     '记住每一张脸。\n蜡像馆在巷子的西端。熔蜡池每隔一段时间喷涌，观察亮起的预兆。':
         '画里的每一张脸都记得你。\n美术馆在街的西端。颜料池每隔一段时间喷涌，观察亮起的预兆。',
     '获得大剪刀：J 的近战范围与伤害提升；K 剪刃突进。W / S + J 可向上 / 下攻击。击败熔炉前的莫里斯，打开镜室通路。':
@@ -135,9 +142,9 @@ STORY={
     '七镜的正确刻度依次为：\n2 · 3 · 4 · 1 · 2 · 4 · 3\n每按一次 E 转动一格。所有角度吻合时，光会沿着七面镜子传向未完成的蜡块。':
         '七镜的正确刻度依次为：\n2 · 3 · 4 · 1 · 2 · 4 · 3\n每按一次 E 转动一格。所有角度吻合时，光会沿着七面镜子传向那幅没有画完的画。',
     '所有破旧的布偶中，只有这一只没有裂痕。\n获得女孩布偶、剧院印记、二段跳与藤蔓攀爬。\n新的能力让旧地图的上层支路变得可达。':
-        '所有破旧的布偶中，只有这一只没有裂痕。那是你小时候亲手做、想送给玲的玩偶。\n获得玲的布偶、剧院印记、二段跳与藤蔓攀爬。\n新的能力让旧地图的上层支路变得可达。',
+        '所有破旧的布偶中，只有这一只没有裂痕。那是你小时候亲手做、想送给玲的玩偶。\n获得玲的布偶、剧院印记、二段跳、藤蔓攀爬与冲刺（Shift）。\n新的能力让旧地图的上层支路变得可达。',
     '最后一天，他说要玩一个游戏。获得井底印记与冲刺（Shift）。黑泥开始上涌！抓住藤蔓返回，或拉开左侧排水闸，从近路离开。':
-        '照片里，扎双马尾的女孩在笑，旁边的男孩用手挡住了右脸。获得井底印记与冲刺（Shift）。黑泥开始上涌！抓住藤蔓返回，或拉开左侧排水闸，从近路离开。',
+        '照片里，扎双马尾的女孩在笑，旁边的男孩用手挡住了右脸。获得井底印记。黑泥开始上涌！抓住藤蔓返回，或拉开左侧排水闸，从近路离开。',
     '井底与蜡像馆地下室重新连通。':'井底与美术馆地下画室重新连通。',
     '来不及了，再进去就出不来了——把他拉出来！\n这一次，你终于听完了那句话。':
         '她挡在你前面，被推倒，头撞在井口。弗瑞他们逼你一起把她抬起来……你看见她的手，好像还在动。\n这一次，你终于想起来了。',
@@ -168,14 +175,55 @@ def rewrite(value,used):
     return value
 
 
+KEEPER='keeper_truth'
+# Story 1.1 order: art museum, theater, clock tower (keeper's choice), well last.
+GATE_REQUIRES={
+    'town_hub--clock_exterior':['wax_seal','theater_seal'],
+    'ring_east--dry_well':[KEEPER],
+    'clock_top--fire_town':[KEEPER],
+    'fire_town--dry_well':[KEEPER],
+}
+MAIN_ORDER=['main_letter','main_scissors','main_boss_morris','main_wax_seal','main_theater_seal',
+            'main_warden_note','main_clock_memory','main_zero_loop','main_well_seal','main_true_memory']
+
+
+def reorder_v9(data):
+    world,quests,actors=data['world'],data['quests'],data['actors']
+    for gate_id,requires in GATE_REQUIRES.items():
+        quests['gates'][gate_id]['requires']=list(requires)
+    quests['gates']['ring_east--dry_well']['text']='井口拉着警戒线。在钟楼顶回应守钟人之后，再从这里走向枯井。'
+    quests['gates']['back_stage--ring_east']['text']='后台有一个完整的布偶，带回它的印记，再从后台回到东街。'
+    for r in world['rooms'].values():
+        for e in r['exits']:
+            if e.get('gate_id') in GATE_REQUIRES:
+                e['requires']=list(GATE_REQUIRES[e['gate_id']])
+        # Dash comes with the doll, so the tower is climbed with the same moves as before.
+        for o in r['objects']:
+            if o.get('item')=='theater_seal':
+                o['grants']=o['grants']+['dash']
+            elif o.get('item')=='well_seal':
+                o['grants']=[g for g in o['grants'] if g!='dash']
+    for skill in actors['skills']:
+        if skill['id']=='dash':
+            skill['stage']='剧院后台'
+    main={q['id']:q for q in quests['main']}
+    main['main_warden_note']['text']='两枚印记齐全，回广场启动钟门，沿实际楼梯登塔，在中层调查守钟人的笔记。'
+    main['main_zero_loop'].update(flag=KEEPER,title='守钟人的选择',
+        text='在钟楼顶回应摘下帽子的守钟人：听他的话离开，或者去井边找回真相。',room='clock_top',pos=[880,1140])
+    main['main_well_seal']['text']='穿过丰收祭之夜来到枯井，带布偶打开井口检修门。沿藤蔓下井，取得合照后立刻撤离。'
+    main['main_true_memory'].update(title='井底的真相',text='回到井底深处，想起那天真正发生的事。')
+    quests['main']=[main[i] for i in MAIN_ORDER]
+
+
 def upgrade_v9():
     used=set()
+    data={}
     for name in ('world','actors','quests','weapons'):
-        path=DATA/(name+'.json')
-        data=rewrite(json.loads(path.read_text(encoding='utf-8')),used)
-        if name=='world':
-            data['version']=9
-        path.write_text(json.dumps(data,ensure_ascii=False,indent=2),encoding='utf-8')
+        data[name]=rewrite(json.loads((DATA/(name+'.json')).read_text(encoding='utf-8')),used)
+    data['world']['version']=9
+    reorder_v9(data)
+    for name,value in data.items():
+        (DATA/(name+'.json')).write_text(json.dumps(value,ensure_ascii=False,indent=2),encoding='utf-8')
     unused=[k for k in STORY if k not in used]
     print('story 1.1 texts applied:',len(used),'/',len(STORY))
     for k in unused:

@@ -13,7 +13,7 @@ static func main_task(session: Node) -> Dictionary:
 	for task: Dictionary in definitions()["main"]:
 		if not session.has(str(task["flag"])):
 			return task
-	return {"id":"epilogue","title":"清晨的站台","text":"沿车站道路前进，向列车员告别。","room":"train_station","pos":[1720,840]}
+	return {"id":"epilogue","title":"迟到的鲜花","text":"故事已经结束。可以回到标题，重新开始。","room":"well_interior","pos":[1060,2840]}
 
 static func side_task(id: String) -> Dictionary:
 	for task: Dictionary in definitions()["side"]:

@@ -56,21 +56,10 @@
       ]
     },
     {
-      "id": "main_well_seal",
-      "flag": "well_seal",
-      "title": "井底的合照",
-      "text": "到枯井，带布偶打开井口检修门。沿藤蔓下井，取得合照后立刻撤离。",
-      "room": "well_interior",
-      "pos": [
-        1680,
-        2840
-      ]
-    },
-    {
       "id": "main_warden_note",
       "flag": "warden_note",
       "title": "进入七层钟楼",
-      "text": "三枚印记齐全，回广场启动钟门，沿实际楼梯登塔，在中层调查守钟人的笔记。",
+      "text": "两枚印记齐全，回广场启动钟门，沿实际楼梯登塔，在中层调查守钟人的笔记。",
       "room": "clock_tower",
       "pos": [
         650,
@@ -89,25 +78,36 @@
       ]
     },
     {
-      "id": "main_true_memory",
-      "flag": "true_memory",
-      "title": "再回一次井底",
-      "text": "穿过丰收祭之夜重访井底，想起那天真正发生的事。",
+      "id": "main_zero_loop",
+      "flag": "keeper_truth",
+      "title": "守钟人的选择",
+      "text": "在钟楼顶回应摘下帽子的守钟人：听他的话离开，或者去井边找回真相。",
+      "room": "clock_top",
+      "pos": [
+        880,
+        1140
+      ]
+    },
+    {
+      "id": "main_well_seal",
+      "flag": "well_seal",
+      "title": "井底的合照",
+      "text": "穿过丰收祭之夜来到枯井，带布偶打开井口检修门。沿藤蔓下井，取得合照后立刻撤离。",
       "room": "well_interior",
       "pos": [
-        1060,
+        1680,
         2840
       ]
     },
     {
-      "id": "main_zero_loop",
-      "flag": "zero_loop",
-      "title": "守钟人的选择",
-      "text": "前往停钟之处面对守钟人，做出选择，再沿右侧道路前往车站。",
-      "room": "shadow_roof",
+      "id": "main_true_memory",
+      "flag": "true_memory",
+      "title": "井底的真相",
+      "text": "回到井底深处，想起那天真正发生的事。",
+      "room": "well_interior",
       "pos": [
-        1570,
-        1140
+        1060,
+        2840
       ]
     }
   ],
@@ -269,13 +269,12 @@
     "town_hub--clock_exterior": {
       "id": "town_hub--clock_exterior",
       "title": "广场钟楼大门",
-      "text": "美术馆、剧院、井底各有一枚印记。收齐三枚后回广场，按 E 转动大门的钟钥。",
+      "text": "美术馆与剧院各有一枚印记。收齐两枚后回广场，按 E 转动大门的钟钥。",
       "giver_name": "广场修表匠",
       "hint_room": "town_hub",
       "requires": [
         "wax_seal",
-        "theater_seal",
-        "well_seal"
+        "theater_seal"
       ],
       "room": "clock_exterior",
       "pos": [
@@ -395,7 +394,7 @@
     "back_stage--ring_east": {
       "id": "back_stage--ring_east",
       "title": "东街防疫路障",
-      "text": "后台有一个完整的布偶，带回它的印记。美术馆与剧院两枚印记可以释放东街的道路绞盘。",
+      "text": "后台有一个完整的布偶，带回它的印记，再从后台回到东街。",
       "giver_name": "东街检票员",
       "hint_room": "ring_east",
       "requires": [
@@ -410,12 +409,11 @@
     "ring_east--dry_well": {
       "id": "ring_east--dry_well",
       "title": "东街防疫路障",
-      "text": "后台有一个完整的布偶，带回它的印记。美术馆与剧院两枚印记可以释放东街的道路绞盘。",
+      "text": "井口拉着警戒线。在钟楼顶回应守钟人之后，再从这里走向枯井。",
       "giver_name": "东街检票员",
       "hint_room": "ring_east",
       "requires": [
-        "wax_seal",
-        "theater_seal"
+        "keeper_truth"
       ],
       "room": "dry_well",
       "pos": [
@@ -441,11 +439,11 @@
     "fire_town--dry_well": {
       "id": "fire_town--dry_well",
       "title": "钟顶封闭回廊",
-      "text": "触碰顶层记忆后，钟顶通往旧日街道的门才会回应。",
+      "text": "在钟楼顶回应守钟人之后，通往丰收祭之夜的门才会打开。",
       "giver_name": "停钟值守者",
       "hint_room": "clock_top",
       "requires": [
-        "clock_memory"
+        "keeper_truth"
       ],
       "room": "fire_town",
       "pos": [
@@ -456,11 +454,11 @@
     "clock_top--fire_town": {
       "id": "clock_top--fire_town",
       "title": "钟顶封闭回廊",
-      "text": "触碰顶层记忆后，钟顶通往旧日街道的门才会回应。",
+      "text": "在钟楼顶回应守钟人之后，通往丰收祭之夜的门才会打开。",
       "giver_name": "停钟值守者",
       "hint_room": "clock_top",
       "requires": [
-        "clock_memory"
+        "keeper_truth"
       ],
       "room": "fire_town",
       "pos": [

@@ -80,6 +80,10 @@ func activate(object: ExplorationInteractable) -> void:
 		session.changed.emit()
 	demo.get_node("/root/AudioManager").play_sfx("sfx_notebook_write")
 	session.save()
+	if kind == "true_memory":
+		# The well is the last level: remembering that day ends the story.
+		demo.show_dialogue(str(spec.get("title","留下的线索")),str(spec.get("text","")),[{"label":"醒来", "action":func(): _resolve_ending("zero")}])
+		return
 	demo.show_dialogue(str(spec.get("title","留下的线索")),str(spec.get("text","")))
 
 func _rotate_mirror(index: int) -> void:
@@ -101,25 +105,40 @@ func _rotate_mirror(index: int) -> void:
 	session.save()
 
 func _confirm_ending(id: String) -> void:
-	var title: String = "最后的选择"
-	var text: String = "守钟人摘下帽子，露出和你一模一样的脸。\n「你不能到达这里，我得保护你。」"
+	var title: String = "让钟声倒带"
+	var text: String = "回到镇口，从头再走一遍。已经想起的事会留在速写本里。\n这个选择会结束本次探索。"
 	var choices: Array = [
 		{"label":"继续探索", "action":demo.close_overlay},
 		{"label":"确认选择", "action":func(): _resolve_ending(id)}
 	]
 	if id == "keeper":
-		title = "听守钟人的话"
-		text = "不再追问下去。明天一早收拾好姑姑的遗物，离开小镇。\n这个选择会结束本次探索。"
+		# Story 1.1: the keeper's choice comes before the last descent into the well.
+		if demo.session.has("keeper_truth"):
+			demo.hud.toast("守钟人已经不在这里了。去井边吧。")
+			return
+		title = "守钟人摘下了帽子"
+		text = "那是一张和你一模一样的脸。\n「你不能到达这里，我得保护你。」"
+		choices = [
+			{"label":"我要知道真相", "action":func(): _resolve_ending("truth")},
+			{"label":"听守钟人的话", "action":func(): _resolve_ending("keeper")}
+		]
 	elif id == "accept":
-		title = "我要知道真相"
-		text = "守钟人沉默了很久：「去井边吧。她在等你。」\n如果还没想起井边发生的事，现在仍可以返回。"
+		title = "守钟人留下的帽子"
+		text = "钟停在了丰收祭那一夜。守钟人已经不在这里了。\n去井边吧。她在等你。"
+		choices = [{"label":"继续探索", "action":demo.close_overlay}]
 	demo.show_dialogue(title,text,choices)
 
 func _resolve_ending(id: String) -> void:
 	var session: ExplorationSession = demo.session
 	if id == "keeper":
 		demo.show_ending("钟声之后", "你没有再问下去。\n第二天清晨，你收拾完姑姑的遗物，离开了小镇。\n井口的警戒线在身后，越来越远。")
-	elif id == "loop" or (id == "accept" and not session.has("true_memory")):
+	elif id == "truth":
+		session.acquire("keeper_truth")
+		demo.close_overlay()
+		demo.get_node("/root/AudioManager").play_bell()
+		demo.hud.toast("守钟人消散了：「去井边吧。她在等你。」通往丰收祭之夜的门打开了。")
+		session.save()
+	elif id == "loop":
 		var next_loop: int = session.loop_count+1
 		var memories: Dictionary = {}
 		for memory_id: String in ExplorationCatalog.data()["memories"]:
@@ -131,12 +150,5 @@ func _resolve_ending(id: String) -> void:
 			session.acquire(memory_id)
 		session.save()
 		demo.show_ending("回溯 · 第 %d 次" % session.loop_count, "钟声响起。你又站在镇口，像什么都没有发生过。\n速写本上多了一行小孩的字迹。\n那天的事，你仍然没有想起来。")
-	elif id == "accept":
-		session.acquire("zero_loop")
-		session.stage = 5
-		session.changed.emit()
-		demo.close_overlay()
-		demo.hud.toast("钟停了。前往右侧的门，走向清晨的车站。")
-		session.save()
 	elif id == "zero":
 		demo.show_ending("迟到的鲜花", "刑警把你从井底拉上来时，天已经亮了。\n后来，镇上的证人一个个站出来指控弗瑞。玲重新下葬。\n你在她的墓前，放下一束迟到的鲜花。")

@@ -468,10 +468,9 @@
           ],
           "requires": [
             "wax_seal",
-            "theater_seal",
-            "well_seal"
+            "theater_seal"
           ],
-          "hint": "钟楼门上还缺三枚记忆印记",
+          "hint": "钟楼门上还缺两枚记忆印记",
           "label": "钟楼外庭",
           "direction": "right",
           "corridor": true,
@@ -491,7 +490,7 @@
             1240
           ],
           "title": "所有路，都会回到钟楼",
-          "text": "西环的上行楼梯通向美术馆；东环的上层通向剧院，下层通向枯井。三枚印记能开启钟楼。地图只标记路线，所有道路都需实际走过。",
+          "text": "西环的上行楼梯通向美术馆；东环的上层通向剧院，下层通向枯井。两枚印记能开启钟楼。地图只标记路线，所有道路都需实际走过。",
           "uid": "town_hub:object:0"
         }
       ],
@@ -3755,10 +3754,11 @@
             "doll",
             "double_jump",
             "vine",
-            "final_ticket"
+            "final_ticket",
+            "dash"
           ],
           "title": "完整的双眼",
-          "text": "所有破旧的布偶中，只有这一只没有裂痕。那是你小时候亲手做、想送给玲的玩偶。\n获得玲的布偶、剧院印记、二段跳与藤蔓攀爬。\n新的能力让旧地图的上层支路变得可达。",
+          "text": "所有破旧的布偶中，只有这一只没有裂痕。那是你小时候亲手做、想送给玲的玩偶。\n获得玲的布偶、剧院印记、二段跳、藤蔓攀爬与冲刺（Shift）。\n新的能力让旧地图的上层支路变得可达。",
           "uid": "back_stage:object:theater_seal"
         },
         {
@@ -4081,10 +4081,9 @@
             1137
           ],
           "requires": [
-            "wax_seal",
-            "theater_seal"
+            "keeper_truth"
           ],
-          "hint": "先带回美术馆与剧院的两枚印记",
+          "hint": "先在钟楼顶回应守钟人",
           "label": "枯井 · 警戒线",
           "direction": "right",
           "corridor": true,
@@ -4620,10 +4619,9 @@
             1237
           ],
           "requires": [
-            "wax_seal",
-            "theater_seal"
+            "keeper_truth"
           ],
-          "hint": "先带回美术馆与剧院的两枚印记",
+          "hint": "先在钟楼顶回应守钟人",
           "label": "东环 · 屋顶回廊",
           "direction": "left",
           "corridor": true,
@@ -4669,7 +4667,7 @@
             877
           ],
           "requires": [
-            "clock_memory"
+            "keeper_truth"
           ],
           "hint": "丰收祭夜的旧井房",
           "label": "丰收祭之夜",
@@ -5646,11 +5644,10 @@
           ],
           "item": "well_seal",
           "grants": [
-            "summer_photo",
-            "dash"
+            "summer_photo"
           ],
           "title": "美术室的合照",
-          "text": "照片里，扎双马尾的女孩在笑，旁边的男孩用手挡住了右脸。获得井底印记与冲刺（Shift）。黑泥开始上涌！抓住藤蔓返回，或拉开左侧排水闸，从近路离开。",
+          "text": "照片里，扎双马尾的女孩在笑，旁边的男孩用手挡住了右脸。获得井底印记。黑泥开始上涌！抓住藤蔓返回，或拉开左侧排水闸，从近路离开。",
           "uid": "well_interior:object:well_seal"
         },
         {
@@ -5988,10 +5985,9 @@
           ],
           "requires": [
             "wax_seal",
-            "theater_seal",
-            "well_seal"
+            "theater_seal"
           ],
-          "hint": "钟楼门上还缺三枚记忆印记",
+          "hint": "钟楼门上还缺两枚记忆印记",
           "label": "钟楼广场",
           "direction": "left",
           "corridor": true,
@@ -7658,9 +7654,9 @@
             1137
           ],
           "requires": [
-            "clock_memory"
+            "keeper_truth"
           ],
-          "hint": "先触碰发条旁的记忆",
+          "hint": "先回应钟楼顶的守钟人",
           "label": "丰收祭之夜",
           "direction": "right",
           "corridor": true,
@@ -8249,7 +8245,7 @@
             977
           ],
           "requires": [
-            "clock_memory"
+            "keeper_truth"
           ],
           "hint": "丰收祭夜的旧井房",
           "label": "枯井 · 警戒线",
@@ -8273,9 +8269,9 @@
             1337
           ],
           "requires": [
-            "clock_memory"
+            "keeper_truth"
           ],
-          "hint": "先触碰发条旁的记忆",
+          "hint": "先回应钟楼顶的守钟人",
           "label": "钟楼顶 · 发条之心",
           "direction": "left",
           "corridor": true,
@@ -8946,7 +8942,7 @@
             1140
           ],
           "ending": "loop",
-          "title": "举起武器",
+          "title": "让钟声倒带",
           "uid": "shadow_roof:object:0"
         },
         {
@@ -8956,7 +8952,7 @@
             1140
           ],
           "ending": "accept",
-          "title": "摘下帽子",
+          "title": "守钟人留下的帽子",
           "uid": "shadow_roof:object:1"
         }
       ],
