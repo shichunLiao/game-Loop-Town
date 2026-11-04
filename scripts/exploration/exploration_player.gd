@@ -36,6 +36,10 @@ var _air_jump: bool = false
 var _clock: float = 0.0
 var _last_ground_y: float = 0.0
 var weapon: ExplorationWeapon
+## Void's puppets turn Jerry into cloth: slower, weaker, then unable to hold the blade.
+var cloth: int = 0
+var entangled: float = 0.0
+var _entangle_tick: float = 0.0
 
 func _ready() -> void:
 	_last_ground_y = position.y
@@ -69,6 +73,12 @@ func _physics_process(delta: float) -> void:
 	_slow_cooldown = maxf(0,_slow_cooldown-delta)
 	_combo_window = maxf(0,_combo_window-delta)
 	_knockback = move_toward(_knockback,0,delta*900)
+	if entangled > 0.0:
+		entangled -= delta
+		_entangle_tick -= delta
+		if _entangle_tick <= 0.0:
+			_entangle_tick = .4
+			health = maxi(1,health-3)
 	_update_combat(delta)
 	if _drop_timer>0:
 		_drop_timer -= delta
@@ -96,7 +106,7 @@ func _physics_process(delta: float) -> void:
 		state = "climb"
 		_air_jump = false
 	else:
-		velocity.x = direction * SPEED * (.6 if attack_phase == "windup" else 1.0) + _knockback
+		velocity.x = direction * SPEED * _hindrance() * (.6 if attack_phase == "windup" else 1.0) + _knockback
 		velocity.y = minf(velocity.y + GRAVITY * delta, 1050.0)
 		state = "run" if direction != 0.0 else "idle"
 		if not on_floor_before:
@@ -123,7 +133,8 @@ func _physics_process(delta: float) -> void:
 	visual.rotation = clampf(velocity.x/6000,-.07,.07) if is_on_floor() else -.06*facing
 	visual.position.y = -52.5 + (sin(_clock*17)*2 if state == "run" else sin(_clock*2)*.7)
 	visual.scale.y = (105.0/visual.texture.get_height()) * (1.0+sin(_clock*17)*.025 if state=="run" else 1.0)
-	visual.modulate = Color(1,1,1,.35 if _invulnerability>0 and int(_clock*15)%2==0 else 1)
+	visual.modulate = Color.WHITE.lerp(Color("e3c3ae"),minf(1,cloth/6.0))
+	visual.modulate.a = .35 if _invulnerability>0 and int(_clock*15)%2==0 else 1.0
 	if attack_phase!="ready":
 		var pose: float = -0.18 if attack_phase=="windup" else .22 if attack_phase=="active" else .09
 		visual.rotation += pose*facing*(-1 if combo==2 else 1)
@@ -151,12 +162,16 @@ func take_damage(amount: int) -> void:
 		state = "death"
 		died.emit()
 
-func receive_hit(amount: int, origin: Vector2, _kind: String = "hit") -> void:
+func receive_hit(amount: int, origin: Vector2, kind: String = "hit") -> void:
 	if _invulnerability > 0 or not enabled:
 		return
 	_knockback = signf(global_position.x-origin.x)*330
 	attack_phase = "ready"
 	take_damage(amount)
+	if kind == "puppet":
+		cloth += 1
+	elif kind == "void_lash":
+		entangled = 1.6
 	var demo: Node = get_tree().get_first_node_in_group("exploration_demo")
 	if demo != null:
 		demo.screen_shake(.15)
@@ -219,7 +234,7 @@ func _update_combat(delta: float) -> void:
 				add_child(echo)
 	elif attack_phase == "active":
 		attack_phase = "recover"
-		_attack_timer = float(ExplorationWeapon.profile(session)["recovery"])+(0 if combo<3 else .09)
+		_attack_timer = (float(ExplorationWeapon.profile(session)["recovery"])+(0 if combo<3 else .09))*_cloth_slow()
 	else:
 		attack_phase = "ready"
 		_combo_window = .35
@@ -236,8 +251,14 @@ func begin_attack(special: bool = false) -> void:
 	elif Input.is_action_pressed("move_down") and not is_on_floor():
 		_attack_direction = Vector2.DOWN
 	attack_phase = "windup"
-	_attack_timer = float(ExplorationWeapon.profile(session)["windup"])*(1.7 if special else 1.0)
+	_attack_timer = float(ExplorationWeapon.profile(session)["windup"])*(1.7 if special else 1.0)*_cloth_slow()
 	get_node("/root/AudioManager").play_sfx("sfx_attack_swing")
+
+func _cloth_slow() -> float:
+	return 1.0+.08*mini(cloth,6)
+
+func _hindrance() -> float:
+	return (1.0-.06*mini(cloth,6))*(.45 if entangled > 0.0 else 1.0)
 
 func _spawn_swing() -> void:
 	var hit := ExplorationHitArea.new()
@@ -257,6 +278,14 @@ func _spawn_swing() -> void:
 	if _attack_direction.y != 0:
 		hit.dimensions = Vector2(80,110)
 	hit.position = Vector2(0,-35)+_attack_direction*(float(stats["reach"])*.5)
+	# Cloth hands lose the blade at six stacks; what is left is a weak shove.
+	if cloth >= 6:
+		hit.damage = 3
+		hit.kind = "fist"
+		hit.dimensions = Vector2(60,70)
+		hit.position = Vector2(0,-35)+_attack_direction*30
+	elif cloth > 0:
+		hit.damage = roundi(hit.damage*(1.0-.07*cloth))
 	add_child(hit)
 	# Threads are also physical targets: the blade must overlap their short
 	# interaction bounds, so a remote attack cannot open a whole stage.

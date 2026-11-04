@@ -24,6 +24,7 @@ var _arrival_anchor: Vector2
 var _arrival_released: bool = true
 var _story_slot: String = "exploration_v2"
 var _starting_practice: bool = false
+var _defeat: Dictionary = {}
 
 func _ready() -> void:
 	add_to_group("exploration_demo")
@@ -332,12 +333,34 @@ func show_pause() -> void:
 func fast_travel(id: String) -> void:
 	hud.toast("地图用于查看通路。请沿实际道路前往目的地。")
 
+## Story 1.1 defeat endings: a special death shows its ending card, then rewinds to the lamp.
+func defeat(id: String, title: String, text: String) -> void:
+	if mode != "play" or not is_instance_valid(player):
+		return
+	session.switches["ending_"+id] = true
+	_defeat = {"title":title, "text":text}
+	player.health = 0
+	player.enabled = false
+	player.died.emit()
+
 func _on_died() -> void:
 	if mode != "play":
 		return
 	mode = "respawn"
 	_set_playing(false)
 	session.deaths += 1
+	if not _defeat.is_empty():
+		var ending: Dictionary = _defeat
+		_defeat = {}
+		show_dialogue(str(ending["title"]),str(ending["text"]),[{"label":"回溯", "action":_respawn}])
+		mode = "ending"
+		return
+	await _respawn()
+
+func _respawn() -> void:
+	mode = "respawn"
+	hud.overlay.hide()
+	_set_playing(false)
 	await _fade_to(1,.35)
 	load_room(session.checkpoint_room)
 	player.position = session.checkpoint

@@ -128,10 +128,11 @@ func _ready() -> void:
 		enemy.spec = entry
 		enemy.session = session
 		actors.add_child(enemy)
-	if data.has("boss") and not session.has("boss_morris"):
-		var enemy := ExplorationBoss.new()
+	var boss_type: String = str(data.get("boss",{}).get("type","morris"))
+	if data.has("boss") and not session.has("boss_"+boss_type):
+		var enemy: ExplorationEnemy = ExplorationVoidBoss.new() if boss_type=="void" else ExplorationBoss.new()
 		enemy.spec = data["boss"].duplicate(true)
-		enemy.spec["id"] = "morris"
+		enemy.spec["id"] = boss_type
 		enemy.session = session
 		actors.add_child(enemy)
 	var foreground := Node2D.new()

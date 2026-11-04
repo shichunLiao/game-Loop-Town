@@ -32,6 +32,7 @@ func _process(_delta: float) -> void:
 		_selected = str(stats["id"])
 		blade.texture = ExplorationArt.sprite("stage_weapons",int(stats["cell"]),"weapons") if int(stats["cell"])>=0 else null
 		_ink = Color(str(stats["color"]))
+	blade.visible = fighter.cloth < 6
 	var phase: String = fighter.attack_phase
 	var ratio: float = 0.0
 	if phase=="windup":

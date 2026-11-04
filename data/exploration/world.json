@@ -3759,7 +3759,10 @@
           ],
           "title": "完整的双眼",
           "text": "所有破旧的布偶中，只有这一只没有裂痕。那是你小时候亲手做、想送给玲的玩偶。\n获得玲的布偶、剧院印记、二段跳、藤蔓攀爬与冲刺（Shift）。\n新的能力让旧地图的上层支路变得可达。",
-          "uid": "back_stage:object:theater_seal"
+          "uid": "back_stage:object:theater_seal",
+          "requires": [
+            "boss_void"
+          ]
         },
         {
           "kind": "memory",
@@ -3797,7 +3800,7 @@
           "id": "guide_back_stage_0",
           "type": "seamstress",
           "pos": [
-            1950,
+            520,
             940
           ],
           "role": "布偶保管人",
@@ -3944,7 +3947,20 @@
         }
       ],
       "masonry": 1,
-      "static_vertical_background": false
+      "static_vertical_background": false,
+      "boss": {
+        "type": "void",
+        "pos": [
+          1760,
+          940
+        ],
+        "arena": [
+          960,
+          2120
+        ],
+        "hp": 760,
+        "floor": 940
+      }
     },
     "ring_east": {
       "id": "ring_east",

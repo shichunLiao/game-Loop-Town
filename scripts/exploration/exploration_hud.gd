@@ -354,6 +354,6 @@ func _process(delta: float) -> void:
 	if show_boss:
 		boss_health.max_value = boss.max_health
 		boss_health.value = boss.health
-		boss_label.text = "梅·莫里 · "+str(boss.phase_title)+" / 阶段 %d" % boss.phase
+		boss_label.text = str(boss.boss_title)+" · "+str(boss.phase_title)+" / 阶段 %d" % boss.phase
 		if boss.state=="windup":
 			boss_label.text = str(boss.attack_name)

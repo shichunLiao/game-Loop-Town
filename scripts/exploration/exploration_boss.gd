@@ -8,6 +8,7 @@ var arena: Vector2 = Vector2(2350,3780)
 var attack: String = "fan"
 var attack_name: String = ""
 var phase_title: String = "恩师的面孔"
+var boss_title: String = "梅·莫里"
 var _floor: float = 1140
 var _locked_facing: float = -1
 var _target_x: float = 0

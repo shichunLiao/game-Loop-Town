@@ -215,6 +215,21 @@ def reorder_v9(data):
     quests['main']=[main[i] for i in MAIN_ORDER]
 
 
+def theater_boss_v9(data):
+    """Void waits at back-stage center; the doll is his until he falls."""
+    r=data['world']['rooms']['back_stage']
+    r['boss']=dict(type='void',pos=[1760,940],arena=[960,2120],hp=760,floor=940)
+    for o in r['objects']:
+        if o.get('item')=='theater_seal':
+            o['requires']=['boss_void']
+    # The seamstress steps out of the stage the curtains close around.
+    for n in r['npcs']:
+        if n['pos'][0]>960:
+            n['pos'][0]=520
+    main={q['id']:q for q in data['quests']['main']}
+    main['main_theater_seal']['text']='从东街打开剧院侧门，剪断三组红线，再打开后台防火门。击败道具师沃伊德，取回那只完整的布偶。'
+
+
 def upgrade_v9():
     used=set()
     data={}
@@ -222,6 +237,7 @@ def upgrade_v9():
         data[name]=rewrite(json.loads((DATA/(name+'.json')).read_text(encoding='utf-8')),used)
     data['world']['version']=9
     reorder_v9(data)
+    theater_boss_v9(data)
     for name,value in data.items():
         (DATA/(name+'.json')).write_text(json.dumps(value,ensure_ascii=False,indent=2),encoding='utf-8')
     unused=[k for k in STORY if k not in used]

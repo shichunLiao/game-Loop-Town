@@ -109,6 +109,7 @@ func restore() -> bool:
 	# Story 1.1 moved dash to the theater and the keeper's choice before the well.
 	if has("theater_seal"):
 		items["dash"] = true
+		items["boss_void"] = true
 	if has("clock_memory") and (visited.has("fire_town") or has("true_memory")):
 		items["keeper_truth"] = true
 	changed.emit()
@@ -128,5 +129,5 @@ func objective() -> String:
 			return "美术馆走廊 · 击败梅·莫里，打开地下画室"
 		return "美术馆地下画室 · 按墙上的刻度转动七面镜子"
 	if not has("theater_seal"):
-		return "旧剧院 · 剪断三道红线，找回完整布偶"
+		return "旧剧院 · 剪断三道红线，在后台击败沃伊德，取回布偶"
 	return "两枚记忆印记已齐 · 返回广场，进入钟楼"
