@@ -159,7 +159,7 @@ func _die() -> void:
 		session.acquire("boss_morris")
 		session.save()
 		var demo: Node = get_tree().get_first_node_in_group("exploration_demo")
-		demo.hud.toast("莫里斯的蜡壳消散。镜室的机械锁打开了。")
+		demo.hud.toast("梅·莫里消散了。钟声响起，镜室的机械锁打开了。")
 		demo.player.health = mini(100,demo.player.health+35)
 		get_node("/root/AudioManager").play_bell()
 	var tween := create_tween()

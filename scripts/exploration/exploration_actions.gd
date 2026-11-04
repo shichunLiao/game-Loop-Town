@@ -51,7 +51,7 @@ func activate(object: ExplorationInteractable) -> void:
 		demo.hud.toast("这里还缺少一段记忆或一件道具。")
 		return
 	if object.is_finished():
-		demo.hud.toast("这段记忆已经留在笔记本中。")
+		demo.hud.toast("这段记忆已经留在速写本中。")
 		return
 	if kind == "mirror":
 		_rotate_mirror(int(spec["index"]))
@@ -85,7 +85,7 @@ func activate(object: ExplorationInteractable) -> void:
 func _rotate_mirror(index: int) -> void:
 	var session: ExplorationSession = demo.session
 	if session.has("wax_seal"):
-		demo.hud.toast("光已经汇聚。未完成的蜡块里留下了第 247 份订单。")
+		demo.hud.toast("光已经汇聚。那幅没有画完的画上，留着两个孩子的签名。")
 		return
 	session.mirrors[index] = (int(session.mirrors[index]) + 1) % 4
 	demo.get_node("/root/AudioManager").play_sfx("sfx_mirror_turn")
@@ -97,28 +97,28 @@ func _rotate_mirror(index: int) -> void:
 	if solved:
 		session.acquire("wax_seal")
 		demo.get_node("/root/AudioManager").play_sfx("sfx_light_focus")
-		demo.show_dialogue("光沿着七面镜子汇聚", "蜡块缓慢融化。留下的订货单写着：247。\n获得蜡像印记。档案门的锁芯已经松开，前往门边按 E 操作。")
+		demo.show_dialogue("光沿着七面镜子汇聚", "画布上的颜料慢慢化开，露出两个孩子的签名：杰利、玲。\n获得美术馆印记。档案门的锁芯已经松开，前往门边按 E 操作。")
 	session.save()
 
 func _confirm_ending(id: String) -> void:
 	var title: String = "最后的选择"
-	var text: String = "这一次，你要如何离开那一夜？"
+	var text: String = "守钟人摘下帽子，露出和你一模一样的脸。\n「你不能到达这里，我得保护你。」"
 	var choices: Array = [
 		{"label":"继续探索", "action":demo.close_overlay},
 		{"label":"确认选择", "action":func(): _resolve_ending(id)}
 	]
 	if id == "keeper":
-		title = "我帮你拧发条"
-		text = "有些人选择留在那一夜，替所有人记住它。\n这个选择会结束本次探索。"
+		title = "听守钟人的话"
+		text = "不再追问下去。明天一早收拾好姑姑的遗物，离开小镇。\n这个选择会结束本次探索。"
 	elif id == "accept":
-		title = "摘下帽子"
-		text = "你不用打败我。你只需要，终于肯看我一眼。\n如果还没听完井底的记忆，现在仍可以返回。"
+		title = "我要知道真相"
+		text = "守钟人沉默了很久：「去井边吧。她在等你。」\n如果还没想起井边发生的事，现在仍可以返回。"
 	demo.show_dialogue(title,text,choices)
 
 func _resolve_ending(id: String) -> void:
 	var session: ExplorationSession = demo.session
 	if id == "keeper":
-		demo.show_ending("停摆的钟", "你接过发条。247 个齿轮同时咔哒一声。\n有些人选择留在那一夜，替所有人记住它。")
+		demo.show_ending("钟声之后", "你没有再问下去。\n第二天清晨，你收拾完姑姑的遗物，离开了小镇。\n井口的警戒线在身后，越来越远。")
 	elif id == "loop" or (id == "accept" and not session.has("true_memory")):
 		var next_loop: int = session.loop_count+1
 		var memories: Dictionary = {}
@@ -130,13 +130,13 @@ func _resolve_ending(id: String) -> void:
 		for memory_id: String in memories:
 			session.acquire(memory_id)
 		session.save()
-		demo.show_ending("完美循环 · 第 %d 次" % session.loop_count, "欢迎回来。\n笔记本上多了一行小孩的字迹。\n那句话，你仍然没有听完。")
+		demo.show_ending("回溯 · 第 %d 次" % session.loop_count, "钟声响起。你又站在镇口，像什么都没有发生过。\n速写本上多了一行小孩的字迹。\n那天的事，你仍然没有想起来。")
 	elif id == "accept":
 		session.acquire("zero_loop")
 		session.stage = 5
 		session.changed.emit()
 		demo.close_overlay()
-		demo.hud.toast("钟停了。前往右侧的门，走向火车站。")
+		demo.hud.toast("钟停了。前往右侧的门，走向清晨的车站。")
 		session.save()
 	elif id == "zero":
-		demo.show_ending("第零次循环", "你不需要被原谅。\n你只是需要，终于记得自己做过什么。\n一列清晨的火车停在站台。")
+		demo.show_ending("迟到的鲜花", "刑警把你从井底拉上来时，天已经亮了。\n后来，镇上的证人一个个站出来指控弗瑞。玲重新下葬。\n你在她的墓前，放下一束迟到的鲜花。")

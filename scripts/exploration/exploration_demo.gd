@@ -38,7 +38,7 @@ func _ready() -> void:
 	add_child(session)
 	session.reset()
 	var saved: Dictionary = get_node("/root/SaveManager").load_exploration()
-	session.loop_count = int(saved.get("loop",247))
+	session.loop_count = int(saved.get("loop",0))
 	actions = ExplorationActions.new()
 	actions.demo = self
 	hud = ExplorationHUD.new()
@@ -105,7 +105,7 @@ func start_boss_practice() -> void:
 	player.position = Vector2(2600,1137)
 	session.save_at("wax_museum",Vector2(2600,1137))
 	camera.reset_smoothing()
-	hud.toast("莫里斯演练 · 大剪刀已装备 · J 连击 / K 突进 / H 恢复")
+	hud.toast("梅·莫里演练 · 美工刀已装备 · J 连击 / K 突进 / H 恢复")
 
 func enter_building(building: Dictionary) -> void:
 	request_room(str(building["interior_scene"]))
@@ -347,7 +347,7 @@ func _on_died() -> void:
 	mode = "play"
 	_set_playing(true)
 	await _fade_to(0,.35)
-	hud.toast("回到最近点亮的路灯。记忆仍然留在笔记本中。")
+	hud.toast("回到最近点亮的路灯。记忆仍然留在速写本中。")
 
 func screen_shake(duration: float) -> void:
 	_shake = maxf(_shake,duration)
@@ -484,7 +484,7 @@ func _capture_boss_action(value: String) -> void:
 	var parts: PackedStringArray = value.split(",")
 	var phase_value: int = clampi(int(parts[0]),1,3)
 	boss.phase = phase_value
-	boss.phase_title = "蜡匠的执念" if phase_value==1 else "蜡壳裂开" if phase_value==2 else "熔炉中的真身"
+	boss.phase_title = "恩师的面孔" if phase_value==1 else "雕像替身" if phase_value==2 else "入画"
 	boss.health = int(boss.max_health*(1 if phase_value==1 else .58 if phase_value==2 else .24))
 	boss._clear_owned()
 	boss.position = Vector2(3220,1140)

@@ -7,7 +7,7 @@ var pattern: int = 0
 var arena: Vector2 = Vector2(2350,3780)
 var attack: String = "fan"
 var attack_name: String = ""
-var phase_title: String = "蜡匠的执念"
+var phase_title: String = "恩师的面孔"
 var _floor: float = 1140
 var _locked_facing: float = -1
 var _target_x: float = 0
@@ -55,7 +55,7 @@ func _boss_behavior(player: ExplorationPlayer, offset: Vector2, delta: float) ->
 			state = "intro"
 			timer = 1.4
 			_set_fences(true)
-			_notice("莫里斯 · 别碰那些脸")
+			_notice("梅·莫里 · 别碰那些画")
 		return
 	if state=="intro" or state=="phase_break":
 		if timer<=0:
@@ -100,7 +100,7 @@ func _select_attack(player: ExplorationPlayer) -> void:
 	_locked_facing = signf(player.position.x-position.x) if distance>8 else facing
 	facing = _locked_facing
 	_target_x = clampf(player.position.x,arena.x+115,arena.y-115)
-	attack_name = str({"fan":"烛泪散射 · 留意弹道间隙","cleave":"蜡刃横扫 · 跳起或绕后","slam":"熔蜡地刺 · 离开地面标记","rush":"熔蜡突进 · 跳跃越过","copies":"第 247 张脸 · 真身眼中有火","rain":"坠落烛雨 · 留在预警间隙"}[attack])
+	attack_name = str({"fan":"颜料散射 · 留意弹道间隙","cleave":"美工刀横扫 · 跳起或绕后","slam":"石膏地刺 · 离开地面标记","rush":"画笔突进 · 跳跃越过","copies":"雕像替身 · 认出真身","rain":"坠落颜料 · 留在预警间隙"}[attack])
 	_windup_length = 1.05 if attack in ["slam","rain","copies"] else .85 if phase==1 else .74
 	timer = _windup_length
 	state = "windup"
@@ -193,14 +193,14 @@ func _summon_copies() -> void:
 func _start_phase(value: int) -> void:
 	phase = value
 	pattern = 0
-	phase_title = "蜡壳裂开" if phase==2 else "熔炉中的真身"
+	phase_title = "雕像替身" if phase==2 else "入画"
 	state = "phase_break"
 	timer = 1.55
 	_phase_invulnerability = .7
 	_clear_owned()
 	velocity.x = 0
 	_stagger = 0
-	_notice("第二阶段 · 蜡壳裂开" if phase==2 else "第三阶段 · 熔炉中的真身")
+	_notice("第二阶段 · 雕像替身" if phase==2 else "第三阶段 · 入画")
 	get_node("/root/AudioManager").play_bell()
 	var demo: Node = get_tree().get_first_node_in_group("exploration_demo")
 	if demo!=null:
@@ -224,7 +224,7 @@ func receive_hit(amount: int, _origin_value: Vector2, _kind: String = "slash") -
 	if _stagger>=125 and state=="recover":
 		timer = maxf(timer,.62)
 		_stagger = 0
-		_notice("蜡壳失衡 · 乘机攻击")
+		_notice("画框失衡 · 乘机攻击")
 	get_node("/root/AudioManager").play_sfx("sfx_hurt")
 	if health<=0:
 		_die()
@@ -257,7 +257,7 @@ func _die() -> void:
 	if demo!=null:
 		demo.player.health = mini(100,demo.player.health+35)
 		demo.screen_shake(.3)
-		demo.hud.toast("蜡壳崩解 · 镜室门锁已松开")
+		demo.hud.toast("梅·莫里消散 · 镜室门锁已松开")
 	get_node("/root/AudioManager").play_bell()
 	var tween := create_tween()
 	tween.tween_property(visual,"scale:y",visual.scale.y*.3,.7)

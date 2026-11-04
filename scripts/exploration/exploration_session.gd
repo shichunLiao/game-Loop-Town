@@ -12,7 +12,7 @@ var items: Dictionary = {}
 var visited: Array = []
 var switches: Dictionary = {}
 var mirrors: Array = [0, 0, 0, 0, 0, 0, 0]
-var loop_count: int = 247
+var loop_count: int = 0
 var stage: int = 0
 var deaths: int = 0
 var elapsed: float = 0.0
@@ -97,7 +97,7 @@ func restore() -> bool:
 	collected = saved.get("collected",{}).duplicate(true)
 	quest_state = saved.get("quests",{"tracked":"main"}).duplicate(true)
 	mirrors = saved.get("mirrors", [0, 0, 0, 0, 0, 0, 0]).duplicate()
-	loop_count = int(saved.get("loop", 247))
+	loop_count = int(saved.get("loop", 0))
 	stage = int(saved.get("stage", 0))
 	deaths = int(saved.get("deaths", 0))
 	elapsed = float(saved.get("elapsed", 0.0))
@@ -111,13 +111,13 @@ func restore() -> bool:
 
 func objective() -> String:
 	if stage >= 4:
-		return "火海中的最后一趟 · 重访井底，或前往钟楼顶"
+		return "丰收祭之夜 · 重访井底，或前往停钟之处"
 	if not has("scissors"):
-		return "沿小镇西环前往蜡像馆 · 找到大剪刀"
+		return "沿小镇西环前往美术馆 · 找到美工刀"
 	if not has("wax_seal"):
 		if not has("boss_morris"):
-			return "蜡像馆熔炉 · 击败莫里斯，打开地下镜室"
-		return "蜡像馆地下室 · 按墙上的刻度转动七面镜子"
+			return "美术馆走廊 · 击败梅·莫里，打开地下画室"
+		return "美术馆地下画室 · 按墙上的刻度转动七面镜子"
 	if not has("theater_seal"):
 		return "旧剧院 · 剪断三道红线，找回完整布偶"
 	if not has("well_seal"):
