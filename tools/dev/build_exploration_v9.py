@@ -237,7 +237,7 @@ def keeper_chase_v9(data):
         dict(type='morris',label='梅·莫里',flag='echo_morris',pos=[820,3600],arena=[230,1240],hp=560,floor=3600),
         dict(type='void',label='沃伊德',flag='echo_void',pos=[760,2112],arena=[230,1240],hp=520,floor=2112),
     ])
-    rooms['clock_top']['keeper_figure']=[1010,1140]
+    rooms['clock_top']['keeper_figure']=[790,1140]
     main={q['id']:q for q in data['quests']['main']}
     main['main_warden_note']['text']='两枚印记齐全，回广场启动钟门。沿楼梯追赶守钟人，在中层调查他留下的笔记。'
     main['main_clock_memory']['text']='击败完美版本的梅·莫里与沃伊德，在顶层触碰丰收祭那一夜的记忆。'

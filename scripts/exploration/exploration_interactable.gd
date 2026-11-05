@@ -31,6 +31,8 @@ func prompt() -> String:
 	if kind == "exit":
 		return "E  前往 · " + ExplorationCatalog.title(str(spec["target"]))
 	if kind == "checkpoint":
+		if session.room_id == "clock_tower" and not session.chase_done():
+			return "钟声之下，路灯点不亮"
 		return "E  点亮路灯 · 保存 / 恢复"
 	if kind == "interior_exit":
 		return "E  推门返回 · "+ExplorationCatalog.title(str(spec["target"]))

@@ -10,7 +10,6 @@ var _clock: float = 0
 func _ready() -> void:
 	visual = ExplorationArt.visual(self,"hero",118)
 	visual.modulate = Color(.36,.27,.31)
-	visual.flip_h = true
 	z_index = 4
 
 func _process(delta: float) -> void:
@@ -32,6 +31,8 @@ func vanish() -> void:
 	tween.tween_callback(queue_free)
 
 func _draw() -> void:
+	draw_circle(Vector2(0,-62),78,Color(.95,.72,.42,.10))
+	draw_circle(Vector2(0,-62),54,Color(.95,.72,.42,.14))
 	var hub := Vector2(62,-62)
 	var ink := Color("3c2a24")
 	draw_arc(hub,26,_clock*1.5,_clock*1.5+TAU*.8,28,ink,6,true)
