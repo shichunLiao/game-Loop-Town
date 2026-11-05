@@ -35,13 +35,11 @@ func activate(object: ExplorationInteractable) -> void:
 		if not session.satisfies(spec.get("requires", [])):
 			demo.hud.toast(str(spec.get("hint", "这条路暂时无法通行。")))
 			return
-		if session.room_id == "well_interior" and session.has("well_seal"):
-			session.switches["well_escaped"] = true
 		demo.request_room(str(spec["target"]), str(spec["id"]))
 		return
 	if kind == "checkpoint":
-		if session.room_id == "clock_tower" and not session.chase_done():
-			demo.hud.toast("钟声之下，路灯点不亮。先追上守钟人。")
+		if session.lamps_out():
+			demo.hud.toast("钟声之下，路灯点不亮。先追上守钟人。" if session.room_id == "clock_tower" else "泥浆淹没了灯芯，路灯点不亮。")
 			return
 		demo.player.health = 100
 		demo.player.energy = 100
@@ -71,8 +69,6 @@ func activate(object: ExplorationInteractable) -> void:
 		session.acquire(str(spec.get("item", "")))
 	for grant: String in spec.get("grants", []):
 		session.acquire(grant)
-	if str(spec.get("item","")) == "well_seal" and not session.has("well_escaped"):
-		session.switches["well_escape_active"] = true
 	if kind == "flashback":
 		session.stage = 4
 		session.changed.emit()
@@ -86,6 +82,7 @@ func activate(object: ExplorationInteractable) -> void:
 	if kind == "true_memory":
 		# The well is the last level: remembering that day ends the story.
 		demo.show_dialogue(str(spec.get("title","留下的线索")),str(spec.get("text","")),[{"label":"醒来", "action":func(): _resolve_ending("zero")}])
+		demo.mode = "ending"
 		return
 	demo.show_dialogue(str(spec.get("title","留下的线索")),str(spec.get("text","")))
 
@@ -154,4 +151,4 @@ func _resolve_ending(id: String) -> void:
 		session.save()
 		demo.show_ending("回溯 · 第 %d 次" % session.loop_count, "钟声响起。你又站在镇口，像什么都没有发生过。\n速写本上多了一行小孩的字迹。\n那天的事，你仍然没有想起来。")
 	elif id == "zero":
-		demo.show_ending("迟到的鲜花", "刑警把你从井底拉上来时，天已经亮了。\n后来，镇上的证人一个个站出来指控弗瑞。玲重新下葬。\n你在她的墓前，放下一束迟到的鲜花。")
+		demo.show_ending("迟到的鲜花", "你在井底醒来，躺在淤泥里，头很痛。井口很远，光从上面照下来。有人在喊你的名字，是刑警的声音。\n他们放下绳子，把你拉了上去。天已经亮了。\n后来，镇上的证人一个个站出来指控弗瑞，弗瑞锒铛入狱。玲重新下葬。\n你在她的墓前，放下一束迟到的鲜花。")

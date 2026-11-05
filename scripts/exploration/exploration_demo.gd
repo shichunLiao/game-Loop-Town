@@ -25,6 +25,7 @@ var _arrival_released: bool = true
 var _story_slot: String = "exploration_v2"
 var _starting_practice: bool = false
 var _defeat: Dictionary = {}
+var _caption: Label
 
 func _ready() -> void:
 	add_to_group("exploration_demo")
@@ -54,6 +55,9 @@ func _ready() -> void:
 	_fade.color = Color(0.015,0.025,0.035,0)
 	_fade.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	fade_layer.add_child(_fade)
+	_caption = hud.label(fade_layer,Vector2(140,330),Vector2(1000,60),"",30,Color("e9d19c"))
+	_caption.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+	_caption.modulate.a = 0
 	hud.show_menu()
 	_check_capture_arguments.call_deferred()
 
@@ -227,6 +231,8 @@ func _physics_process(delta: float) -> void:
 		hud.prompt_label.text = ""
 	if _npc_focused != null:
 		hud.prompt_label.text = _npc_focused.interaction_prompt()
+	if player.grip > 0:
+		hud.prompt_label.text = "连按 空格 / A / D 挣脱 · 还差 %d 下" % player.grip
 	for passage: ExplorationPassage in room.passages:
 		if str(passage.spec["id"])==_arrival_exit and not _arrival_released:
 			continue
@@ -235,8 +241,6 @@ func _physics_process(delta: float) -> void:
 				if bool(passage.spec.get("manual_entry",false)):
 					continue
 				if _passage_cooldown<=0 and passage.moving_toward(player):
-					if session.room_id=="well_interior" and session.has("well_seal"):
-						session.switches["well_escaped"] = true
 					request_room(str(passage.spec["target"]),str(passage.spec["id"]))
 					return
 			else:
@@ -379,6 +383,32 @@ func _fade_to(alpha: float, seconds: float) -> void:
 	var tween := create_tween()
 	tween.tween_property(_fade,"color:a",alpha,seconds)
 	await tween.finished
+
+## One line in the middle of the screen, readable over a black fade.
+func caption(text: String, seconds: float) -> void:
+	_caption.text = text
+	var tween := create_tween()
+	tween.tween_property(_caption,"modulate:a",1.0,.3)
+	tween.tween_interval(seconds)
+	tween.tween_property(_caption,"modulate:a",0.0,.3)
+	await tween.finished
+
+## A white flash over the world; whatever changes at full strength is not seen changing.
+func flash_to(alpha: float, seconds: float) -> void:
+	_fade.color = Color(1,.97,.9,_fade.color.a)
+	await _fade_to(alpha,seconds)
+	if alpha <= 0.0:
+		_fade.color = Color(0.015,0.025,0.035,0)
+
+## Story 1.1: Jerry goes down the well the hard way; the screen comes up at the bottom.
+func fall_into(id: String, point: Vector2) -> void:
+	mode = "play"
+	_arrival = point
+	load_room(id)
+	player.health = 100
+	player.energy = 100
+	camera.reset_smoothing()
+	await _fade_to(0,1.4)
 
 func show_ending(title: String, text: String) -> void:
 	show_dialogue(title,text,[{"label":"返回标题", "action":func(): session.save(); mode="menu"; hud.show_menu()}])

@@ -273,6 +273,7 @@ func _claim_doll(demo: Node) -> void:
 		demo.show_dialogue(str(object.spec.get("title","")),str(object.spec.get("text",""))+"\n\n钟声响起。眼前的一切开始闪烁、变黑——",[
 			{"label":"……", "action":func(): demo.close_overlay(); demo.request_room("clock_exterior")}
 		])
+		demo.mode = "ending"
 		return
 
 func _notice(text: String) -> void:
@@ -281,7 +282,7 @@ func _notice(text: String) -> void:
 		demo.hud.toast(text)
 
 func _visual_update() -> void:
-	visual.flip_h = facing>0
+	visual.flip_h = facing<0
 	visual.position.y = -105+sin(_clock*1.6)*4
 	visual.modulate = Color(2,1.4,1.4) if _flash>0 else Color(1.25,.78,.78) if state=="windup" else Color.WHITE.lerp(Color("e6c1b1"),cuts*.15)
 	queue_redraw()

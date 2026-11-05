@@ -20,6 +20,8 @@ func _ready() -> void:
 
 func is_finished() -> bool:
 	var kind: String = str(spec.get("kind", ""))
+	if not session.satisfies(spec.get("appears_after", [])):
+		return true
 	if kind in ["memory", "ability", "relic", "flashback", "true_memory"]:
 		return session.has(str(spec.get("item", "true_memory" if kind=="true_memory" else ""))) or bool(session.collected.get(str(spec.get("uid","")),false))
 	if kind in ["switch", "thread"]:
@@ -31,8 +33,8 @@ func prompt() -> String:
 	if kind == "exit":
 		return "E  前往 · " + ExplorationCatalog.title(str(spec["target"]))
 	if kind == "checkpoint":
-		if session.room_id == "clock_tower" and not session.chase_done():
-			return "钟声之下，路灯点不亮"
+		if session.lamps_out():
+			return "钟声之下，路灯点不亮" if session.room_id == "clock_tower" else "泥浆淹没了灯芯，路灯点不亮"
 		return "E  点亮路灯 · 保存 / 恢复"
 	if kind == "interior_exit":
 		return "E  推门返回 · "+ExplorationCatalog.title(str(spec["target"]))

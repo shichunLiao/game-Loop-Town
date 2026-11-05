@@ -4659,9 +4659,9 @@
             877
           ],
           "requires": [
-            "doll"
+            "fury_done"
           ],
-          "hint": "铁栅栏旁留着一个布偶形状的凹槽",
+          "hint": "检修门从里面锁死了。井口在下面的空地上，拉着警戒线。",
           "label": "倒悬之井",
           "direction": "right",
           "corridor": true,
@@ -4704,7 +4704,7 @@
             1240
           ],
           "title": "铁栅栏下的童谣",
-          "text": "带着布偶进入井底。藤蔓旁按 W / S 攀爬；长距离坠落会失去生命。取得印记会唤醒黑泥。左侧排水闸是一条逃生近路。\nS + Space 可穿下脚边的平台。井道要逐层下降，不要直接跳到底。",
+          "text": "井口已经被施工队挖开了，旁边拉着警戒线。刑警已经撤了。\n藤蔓旁按 W / S 攀爬；S + Space 可穿下脚边的平台。",
           "uid": "dry_well:object:0"
         }
       ],
@@ -4946,7 +4946,24 @@
         }
       ],
       "masonry": 3,
-      "static_vertical_background": false
+      "static_vertical_background": false,
+      "fury_scene": {
+        "trigger": 3040,
+        "well": [
+          3330,
+          1240
+        ],
+        "arena": [
+          2560,
+          3480
+        ],
+        "behind": 330,
+        "target": "well_interior",
+        "arrival": [
+          700,
+          2837
+        ]
+      }
     },
     "well_interior": {
       "id": "well_interior",
@@ -5638,9 +5655,9 @@
             187
           ],
           "requires": [
-            "doll"
+            "fury_done"
           ],
-          "hint": "铁栅栏旁留着一个布偶形状的凹槽",
+          "hint": "检修门从里面锁死了。井口在下面的空地上，拉着警戒线。",
           "label": "枯井 · 警戒线",
           "direction": "right",
           "corridor": true,
@@ -5663,8 +5680,11 @@
             "summer_photo"
           ],
           "title": "美术室的合照",
-          "text": "照片里，扎双马尾的女孩在笑，旁边的男孩用手挡住了右脸。获得井底印记。黑泥开始上涌！抓住藤蔓返回，或拉开左侧排水闸，从近路离开。",
-          "uid": "well_interior:object:well_seal"
+          "text": "照片里，扎双马尾的女孩在笑，旁边的男孩用手挡住了右脸。",
+          "uid": "well_interior:object:well_seal",
+          "appears_after": [
+            "boss_ling"
+          ]
         },
         {
           "kind": "switch",
@@ -5680,15 +5700,18 @@
         {
           "kind": "true_memory",
           "pos": [
-            1060,
+            1620,
             2840
           ],
-          "title": "那天真正发生的事",
-          "text": "她挡在你前面，被推倒，头撞在井口。弗瑞他们逼你一起把她抬起来……你看见她的手，好像还在动。\n这一次，你终于想起来了。",
+          "title": "我找到你了",
+          "text": "站在那里的是玲。真正的她。双马尾，白衬衫，蓝裙子。干净，安静。\n她蹲在枯井的角落里，头埋得很低，很害怕的样子。\n\n「我找到你了。」\n\n她挡在你前面，被推倒，头撞在井口。弗瑞他们逼你一起把她抬起来……你看见她的手，好像还在动。\n这一次，你终于想起来了。",
           "requires": [
             "clock_memory"
           ],
-          "uid": "well_interior:object:2"
+          "uid": "well_interior:object:2",
+          "appears_after": [
+            "boss_ling"
+          ]
         },
         {
           "kind": "checkpoint",
@@ -5731,6 +5754,12 @@
           340,
           95,
           2430
+        ],
+        [
+          900,
+          2250,
+          70,
+          590
         ]
       ],
       "checkpoint": [
@@ -5742,24 +5771,6 @@
       "main_region": true,
       "npcs": [],
       "enemies": [
-        {
-          "id": "well_interior_0",
-          "type": "well_wisp",
-          "pos": [
-            1120,
-            2356
-          ],
-          "patrol": 240
-        },
-        {
-          "id": "well_interior_1",
-          "type": "mud_crawler",
-          "pos": [
-            1530,
-            2840
-          ],
-          "patrol": 240
-        },
         {
           "id": "well_interior_2",
           "type": "well_wisp",
@@ -5949,7 +5960,58 @@
           "mount": "deck"
         }
       ],
-      "static_vertical_background": true
+      "static_vertical_background": true,
+      "boss": {
+        "type": "ling",
+        "pos": [
+          1320,
+          2840
+        ],
+        "arena": [
+          215,
+          1660
+        ],
+        "hp": 1800,
+        "floor": 2840,
+        "top": 2150,
+        "start": [
+          700,
+          2837
+        ],
+        "requires": [
+          "fury_done"
+        ],
+        "knots": [
+          [
+            620,
+            2790
+          ],
+          [
+            760,
+            2660
+          ],
+          [
+            1120,
+            2420
+          ],
+          [
+            520,
+            2540
+          ],
+          [
+            1240,
+            2300
+          ],
+          [
+            420,
+            2180
+          ]
+        ]
+      },
+      "ling_figure": [
+        1650,
+        2840
+      ]
     },
     "clock_exterior": {
       "id": "clock_exterior",

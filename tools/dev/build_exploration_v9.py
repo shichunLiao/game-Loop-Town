@@ -243,6 +243,43 @@ def keeper_chase_v9(data):
     main['main_clock_memory']['text']='击败完美版本的梅·莫里与沃伊德，在顶层触碰丰收祭那一夜的记忆。'
 
 
+def well_ending_v9(data):
+    """Fury pushes Jerry in at the well mouth; Ling waits at the bottom instead of the flood."""
+    rooms,quests=data['world']['rooms'],data['quests']
+    dry,well=rooms['dry_well'],rooms['well_interior']
+    dry['fury_scene']=dict(trigger=3040,well=[3330,1240],arena=[2560,3480],behind=330,
+        target='well_interior',arrival=[700,2837])
+    hatch='检修门从里面锁死了。井口在下面的空地上，拉着警戒线。'
+    for r in (dry,well):
+        for e in r['exits']:
+            if e.get('gate_id')=='dry_well--well_interior':
+                e.update(requires=['fury_done'],hint=hatch)
+    quests['gates']['dry_well--well_interior'].update(requires=['fury_done'],text=hatch)
+    for o in dry['objects']:
+        if o['kind']=='sign':
+            o['text']='井口已经被施工队挖开了，旁边拉着警戒线。刑警已经撤了。\n藤蔓旁按 W / S 攀爬；S + Space 可穿下脚边的平台。'
+    well['boss']=dict(type='ling',pos=[1320,2840],arena=[215,1660],hp=1800,floor=2840,top=2150,
+        start=[700,2837],requires=['fury_done'],
+        knots=[[620,2790],[760,2660],[1120,2420],[520,2540],[1240,2300],[420,2180]])
+    well['vines'].append([900,2250,70,590])
+    well['ling_figure']=[1650,2840]
+    well['enemies']=[e for e in well['enemies'] if e['pos'][1]<2200]
+    for o in well['objects']:
+        if o.get('item')=='well_seal':
+            o.update(appears_after=['boss_ling'],text='照片里，扎双马尾的女孩在笑，旁边的男孩用手挡住了右脸。')
+        elif o['kind']=='true_memory':
+            o.update(pos=[1620,2840],appears_after=['boss_ling'],title='我找到你了',
+                text='站在那里的是玲。真正的她。双马尾，白衬衫，蓝裙子。干净，安静。\n她蹲在枯井的角落里，头埋得很低，很害怕的样子。\n\n「我找到你了。」\n\n她挡在你前面，被推倒，头撞在井口。弗瑞他们逼你一起把她抬起来……你看见她的手，好像还在动。\n这一次，你终于想起来了。')
+    main={q['id']:q for q in quests['main']}
+    main['main_well_seal'].update(flag='fury_done',title='枯井边的警戒线',
+        text='穿过丰收祭之夜来到枯井，走到警戒线旁的井口。',room='dry_well',pos=[3330,1240])
+    main['main_true_memory'].update(title='我找到你了',text='走到井底的角落，那里蹲着真正的玲。',pos=[1620,2840])
+    quests['main'].insert(quests['main'].index(main['main_true_memory']),
+        dict(id='main_ling',flag='boss_ling',title='井底的玲',
+            text='砍断发光的藤结，趁泥浆退去、藤蔓松开时攻击她的身体。别让泥浆没过胸口。',
+            room='well_interior',pos=[1320,2840]))
+
+
 def upgrade_v9():
     used=set()
     data={}
@@ -252,6 +289,7 @@ def upgrade_v9():
     reorder_v9(data)
     theater_boss_v9(data)
     keeper_chase_v9(data)
+    well_ending_v9(data)
     for name,value in data.items():
         (DATA/(name+'.json')).write_text(json.dumps(value,ensure_ascii=False,indent=2),encoding='utf-8')
     unused=[k for k in STORY if k not in used]

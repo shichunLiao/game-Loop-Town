@@ -55,6 +55,10 @@ func acquire(id: String) -> void:
 func chase_done() -> bool:
 	return has("echo_morris") and has("echo_void")
 
+## The bell and Ling's mud both put the lamps out until the fight is over.
+func lamps_out() -> bool:
+	return (room_id=="clock_tower" and not chase_done()) or (room_id=="well_interior" and has("fury_done") and not has("boss_ling"))
+
 func seal_count() -> int:
 	var count: int = 0
 	for id: String in ["wax_seal", "theater_seal", "well_seal"]:
@@ -118,14 +122,27 @@ func restore() -> bool:
 		items["echo_void"] = true
 	if has("clock_memory") and (visited.has("fire_town") or has("true_memory")):
 		items["keeper_truth"] = true
+	# Story 1.1: Jerry only reaches the well bottom by being pushed in, so saves past the
+	# ending skip it, and saves on the far side of the keeper's gates go back to town.
+	if has("true_memory"):
+		items["fury_done"] = true
+		items["boss_ling"] = true
+	if not has("fury_done"):
+		switches.erase("opened_dry_well--well_interior")
+		if checkpoint_room=="well_interior" or (checkpoint_room in ["dry_well","fire_town"] and not has("keeper_truth")):
+			checkpoint_room = "dry_well" if has("keeper_truth") else "town_entrance"
+			room_id = checkpoint_room
+			checkpoint = ExplorationCatalog.vec(ExplorationCatalog.room(checkpoint_room)["spawn"])
 	changed.emit()
 	return true
 
 func objective() -> String:
-	if has("well_seal") and has("keeper_truth"):
-		return "倒悬之井 · 回到井底深处，想起那天真正发生的事"
+	if has("boss_ling"):
+		return "倒悬之井 · 走到角落里，那里蹲着真正的玲"
+	if has("fury_done"):
+		return "倒悬之井 · 砍断发光的藤结，趁泥浆退去攻击玲的身体"
 	if has("keeper_truth"):
-		return "丰收祭之夜 · 穿过安静的小镇，回到枯井"
+		return "丰收祭之夜 · 穿过安静的小镇，走到枯井边的警戒线"
 	if has("clock_memory"):
 		return "钟楼顶 · 守钟人在等你做出选择"
 	if not has("scissors"):

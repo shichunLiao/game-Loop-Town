@@ -354,11 +354,13 @@ func _process(delta: float) -> void:
 			boss = candidate
 			break
 	var show_boss: bool = boss != null and controller.mode=="play"
+	# The boss bar sits where prompts sit; a prompt during a fight may be all that saves Jerry.
+	prompt_label.position.y = 549.0 if show_boss else 595.0
 	boss_health.visible = show_boss
 	boss_label.visible = show_boss
 	if show_boss:
 		boss_health.max_value = boss.max_health
 		boss_health.value = boss.health
-		boss_label.text = str(boss.boss_title)+" · "+str(boss.phase_title)+" / 阶段 %d" % boss.phase
+		boss_label.text = str(boss.boss_title)+" · "+str(boss.phase_title)+(" / 阶段 %d" % boss.phase if boss.phase>0 else "")
 		if boss.state=="windup":
 			boss_label.text = str(boss.attack_name)

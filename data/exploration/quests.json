@@ -90,23 +90,34 @@
     },
     {
       "id": "main_well_seal",
-      "flag": "well_seal",
-      "title": "井底的合照",
-      "text": "穿过丰收祭之夜来到枯井，带布偶打开井口检修门。沿藤蔓下井，取得合照后立刻撤离。",
+      "flag": "fury_done",
+      "title": "枯井边的警戒线",
+      "text": "穿过丰收祭之夜来到枯井，走到警戒线旁的井口。",
+      "room": "dry_well",
+      "pos": [
+        3330,
+        1240
+      ]
+    },
+    {
+      "id": "main_ling",
+      "flag": "boss_ling",
+      "title": "井底的玲",
+      "text": "砍断发光的藤结，趁泥浆退去、藤蔓松开时攻击她的身体。别让泥浆没过胸口。",
       "room": "well_interior",
       "pos": [
-        1680,
+        1320,
         2840
       ]
     },
     {
       "id": "main_true_memory",
       "flag": "true_memory",
-      "title": "井底的真相",
-      "text": "回到井底深处，想起那天真正发生的事。",
+      "title": "我找到你了",
+      "text": "走到井底的角落，那里蹲着真正的玲。",
       "room": "well_interior",
       "pos": [
-        1060,
+        1620,
         2840
       ]
     }
@@ -424,11 +435,11 @@
     "dry_well--well_interior": {
       "id": "dry_well--well_interior",
       "title": "井口检修门",
-      "text": "布偶在剧院后台。带着它来到井边，按 E 打开检修门，再沿井道下行。",
+      "text": "检修门从里面锁死了。井口在下面的空地上，拉着警戒线。",
       "giver_name": "井边提桶人",
       "hint_room": "dry_well",
       "requires": [
-        "doll"
+        "fury_done"
       ],
       "room": "well_interior",
       "pos": [

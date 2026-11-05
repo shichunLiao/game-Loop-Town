@@ -40,6 +40,13 @@ var weapon: ExplorationWeapon
 var cloth: int = 0
 var entangled: float = 0.0
 var _entangle_tick: float = 0.0
+## Ling's mud and hands: how deep he stands, how many kicks free him, and her voice turning left and right around.
+var mired: float = 0.0
+var grip: int = 0
+var confused: float = 0.0
+## Whose body the player's hands are on.
+var body_height: float = 105.0
+var unarmed: bool = false
 
 func _ready() -> void:
 	_last_ground_y = position.y
@@ -79,6 +86,11 @@ func _physics_process(delta: float) -> void:
 		if _entangle_tick <= 0.0:
 			_entangle_tick = .4
 			health = maxi(1,health-3)
+	confused = maxf(0.0,confused-delta)
+	if grip > 0:
+		_knockback = 0.0
+		if Input.is_action_just_pressed("jump") or Input.is_action_just_pressed("move_left") or Input.is_action_just_pressed("move_right"):
+			grip -= 1
 	_update_combat(delta)
 	if _drop_timer>0:
 		_drop_timer -= delta
@@ -96,10 +108,12 @@ func _physics_process(delta: float) -> void:
 			_buffer = 0
 		else:
 			_buffer = 0.14
-	var direction: float = Input.get_axis("move_left", "move_right")
+	if grip > 0:
+		_buffer = 0.0
+	var direction: float = Input.get_axis("move_left", "move_right")*(-1.0 if confused > 0.0 else 1.0)
 	if direction != 0.0:
 		facing = direction
-	var climbing: bool = near_vine and session != null and session.has("vine") and Input.get_axis("move_up", "move_down") != 0.0
+	var climbing: bool = near_vine and grip == 0 and session != null and session.has("vine") and Input.get_axis("move_up", "move_down") != 0.0
 	if climbing:
 		_last_ground_y = position.y
 		velocity = Vector2(direction * 140.0, Input.get_axis("move_up", "move_down") * 235.0)
@@ -114,13 +128,13 @@ func _physics_process(delta: float) -> void:
 	if _buffer > 0.0 and (_coyote > 0.0 or (session != null and session.has("double_jump") and not _air_jump)):
 		if _coyote <= 0.0:
 			_air_jump = true
-		velocity.y = JUMP
+		velocity.y = JUMP*(1.0-.45*mired)
 		_buffer = 0.0
 		_coyote = 0.0
 		get_node("/root/AudioManager").play_sfx("sfx_jump")
 	if Input.is_action_just_released("jump") and velocity.y < -300.0:
 		velocity.y *= 0.5
-	if Input.is_action_just_pressed("explore_dash") and session != null and session.has("dash") and _dash_cooldown <= 0.0:
+	if Input.is_action_just_pressed("explore_dash") and session != null and session.has("dash") and _dash_cooldown <= 0.0 and grip == 0:
 		_dash = 0.16
 		_dash_cooldown = 0.7
 	if _dash > 0.0:
@@ -131,8 +145,8 @@ func _physics_process(delta: float) -> void:
 	move_and_slide()
 	visual.flip_h = facing < 0
 	visual.rotation = clampf(velocity.x/6000,-.07,.07) if is_on_floor() else -.06*facing
-	visual.position.y = -52.5 + (sin(_clock*17)*2 if state == "run" else sin(_clock*2)*.7)
-	visual.scale.y = (105.0/visual.texture.get_height()) * (1.0+sin(_clock*17)*.025 if state=="run" else 1.0)
+	visual.position.y = -body_height*.5 + (sin(_clock*17)*2 if state == "run" else sin(_clock*2)*.7)
+	visual.scale.y = (body_height/visual.texture.get_height()) * (1.0+sin(_clock*17)*.025 if state=="run" else 1.0)
 	visual.modulate = Color.WHITE.lerp(Color("e3c3ae"),minf(1,cloth/6.0))
 	visual.modulate.a = .35 if _invulnerability>0 and int(_clock*15)%2==0 else 1.0
 	if attack_phase!="ready":
@@ -258,7 +272,17 @@ func _cloth_slow() -> float:
 	return 1.0+.08*mini(cloth,6)
 
 func _hindrance() -> float:
-	return (1.0-.06*mini(cloth,6))*(.45 if entangled > 0.0 else 1.0)
+	if grip > 0:
+		return 0.0
+	return (1.0-.06*mini(cloth,6))*(.45 if entangled > 0.0 else 1.0)*(1.0-.7*mired)
+
+## Story 1.1: at the well the player's hands are on someone else's body.
+func wear(atlas: String, height: float, cell: int = -1) -> void:
+	visual.texture = ExplorationArt.sprite(atlas,cell)
+	visual.scale = Vector2.ONE*height/visual.texture.get_height()
+	body_height = height
+	unarmed = atlas != "hero"
+	weapon.visible = not unarmed
 
 func _spawn_swing() -> void:
 	var hit := ExplorationHitArea.new()
@@ -279,7 +303,7 @@ func _spawn_swing() -> void:
 		hit.dimensions = Vector2(80,110)
 	hit.position = Vector2(0,-35)+_attack_direction*(float(stats["reach"])*.5)
 	# Cloth hands lose the blade at six stacks; what is left is a weak shove.
-	if cloth >= 6:
+	if cloth >= 6 or unarmed:
 		hit.damage = 3
 		hit.kind = "fist"
 		hit.dimensions = Vector2(60,70)
