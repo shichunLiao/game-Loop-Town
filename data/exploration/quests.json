@@ -59,7 +59,7 @@
       "id": "main_warden_note",
       "flag": "warden_note",
       "title": "进入七层钟楼",
-      "text": "两枚印记齐全，回广场启动钟门，沿实际楼梯登塔，在中层调查守钟人的笔记。",
+      "text": "两枚印记齐全，回广场启动钟门。沿楼梯追赶守钟人，在中层调查他留下的笔记。",
       "room": "clock_tower",
       "pos": [
         650,
@@ -70,7 +70,7 @@
       "id": "main_clock_memory",
       "flag": "clock_memory",
       "title": "让钟声停止",
-      "text": "继续登塔，在顶层触碰丰收祭那一夜的记忆。",
+      "text": "击败完美版本的梅·莫里与沃伊德，在顶层触碰丰收祭那一夜的记忆。",
       "room": "clock_top",
       "pos": [
         1450,

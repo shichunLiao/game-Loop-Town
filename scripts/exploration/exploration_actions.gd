@@ -40,6 +40,9 @@ func activate(object: ExplorationInteractable) -> void:
 		demo.request_room(str(spec["target"]), str(spec["id"]))
 		return
 	if kind == "checkpoint":
+		if session.room_id == "clock_tower" and not session.chase_done():
+			demo.hud.toast("钟声之下，路灯点不亮。先追上守钟人。")
+			return
 		demo.player.health = 100
 		demo.player.energy = 100
 		session.switches["lamp_" + session.room_id] = true
@@ -142,7 +145,7 @@ func _resolve_ending(id: String) -> void:
 		var next_loop: int = session.loop_count+1
 		var memories: Dictionary = {}
 		for memory_id: String in ExplorationCatalog.data()["memories"]:
-			if session.has(memory_id) and not memory_id.ends_with("_seal"):
+			if session.has(memory_id) and not memory_id.ends_with("_seal") and not memory_id in ["clock_memory","true_memory"]:
 				memories[memory_id] = true
 		session.reset()
 		session.loop_count = next_loop

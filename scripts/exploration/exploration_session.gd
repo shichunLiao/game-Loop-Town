@@ -52,6 +52,9 @@ func acquire(id: String) -> void:
 	stage = maxi(stage, mini(seal_count(), 3))
 	changed.emit()
 
+func chase_done() -> bool:
+	return has("echo_morris") and has("echo_void")
+
 func seal_count() -> int:
 	var count: int = 0
 	for id: String in ["wax_seal", "theater_seal", "well_seal"]:
@@ -110,6 +113,9 @@ func restore() -> bool:
 	if has("theater_seal"):
 		items["dash"] = true
 		items["boss_void"] = true
+	if has("clock_memory"):
+		items["echo_morris"] = true
+		items["echo_void"] = true
 	if has("clock_memory") and (visited.has("fire_town") or has("true_memory")):
 		items["keeper_truth"] = true
 	changed.emit()
@@ -130,4 +136,8 @@ func objective() -> String:
 		return "美术馆地下画室 · 按墙上的刻度转动七面镜子"
 	if not has("theater_seal"):
 		return "旧剧院 · 剪断三道红线，在后台击败沃伊德，取回布偶"
+	if chase_done():
+		return "七层钟楼 · 只剩下守钟人了，去钟楼顶"
+	if visited.has("clock_tower"):
+		return "七层钟楼 · 追赶守钟人，击败完美版本的梅·莫里与沃伊德"
 	return "两枚记忆印记已齐 · 返回广场，进入钟楼"

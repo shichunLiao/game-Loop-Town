@@ -103,7 +103,7 @@ STORY={
     '夏令营合照':'美术室的合照',
     '那句话的后半截':'那天真正发生的事',
     '七年前 · 那一夜':'丰收祭 · 那一夜',
-    '我帮你拧发条':'听守钟人的话',
+    '我帮你拧发条':'面对守钟人',
     '摘下帽子':'守钟人留下的帽子',
     '举起武器':'让钟声倒带',
     '最后一趟':'最后一眼',
@@ -230,6 +230,19 @@ def theater_boss_v9(data):
     main['main_theater_seal']['text']='从东街打开剧院侧门，剪断三组红线，再打开后台防火门。击败道具师沃伊德，取回那只完整的布偶。'
 
 
+def keeper_chase_v9(data):
+    """The climb becomes a chase: two perfect versions on the wide floors, the keeper above."""
+    rooms=data['world']['rooms']
+    rooms['clock_tower']['keeper_chase']=dict(interval=40,echoes=[
+        dict(type='morris',label='梅·莫里',flag='echo_morris',pos=[820,3600],arena=[230,1240],hp=560,floor=3600),
+        dict(type='void',label='沃伊德',flag='echo_void',pos=[760,2112],arena=[230,1240],hp=520,floor=2112),
+    ])
+    rooms['clock_top']['keeper_figure']=[1010,1140]
+    main={q['id']:q for q in data['quests']['main']}
+    main['main_warden_note']['text']='两枚印记齐全，回广场启动钟门。沿楼梯追赶守钟人，在中层调查他留下的笔记。'
+    main['main_clock_memory']['text']='击败完美版本的梅·莫里与沃伊德，在顶层触碰丰收祭那一夜的记忆。'
+
+
 def upgrade_v9():
     used=set()
     data={}
@@ -238,6 +251,7 @@ def upgrade_v9():
     data['world']['version']=9
     reorder_v9(data)
     theater_boss_v9(data)
+    keeper_chase_v9(data)
     for name,value in data.items():
         (DATA/(name+'.json')).write_text(json.dumps(value,ensure_ascii=False,indent=2),encoding='utf-8')
     unused=[k for k in STORY if k not in used]

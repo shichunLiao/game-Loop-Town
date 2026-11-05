@@ -7531,7 +7531,42 @@
           "mount": "deck"
         }
       ],
-      "static_vertical_background": true
+      "static_vertical_background": true,
+      "keeper_chase": {
+        "interval": 40,
+        "echoes": [
+          {
+            "type": "morris",
+            "label": "梅·莫里",
+            "flag": "echo_morris",
+            "pos": [
+              820,
+              3600
+            ],
+            "arena": [
+              230,
+              1240
+            ],
+            "hp": 560,
+            "floor": 3600
+          },
+          {
+            "type": "void",
+            "label": "沃伊德",
+            "flag": "echo_void",
+            "pos": [
+              760,
+              2112
+            ],
+            "arena": [
+              230,
+              1240
+            ],
+            "hp": 520,
+            "floor": 2112
+          }
+        ]
+      }
     },
     "clock_top": {
       "id": "clock_top",
@@ -7702,7 +7737,7 @@
             1140
           ],
           "ending": "keeper",
-          "title": "听守钟人的话",
+          "title": "面对守钟人",
           "requires": [
             "clock_memory"
           ],
@@ -7869,7 +7904,11 @@
         }
       ],
       "masonry": 2,
-      "static_vertical_background": false
+      "static_vertical_background": false,
+      "keeper_figure": [
+        1010,
+        1140
+      ]
     },
     "fire_town": {
       "id": "fire_town",

@@ -347,8 +347,13 @@ func _process(delta: float) -> void:
 				distance = candidate
 				nearest = str(block["name"])
 		block_label.text = nearest
-	var boss: Node = get_tree().get_first_node_in_group("exploration_boss")
-	var show_boss: bool = boss != null and not boss.dead and boss.state!="sleep" and controller.mode=="play"
+	# The clock tower can hold a sleeping boss and an awake one at the same time.
+	var boss: Node
+	for candidate: Node in get_tree().get_nodes_in_group("exploration_boss"):
+		if not candidate.dead and candidate.state!="sleep":
+			boss = candidate
+			break
+	var show_boss: bool = boss != null and controller.mode=="play"
 	boss_health.visible = show_boss
 	boss_label.visible = show_boss
 	if show_boss:

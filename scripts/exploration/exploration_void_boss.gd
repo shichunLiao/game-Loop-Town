@@ -23,6 +23,7 @@ var _columns: Array = []
 var _fences: Array[StaticBody2D] = []
 var _phase_invulnerability: float = 0
 var _ending_sent: bool = false
+var echo: bool = false
 
 func _ready() -> void:
 	boss = true
@@ -32,6 +33,13 @@ func _ready() -> void:
 	state = "sleep"
 	super._ready()
 	_create_fences()
+	# The keeper's perfect version skips the opening form and looks too clean.
+	echo = bool(spec.get("echo",false))
+	if echo:
+		phase = 2
+		phase_title = "完美版本"
+		boss_title = str(spec.get("label",boss_title))
+		modulate = Color(.86,.9,1)
 
 func hand_position() -> Vector2:
 	return global_position+Vector2(facing*34,-150)
@@ -88,7 +96,7 @@ func _boss_behavior(player: ExplorationPlayer, offset: Vector2, delta: float) ->
 
 ## Every cut thread and the final frenzy make him quicker.
 func _pace(seconds: float) -> float:
-	return seconds*(1.0-.07*cuts)*(.8 if phase==3 else 1.0)
+	return seconds*(1.0-.07*cuts)*(.8 if phase==3 else 1.0)*(.9 if echo else 1.0)
 
 func _wake() -> void:
 	state = "intro"
@@ -230,15 +238,22 @@ func _die() -> void:
 	state = "death"
 	_clear_hits()
 	_set_fences(false)
-	session.switches["defeated_void"] = true
-	session.acquire("boss_void")
-	session.save()
+	if echo:
+		session.switches[str(spec["id"])] = true
+		session.changed.emit()
+	else:
+		session.switches["defeated_void"] = true
+		session.acquire("boss_void")
+		session.save()
 	get_node("/root/AudioManager").play_bell()
 	var demo: Node = get_tree().get_first_node_in_group("exploration_demo")
 	if demo!=null:
 		demo.player.health = mini(100,demo.player.health+35)
 		demo.screen_shake(.3)
-		_claim_doll(demo)
+		if echo:
+			demo.hud.toast("完美的沃伊德散成了一堆红线")
+		else:
+			_claim_doll(demo)
 	var tween := create_tween()
 	tween.tween_property(self,"modulate:a",0,1.15)
 	tween.tween_callback(queue_free)

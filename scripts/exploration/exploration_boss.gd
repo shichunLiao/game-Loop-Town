@@ -9,6 +9,7 @@ var attack: String = "fan"
 var attack_name: String = ""
 var phase_title: String = "恩师的面孔"
 var boss_title: String = "梅·莫里"
+var echo: bool = false
 var _floor: float = 1140
 var _locked_facing: float = -1
 var _target_x: float = 0
@@ -33,6 +34,13 @@ func _ready() -> void:
 	state = "sleep"
 	super._ready()
 	_create_fences()
+	# The keeper's perfect version skips the opening form and looks too clean.
+	echo = bool(spec.get("echo",false))
+	if echo:
+		phase = 2
+		phase_title = "完美版本"
+		boss_title = str(spec.get("label",boss_title))
+		modulate = Color(.86,.9,1)
 
 func _create_fences() -> void:
 	for x: float in [arena.x,arena.y]:
@@ -251,14 +259,18 @@ func _die() -> void:
 	state = "death"
 	_clear_owned()
 	_set_fences(false)
-	session.switches["defeated_morris"] = true
-	session.acquire("boss_morris")
-	session.save()
+	if echo:
+		session.switches[str(spec["id"])] = true
+		session.changed.emit()
+	else:
+		session.switches["defeated_morris"] = true
+		session.acquire("boss_morris")
+		session.save()
 	var demo: Node = get_tree().get_first_node_in_group("exploration_demo")
 	if demo!=null:
 		demo.player.health = mini(100,demo.player.health+35)
 		demo.screen_shake(.3)
-		demo.hud.toast("梅·莫里消散 · 镜室门锁已松开")
+		demo.hud.toast("完美的梅·莫里碎成了石膏" if echo else "梅·莫里消散 · 镜室门锁已松开")
 	get_node("/root/AudioManager").play_bell()
 	var tween := create_tween()
 	tween.tween_property(visual,"scale:y",visual.scale.y*.3,.7)

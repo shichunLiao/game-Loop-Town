@@ -135,6 +135,17 @@ func _ready() -> void:
 		enemy.spec["id"] = boss_type
 		enemy.session = session
 		actors.add_child(enemy)
+	if data.has("keeper_chase"):
+		var chase := ExplorationKeeperChase.new()
+		chase.spec = data["keeper_chase"]
+		chase.session = session
+		add_child(chase)
+	if data.has("keeper_figure") and not session.has("keeper_truth"):
+		var figure := ExplorationKeeperFigure.new()
+		figure.position = ExplorationCatalog.vec(data["keeper_figure"])
+		figure.session = session
+		figure.leaves_on = "keeper_truth"
+		actors.add_child(figure)
 	var foreground := Node2D.new()
 	foreground.name = "Foreground"
 	foreground.z_index = 30

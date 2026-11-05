@@ -166,6 +166,9 @@ func _die() -> void:
 	tween.tween_property(self,"modulate:a",0,.45)
 	tween.tween_callback(queue_free)
 
+func restore_health(fraction: float) -> void:
+	health = mini(max_health,health+roundi(max_health*fraction))
+
 func _visual_update() -> void:
 	visual.flip_h = facing > 0
 	visual.position.y = -float(data["height"])*.5 + sin(_clock*(8 if absf(velocity.x)>1 else 2))*2
