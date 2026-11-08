@@ -195,7 +195,7 @@ func _start_phase(value: int) -> void:
 func on_thread_cut() -> void:
 	cuts += 1
 	_notice("沃伊德发出尖叫 · 又一块身体变成了布料")
-	get_node("/root/AudioManager").play_sfx("sfx_hurt")
+	get_node("/root/AudioManager").play_sfx("sfx_thread_cut")
 	var demo: Node = get_tree().get_first_node_in_group("exploration_demo")
 	if demo!=null:
 		demo.screen_shake(.18)

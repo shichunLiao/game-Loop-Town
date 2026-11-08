@@ -243,7 +243,7 @@ func on_knot_cut() -> void:
 	timer = EXPOSE_TIME
 	phase_title = BARED
 	_notice("藤结断了 · 泥浆退去，藤蔓松开了她")
-	get_node("/root/AudioManager").play_sfx("sfx_doll_snap")
+	get_node("/root/AudioManager").play_sfx("sfx_vine_lash")
 	_shake(.2)
 
 func _cover() -> void:
@@ -286,7 +286,7 @@ func _release(player: ExplorationPlayer) -> void:
 		player.confused = 2.0
 		dark = 3.2
 		_notice(VOICES[pattern%VOICES.size()])
-		get_node("/root/AudioManager").play_nursery_rhyme(true)
+		get_node("/root/AudioManager").play_sfx("sfx_ling_cry")
 		_shake(.15)
 
 ## Vines come from the walls, the ceiling and the corners, aimed at where Jerry stands now.

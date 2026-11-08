@@ -27,7 +27,7 @@ func _physics_process(delta: float) -> void:
 		hit.rotation = to.angle()
 		hit.lifetime = .2
 		add_child(hit)
-		get_node("/root/AudioManager").play_sfx("sfx_attack_swing")
+		get_node("/root/AudioManager").play_sfx("sfx_vine_lash")
 	if _age>=warning+.42:
 		queue_free()
 	queue_redraw()

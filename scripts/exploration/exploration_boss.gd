@@ -128,7 +128,12 @@ func _select_attack(player: ExplorationPlayer) -> void:
 			_effect(Vector2(x,_floor),"rain",_windup_length+.2+float(i)*.12,.65,78,350)
 
 func _release_attack(player: ExplorationPlayer) -> void:
-	get_node("/root/AudioManager").play_sfx("sfx_attack_swing")
+	if attack=="copies":
+		get_node("/root/AudioManager").play_sfx("sfx_statue_crack")
+	elif attack in ["cleave","rush","fan","slam","rain"]:
+		get_node("/root/AudioManager").play_sfx("sfx_brush_slash")
+	else:
+		get_node("/root/AudioManager").play_sfx("sfx_attack_swing")
 	if attack=="fan":
 		_fan(player,3 if phase==1 else 5 if phase==2 else 7,.19 if phase<3 else .16)
 	elif attack=="cleave":

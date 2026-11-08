@@ -59,6 +59,9 @@ SFX_NAMES: list[str] = [
     "sfx_clock_tick", "sfx_fire_crackle", "sfx_wind",
     "sfx_bell", "sfx_bell_distant", "sfx_nursery_rhyme",
     "sfx_nursery_rhyme_reversed",
+    # Demo 9 story 1.1 replacements (procedural, no external samples)
+    "sfx_ling_cry", "sfx_vine_lash", "sfx_thread_cut",
+    "sfx_brush_slash", "sfx_mud_grab", "sfx_statue_crack",
 ]
 
 MUSIC_NAMES: list[str] = [
@@ -1156,6 +1159,113 @@ def vowel_voice(freq: float, dur: float, name: str) -> np.ndarray:
     return lp_fft(voiced * syll, 4200.0, 2)
 
 
+
+@sfx("sfx_ling_cry")
+def _b() -> np.ndarray:
+    """井底玲的哭喊：失谐童声呜咽，取代倒放童谣占位。"""
+    dur = 2.4
+    n = n_samples(dur)
+    ts = t_axis(n)
+    # 基频在哭喊中上下抽动
+    bend = 220.0 + 70.0 * np.sin(2.0 * np.pi * 1.7 * ts) + 35.0 * np.sin(2.0 * np.pi * 0.45 * ts)
+    phase = np.cumsum(bend) / SR
+    raw = (np.sin(2.0 * np.pi * phase)
+           + 0.55 * np.sin(2.0 * np.pi * phase * 1.997 + 0.4)
+           + 0.28 * np.sin(2.0 * np.pi * phase * 3.02 + 1.1))
+    voiced = formant(raw, [(620.0, 5.0, 1.0), (1450.0, 7.0, 0.55),
+                           (2550.0, 8.0, 0.28), (3400.0, 9.0, 0.12)])
+    sob = 0.55 + 0.45 * np.sin(2.0 * np.pi * 3.4 * ts + 1.2 * np.sin(2.0 * np.pi * 0.7 * ts))
+    breath = hp1(rng("lingcry").standard_normal(n), 1800.0) * 0.18 * sob
+    out = voiced * sob + breath
+    out *= env_points(dur, [(0.0, 0.0), (0.12, 0.85), (0.55, 1.0),
+                            (1.1, 0.55), (1.55, 0.95), (2.05, 0.4), (2.4, 0.0)])
+    out = apply_reverb(out, 0.9, 0.55, 2400.0, 0.28, "lingcry")
+    return lp_fft(out, 5200.0, 2)
+
+
+@sfx("sfx_vine_lash")
+def _b() -> np.ndarray:
+    """带刺藤蔓抽打：破空 + 木质脆响。"""
+    dur = 0.55
+    n = n_samples(dur)
+    src = rng("vinel").standard_normal(n)
+    whoosh = np.zeros(n)
+    for idx in np.array_split(np.arange(n), 10):
+        if idx.size:
+            fc = float(1400.0 + 2200.0 * (float(idx[0]) / max(1, n - 1)))
+            whoosh[idx] = biquad(src[idx], "bp", fc, 1.1)
+    whoosh = hp1(whoosh, 900.0)
+    whoosh *= env_points(dur, [(0.0, 0.0), (0.04, 1.0), (0.28, 0.35), (0.55, 0.0)])
+    crack = hp1(rng("vinec").standard_normal(n), 2400.0) * env_ad(n, 0.0003, 14.0)
+    wood = biquad(rng("vinew").standard_normal(n), "bp", 780.0, 3.0) * env_ad(n, 0.001, 8.0)
+    thorn = grains(n, rng("vinet"), 18.0, 900.0, 4200.0, (0.002, 0.008), (0.25, 0.8), "vine")
+    return whoosh * 0.75 + crack * 0.55 + wood * 0.35 + thorn * 0.4
+
+
+@sfx("sfx_thread_cut")
+def _b() -> np.ndarray:
+    """红线被剪断：紧绷丝线崩断。"""
+    dur = 0.42
+    n = n_samples(dur)
+    ts = t_axis(n)
+    twang_f = 880.0 * (420.0 / 880.0) ** np.clip(ts / 0.25, 0.0, 1.0)
+    twang = np.sin(2.0 * np.pi * np.cumsum(twang_f) / SR)
+    twang += 0.4 * np.sin(2.0 * np.pi * np.cumsum(twang_f * 2.01) / SR)
+    twang *= env_ad(n, 0.0004, 7.0)
+    snap = hp1(rng("thcut").standard_normal(n), 3500.0) * env_ad(n, 0.0002, 18.0)
+    air = biquad(rng("thcuta").standard_normal(n), "bp", 2600.0, 1.4) * env_ad(n, 0.001, 6.0)
+    return twang * 0.7 + snap * 0.85 + air * 0.35
+
+
+@sfx("sfx_brush_slash")
+def _b() -> np.ndarray:
+    """美工刀 / 画笔横扫：锋利破空与干燥刮擦。"""
+    dur = 0.38
+    n = n_samples(dur)
+    src = rng("brush").standard_normal(n)
+    blade = np.zeros(n)
+    for idx in np.array_split(np.arange(n), 8):
+        if idx.size:
+            fc = float(2200.0 + 2800.0 * (float(idx[0]) / max(1, n - 1)))
+            blade[idx] = biquad(src[idx], "bp", fc, 0.9)
+    blade = hp1(blade, 1600.0)
+    blade *= env_points(dur, [(0.0, 0.0), (0.03, 1.0), (0.18, 0.45), (0.38, 0.0)])
+    scrape = biquad(rng("brush2").standard_normal(n), "bp", 4200.0, 2.5) * env_ad(n, 0.0005, 9.0)
+    low = lp1(rng("brush3").standard_normal(n), 280.0) * env_ad(n, 0.002, 7.0) * 0.25
+    return blade * 0.85 + scrape * 0.45 + low
+
+
+@sfx("sfx_mud_grab")
+def _b() -> np.ndarray:
+    """泥手自泥面抓出：湿黏吸吮与低沉拍击。"""
+    dur = 0.7
+    n = n_samples(dur)
+    wet = lp1(rng("mudg").standard_normal(n), 420.0)
+    wet = biquad(wet, "bp", 180.0, 0.7) * env_points(
+        dur, [(0.0, 0.0), (0.08, 0.7), (0.28, 1.0), (0.55, 0.4), (0.7, 0.0)])
+    suck = hp1(rng("muds").standard_normal(n), 700.0)
+    suck *= (0.5 + 0.5 * np.sin(2.0 * np.pi * 9.0 * t_axis(n)))
+    suck *= env_points(dur, [(0.0, 0.0), (0.12, 0.5), (0.35, 1.0), (0.7, 0.0)])
+    thud_hit = thud(0.28, 90.0, 40.0, 0.05, 0.55, 350.0, "mudth")
+    out = np.zeros(n)
+    put(out, wet * 0.9 + suck * 0.45, 0, wrap=False)
+    put(out, thud_hit * 0.7, n_samples(0.12), wrap=False)
+    return out
+
+
+@sfx("sfx_statue_crack")
+def _b() -> np.ndarray:
+    """石膏 / 雕像替身开裂（美术馆题材，非熔蜡）。"""
+    dur = 0.55
+    n = n_samples(dur)
+    click = rng("statc").standard_normal(n) * env_ad(n, 0.0002, 16.0)
+    click = hp1(click, 1800.0)
+    body = biquad(rng("statb").standard_normal(n), "bp", 980.0, 1.6) * env_ad(n, 0.001, 7.0)
+    crk = grains(n, rng("statg"), 36.0, 500.0, 3200.0, (0.002, 0.01), (0.2, 0.85), "statue")
+    dust = lp1(rng("statd").standard_normal(n), 500.0) * env_ad(n, 0.01, 4.0) * 0.35
+    return click * 0.85 + body * 0.7 + crk * 0.8 + dust
+
+
 def build_nursery_rhyme() -> np.ndarray:
     dur = 6.6
     n = n_samples(dur)
@@ -1264,18 +1374,19 @@ def _m() -> np.ndarray:
 
 @music("mus_wax")
 def _m() -> np.ndarray:
+    """Demo 9：美术馆区域仍走 Wax 音轨键，但音色改为冷灰画廊 pad（无熔蜡滴答）。"""
     dur = MUSIC_LEN
     n = n_samples(dur)
-    out = pad_chord([73.42, 87.31, 110.0, 146.83], dur, -9.0, "mwax")
-    out *= 0.9 + 0.1 * np.sin(2.0 * np.pi * snap_hz(0.25) * t_axis(n))
-    r = rng("mwaxd")
-    drips = np.zeros(n)
-    for start in (3.2, 7.7, 12.4, 16.9, 21.3):
-        d = drum_pickup(0.4, 900.0, 300.0, 0.05, 0.01, 0.2, "mdrip%d" % int(start * 10))
-        put(drips, d * float(r.uniform(0.3, 0.5)), n_samples(start))
-        put(drips, d * 0.25, n_samples(start + 0.18))
-    hum = lp1c(noise_at("mwaxh", dur), 260.0) * 0.08
-    return out * 0.7 + drips * 0.5 + hum
+    ts = t_axis(n)
+    out = pad_chord([65.41, 98.0, 130.81, 196.0], dur, -7.0, "mgallery")
+    out += drone([49.0, 73.42], dur, "mgalleryd", 0.2) * 0.35
+    # 远处空厅回声感：稀疏、干净的叮击，像金属画框轻碰
+    for i, start in enumerate((4.0, 9.5, 15.0, 20.5)):
+        put_tail(out, bell_hit(392.0 if i % 2 == 0 else 293.66, 2.8, 0.03, "mgalb%d" % i),
+                 n_samples(start), 2.8)
+    air = lp1c(noise_at("mgalha", dur), 240.0) * 0.05
+    air *= 0.7 + 0.3 * np.sin(2.0 * np.pi * snap_hz(0.07) * ts)
+    return out * 0.75 + air
 
 
 @music("mus_theater")
@@ -1505,15 +1616,16 @@ def _a() -> np.ndarray:
 
 @amb("amb_wax")
 def _a() -> np.ndarray:
+    """Demo 9：美术馆空厅环境声（仍挂 Wax 区域键）。"""
     dur = AMBIENT_LEN
     n = n_samples(dur)
-    hum = add_harmonics(55.0, dur, 8, 1.4) * 0.06
-    hum *= 0.7 + 0.3 * np.sin(2.0 * np.pi * snap_hz(0.15) * t_axis(n))
-    bed = amb_bed(dur, "wax", 0.55, 300.0, ((0.11, 0.3),), 520.0, 0.3)
+    hum = add_harmonics(49.0, dur, 6, 1.6) * 0.045
+    hum *= 0.75 + 0.25 * np.sin(2.0 * np.pi * snap_hz(0.09) * t_axis(n))
+    bed = amb_bed(dur, "gallery", 0.5, 260.0, ((0.08, 0.25),), 480.0, 0.28)
     ev = np.zeros(n)
-    amb_events(ev, dur, "wax", "drip", (3.1, 6.2, 9.7, 14.4, 17.8), 0.5)
-    amb_events(ev, dur, "wax", "grain", (1.4, 5.0, 8.2, 12.1, 16.0, 19.0), 0.4)
-    return lp_fft(hum + bed + ev, 3000.0, 2)
+    amb_events(ev, dur, "gallery", "creak", (2.8, 7.5, 13.2, 18.0), 0.28)
+    amb_events(ev, dur, "gallery", "grain", (4.4, 10.1, 15.6), 0.22)
+    return lp_fft(hum + bed + ev, 2800.0, 2)
 
 
 @amb("amb_theater")
@@ -1664,6 +1776,8 @@ def known_duration(name: str, group: str) -> float:
         "sfx_ghost_whisper": 1.5, "sfx_boss_roar": 1.55,
         "sfx_nursery_rhyme": 6.6, "sfx_nursery_rhyme_reversed": 6.6,
         "sfx_bell": 4.2, "sfx_bell_distant": 4.4,
+        "sfx_ling_cry": 2.4, "sfx_vine_lash": 0.55, "sfx_thread_cut": 0.42,
+        "sfx_brush_slash": 0.38, "sfx_mud_grab": 0.7, "sfx_statue_crack": 0.55,
     }.get(name, 1.0)
 
 

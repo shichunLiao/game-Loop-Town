@@ -48,7 +48,7 @@
 ## 尚未处理
 
 - 美术馆两套中景已在 follow-up item 1 替换，见下。其他建筑与 props 尚保留。
-- 丰收祭之夜远景已在 follow-up item 2 替换，fire 中景保留；井口、警戒线、藤蔓、红线與地上手印已於 follow-up item 3 替換；音效未换。
+- 丰收祭之夜远景已在 follow-up item 2 替换，fire 中景保留；井口、警戒线、藤蔓、红线與地上手印已於 follow-up item 3 替換；音效已於 follow-up item 4 更新（玲哭喊／藤鞭／剪線／畫筆掃／泥手／雕像裂，Wax 音軌改畫廊音色）。
 - 梅·莫里的撕碎与雕塑化结局、入画后的画作化、可推倒掩体，钟楼瓦解演出、刑警登场等剧情机制仍未实现（见 README-V9「尚未改动」）。
 - 未重新导出 Windows 包；未手动完整通关。
 
@@ -82,3 +82,19 @@
 驗證：指定 Godot binary 實際回報 4.5.1；headless import 與 `tools/dev/validate_v9_item3.gd` 檢查五張透明貼圖、兩個 AtlasTexture 與 dry_well／well_interior／old_theater 實例，共 15 通過、0 失敗。日誌 `/private/tmp/demo9-item3-import.log`、`/private/tmp/demo9-item3-validation.log`。環境有 macOS CA 憑證與不可寫 editor settings 訊息；本輪跳過視窗模式／遊戲截圖，不代表完整手玩驗證。
 
 驗證退出時仍有 ObjectDB／resource-in-use cleanup 警告（檢查本身 15/0，exit 0）。本輪 git add 被 sandbox 拒絕建立 `.git/index.lock`（Operation not permitted），因此無法 commit；改動保留於工作樹，交由 Mac Shell 提交。
+
+## Follow-up item 4 — 音效（2026-11-08）
+
+僅處理 item 4。以專案內 `tools/generate_audio.py` 程序化合成（numpy + wave，無外部採樣、無版權素材）新增並接線 Demo 9 音效：
+
+- `sfx_ling_cry`：玲聲音干擾哭喊（取代戰鬥中倒放童謠占位）
+- `sfx_vine_lash`：藤蔓抽打／藤結斷開
+- `sfx_thread_cut`：沃伊德紅線剪斷
+- `sfx_brush_slash`：梅·莫里美工刀／畫筆攻擊
+- `sfx_mud_grab`：泥手抓住脚踝
+- `sfx_statue_crack`：雕像替身開裂
+
+同時重合成 `mus_wax`／`amb_wax`（仍掛 Wax 區域鍵）為冷灰畫廊 pad／空廳環境，去掉熔蠟滴答。修正 `AudioManager.play_nursery_rhyme` 正確載入 `sfx_nursery_rhyme[_reversed]`；戰鬥改走 `ling_cry`。舊通用 SFX（跳躍、受擊、鐘聲等）與童謠檔保留備回憶段落。
+
+驗證：`python3 tools/generate_audio.py` RESULT ALL PASS（57 檔）；Godot headless `validate_v9_item4.gd`。未開始 items 5–6，未 push／未匯出 Windows。
+

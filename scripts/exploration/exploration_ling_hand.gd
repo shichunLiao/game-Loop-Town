@@ -23,6 +23,7 @@ func _physics_process(delta: float) -> void:
 	if _age>=warning and not _closed:
 		_closed = true
 		_holding = boss.try_grab(position.x)
+		get_node("/root/AudioManager").play_sfx("sfx_mud_grab")
 	if not _holding and _age>=warning+.45:
 		queue_free()
 	queue_redraw()
