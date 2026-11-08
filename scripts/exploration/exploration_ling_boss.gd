@@ -411,42 +411,15 @@ func _draw() -> void:
 	_draw_body()
 	draw_set_transform(Vector2.ZERO)
 
-## Placeholder art: a mud giant with Ling's twin tails, white shirt and blue skirt, and no face.
+## The mud giant with Ling's twin tails, white shirt and blue skirt, and no face (Codex art, Demo 9).
+const BODY_WIDTH: float = 720
 func _draw_body() -> void:
 	var sway: float = sin(_clock*1.3)
-	# Skirt, shirt.
-	draw_colored_polygon(PackedVector2Array([Vector2(-118,-270),Vector2(118,-270),Vector2(215,-60),Vector2(-215,-60)]),Color("37506e"))
-	for i: int in range(5):
-		var x: float = -150+i*75
-		draw_line(Vector2(x*.55,-268),Vector2(x,-64),Color("223349"),4,true)
-	draw_colored_polygon(PackedVector2Array([Vector2(-132,-425),Vector2(132,-425),Vector2(112,-270),Vector2(-112,-270)]),Color("d8d1bf"))
-	draw_colored_polygon(PackedVector2Array([Vector2(-46,-425),Vector2(46,-425),Vector2(0,-378)]),Color("e0d9c6"))
-	for i: int in range(6):
-		var drip: float = -116+i*46
-		draw_line(Vector2(drip,-425+i%3*30),Vector2(drip+6,-300+sin(i*1.7)*30),Color("3a2c1c",.55),10,true)
-	# Arms of mud and vine.
-	for side: float in [-1.0,1.0]:
-		var elbow := Vector2(side*(205+sway*6),-235)
-		var hand := Vector2(side*(262+sway*10),-40)
-		draw_line(Vector2(side*125,-410),elbow,Color("2b2116"),46,true)
-		draw_line(elbow,hand,Color("2b2116"),40,true)
-		for f: int in range(5):
-			draw_line(hand,hand+Vector2.from_angle(PI*.5+(f-2)*.34)*-34*Vector2(side,1),Color("2b2116"),9,true)
-	# Head with twin tails; the face is only a smear.
 	var head := Vector2(0,-500)
-	for side: float in [-1.0,1.0]:
-		var tail := PackedVector2Array()
-		for i: int in range(8):
-			tail.append(head+Vector2(side*(70+i*7+sin(_clock*1.3+i*.5)*7*i*.3),-30+i*34))
-		draw_polyline(tail,Color("20150f"),30-0.0,true)
-		draw_circle(head+Vector2(side*70,-30),17,Color("6b2f2f"))
-	draw_circle(head,80,Color("a99a85"))
-	draw_arc(head,62,PI*.98,TAU*1.01,28,Color("20150f"),38,true)
-	for i: int in range(7):
-		var y: float = -22+i*10
-		draw_line(head+Vector2(-54+sin(_clock+i)*8,y),head+Vector2(54+cos(_clock*.8+i)*8,y+sin(i*1.3)*6),Color("6f6253",.6),9,true)
-	# The mass she rises out of.
-	draw_colored_polygon(PackedVector2Array([Vector2(-340,4),Vector2(-300,-70),Vector2(-210,-120),Vector2(-90,-84),Vector2(30,-112),Vector2(170,-92),Vector2(290,-130),Vector2(340,4)]),Color("2b2116"))
+	var body: Texture2D = ExplorationArt.sprite("ling_giant")
+	if body!=null:
+		var size := Vector2(BODY_WIDTH,BODY_WIDTH*body.get_height()/body.get_width())
+		draw_texture_rect(body,Rect2(Vector2(-size.x*.5+sway*5,-size.y+14),size),false)
 	# Vines bind the body until a knot is cut.
 	if _wrap>.01:
 		var band_color := Color("2f4a33",_wrap)

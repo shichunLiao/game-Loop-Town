@@ -35,8 +35,10 @@ func _draw() -> void:
 		draw_arc(Vector2(0,-2),10+progress*26,PI,TAU,18,Color("d8394a"),2,true)
 		return
 	var rise: float = 1.0 if _holding else sin(clampf((_age-warning)/.45,0,1)*PI)
-	var wrist := Vector2(0,-74*rise)
-	draw_line(Vector2.ZERO,wrist,mud,17,true)
-	for i: int in range(5):
-		var finger := Vector2.from_angle(-PI*.5+(i-2)*.34)
-		draw_line(wrist,wrist+finger*28*rise,mud,6,true)
+	# A mud hand out of the mud (Codex art, Demo 9), rising and sinking back.
+	var hand: Texture2D = ExplorationArt.sprite("ling_hand")
+	if hand!=null and rise>.02:
+		var height: float = 96*rise
+		var width: float = 96*hand.get_width()/hand.get_height()
+		draw_texture_rect(hand,Rect2(Vector2(-width*.5,-height),Vector2(width,height)),false)
+	draw_line(Vector2(-24,0),Vector2(24,0),mud,6,true)

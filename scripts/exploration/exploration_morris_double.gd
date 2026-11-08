@@ -1,6 +1,6 @@
 class_name ExplorationMorrisDouble
 extends ExplorationEnemy
-## A solid-looking false Morris, with a cold eye and a brittle wax shell.
+## A statue double of May Morley: his shape, all in white plaster, stiff and slow (art: may_statue).
 
 var summoner: Node2D
 
@@ -11,15 +11,12 @@ func _ready() -> void:
 	data["damage"] = 10
 	data["speed"] = 80
 	data["range"] = 115
-	visual.texture = ExplorationArt.sprite("morris")
-	var cold := ShaderMaterial.new()
-	cold.shader = load("res://assets/environments/exploration/actors/morris_false.gdshader") as Shader
-	visual.material = cold
+	visual.texture = ExplorationArt.sprite("may_statue")
 	visual.scale = Vector2.ONE*180/visual.texture.get_height()
 	visual.position.y = -90
 	max_health = 1
 	health = 1
-	modulate = Color(.57,.66,.64,1)
+	modulate = Color(.92,.94,.95,1)
 	add_to_group("morris_owned")
 	set_meta("boss_id",summoner.get_instance_id())
 

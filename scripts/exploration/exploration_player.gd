@@ -47,6 +47,9 @@ var confused: float = 0.0
 ## Whose body the player's hands are on.
 var body_height: float = 105.0
 var unarmed: bool = false
+var _worn_rest: Texture2D
+var _worn_attack: Texture2D
+var _worn_faces_left: bool = false
 
 func _ready() -> void:
 	_last_ground_y = position.y
@@ -143,7 +146,8 @@ func _physics_process(delta: float) -> void:
 		state = "dash"
 		_invulnerability = maxf(_invulnerability,.05)
 	move_and_slide()
-	visual.flip_h = facing < 0
+	_worn_pose()
+	visual.flip_h = (facing < 0) != _worn_faces_left
 	visual.rotation = clampf(velocity.x/6000,-.07,.07) if is_on_floor() else -.06*facing
 	visual.position.y = -body_height*.5 + (sin(_clock*17)*2 if state == "run" else sin(_clock*2)*.7)
 	visual.scale.y = (body_height/visual.texture.get_height()) * (1.0+sin(_clock*17)*.025 if state=="run" else 1.0)
@@ -152,10 +156,10 @@ func _physics_process(delta: float) -> void:
 	if attack_phase!="ready":
 		var pose: float = -0.18 if attack_phase=="windup" else .22 if attack_phase=="active" else .09
 		visual.rotation += pose*facing*(-1 if combo==2 else 1)
-		visual.position.x = (-5 if attack_phase=="windup" else 8)*facing
+		visual.position.x = (-5 if attack_phase=="windup" else 8)*facing+_worn_shift()
 		visual.scale.y *= .94 if attack_phase=="windup" else 1.035
 	else:
-		visual.position.x = move_toward(visual.position.x,0,delta*90)
+		visual.position.x = move_toward(visual.position.x,_worn_shift(),delta*90)
 	if not on_floor_before and is_on_floor():
 		landed.emit()
 		get_node("/root/AudioManager").play_sfx("sfx_land")
@@ -277,12 +281,31 @@ func _hindrance() -> float:
 	return (1.0-.06*mini(cloth,6))*(.45 if entangled > 0.0 else 1.0)*(1.0-.7*mired)
 
 ## Story 1.1: at the well the player's hands are on someone else's body.
-func wear(atlas: String, height: float, cell: int = -1) -> void:
+## attack_pose is shown while a blow is out; faces_left marks art drawn facing left.
+func wear(atlas: String, height: float, cell: int = -1, attack_pose: String = "", faces_left: bool = false) -> void:
 	visual.texture = ExplorationArt.sprite(atlas,cell)
 	visual.scale = Vector2.ONE*height/visual.texture.get_height()
 	body_height = height
 	unarmed = atlas != "hero"
 	weapon.visible = not unarmed
+	_worn_rest = visual.texture
+	_worn_attack = ExplorationArt.sprite(attack_pose) if not attack_pose.is_empty() else null
+	_worn_faces_left = faces_left
+
+## A worn left-facing body (Fury) keeps its feet over the player's collision box.
+func _worn_shift() -> float:
+	if not _worn_faces_left or visual.texture==null:
+		return 0.0
+	var id: String = visual.texture.resource_path.get_file().get_basename()
+	return ExplorationArt.foot_shift(id,visual.texture,visual.scale.x,visual.flip_h)
+
+func _worn_pose() -> void:
+	if _worn_attack==null:
+		return
+	var texture: Texture2D = _worn_attack if attack_phase in ["windup","active"] else _worn_rest
+	if visual.texture!=texture:
+		visual.texture = texture
+		visual.scale.x = body_height/texture.get_height()
 
 func _spawn_swing() -> void:
 	var hit := ExplorationHitArea.new()

@@ -6,6 +6,7 @@ static var _textures: Dictionary = {}
 static var _actors: Dictionary = {}
 static var _regions: Dictionary = {}
 static var _anchors: Dictionary = {}
+static var _feet: Dictionary = {}
 
 static func foot_gap(id: String,cell: int = -1) -> float:
 	if _anchors.is_empty() and FileAccess.file_exists("res://data/exploration/art-anchors.json"):
@@ -54,3 +55,34 @@ static func visual(host: Node2D, id: String, height: float, cell: int = -1) -> S
 	visual.material = material
 	host.add_child(visual)
 	return visual
+
+## Where the feet stand across a sprite, 0..1 from the left edge: the mean x of opaque pixels
+## in the bottom rows. Wide poses (a whip, a brush, a lunge) are not centred on the body.
+static func foot_center(id: String) -> float:
+	if _feet.has(id):
+		return _feet[id]
+	var result: float = .5
+	var texture: Texture2D = sprite(id)
+	if texture!=null and not texture is AtlasTexture:
+		var image: Image = texture.get_image()
+		if image!=null:
+			if image.is_compressed():
+				image.decompress()
+			var total: float = 0
+			var count: int = 0
+			var w: int = image.get_width()
+			var h: int = image.get_height()
+			for y: int in range(int(h*.93),h,3):
+				for x: int in range(0,w,4):
+					if image.get_pixel(x,y).a>.5:
+						total += x
+						count += 1
+			if count>0:
+				result = total/count/w
+	_feet[id] = result
+	return result
+
+## Local x for a sprite drawn left-facing (flipped when facing right) so its feet sit on the origin.
+static func foot_shift(id: String, texture: Texture2D, scale_x: float, flipped: bool) -> float:
+	var shift: float = (.5-foot_center(id))*texture.get_width()*scale_x
+	return -shift if flipped else shift

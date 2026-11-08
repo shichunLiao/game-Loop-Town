@@ -109,8 +109,7 @@
     "puppet": {
       "id": "puppet",
       "name": "断线木偶",
-      "atlas": "enemies_a",
-      "cell": 2,
+      "atlas": "void_puppet",
       "hp": 45,
       "speed": 105,
       "damage": 13,

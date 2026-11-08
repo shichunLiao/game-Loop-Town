@@ -20,19 +20,18 @@ var _down: bool = false
 
 func _ready() -> void:
 	boss = true
-	data = {"hp":100,"height":118,"damage":14,"atlas":"npcs_b","cell":3,"speed":0,"behavior":"boss"}
+	data = {"hp":100,"height":118,"damage":14,"atlas":"fury_idle","speed":0,"behavior":"boss"}
 	state = "sleep"
 	super._ready()
 	z_index = 4
 	facing = 1
-	visual.self_modulate = Color(.7,.55,.55)
 
 ## Story 1.1: "the picture ripples a little" when he appears.
 func _process(delta: float) -> void:
 	if glitch<=0:
 		return
 	glitch -= delta
-	visual.position.x = randf_range(-7,7) if glitch>0 else 0.0
+	visual.position.x += randf_range(-7,7) if glitch>0 else 0.0
 	visual.modulate.a = randf_range(.45,1) if glitch>0 else 1.0
 
 func begin_lunges() -> void:
@@ -44,7 +43,6 @@ func become_jerry(blood: int) -> void:
 	data["height"] = 105
 	visual.texture = ExplorationArt.sprite("hero")
 	visual.scale = Vector2.ONE*105.0/visual.texture.get_height()
-	visual.self_modulate = Color.WHITE
 	max_health = 100
 	health = blood
 	state = "hurt"
@@ -121,9 +119,18 @@ func drop_in(point: Vector2) -> void:
 	tween.tween_property(self,"global_position",point+Vector2(0,70),.34)
 	tween.parallel().tween_property(visual,"modulate:a",0.0,.34)
 
+## Fury's art (Codex, Demo 9) faces left; Jerry's hero sprite faces right.
 func _visual_update() -> void:
-	visual.flip_h = facing<0
+	if not victim:
+		var pose: String = "fury_lunge" if _step=="lunge" else "fury_idle"
+		var texture: Texture2D = ExplorationArt.sprite(pose)
+		if visual.texture!=texture:
+			visual.texture = texture
+			visual.scale = Vector2.ONE*float(data["height"])/texture.get_height()
+	visual.flip_h = facing<0 if victim else facing>0
 	visual.position.y = -float(data["height"])*.5
+	if not victim:
+		visual.position.x = ExplorationArt.foot_shift("fury_lunge" if _step=="lunge" else "fury_idle",visual.texture,visual.scale.x,visual.flip_h)
 	visual.modulate = Color(3,2,1) if _flash>0 else Color(1.5,.7,.6) if _step=="windup" else Color.WHITE
 	queue_redraw()
 

@@ -27,7 +27,7 @@ var echo: bool = false
 
 func _ready() -> void:
 	boss = true
-	data = {"hp":int(spec.get("hp",760)),"height":210,"damage":12,"atlas":"npcs_b","cell":1,"speed":0,"behavior":"boss"}
+	data = {"hp":int(spec.get("hp",760)),"height":210,"damage":12,"atlas":"void_idle","speed":0,"behavior":"boss"}
 	arena = ExplorationCatalog.vec(spec.get("arena",[960,2120]))
 	floor_y = float(spec.get("floor",spec["pos"][1]))
 	state = "sleep"
@@ -281,9 +281,27 @@ func _notice(text: String) -> void:
 	if demo!=null:
 		demo.hud.toast(text)
 
+## On-screen height of each pose (art by Codex, Demo 9). Raised arms stand taller.
+const POSE_HEIGHT := {"void_idle":210.0,"void_command":238.0,"void_lash":200.0,"void_frenzy":222.0}
+var _pose_key: String = ""
+
+func _pose_name() -> String:
+	if state in ["windup","active"]:
+		if attack=="lash":
+			return "void_lash"
+		if attack=="rain":
+			return "void_frenzy"
+		return "void_command"
+	return "void_frenzy" if phase==3 else "void_idle"
+
 func _visual_update() -> void:
-	visual.flip_h = facing<0
-	visual.position.y = -105+sin(_clock*1.6)*4
+	var key: String = _pose_name()
+	if key!=_pose_key:
+		_pose_key = key
+		visual.texture = ExplorationArt.sprite(key)
+		visual.scale = Vector2.ONE*float(POSE_HEIGHT[key])/visual.texture.get_height()
+	visual.flip_h = facing>0
+	visual.position = Vector2(ExplorationArt.foot_shift(key,visual.texture,visual.scale.x,visual.flip_h),-float(POSE_HEIGHT[key])*.5+sin(_clock*1.6)*4)
 	visual.modulate = Color(2,1.4,1.4) if _flash>0 else Color(1.25,.78,.78) if state=="windup" else Color.WHITE.lerp(Color("e6c1b1"),cuts*.15)
 	queue_redraw()
 
@@ -297,7 +315,7 @@ func _draw() -> void:
 			var knot: Vector2 = puppet.thread.global_position-global_position
 			draw_line(hand,knot,Color(red,.85),2,true)
 			draw_line(knot,puppet.global_position+Vector2(0,-70)-global_position,Color(red,.85),2,true)
-	# Placeholder art: stitched cloth patches spread down his right side as threads are cut.
+	# Stitched cloth patches spread down his right side as threads are cut (overlay on the sprite).
 	for i: int in range(cuts):
 		var patch := Vector2(-facing*(10+i*6),-178+i*34)
 		draw_rect(Rect2(patch-Vector2(11,12),Vector2(22,24)),Color("cdb39a",.88))

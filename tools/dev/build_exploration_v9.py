@@ -280,6 +280,13 @@ def well_ending_v9(data):
             room='well_interior',pos=[1320,2840]))
 
 
+def art_v9(data):
+    """Demo 9: Codex drew the story 1.1 cast; the theater's seat puppets use their own sprite."""
+    puppet=data['actors']['enemies']['puppet']
+    puppet['atlas']='void_puppet'
+    puppet.pop('cell',None)
+
+
 def upgrade_v9():
     used=set()
     data={}
@@ -290,6 +297,7 @@ def upgrade_v9():
     theater_boss_v9(data)
     keeper_chase_v9(data)
     well_ending_v9(data)
+    art_v9(data)
     for name,value in data.items():
         (DATA/(name+'.json')).write_text(json.dumps(value,ensure_ascii=False,indent=2),encoding='utf-8')
     unused=[k for k in STORY if k not in used]

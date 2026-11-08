@@ -1,6 +1,7 @@
 class_name ExplorationBoss
 extends ExplorationEnemy
-## Morris: three forms, directional anticipation, committed attacks, recovery windows.
+## May Morley: three forms, directional anticipation, committed attacks, recovery windows.
+## Art (Codex, Demo 9): may_idle / may_windup / may_slash / may_summon / may_brush / may_brush_strike.
 
 var phase: int = 1
 var pattern: int = 0
@@ -28,7 +29,7 @@ var _rush_hit: ExplorationHitArea
 
 func _ready() -> void:
 	boss = true
-	data = {"hp":int(spec.get("hp",840)),"height":235,"damage":20,"atlas":"morris","speed":55,"behavior":"boss"}
+	data = {"hp":int(spec.get("hp",840)),"height":235,"damage":20,"atlas":"may_idle","speed":55,"behavior":"boss"}
 	arena = ExplorationCatalog.vec(spec.get("arena",[2350,3780]))
 	_floor = float(spec.get("floor",spec["pos"][1]))
 	state = "sleep"
@@ -282,34 +283,42 @@ func _notice(text: String) -> void:
 	if demo!=null:
 		demo.hud.toast(text)
 
-func _pose(atlas_name: String, cell: int) -> Texture2D:
-	var key: String = atlas_name+str(cell)
-	if not _pose_cache.has(key):
-		_pose_cache[key] = ExplorationArt.sprite(atlas_name,cell)
-	return _pose_cache[key]
+## On-screen height of each pose. Raised arms and the frenzy form stand taller than the idle teacher.
+const POSE_HEIGHT := {"may_idle":235.0,"may_windup":262.0,"may_slash":228.0,"may_summon":250.0,"may_brush":245.0,"may_brush_strike":232.0}
+
+func _pose(pose: String) -> Texture2D:
+	if not _pose_cache.has(pose):
+		_pose_cache[pose] = ExplorationArt.sprite(pose)
+	return _pose_cache[pose]
+
+## Phase 1 is the teacher with the box cutter, phase 2 adds the statue doubles,
+## phase 3 swaps the cutter for the brush that cuts into the painting.
+func _pose_name() -> String:
+	var attacking: bool = state in ["active","windup"]
+	if state=="sleep" or not attacking:
+		return "may_brush" if phase==3 else "may_idle"
+	if attack=="copies":
+		return "may_brush" if phase==3 else "may_summon"
+	if phase==3:
+		return "may_brush" if state=="windup" else "may_brush_strike"
+	if state=="windup":
+		return "may_windup"
+	return "may_summon" if attack=="rain" else "may_slash"
 
 func _visual_update() -> void:
-	var attacking: bool = state in ["active","windup"]
-	var atlas_name: String = "morris_actions_v2"
-	var cell: int = 0 if state=="windup" else 1 if attack in ["cleave","rush"] else 3 if attack=="slam" else 2
-	if phase>=2:
-		atlas_name = "morris_forms_v2"
-		cell = (0 if phase==2 else 2)+(1 if state=="active" else 0)
-	var idle: bool = state=="sleep" or (phase==1 and not attacking)
-	var key: String = "morris" if idle else atlas_name+str(cell)
+	var key: String = _pose_name()
 	if key!=_pose_key:
 		_pose_key = key
-		visual.texture = ExplorationArt.sprite("morris") if idle else _pose(atlas_name,cell)
-		var reference: Texture2D = ExplorationArt.sprite("morris") if idle else _pose(atlas_name,2 if phase==1 or phase==3 else 0)
-		_base_scale = Vector2.ONE*235.0/reference.get_height()
+		visual.texture = _pose(key)
+		_base_scale = Vector2.ONE*float(POSE_HEIGHT.get(key,235.0))/visual.texture.get_height()
 	visual.flip_h = facing>0
-	visual.position = Vector2(0,-visual.texture.get_height()*_base_scale.y*.5)
+	visual.position = Vector2(ExplorationArt.foot_shift(_pose_key,visual.texture,_base_scale.x,visual.flip_h),-visual.texture.get_height()*_base_scale.y*.5)
 	var lean: float = -.1 if state=="windup" else .13 if state=="active" else 0
 	visual.rotation = lean*facing+sin(_clock*2)*.015
 	visual.scale = _base_scale*Vector2(1.06,.96) if state=="windup" else _base_scale
 	visual.modulate = Color(2,1.5,1) if _flash>0 else Color(1.15,.92,.8) if phase==3 else Color.WHITE
 	if state=="phase_break":
-		visual.position.x = sin(_clock*60)*3
+		visual.position.x += sin(_clock*60)*3
 	queue_redraw()
 
 func _draw() -> void:

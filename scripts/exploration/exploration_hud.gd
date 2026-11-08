@@ -287,20 +287,32 @@ func show_cast() -> void:
 		for i: int in range(groups[row].size()):
 			var actor: Dictionary = groups[row][i]
 			var portrait := Sprite2D.new()
-			portrait.texture = ExplorationArt.sprite(str(actor["atlas"]),int(actor["cell"]))
+			portrait.texture = ExplorationArt.sprite(str(actor["atlas"]),int(actor.get("cell",-1)))
 			portrait.position = Vector2(113+i*148,194+row*229)
 			portrait.scale = Vector2.ONE*minf(130.0/portrait.texture.get_width(),150.0/portrait.texture.get_height())
 			overlay.add_child(portrait)
 			var text := label(overlay,Vector2(42+i*148,276+row*229),Vector2(142,30),str(actor["name"]),15,Color("e2d3b6"))
 			text.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
-	for i: int in range(2):
+	# Story 1.1 cast (Demo 9 art by Codex): Jerry and the five selves he meets.
+	var cast: Array = [
+		["hero","杰利\n调色刀 / 美工刀"],
+		["may_idle","梅·莫里\n美工刀 / 雕像替身"],
+		["void_idle","沃伊德\n红线 / 人偶"],
+		["keeper_hidden","守钟人\n发条 / 倒带"],
+		["fury_idle","弗瑞\n井边的拳头"],
+		["ling_crouch","玲\n井底的她"],
+	]
+	for i: int in range(cast.size()):
 		var portrait := Sprite2D.new()
-		portrait.texture = ExplorationArt.sprite("hero" if i==0 else "morris")
-		portrait.position = Vector2(110+i*300,624)
-		portrait.scale = Vector2.ONE*minf(100.0/portrait.texture.get_width(),130.0/portrait.texture.get_height())
+		portrait.texture = ExplorationArt.sprite(str(cast[i][0]))
+		if portrait.texture==null:
+			continue
+		portrait.position = Vector2(110+i*212,612)
+		portrait.scale = Vector2.ONE*minf(100.0/portrait.texture.get_width(),112.0/portrait.texture.get_height())
 		overlay.add_child(portrait)
-		label(overlay,Vector2(170+i*300,585),Vector2(180,70),"杰利\n调色刀 / 美工刀" if i==0 else "梅·莫里\n美工刀 / 画笔 / 雕像替身",16,Color("d5c5ab"))
-	label(overlay,Vector2(700,584),Vector2(510,80),"他们在重复某个动作，等待一句迟来的回答。\n\n路灯会记住你走过的地方。",17,Color("9fb7b4"))
+		var text := label(overlay,Vector2(20+i*212,668),Vector2(180,44),str(cast[i][1]),13,Color("d5c5ab"))
+		text.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+	label(overlay,Vector2(560,30),Vector2(540,30),"他们在重复某个动作，等待一句迟来的回答。",15,Color("9fb7b4"))
 
 func _process(delta: float) -> void:
 	_toast_time = maxf(0.0,_toast_time-delta)

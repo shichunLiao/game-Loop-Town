@@ -3,7 +3,7 @@
 最新的 Demo 8 已接入 F5。直接运行 `dist/LoopTownDemo-v8/LoopTownDemo.exe` 也可游玩。
 本版移除街道前的石柱挑战台，修正庭院图集裁切和中景落地锚点；街区支路由落地侧门进入，房屋高处通路依附实际屋檐与木楼梯。
 详见 [Demo 8 说明](docs/exploration-demo/README-V8.md)；原故事入口保留为 `scenes/ui/TitleScreen.tscn`。
-剧情文字与主线顺序已按《剧情 1.1》调整（美术馆 → 剧院 → 钟楼 → 枯井），并新增沃伊德、守钟人追逐、弗瑞与玲；其余玩法沿用 Demo 8，详见 [剧情 1.1 版说明](docs/exploration-demo/README-V9.md)。
+**当前为 Demo 9（world 版本 9），剧情以《剧情 1.1》为准**（`docs/story-1.1.txt`）：主线为美术馆 → 剧院 → 钟楼 → 枯井，新增沃伊德、守钟人追逐、弗瑞与玲；五位剧情角色与美术馆区域背景由 Codex 重新绘制。详见 [Demo 9 说明](docs/exploration-demo/README-V9.md) 与 [v9 构建记录](docs/exploration-demo/v9-build-notes.md)。
 下文为早期故事系统开发记录；新版操作、内容与限制以 Demo 8 说明为准。
 
 2D 横板动作冒险 · 解离与回溯 · 悬疑调查。

@@ -5,7 +5,6 @@ extends Node2D
 
 signal answered
 
-const FURY_TINT := Color(.7,.55,.55)
 var session: ExplorationSession
 var spec: Dictionary
 var stage: String = "wait"
@@ -105,8 +104,7 @@ func _switch() -> void:
 	player.velocity = Vector2.ZERO
 	player._last_ground_y = player.position.y
 	body.global_position = jerry_at
-	player.wear("npcs_b",118,3)
-	player.visual.self_modulate = FURY_TINT
+	player.wear("fury_idle",118,-1,"fury_punch",true)
 	body.become_jerry(player.health)
 	_face(player,signf(jerry_at.x-player.global_position.x))
 	demo.camera.reset_smoothing()
