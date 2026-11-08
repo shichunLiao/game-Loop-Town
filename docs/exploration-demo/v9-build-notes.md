@@ -112,3 +112,13 @@
 
 验证：`validate_v9_item5.gd` headless。未做完整通关（item 6），未 push／未导出 Windows。
 
+
+
+## Follow-up item 6 — 完整通關長測（2026-11-08）
+
+僅處理 item 6（不含 Windows）。
+
+- 新增 `tools/dev/validate_v9_item6.gd`：headless 劇本走查主線門檻與 item 5 機制；**32 通過、0 失敗**。
+- 結果寫入 `docs/exploration-demo/qa-report-item6.json`。
+- Share 匯出（`tools/dev/export_demo9_share.py`）→ `docs/demo9-share-*.png`（角色姿勢表、刑警、美術館中景、豐收祭夜、item3 道具、總覽）。
+- 視窗短啟未崩；完整手玩手感仍建議真人抽樣。未 push、未匯出 Windows。

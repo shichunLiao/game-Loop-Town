@@ -181,12 +181,22 @@ Demo 9 依《劇情 1.1》把五位劇情角色與美術館三張背景換成 Co
 - 梅戰：**撕碎／雕塑化／入畫**敗北結局、`paint` 叠层影响跳跃、**可推倒掩體**、開戰／戰後過場。
 - **鐘樓瓦解**演出（守鐘人選「我要知道真相」後）。
 - **刑警** NPC 出現在鎮口（立繪 `detective.png`）；井邊在 `fury_done` 後可見。
-- 完整手感與長測仍待 item 6。
+
+### Follow-up item 6 — 完整通關長測（headless，2026-11-08）
+
+- Harness：`tools/dev/validate_v9_item6.gd` → **ITEM6_QA 32 passed, 0 failed**；報告 `docs/exploration-demo/qa-report-item6.json`。
+- 覆蓋：操作煙霧、刑警鎮口／井邊、梅（撕碎／雕塑／入畫／掩體／paint 鎖跳／勝利＋七鏡）、沃（紅線／布偶敗北／勝利）、守鐘人真相鐘樓瓦解→`fire_town`／拒絕結局、弗瑞過場門檻＋墜井、玲生成／勝利、真結局「遲到的鮮花」、18 主區域實例化。
+- 視窗：短啟約 8s 仍在跑（Apple A18 Pro / OpenGL Metal Compatibility），未崩潰；未做全程手玩（環境限制）。
+- NOTES：弗瑞 beatdown 在 headless 以 `beaten.emit()` 推進後接 push／fall_into；其餘路徑為真實腳本呼叫。
+- 殘留風險：Boss 手感／難度、弗瑞三段時機、physics `body_test_motion` 換房時偶發 null space 警告（非阻斷）、未 Windows 包。
+
+
+- 完整通關長測：follow-up item 6 已以 headless 腳本走查完成（見下）；真人手感仍建議抽樣複核弗瑞過場。
 
 ### 發布／手感
 
 - **未匯出 Windows 包**。
-- **未手動完整通關**；沃伊德／守鐘人追逐／弗瑞過場／玲等以腳本走查為主，難度與手感未真人長測。
+- **Item 6 headless 長測已過**（`validate_v9_item6.gd` 32/0）；視窗短啟成功（OpenGL Metal），未做全程手玩。弗瑞段 beatdown 在 harness 內以腳本 emit 推進（見 NOTES）。
 
 ---
 
@@ -238,7 +248,7 @@ Demo 9 依《劇情 1.1》把五位劇情角色與美術館三張背景換成 Co
 
 1. **視覺**：五位劇情角色與美術館三張背景已換成 Codex 新圖並接進遊戲；follow-up 已補美術館中景、豐收祭遠景、井口／警戒線／藤蔓／紅線／手印道具，以及 Demo 9 探索音效；代表圖含 `may_brush_strike`（揮畫筆）、`void_lash`（甩紅線）、`keeper_unmasked`（摘帽似杰利）、`ling_giant`／`ling_crouch`、以及無盡走廊／七鏡畫室／美術館前街／祭典夜火街。
 2. **問題**：新 PNG 本身沒看到破圖或缺檔（v9 美術 QA 48/0）。美術館中景主衝突（熔蠟大缸／蠟像櫥窗）已於 follow-up item 1 以 `museum_mid`／`museum_depth` 替換；殘留 `wax_shop`／`wax_workshop` 建築。
-3. **未完成**：完整手玩通關與手感長測；未導出 Windows。（劇情機制初版已於 item 5 接上）
+3. **未完成（僅餘）**：未導出 Windows；建議真人抽樣手感（尤其弗瑞過場／Boss 難度）。其餘 Demo 9 follow-up（含劇情機制與 headless 長測）已接。
 
 ---
 
