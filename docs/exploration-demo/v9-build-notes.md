@@ -48,7 +48,7 @@
 ## 尚未处理
 
 - 美术馆两套中景已在 follow-up item 1 替换，见下。其他建筑与 props 尚保留。
-- 丰收祭之夜仍用燃烧街道背景；井口、警戒线、藤蔓、红线仍由代码绘制；音效未换。
+- 丰收祭之夜远景已在 follow-up item 2 替换，fire 中景保留；井口、警戒线、藤蔓、红线仍由代码绘制；音效未换。
 - 梅·莫里的撕碎与雕塑化结局、入画后的画作化、可推倒掩体，钟楼瓦解演出、刑警登场等剧情机制仍未实现（见 README-V9「尚未改动」）。
 - 未重新导出 Windows 包；未手动完整通关。
 
@@ -59,3 +59,13 @@
 验证：本环境可用 Godot 4.5.1 headless 导入，两张 PNG 与八个切片载入，三个房间实例化通过。视窗运行在此受限环境启动崩溃，因此没有新游戏截图；导入另有宿主 CA / 编辑器设置写入警告。只验证本项，不代表完整通关。其他主题和旧 wax 图集保持原样。三房间中无 wax_mid / wax_depth_v7 引用；wax_shop / wax_workshop 建筑、其他道具与地形是范围外残留。未 push、未导出 Windows、未开始后续待办。
 
 提交限制：本轮 git add / commit 被工作区只读 .git 权限阻止（无法建立 .git/index.lock）；改动留在工作树，尚未提交。
+
+## Follow-up item 2：丰收祭之夜远景
+
+2026-11-08：由 Codex 内置 image_gen 全新绘制并原位覆盖 `assets/environments/exploration/backgrounds/fire.png`，原生输出即为 1672×941 RGB PNG，无需缩放或裁切；未用程序绘图。以 museum.png 为风格参考，内容为空荡祭典街区、无字布幡、琥珀灯火、中央钟塔、紫黑天空与酒红烟灰，底部约四分之一保留低对比烟雾。最终原样提示词存于 `v9-art-prompts-fire-bg.json`。原路径同时服务 fire_town 与 stage >= 4 的 town，无需修改 world 或接线。
+
+验证：Godot 4.5.1 headless import 退出码 0，fire.png 导入完成；宿主 CA、编辑器缓存和设置写入有环境警告。临时验证脚本加载纹理、核对尺寸、实例化 fire_town 并检查后期 town 的 fire.png 引用，全部通过（退出码 0）。首次运行受 user:// 日志权限影响崩溃，使用 /private/tmp 日志后通过。未运行窗口截图或完整通关。
+
+范围仅 item 2：fire_mid / fire 中景图集、其他主题与进度例程均未改动；未开始 items 3–6，未操作 Windows 打包或导出，未 push。
+
+提交限制：尝试 `git add` / commit 时无法建立 `.git/index.lock`（Operation not permitted）；本项五个文件保留在工作树，待父流程通过 Mac Shell 提交。
