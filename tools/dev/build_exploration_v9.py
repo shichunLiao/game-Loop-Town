@@ -282,6 +282,15 @@ def well_ending_v9(data):
 
 def art_v9(data):
     """Demo 9: Codex drew the story 1.1 cast; the theater's seat puppets use their own sprite."""
+    # Only museum rooms migrate; other themes retain their wax atlas filler.
+    for room_id in ('wax_lane', 'wax_museum', 'wax_basement'):
+        room = data['world']['rooms'][room_id]
+        for layer in ('buildings', 'rear_scenery'):
+            for entry in room.get(layer, []):
+                entry['asset'] = {'wax_mid': 'museum_mid',
+                                  'wax_depth_v7': 'museum_depth'}.get(entry['asset'], entry['asset'])
+                if entry.get('id') == 'building_wax_basement_0':
+                    entry['cell'] = 2  # Seven mirrors, rather than restoration bench.
     puppet=data['actors']['enemies']['puppet']
     puppet['atlas']='void_puppet'
     puppet.pop('cell',None)

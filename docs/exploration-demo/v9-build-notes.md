@@ -47,7 +47,15 @@
 
 ## 尚未处理
 
-- 美术馆房间的中景道具（熔蜡大缸、蜡烛台、蜡像橱窗）仍是 Demo 8 的蜡像图集，背景已换但前中景仍带蜡像馆气氛，下一轮应请 Codex 重画相关 midground / props 图集。
+- 美术馆两套中景已在 follow-up item 1 替换，见下。其他建筑与 props 尚保留。
 - 丰收祭之夜仍用燃烧街道背景；井口、警戒线、藤蔓、红线仍由代码绘制；音效未换。
 - 梅·莫里的撕碎与雕塑化结局、入画后的画作化、可推倒掩体，钟楼瓦解演出、刑警登场等剧情机制仍未实现（见 README-V9「尚未改动」）。
 - 未重新导出 Windows 包；未手动完整通关。
+
+## Follow-up item 1：美术馆中景
+
+2026-11-08：由 Codex 内置 image_gen 新绘 museum_mid / museum_depth，各为 1536×1024 RGBA 2×2 图集；透明清理亦经 image_gen，未用脚本或 PIL 绘图。提示词含清理指令见 v9-art-prompts-museum-mid.json。内容为画墙、遮布画架、空基座、七镜、修复桌、廊柱、画框库与破损栏杆维修架。新增八个 AtlasTexture 与运行时 art-regions；仅 wax_lane / wax_museum / wax_basement 的 buildings 和 rear_scenery 引用迁移（地下室七镜选 cell 2），build_exploration_v9.py 同步。
+
+验证：本环境可用 Godot 4.5.1 headless 导入，两张 PNG 与八个切片载入，三个房间实例化通过。视窗运行在此受限环境启动崩溃，因此没有新游戏截图；导入另有宿主 CA / 编辑器设置写入警告。只验证本项，不代表完整通关。其他主题和旧 wax 图集保持原样。三房间中无 wax_mid / wax_depth_v7 引用；wax_shop / wax_workshop 建筑、其他道具与地形是范围外残留。未 push、未导出 Windows、未开始后续待办。
+
+提交限制：本轮 git add / commit 被工作区只读 .git 权限阻止（无法建立 .git/index.lock）；改动留在工作树，尚未提交。
