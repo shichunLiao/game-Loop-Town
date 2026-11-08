@@ -195,9 +195,7 @@ func _draw() -> void:
 	for entry: Array in data.get("vines", []):
 		var x: float = float(entry[0]) + float(entry[2])*.5
 		for offset: float in [-24.0,0.0,24.0]:
-			draw_line(Vector2(x+offset,float(entry[1])),Vector2(x+offset,float(entry[1])+float(entry[3])),Color("44635b"),7,true)
-			for y: int in range(int(entry[1]),int(entry[1])+int(entry[3]),30):
-				draw_line(Vector2(x+offset,y),Vector2(x+offset+19,y-12),Color("719b7d"),3,true)
+			ExplorationArt.strand(self,"vine",Vector2(x+offset,float(entry[1])),Vector2(x+offset,float(entry[1])+float(entry[3])),28)
 	if room_id == "wax_basement":
 		var solution: Array = ExplorationCatalog.data()["mirror_solution"]
 		var last := Vector2(170, float(data["floor"])-55)

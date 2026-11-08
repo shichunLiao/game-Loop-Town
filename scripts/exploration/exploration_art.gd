@@ -86,3 +86,16 @@ static func foot_center(id: String) -> float:
 static func foot_shift(id: String, texture: Texture2D, scale_x: float, flipped: bool) -> float:
 	var shift: float = (.5-foot_center(id))*texture.get_width()*scale_x
 	return -shift if flipped else shift
+
+## Draw generated horizontal prop pixels along a segment; collision stays with callers.
+static func strand(host: Node2D, id: String, start: Vector2, end: Vector2, width: float, tint: Color = Color.WHITE) -> void:
+	var texture: Texture2D = sprite(id,0 if id=="red_thread" else -1,"props")
+	if texture==null or start.distance_to(end)<.01:
+		return
+	host.draw_set_transform(start,(end-start).angle())
+	host.draw_texture_rect(texture,Rect2(0,-width*.5,start.distance_to(end),width),false,tint)
+	host.draw_set_transform(Vector2.ZERO)
+
+static func thread_ring(host: Node2D, center: Vector2, radius: float, width: float, tint: Color = Color.WHITE) -> void:
+	for i: int in range(48):
+		strand(host,"red_thread",center+Vector2.from_angle(TAU*i/48)*radius,center+Vector2.from_angle(TAU*(i+1)/48)*radius,width,tint)

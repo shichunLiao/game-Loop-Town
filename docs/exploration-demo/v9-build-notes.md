@@ -48,7 +48,7 @@
 ## 尚未处理
 
 - 美术馆两套中景已在 follow-up item 1 替换，见下。其他建筑与 props 尚保留。
-- 丰收祭之夜远景已在 follow-up item 2 替换，fire 中景保留；井口、警戒线、藤蔓、红线仍由代码绘制；音效未换。
+- 丰收祭之夜远景已在 follow-up item 2 替换，fire 中景保留；井口、警戒线、藤蔓、红线與地上手印已於 follow-up item 3 替換；音效未换。
 - 梅·莫里的撕碎与雕塑化结局、入画后的画作化、可推倒掩体，钟楼瓦解演出、刑警登场等剧情机制仍未实现（见 README-V9「尚未改动」）。
 - 未重新导出 Windows 包；未手动完整通关。
 
@@ -69,3 +69,16 @@
 范围仅 item 2：fire_mid / fire 中景图集、其他主题与进度例程均未改动；未开始 items 3–6，未操作 Windows 打包或导出，未 push。
 
 提交限制：尝试 `git add` / commit 时无法建立 `.git/index.lock`（Operation not permitted）；本项五个文件保留在工作树，待父流程通过 Mac Shell 提交。
+
+
+## Follow-up item 3 — 探索道具（2026-11-08）
+
+僅處理 item 3，基於 demo-9 / 62bdf82。內建 image_gen 生成五張透明 RGBA PNG：`props/well_mouth.png`、`caution_tape.png`（含柱）、`vine.png`、`red_thread.png`（線段＋線結 atlas）、`ground_hand.png`。提示詞與來源見 `v9-art-prompts-item3-props.json`；工具未提供模型選擇，未使用外部 API 或程式生成美術。僅裁去透明邊界，保留生成像素；紅線 regions 登記於 `data/exploration/art-regions.json`。
+
+接線：fury_scene 井口／原褐色痕跡／常駐及 caged 警戒線；room 攀爬藤蔓；ling_vine 紅線預警／藤鞭；ling_boss 井室藤蔓及身體纏繞帶；void_boss 人偶連線／地面鞭／絞索／暴走與邊界絲線；void_thread 可剪線結；interactable 劇院交叉紅線；ling_hand 泥手印預警。共用 ExplorationArt.strand / thread_ring 做旋轉縮放，碰撞、計時、剪線、藤結／鬆綁與進度 routines 保持原樣。原 `actors/ling_hand.png` 保留用於抓手。
+
+刻意保留：藤結光點、線結目標光環、聲波／階段／指令脈衝環、剪線後布片及泥手落地短筆觸。沒有改其他主題或背景，未開始 SFX／劇情機制／完整 playtest，未匯出 Windows、未 push。
+
+驗證：指定 Godot binary 實際回報 4.5.1；headless import 與 `tools/dev/validate_v9_item3.gd` 檢查五張透明貼圖、兩個 AtlasTexture 與 dry_well／well_interior／old_theater 實例，共 15 通過、0 失敗。日誌 `/private/tmp/demo9-item3-import.log`、`/private/tmp/demo9-item3-validation.log`。環境有 macOS CA 憑證與不可寫 editor settings 訊息；本輪跳過視窗模式／遊戲截圖，不代表完整手玩驗證。
+
+驗證退出時仍有 ObjectDB／resource-in-use cleanup 警告（檢查本身 15/0，exit 0）。本輪 git add 被 sandbox 拒絕建立 `.git/index.lock`（Operation not permitted），因此無法 commit；改動保留於工作樹，交由 Mac Shell 提交。

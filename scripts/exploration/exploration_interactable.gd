@@ -85,8 +85,8 @@ func _draw() -> void:
 		draw_string(_font, Vector2(-6, -107), str(int(session.mirrors[index])+1), HORIZONTAL_ALIGNMENT_LEFT, -1, 19, Color("e2c48d"))
 	elif kind == "thread":
 		if not is_finished():
-			draw_line(Vector2(-55, -155), Vector2(55, 0), Color("d97277"), 2.5, true)
-			draw_line(Vector2(55, -155), Vector2(-55, 0), Color("d97277"), 2.5, true)
+			ExplorationArt.strand(self,"red_thread",Vector2(-55,-155),Vector2(55,0),4)
+			ExplorationArt.strand(self,"red_thread",Vector2(55,-155),Vector2(-55,0),4)
 	elif kind == "lift_call":
 		draw_rect(Rect2(-20,-66,40,66),Color("263339"))
 		draw_rect(Rect2(-17,-63,34,54),Color("68614a"),false,3)

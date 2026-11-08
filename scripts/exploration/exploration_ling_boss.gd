@@ -403,10 +403,9 @@ func _draw() -> void:
 	if state=="sleep":
 		return
 	var withered: float = _collapse
-	var vine_color: Color = Color("2f4a33").lerp(Color("4a3a25"),withered)
 	for strand: PackedVector2Array in _strands:
-		draw_polyline(strand,vine_color,7,true)
-	draw_multiline(_thorns,Color("6d7f4a").lerp(Color("4a3a25"),withered),2.5,true)
+		for i: int in range(1,strand.size()):
+			ExplorationArt.strand(self,"vine",strand[i-1],strand[i],22,Color.WHITE.lerp(Color("8c7354"),withered))
 	draw_set_transform(Vector2(0,_collapse*120),0,Vector2(1.0+(1.0-_rise)*.5,maxf(.02,_rise)*(1.0-_collapse*.75)))
 	_draw_body()
 	draw_set_transform(Vector2.ZERO)
@@ -422,16 +421,14 @@ func _draw_body() -> void:
 		draw_texture_rect(body,Rect2(Vector2(-size.x*.5+sway*5,-size.y+14),size),false)
 	# Vines bind the body until a knot is cut.
 	if _wrap>.01:
-		var band_color := Color("2f4a33",_wrap)
 		for b: int in range(6):
 			var band := PackedVector2Array()
 			var y: float = -440+b*62
 			for i: int in range(10):
 				var x: float = lerpf(-150-b*12,150+b*12,float(i)/9)
 				band.append(Vector2(x,y+sin(i*.9+b)*(16+(1.0-_wrap)*46)+(b%2*2-1)*(float(i)-4.5)*5))
-			draw_polyline(band,band_color,11,true)
-			for i: int in range(1,band.size(),2):
-				draw_line(band[i],band[i]+Vector2(5,-15),Color("6d7f4a",_wrap),3,true)
+			for i: int in range(1,band.size()):
+				ExplorationArt.strand(self,"vine",band[i-1],band[i],26,Color(1,1,1,_wrap))
 	else:
 		draw_circle(Vector2(0,-350),46+sin(_clock*5)*6,Color("ffd9a0",.22))
 	if state=="windup" and attack=="voice":

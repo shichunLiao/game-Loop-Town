@@ -31,8 +31,9 @@ func _draw() -> void:
 	var mud := Color("3a2c1c")
 	if _age<warning:
 		var progress: float = clampf(_age/warning,0,1)
-		draw_line(Vector2(-42,-2),Vector2(42,-2),Color("d8394a",.35+progress*.55),4,true)
-		draw_arc(Vector2(0,-2),10+progress*26,PI,TAU,18,Color("d8394a"),2,true)
+		var marker: Texture2D = ExplorationArt.sprite("ground_hand",-1,"props")
+		if marker!=null:
+			draw_texture_rect(marker,Rect2(-42,-18,84,20),false,Color(1,1,1,.35+progress*.55))
 		return
 	var rise: float = 1.0 if _holding else sin(clampf((_age-warning)/.45,0,1)*PI)
 	# A mud hand out of the mud (Codex art, Demo 9), rising and sinking back.

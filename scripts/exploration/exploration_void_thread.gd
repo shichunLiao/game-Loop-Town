@@ -30,5 +30,8 @@ func receive_hit(_amount: int, _origin: Vector2, _kind: String = "slash") -> voi
 	puppet._die()
 
 func _draw() -> void:
-	draw_circle(Vector2.ZERO,7+sin(_clock*6)*1.5,Color("d8394a"))
+	var knot: Texture2D = ExplorationArt.sprite("red_thread",1,"props")
+	if knot!=null:
+		var size: float = 22+sin(_clock*6)*3
+		draw_texture_rect(knot,Rect2(-size*.5,-size*.5,size,size),false)
 	draw_arc(Vector2.ZERO,13,0,TAU,20,Color("f18fa2",.6),2,true)

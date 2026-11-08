@@ -313,30 +313,27 @@ func _draw() -> void:
 	for puppet: ExplorationVoidPuppet in _puppets():
 		if is_instance_valid(puppet.thread):
 			var knot: Vector2 = puppet.thread.global_position-global_position
-			draw_line(hand,knot,Color(red,.85),2,true)
-			draw_line(knot,puppet.global_position+Vector2(0,-70)-global_position,Color(red,.85),2,true)
+			ExplorationArt.strand(self,"red_thread",hand,knot,3,Color(1,1,1,.85))
+			ExplorationArt.strand(self,"red_thread",knot,puppet.global_position+Vector2(0,-70)-global_position,3,Color(1,1,1,.85))
 	# Stitched cloth patches spread down his right side as threads are cut (overlay on the sprite).
 	for i: int in range(cuts):
 		var patch := Vector2(-facing*(10+i*6),-178+i*34)
 		draw_rect(Rect2(patch-Vector2(11,12),Vector2(22,24)),Color("cdb39a",.88))
 		for s: int in range(3):
 			draw_line(patch+Vector2(-11,-8+s*8),patch+Vector2(-5,-8+s*8),Color("7a2f3a"),1.5,true)
-	if state=="windup":
+	if state in ["windup","active"]:
 		var progress: float = clampf(1-timer/_windup_length,0,1)
 		if attack=="lash":
-			draw_line(Vector2(0,-6),Vector2(facing*660,-6),Color(red,.4+progress*.5),3+progress*3,true)
-			for i: int in range(1,9):
-				var x: float = facing*660*i/9
-				draw_line(Vector2(x,-6),Vector2(x-facing*10,-18),red,2,true)
+			ExplorationArt.strand(self,"red_thread",Vector2(0,-6),Vector2(facing*660,-6),3+progress*3,Color(1,1,1,.4+progress*.5))
 		elif attack=="noose":
 			var ring: Vector2 = _target+Vector2(0,-50)-global_position
-			draw_line(hand,ring,Color(red,.7),2,true)
-			draw_arc(ring,78+(1-progress)*60,0,TAU,48,Color(red,.45+progress*.5),3+progress*2,true)
-			draw_arc(ring,78,0,TAU,48,Color("f18fa2",.35),1,true)
+			ExplorationArt.strand(self,"red_thread",hand,ring,3,Color(1,1,1,.7))
+			ExplorationArt.thread_ring(self,ring,78+(1-progress)*60,3+progress*2,Color(1,1,1,.45+progress*.5))
+			ExplorationArt.thread_ring(self,ring,78,2,Color(1,1,1,.35))
 		elif attack=="rain":
 			for x: float in _columns:
 				var local_x: float = x-global_position.x
-				draw_line(Vector2(local_x,-330),Vector2(local_x,0),Color(red,.25+progress*.55),2+progress*4,true)
+				ExplorationArt.strand(self,"red_thread",Vector2(local_x,-330),Vector2(local_x,0),2+progress*4,Color(1,1,1,.25+progress*.55))
 		elif attack=="command":
 			draw_arc(hand,14+progress*16,0,TAU,24,Color(red,.8),2,true)
 	if state=="phase_break":
@@ -346,4 +343,4 @@ func _draw() -> void:
 	for edge: float in [arena.x,arena.y]:
 		var local_x: float = edge-position.x
 		for i: int in range(4):
-			draw_line(Vector2(local_x+i*4-6,0),Vector2(local_x+i*4-6,-245+sin(_clock*3+i)*10),Color("8c2f3a"),3,true)
+			ExplorationArt.strand(self,"red_thread",Vector2(local_x+i*4-6,0),Vector2(local_x+i*4-6,-245+sin(_clock*3+i)*10),3)

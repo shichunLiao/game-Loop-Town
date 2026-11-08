@@ -167,38 +167,20 @@ func _set_cage(locked: bool) -> void:
 func _demo() -> Node:
 	return get_tree().get_first_node_in_group("exploration_demo")
 
-## Placeholder art: the dug-out well mouth, the stain beside it and the police tape.
+## Codex props: dug-out well mouth, ground-hand stain and caution tape (Demo 9 item 3).
 func _draw() -> void:
-	var x: float = _well.x
-	var y: float = _well.y
-	draw_set_transform(Vector2(x-190,y+3),0,Vector2(1,.16))
-	draw_circle(Vector2.ZERO,62,Color("3b2015",.9))
-	draw_circle(Vector2(30,10),34,Color("2c160f",.9))
-	draw_set_transform(Vector2.ZERO)
-	draw_rect(Rect2(x-92,y-64,184,66),Color("4a4a42"))
-	for row: int in range(3):
-		var joint: float = y-64+row*22
-		draw_line(Vector2(x-92,joint),Vector2(x+92,joint),Color("2e2e29"),2)
-		for i: int in range(5):
-			var seam: float = x-92+((i*2+row)%10)*18.4+9
-			draw_line(Vector2(seam,joint),Vector2(seam,joint+22),Color("2e2e29"),2)
-	draw_set_transform(Vector2(x,y-64),0,Vector2(1,.2))
-	draw_circle(Vector2.ZERO,92,Color("35352f"))
-	draw_circle(Vector2.ZERO,76,Color("050607"))
-	draw_set_transform(Vector2.ZERO)
-	_tape(x-170,x+170,y)
+	var well: Texture2D = ExplorationArt.sprite("well_mouth",-1,"props")
+	var mark: Texture2D = ExplorationArt.sprite("ground_hand",-1,"props")
+	if mark!=null:
+		draw_texture_rect(mark,Rect2(_well+Vector2(-252,-26),Vector2(124,38)),false)
+	if well!=null:
+		draw_texture_rect(well,Rect2(_well+Vector2(-100,-82),Vector2(200,84)),false)
+	_tape(_well.x-170,_well.x+170,_well.y)
 	if _caged:
-		_tape(_arena.x,_arena.x+150,y)
-		_tape(_arena.y-150,_arena.y,y)
+		_tape(_arena.x,_arena.x+150,_well.y)
+		_tape(_arena.y-150,_arena.y,_well.y)
 
 func _tape(from_x: float, to_x: float, y: float) -> void:
-	for post: float in [from_x,to_x]:
-		draw_rect(Rect2(post-4,y-92,8,92),Color("2a2a2a"))
-		draw_rect(Rect2(post-4,y-92,8,10),Color("d9b93a"))
-	var steps: int = maxi(4,int((to_x-from_x)/28))
-	for i: int in range(steps):
-		var a: float = float(i)/steps
-		var b: float = float(i+1)/steps
-		var from_point := Vector2(lerpf(from_x,to_x,a),y-80+sin(a*PI)*14)
-		var to_point := Vector2(lerpf(from_x,to_x,b),y-80+sin(b*PI)*14)
-		draw_line(from_point,to_point,Color("d9b93a") if i%2==0 else Color("1d1b14"),5)
+	var tape: Texture2D = ExplorationArt.sprite("caution_tape",-1,"props")
+	if tape!=null:
+		draw_texture_rect(tape,Rect2(from_x,y-92,to_x-from_x,92),false)

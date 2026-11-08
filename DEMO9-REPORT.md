@@ -173,7 +173,7 @@ Demo 9 依《劇情 1.1》把五位劇情角色與美術館三張背景換成 Co
 
 - 美術館房間 **中景道具**：follow-up item 1 已用 `museum_mid`／`museum_depth` 替換三房間 buildings／rear_scenery；殘留例外為 `wax_shop`／`wax_workshop` 建築與其他 props。
 - **豐收祭之夜**遠景已於 follow-up item 2 以內建 Codex image_gen 重繪為祭典之夜／火災記憶（`fire.png`，1672×941 RGB）；fire 中景仍保留。
-- **井口、警戒線、藤蔓、紅線、地上的手**仍多為代碼繪製或舊素材。
+- **井口、警戒線、藤蔓、紅線、地上的手**已於 follow-up item 3 使用內建 image_gen 透明 PNG 替換並接線（props/well_mouth、caution_tape、vine、red_thread、ground_hand）；保留 combat ling_hand 與藤結光點／聲波和階段環等特效。
 - **音效未換**（玲的哭喊暫用倒放童謠等）。
 
 ### 劇情機制（尚未實作）
@@ -236,9 +236,9 @@ Demo 9 依《劇情 1.1》把五位劇情角色與美術館三張背景換成 Co
 
 ## 8. 語音可用三點摘要
 
-1. **視覺**：五位劇情角色與美術館三張背景已換成 Codex 新圖並接進遊戲；follow-up 已補美術館中景與豐收祭之夜遠景 `fire.png`；代表圖含 `may_brush_strike`（揮畫筆）、`void_lash`（甩紅線）、`keeper_unmasked`（摘帽似杰利）、`ling_giant`／`ling_crouch`、以及無盡走廊／七鏡畫室／美術館前街／祭典夜火街。
+1. **視覺**：五位劇情角色與美術館三張背景已換成 Codex 新圖並接進遊戲；follow-up 已補美術館中景、豐收祭之夜遠景 `fire.png`、以及井口／警戒線／藤蔓／紅線／地上手印道具；代表圖含 `may_brush_strike`（揮畫筆）、`void_lash`（甩紅線）、`keeper_unmasked`（摘帽似杰利）、`ling_giant`／`ling_crouch`、以及無盡走廊／七鏡畫室／美術館前街／祭典夜火街。
 2. **問題**：新 PNG 本身沒看到破圖或缺檔（v9 美術 QA 48/0）。美術館中景主衝突（熔蠟大缸／蠟像櫥窗）已於 follow-up item 1 以 `museum_mid`／`museum_depth` 替換；殘留 `wax_shop`／`wax_workshop` 建築。
-3. **未完成**：代碼繪製的井口／警戒線／藤蔓／紅線、音效；以及梅的撕紙／雕像結局、入畫、可推倒掩體、鐘樓瓦解、刑警登場等機制；未導出 Windows、未完整手玩通關。
+3. **未完成**：音效（井口／警戒線／藤蔓／紅線／地上手印已於 item 3 替換）；以及梅的撕紙／雕像結局、入畫、可推倒掩體、鐘樓瓦解、刑警登場等機制；未導出 Windows、未完整手玩通關。
 
 ---
 
