@@ -45,7 +45,9 @@ func _physics_process(delta: float) -> void:
 			if body is ExplorationPlayer:
 				var id: int = body.get_instance_id()
 				if not _struck.has(id) or (style=="pool" and _age-float(_struck[id])>1.15):
-					body.take_damage(damage)
+					# Gypsum spikes / pools sculpt; phase-3 rain paints into the canvas.
+					var kind: String = "may_brush" if phase >= 3 or style == "rain" else "statue"
+					body.receive_hit(damage, global_position, kind)
 					_struck[id] = _age
 	if _age>=warning+duration:
 		queue_free()

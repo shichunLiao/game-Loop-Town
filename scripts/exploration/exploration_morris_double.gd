@@ -25,3 +25,17 @@ func _physics_process(delta: float) -> void:
 		queue_free()
 		return
 	super._physics_process(delta)
+
+func _attack(player: ExplorationPlayer, behavior: String) -> void:
+	if behavior == "ranged":
+		shoot((player.global_position+Vector2(0,-35)-global_position).normalized()*340)
+		return
+	var hit := ExplorationHitArea.new()
+	hit.source = self
+	hit.target_layer = 8
+	hit.damage = int(data["damage"])
+	hit.kind = "statue"
+	hit.position = Vector2(facing*46,-40)
+	hit.dimensions = Vector2(95,70)
+	hit.direction = Vector2(facing,0)
+	add_child(hit)

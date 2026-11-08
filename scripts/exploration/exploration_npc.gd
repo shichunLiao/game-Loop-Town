@@ -15,7 +15,12 @@ func _ready() -> void:
 	position = ExplorationCatalog.vec(spec["pos"])
 	data = ExplorationArt.actors()["npcs"][str(spec.get("type",spec["id"]))].duplicate(true)
 	data["name"] = str(spec.get("role",data["name"]))
-	visual = ExplorationArt.visual(self,str(data["atlas"]),120,int(data["cell"]))
+	var atlas_id: String = str(data["atlas"])
+	var cell: int = int(data["cell"])
+	if ExplorationArt.sprite(atlas_id, cell) == null:
+		atlas_id = "npcs_b"
+		cell = 1
+	visual = ExplorationArt.visual(self, atlas_id, 120, cell)
 	_font = load("res://assets/ui/exploration/chinese.tres") as Font
 
 func talk() -> void:
@@ -65,7 +70,10 @@ func interaction_prompt() -> String:
 	return "E  交谈 · "+str(data["name"])
 
 func _process(delta: float) -> void:
-	visible = true
+	var needs: Array = spec.get("requires", [])
+	visible = needs.is_empty() or session.satisfies(needs)
+	if not visible:
+		return
 	modulate = Color(.78,.73,.68,.8) if session.stage>=4 and str(spec.get("type",spec["id"]))!="conductor" else Color.WHITE
 	_stutter = maxf(0,_stutter-delta)
 	if _stutter <= 0:

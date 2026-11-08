@@ -137,6 +137,15 @@
           ],
           "role": "等信的母亲",
           "echo": false
+        },
+        {
+          "id": "detective_town_entrance",
+          "type": "detective",
+          "pos": [
+            980,
+            940
+          ],
+          "role": "刑警"
         }
       ],
       "enemies": [
@@ -4739,6 +4748,18 @@
           ],
           "role": "守夜屋访客",
           "echo": false
+        },
+        {
+          "id": "detective_dry_well",
+          "type": "detective",
+          "pos": [
+            1180,
+            1240
+          ],
+          "role": "刑警",
+          "requires": [
+            "fury_done"
+          ]
         }
       ],
       "enemies": [

@@ -26,9 +26,18 @@ var _pose_cache: Dictionary = {}
 var _pose_key: String = ""
 var _base_scale: Vector2 = Vector2.ONE
 var _rush_hit: ExplorationHitArea
+var _ending_sent: bool = false
+var _intro_done: bool = false
+var _covers: Array = []
+const DEFEATS := {
+	"torn": ["结局 · 被撕碎", "美工刀切开你的时候，身体像纸一样裂开、飘落。\n画框里只剩下一地碎屑。\n钟声响起——你又站在美术馆门口。"],
+	"sculpted": ["结局 · 雕塑", "纯白的替身把你按进石膏里。\n凝固的瞬间，你看见自己也成了廊上的一座未完成雕像。\n钟声响起——你又站在美术馆门口。"],
+	"painted": ["结局 · 入画", "画笔在虚空里划开一道口子，把你拖进画布。\n颜料漫过脚踝、膝盖，你成了墙上的一笔。\n钟声响起——你又站在美术馆门口。"],
+}
 
 func _ready() -> void:
 	boss = true
+	add_to_group("may_boss")
 	data = {"hp":int(spec.get("hp",840)),"height":235,"damage":20,"atlas":"may_idle","speed":55,"behavior":"boss"}
 	arena = ExplorationCatalog.vec(spec.get("arena",[2350,3780]))
 	_floor = float(spec.get("floor",spec["pos"][1]))
@@ -59,12 +68,11 @@ func _create_fences() -> void:
 
 func _boss_behavior(player: ExplorationPlayer, offset: Vector2, delta: float) -> void:
 	_phase_invulnerability = maxf(0,_phase_invulnerability-delta)
+	_watch_player(player)
 	velocity.x = 0
 	if state=="sleep":
 		if player.position.x>arena.x+40 and player.position.x<arena.y and absf(offset.y)<220:
-			state = "intro"
-			timer = 1.4
-			_set_fences(true)
+			_begin_intro()
 			_notice("梅·莫里 · 别碰那些画")
 		return
 	if state=="intro" or state=="phase_break":
@@ -158,7 +166,7 @@ func _melee(size: Vector2, point: Vector2, length: float, damage_value: int) -> 
 	hit.position = point
 	hit.direction = Vector2(_locked_facing,0)
 	hit.lifetime = length
-	hit.kind = "wax_claw"
+	hit.kind = "may_brush" if phase >= 3 else "may_slash"
 	add_child(hit)
 	return hit
 
@@ -229,9 +237,8 @@ func receive_hit(amount: int, _origin_value: Vector2, _kind: String = "slash") -
 	if not can_receive_hit():
 		return
 	if state=="sleep":
-		state = "intro"
-		timer = 1.0
-		_set_fences(true)
+		_begin_intro()
+		return
 	health = maxi(0,health-amount)
 	_flash = .11
 	_stagger += amount
@@ -276,7 +283,10 @@ func _die() -> void:
 	if demo!=null:
 		demo.player.health = mini(100,demo.player.health+35)
 		demo.screen_shake(.3)
-		demo.hud.toast("完美的梅·莫里碎成了石膏" if echo else "梅·莫里消散 · 镜室门锁已松开")
+		if echo:
+			demo.hud.toast("完美的梅·莫里碎成了石膏")
+		else:
+			_victory_cutscene(demo)
 	get_node("/root/AudioManager").play_bell()
 	var tween := create_tween()
 	tween.tween_property(visual,"scale:y",visual.scale.y*.3,.7)
@@ -353,3 +363,61 @@ func _draw() -> void:
 			var local_x: float = edge-position.x
 			for i: int in range(4):
 				draw_line(Vector2(local_x+i*4-6,0),Vector2(local_x+i*4-6,-245+sin(_clock*3+i)*10),Color("89613c"),3,true)
+
+func _begin_intro() -> void:
+	state = "intro"
+	timer = 2.4
+	_set_fences(true)
+	_spawn_covers()
+	if _intro_done or echo:
+		return
+	_intro_done = true
+	var demo: Node = get_tree().get_first_node_in_group("exploration_demo")
+	if demo == null:
+		return
+	demo.show_dialogue("梅·莫里", "杰利……你脸上的神情，和玲失踪之后一样。\n他是不是疯了？——不，是这座美术馆在疯。\n画里的人在笑。画框在裂。", [
+		{"label":"……准备战斗", "action": demo.close_overlay}
+	])
+	demo.mode = "ending"
+
+func _spawn_covers() -> void:
+	if echo or not _covers.is_empty():
+		return
+	var xs: Array = [arena.x + 420.0, (arena.x + arena.y) * 0.5, arena.y - 420.0]
+	for x in xs:
+		var cover := ExplorationPushCover.new()
+		cover.position = Vector2(x, _floor)
+		cover.floor_y = _floor
+		cover.add_to_group("morris_owned")
+		cover.set_meta("boss_id", get_instance_id())
+		get_parent().add_child(cover)
+		_covers.append(cover)
+
+func _watch_player(player: ExplorationPlayer) -> void:
+	if echo or _ending_sent or dead or state in ["sleep", "death"]:
+		return
+	if not is_instance_valid(player) or player.health > 0:
+		return
+	var kind: String = player.last_may_kind
+	if kind == "statue" or player.plaster >= 3:
+		_defeat("sculpted")
+	elif kind == "may_brush" or phase >= 3 or player.paint >= 3:
+		_defeat("painted")
+	else:
+		_defeat("torn")
+
+func _defeat(id: String) -> void:
+	if _ending_sent:
+		return
+	var demo: Node = get_tree().get_first_node_in_group("exploration_demo")
+	if demo == null or not DEFEATS.has(id):
+		return
+	_ending_sent = true
+	demo.defeat.call_deferred(id, str(DEFEATS[id][0]), str(DEFEATS[id][1]))
+
+func _victory_cutscene(demo: Node) -> void:
+	demo.hud.toast("梅·莫里消散 · 镜室门锁已松开")
+	demo.show_dialogue("画室回忆", "钟声响起。画面闪烁。\n你看见美术室里两个孩子并排画画：文静的你，活泼的玲。\n梅的呼喊把你拉回现实——还是刚才说话的场景。\n他记得：玲失踪那天下午，来要了两张丰收祭演出的海报。\n剧院。线索指向剧院。", [
+		{"label":"前往剧院", "action": demo.close_overlay}
+	])
+	demo.mode = "ending"

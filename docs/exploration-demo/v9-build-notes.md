@@ -49,7 +49,7 @@
 
 - 美术馆两套中景已在 follow-up item 1 替换，见下。其他建筑与 props 尚保留。
 - 丰收祭之夜远景已在 follow-up item 2 替换，fire 中景保留；井口、警戒线、藤蔓、红线與地上手印已於 follow-up item 3 替換；音效已於 follow-up item 4 更新（玲哭喊／藤鞭／剪線／畫筆掃／泥手／雕像裂，Wax 音軌改畫廊音色）。
-- 梅·莫里的撕碎与雕塑化结局、入画后的画作化、可推倒掩体，钟楼瓦解演出、刑警登场等剧情机制仍未实现（见 README-V9「尚未改动」）。
+- 剧情机制已于 follow-up item 5 落地初版（见下）；完整手玩与手感仍待 item 6。
 - 未重新导出 Windows 包；未手动完整通关。
 
 ## Follow-up item 1：美术馆中景
@@ -97,4 +97,18 @@
 同時重合成 `mus_wax`／`amb_wax`（仍掛 Wax 區域鍵）為冷灰畫廊 pad／空廳環境，去掉熔蠟滴答。修正 `AudioManager.play_nursery_rhyme` 正確載入 `sfx_nursery_rhyme[_reversed]`；戰鬥改走 `ling_cry`。舊通用 SFX（跳躍、受擊、鐘聲等）與童謠檔保留備回憶段落。
 
 驗證：`python3 tools/generate_audio.py` RESULT ALL PASS（57 檔）；Godot headless `validate_v9_item4.gd`。未開始 items 5–6，未 push／未匯出 Windows。
+
+
+## Follow-up item 5 — 剧情机制（2026-11-08）
+
+仅处理 item 5。按《剧情 1.1》补齐探索向机制（逻辑为主；刑警立绘 `actors/detective.png`（Codex）；缺档时 `npcs_b` 后备）：
+
+1. **梅战结局**：`torn`（美工刀撕碎）／`sculpted`（雕像替身）／`painted`（入画）；致死击在扣血前经 `may_boss` 走 `demo.defeat`，回溯美术馆门口路灯。
+2. **入画化**：phase 3／`may_brush` 叠 `paint`；≥2 削弱跳跃，≥4 无法起跳。
+3. **可推倒掩体**：开战生成三座 `ExplorationPushCover`（`may_statue`），可被推动挡线。
+4. **钟楼瓦解**：守钟人「我要知道真相」后 `_clocktower_collapse`（字幕、震屏、淡入淡出，落到 `fire_town` 井口方向）。
+5. **刑警**：`actors.json` 新增 `detective`；`town_entrance` 常驻，`dry_well` 需 `fury_done` 才可见。
+6. **梅战过场**：开战对话；击败后画室回忆对话（指向剧院）。
+
+验证：`validate_v9_item5.gd` headless。未做完整通关（item 6），未 push／未导出 Windows。
 

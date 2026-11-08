@@ -176,12 +176,12 @@ Demo 9 依《劇情 1.1》把五位劇情角色與美術館三張背景換成 Co
 - **井口、警戒線、藤蔓、紅線、地上的手**已於 follow-up item 3 使用內建 image_gen 透明 PNG 替換並接線（props/well_mouth、caution_tape、vine、red_thread、ground_hand）；保留 combat ling_hand 與藤結光點／聲波和階段環等特效。
 - **音效**已於 follow-up item 4 以程序化合成更新（`sfx_ling_cry`／`vine_lash`／`thread_cut`／`brush_slash`／`mud_grab`／`statue_crack`；`mus_wax`／`amb_wax` 改畫廊音色）。
 
-### 劇情機制（尚未實作）
+### 劇情機制（follow-up item 5 初版已接）
 
-- 梅戰：**撕碎／雕塑化結局**、**入畫後的畫作化**、**可推倒掩體**。
-- **鐘樓瓦解**演出（守鐘人消散後）。
-- **刑警登場**（目前只在文字／任務裡出現）。
-- 梅戰前後部分過場尚未做成演出。
+- 梅戰：**撕碎／雕塑化／入畫**敗北結局、`paint` 叠层影响跳跃、**可推倒掩體**、開戰／戰後過場。
+- **鐘樓瓦解**演出（守鐘人選「我要知道真相」後）。
+- **刑警** NPC 出現在鎮口（立繪 `detective.png`）；井邊在 `fury_done` 後可見。
+- 完整手感與長測仍待 item 6。
 
 ### 發布／手感
 
@@ -238,7 +238,7 @@ Demo 9 依《劇情 1.1》把五位劇情角色與美術館三張背景換成 Co
 
 1. **視覺**：五位劇情角色與美術館三張背景已換成 Codex 新圖並接進遊戲；follow-up 已補美術館中景、豐收祭遠景、井口／警戒線／藤蔓／紅線／手印道具，以及 Demo 9 探索音效；代表圖含 `may_brush_strike`（揮畫筆）、`void_lash`（甩紅線）、`keeper_unmasked`（摘帽似杰利）、`ling_giant`／`ling_crouch`、以及無盡走廊／七鏡畫室／美術館前街／祭典夜火街。
 2. **問題**：新 PNG 本身沒看到破圖或缺檔（v9 美術 QA 48/0）。美術館中景主衝突（熔蠟大缸／蠟像櫥窗）已於 follow-up item 1 以 `museum_mid`／`museum_depth` 替換；殘留 `wax_shop`／`wax_workshop` 建築。
-3. **未完成**：梅的撕紙／雕像結局、入畫、可推倒掩體、鐘樓瓦解、刑警登場等劇情機制；未導出 Windows、未完整手玩通關。（音效已於 item 4 更新）
+3. **未完成**：完整手玩通關與手感長測；未導出 Windows。（劇情機制初版已於 item 5 接上）
 
 ---
 

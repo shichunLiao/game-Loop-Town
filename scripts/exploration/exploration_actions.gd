@@ -135,9 +135,8 @@ func _resolve_ending(id: String) -> void:
 	elif id == "truth":
 		session.acquire("keeper_truth")
 		demo.close_overlay()
-		demo.get_node("/root/AudioManager").play_bell()
-		demo.hud.toast("守钟人消散了：「去井边吧。她在等你。」通往丰收祭之夜的门打开了。")
 		session.save()
+		_clocktower_collapse()
 	elif id == "loop":
 		var next_loop: int = session.loop_count+1
 		var memories: Dictionary = {}
@@ -152,3 +151,28 @@ func _resolve_ending(id: String) -> void:
 		demo.show_ending("回溯 · 第 %d 次" % session.loop_count, "钟声响起。你又站在镇口，像什么都没有发生过。\n速写本上多了一行小孩的字迹。\n那天的事，你仍然没有想起来。")
 	elif id == "zero":
 		demo.show_ending("迟到的鲜花", "你在井底醒来，躺在淤泥里，头很痛。井口很远，光从上面照下来。有人在喊你的名字，是刑警的声音。\n他们放下绳子，把你拉了上去。天已经亮了。\n后来，镇上的证人一个个站出来指控弗瑞，弗瑞锒铛入狱。玲重新下葬。\n你在她的墓前，放下一束迟到的鲜花。")
+
+func _clocktower_collapse() -> void:
+	# Fire the async sequence without blocking the dialogue callback.
+	_clocktower_collapse_async()
+
+func _clocktower_collapse_async() -> void:
+	## Story 1.1: after the keeper tells the truth he dissolves and the tower comes down.
+	demo.mode = "cutscene"
+	demo._set_playing(false)
+	demo.get_node("/root/AudioManager").play_bell()
+	demo.screen_shake(1.4)
+	await demo.caption("「她在等你。去井边。」", 2.0)
+	await demo.caption("守钟人消散了。钟楼开始瓦解。", 2.2)
+	demo.screen_shake(2.2)
+	demo.get_node("/root/AudioManager").play_bell()
+	await demo.get_tree().create_timer(0.45).timeout
+	await demo._fade_to(1.0, 0.75)
+	await demo.caption("砖石崩落。你顺着瓦解的廊道冲向地面。", 2.1)
+	# Land in fire_town as if climbing out of the clock shaft.
+	demo.load_room("fire_town", "clock_top--fire_town_b")
+	demo.mode = "play"
+	demo._set_playing(true)
+	await demo._fade_to(0.0, 0.95)
+	demo.hud.toast("四周安静下来。去枯井吧。她在等你。")
+	demo.session.save()

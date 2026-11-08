@@ -38,6 +38,11 @@ var _last_ground_y: float = 0.0
 var weapon: ExplorationWeapon
 ## Void's puppets turn Jerry into cloth: slower, weaker, then unable to hold the blade.
 var cloth: int = 0
+## May Morley story 1.1: paper tear / plaster statue / paint-into-canvas stacks.
+var paper: int = 0
+var plaster: int = 0
+var paint: int = 0
+var last_may_kind: String = ""
 var entangled: float = 0.0
 var _entangle_tick: float = 0.0
 ## Ling's mud and hands: how deep he stands, how many kicks free him, and her voice turning left and right around.
@@ -129,12 +134,16 @@ func _physics_process(delta: float) -> void:
 		if not on_floor_before:
 			state = "jump" if velocity.y < 0.0 else "fall"
 	if _buffer > 0.0 and (_coyote > 0.0 or (session != null and session.has("double_jump") and not _air_jump)):
-		if _coyote <= 0.0:
-			_air_jump = true
-		velocity.y = JUMP*(1.0-.45*mired)
-		_buffer = 0.0
-		_coyote = 0.0
-		get_node("/root/AudioManager").play_sfx("sfx_jump")
+		var paint_lock: float = 1.0 if paint < 2 else (0.0 if paint >= 4 else 0.45)
+		if paint_lock <= 0.0:
+			_buffer = 0.0
+		else:
+			if _coyote <= 0.0:
+				_air_jump = true
+			velocity.y = JUMP*(1.0-.45*mired)*paint_lock
+			_buffer = 0.0
+			_coyote = 0.0
+			get_node("/root/AudioManager").play_sfx("sfx_jump")
 	if Input.is_action_just_released("jump") and velocity.y < -300.0:
 		velocity.y *= 0.5
 	if Input.is_action_just_pressed("explore_dash") and session != null and session.has("dash") and _dash_cooldown <= 0.0 and grip == 0:
@@ -152,6 +161,10 @@ func _physics_process(delta: float) -> void:
 	visual.position.y = -body_height*.5 + (sin(_clock*17)*2 if state == "run" else sin(_clock*2)*.7)
 	visual.scale.y = (body_height/visual.texture.get_height()) * (1.0+sin(_clock*17)*.025 if state=="run" else 1.0)
 	visual.modulate = Color.WHITE.lerp(Color("e3c3ae"),minf(1,cloth/6.0))
+	var paint_tint := Color.WHITE
+	if paint > 0:
+		paint_tint = Color(0.78, 0.84, 1.0).lerp(Color(0.52, 0.62, 0.95), clampf(float(paint) / 4.0, 0.0, 1.0))
+	visual.modulate = paint_tint
 	visual.modulate.a = .35 if _invulnerability>0 and int(_clock*15)%2==0 else 1.0
 	if attack_phase!="ready":
 		var pose: float = -0.18 if attack_phase=="windup" else .22 if attack_phase=="active" else .09
@@ -185,14 +198,39 @@ func receive_hit(amount: int, origin: Vector2, kind: String = "hit") -> void:
 		return
 	_knockback = signf(global_position.x-origin.x)*330
 	attack_phase = "ready"
-	take_damage(amount)
 	if kind == "puppet":
 		cloth += 1
 	elif kind == "void_lash":
 		entangled = 1.6
+	elif kind in ["may_slash", "wax_claw"]:
+		paper += 1
+		last_may_kind = "may_slash"
+	elif kind == "statue":
+		plaster += 1
+		last_may_kind = "statue"
+	elif kind == "may_brush":
+		paint += 1
+		last_may_kind = "may_brush"
+	var may_kinds := ["may_slash", "wax_claw", "statue", "may_brush"]
+	if kind in may_kinds and health - amount <= 0:
+		_trigger_may_defeat()
+		return
+	take_damage(amount)
 	var demo: Node = get_tree().get_first_node_in_group("exploration_demo")
 	if demo != null:
 		demo.screen_shake(.15)
+
+func _trigger_may_defeat() -> void:
+	for node: Node in get_tree().get_nodes_in_group("may_boss"):
+		if node.has_method("_defeat") and not bool(node.get("_ending_sent")):
+			var id: String = "torn"
+			if last_may_kind == "statue" or plaster >= 3:
+				id = "sculpted"
+			elif last_may_kind == "may_brush" or paint >= 3 or int(node.get("phase")) >= 3:
+				id = "painted"
+			node.call("_defeat", id)
+			return
+	take_damage(health)
 
 func _try_drop() -> bool:
 	if not is_on_floor():
