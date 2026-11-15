@@ -9,6 +9,7 @@ var far_layer: Node2D
 var far_sprite: Sprite2D
 var _time: float = 0.0
 var _camera: Camera2D
+var _museum_gaze: Node2D
 
 func _ready() -> void:
 	theme = str(room.get("theme", "town"))
@@ -48,6 +49,13 @@ func _update_theme() -> void:
 		far_sprite.scale = (room_size+Vector2(120,120))/far_sprite.texture.get_size()
 		far_sprite.position = room_size*.5
 	far_sprite.modulate = Color(.55,.66,.73) if session.stage<4 else Color(.63,.48,.43)
+	if is_instance_valid(_museum_gaze):
+		far_sprite.remove_child(_museum_gaze)
+		_museum_gaze.queue_free()
+	if display_theme == "museum" and not vertical:
+		_museum_gaze = ExplorationMuseumGaze.new()
+		_museum_gaze.name = "PortraitGaze"
+		far_sprite.add_child(_museum_gaze)
 
 func _process(delta: float) -> void:
 	_time += delta

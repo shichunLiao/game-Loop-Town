@@ -18,7 +18,7 @@ static func actors() -> Dictionary:
 		_actors = JSON.parse_string(FileAccess.get_file_as_string("res://data/exploration/actors.json"))
 	return _actors
 
-static func sprite(id: String, cell: int = -1, folder: String = "actors") -> Texture2D:
+static func still_sprite(id: String, cell: int = -1, folder: String = "actors") -> Texture2D:
 	var key: String = folder+"/"+id+"/"+str(cell)
 	if _textures.has(key):
 		return _textures[key]
@@ -54,6 +54,10 @@ static func visual(host: Node2D, id: String, height: float, cell: int = -1) -> S
 	material.shader = load("res://assets/environments/exploration/actors/rim_light.gdshader") as Shader
 	visual.material = material
 	host.add_child(visual)
+	var animation := ExplorationPoseAnimation.new()
+	animation.name = "CGAnimation"
+	animation.visual = visual
+	visual.add_child(animation)
 	return visual
 
 ## Where the feet stand across a sprite, 0..1 from the left edge: the mean x of opaque pixels
@@ -62,7 +66,7 @@ static func foot_center(id: String) -> float:
 	if _feet.has(id):
 		return _feet[id]
 	var result: float = .5
-	var texture: Texture2D = sprite(id)
+	var texture: Texture2D = still_sprite(id)
 	if texture!=null and not texture is AtlasTexture:
 		var image: Image = texture.get_image()
 		if image!=null:
@@ -99,3 +103,67 @@ static func strand(host: Node2D, id: String, start: Vector2, end: Vector2, width
 static func thread_ring(host: Node2D, center: Vector2, radius: float, width: float, tint: Color = Color.WHITE) -> void:
 	for i: int in range(48):
 		strand(host,"red_thread",center+Vector2.from_angle(TAU*i/48)*radius,center+Vector2.from_angle(TAU*(i+1)/48)*radius,width,tint)
+
+
+static var _animation_manifest: Dictionary = {}
+static var _animation_frames: Dictionary = {}
+
+static func animation_manifest() -> Dictionary:
+	if _animation_manifest.is_empty() and FileAccess.file_exists("res://data/exploration/animations.json"):
+		_animation_manifest = JSON.parse_string(FileAccess.get_file_as_string("res://data/exploration/animations.json"))
+	return _animation_manifest
+
+static func default_clip(id: String, cell: int = -1) -> String:
+	return str(animation_manifest().get("sources",{}).get(id+"/"+str(cell),""))
+
+static func has_clip(id: String) -> bool:
+	return animation_manifest().get("clips",{}).has(id)
+
+static func clip_info(id: String) -> Dictionary:
+	return animation_manifest().get("clips",{}).get(id,{})
+
+static func animation_source(texture: Texture2D) -> Dictionary:
+	if texture.has_meta("animation_source"):
+		return texture.get_meta("animation_source")
+	return {}
+
+static func source_id(texture: Texture2D) -> String:
+	return str(animation_source(texture).get("id",texture.resource_path.get_file().get_basename()))
+
+static func animation_index(id: String, age: float, duration: float = -1.0) -> int:
+	var info: Dictionary = clip_info(id)
+	var count: int = int(info.get("frames",1))
+	var length: float = duration if duration>0 else float(info.get("duration",.8))
+	var index: int = int(maxf(age,0)/length*count)
+	return index%count if bool(info.get("loop",true)) else mini(index,count-1)
+
+static func animation_frame(id: String, index: int) -> Texture2D:
+	var key: String = id+"/"+str(index)
+	if _animation_frames.has(key):
+		return _animation_frames[key]
+	var info: Dictionary = clip_info(id)
+	if info.is_empty():
+		return null
+	var atlas := AtlasTexture.new()
+	atlas.atlas = load(str(info.path)) as Texture2D
+	var size := Vector2(float(info.width),float(info.height))
+	var cell: int = clampi(index,0,int(info.frames)-1)+int(info.get("offset",0))
+	atlas.region = Rect2(Vector2(cell%int(info.columns),cell/int(info.columns))*size,size)
+	atlas.filter_clip = true
+	atlas.set_meta("animation_source",{"id":str(info.source),"cell":int(info.get("cell",-1))})
+	atlas.set_meta("animation_clip",id)
+	_animation_frames[key] = atlas
+	return atlas
+
+static func sprite(id: String, cell: int = -1, folder: String = "actors") -> Texture2D:
+	if folder == "actors":
+		var clip: String = default_clip(id,cell)
+		if has_clip(clip):
+			return animation_frame(clip,0)
+	return still_sprite(id,cell,folder)
+
+static func moving_sprite(id: String, age: float) -> Texture2D:
+	var clip: String = default_clip(id)
+	if has_clip(clip):
+		return animation_frame(clip,animation_index(clip,age))
+	return sprite(id)

@@ -43,6 +43,7 @@ func _ready() -> void:
 		platform.dimensions = Vector2(float(rect[2]),float(rect[3]))
 		platform.one_way = bool(entry.get("one_way",false))
 		platform.theme = str(entry.get("material",data["terrain"]))
+		platform.flat_gallery = str(data.get("background","")) == "museum"
 		platform.variant = int(entry.get("variant",0))
 		platform.travel = ExplorationCatalog.vec(entry.get("travel", [0,0]))
 		platform.period = float(entry.get("period", 4.5))

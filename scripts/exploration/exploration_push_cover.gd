@@ -23,6 +23,9 @@ func _ready() -> void:
 		_visual.position.y = -height * 0.5
 		_visual.modulate = Color(0.85, 0.88, 0.9, 0.95)
 	add_child(_visual)
+	var animation := ExplorationPoseAnimation.new()
+	animation.visual = _visual
+	_visual.add_child(animation)
 	var shape := RectangleShape2D.new()
 	shape.size = Vector2(54, 140)
 	_body = CollisionShape2D.new()

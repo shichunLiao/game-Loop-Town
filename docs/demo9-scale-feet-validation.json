@@ -1,0 +1,132 @@
+{
+  "may_brush_strike": {
+    "size": [
+      2580,
+      1300
+    ],
+    "mode": "RGBA",
+    "bytes": 2753942,
+    "alpha_bbox_before": [
+      420,
+      410,
+      2159,
+      1280
+    ],
+    "alpha_bbox_after": [
+      308,
+      20,
+      2272,
+      1280
+    ],
+    "alpha_covered_pixels_before": 763030,
+    "alpha_covered_pixels_after": 1131193
+  },
+  "void_lash": {
+    "size": [
+      2603,
+      1300
+    ],
+    "mode": "RGBA",
+    "bytes": 2309496,
+    "alpha_bbox_before": [
+      810,
+      23,
+      1793,
+      1277
+    ],
+    "alpha_bbox_after": [
+      49,
+      20,
+      2553,
+      1280
+    ],
+    "alpha_covered_pixels_before": 333966,
+    "alpha_covered_pixels_after": 939162
+  },
+  "keeper_unmasked": {
+    "size": [
+      706,
+      1280
+    ],
+    "mode": "RGBA",
+    "bytes": 1188304,
+    "alpha_bbox_before": [
+      20,
+      20,
+      686,
+      1260
+    ],
+    "alpha_bbox_after": [
+      20,
+      20,
+      686,
+      1260
+    ],
+    "alpha_covered_pixels_before": 431044,
+    "alpha_covered_pixels_after": 430622
+  },
+  "may_brush": {
+    "size": [
+      970,
+      1300
+    ],
+    "mode": "RGBA",
+    "bytes": 1635273,
+    "alpha_bbox_before": [
+      30,
+      20,
+      940,
+      1280
+    ],
+    "alpha_bbox_after": [
+      30,
+      20,
+      940,
+      1280
+    ],
+    "alpha_covered_pixels_before": 594875,
+    "alpha_covered_pixels_after": 594875
+  },
+  "keeper_changed_bbox": [
+    252,
+    1111,
+    464,
+    1260
+  ],
+  "changed_assets": [
+    "assets/environments/exploration/actors/keeper_unmasked.png",
+    "assets/environments/exploration/actors/void_lash.png",
+    "assets/environments/exploration/actors/may_brush_strike.png"
+  ],
+  "untouched_assets_verified": 37,
+  "comparison": {
+    "path": "docs/demo9-share/場景-對比/demo9-chars-scale-feet-before-after.png",
+    "bytes": 905793
+  },
+  "updated_shares": [
+    "docs/demo9-share/角色-立繪/demo9-share-may_brush_strike.png",
+    "docs/demo9-share/角色-立繪/demo9-share-void_lash.png",
+    "docs/demo9-share/角色-立繪/demo9-share-keeper_unmasked.png",
+    "docs/demo9-share/角色-立繪/demo9-share-may_brush.png",
+    "docs/demo9-share/角色-合成/demo9-share-cast-overview.png",
+    "docs/demo9-compare-cast.png",
+    "docs/demo9-share/角色-合成/demo9-share-cast-may.png",
+    "docs/demo9-share/角色-姿勢/demo9-share-may-poses.png",
+    "docs/demo9-compare-may-poses.png",
+    "docs/demo9-compare-may.png",
+    "docs/demo9-share/角色-合成/demo9-share-cast-void.png",
+    "docs/demo9-share/角色-姿勢/demo9-share-void-poses.png",
+    "docs/demo9-compare-void-poses.png",
+    "docs/demo9-compare-void.png",
+    "docs/demo9-share/角色-合成/demo9-share-cast-keeper.png",
+    "docs/demo9-share/角色-姿勢/demo9-share-keeper-poses.png",
+    "docs/demo9-compare-keeper-poses.png",
+    "docs/demo9-compare-keeper.png",
+    "docs/demo9-share/角色-合成/demo9-share-cast-full.png",
+    "docs/demo9-share/角色-預覽/demo9-share-preview-may-brush_strike.png",
+    "docs/demo9-share/角色-預覽/demo9-share-preview-void-lash.png",
+    "docs/demo9-share/角色-預覽/demo9-share-preview-keeper-unmasked.png",
+    "docs/demo9-compare-v9-previews.png",
+    "docs/demo9-share/場景-對比/demo9-chars-scale-feet-before-after.png"
+  ]
+}

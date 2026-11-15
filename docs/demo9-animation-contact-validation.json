@@ -1,0 +1,1237 @@
+{
+  "clips": {
+    "may_idle": {
+      "bottom_pixels": [
+        377,
+        378,
+        378,
+        377,
+        378,
+        377,
+        377,
+        377
+      ],
+      "range_pixels": 1,
+      "target_baseline": 378,
+      "display_height": 235,
+      "drift_world_pixels": 0.6119791666666666
+    },
+    "may_windup": {
+      "bottom_pixels": [
+        378,
+        378,
+        378,
+        378,
+        377,
+        378,
+        377,
+        378
+      ],
+      "range_pixels": 1,
+      "target_baseline": 378,
+      "display_height": 262,
+      "drift_world_pixels": 0.6822916666666666
+    },
+    "may_slash": {
+      "bottom_pixels": [
+        377,
+        377,
+        378,
+        377,
+        378,
+        378,
+        378,
+        378
+      ],
+      "range_pixels": 1,
+      "target_baseline": 378,
+      "display_height": 228,
+      "drift_world_pixels": 0.59375
+    },
+    "may_summon": {
+      "bottom_pixels": [
+        378,
+        378,
+        378,
+        378,
+        378,
+        378,
+        378,
+        378
+      ],
+      "range_pixels": 0,
+      "target_baseline": 378,
+      "display_height": 250,
+      "drift_world_pixels": 0.0
+    },
+    "may_brush": {
+      "bottom_pixels": [
+        378,
+        378,
+        378,
+        378,
+        378,
+        378,
+        378,
+        378
+      ],
+      "range_pixels": 0,
+      "target_baseline": 378,
+      "display_height": 245,
+      "drift_world_pixels": 0.0
+    },
+    "may_brush_strike": {
+      "bottom_pixels": [
+        377,
+        378,
+        378,
+        378,
+        377,
+        378,
+        377,
+        377
+      ],
+      "range_pixels": 1,
+      "target_baseline": 378,
+      "display_height": 232,
+      "drift_world_pixels": 0.6041666666666666
+    },
+    "may_statue": {
+      "bottom_pixels": [
+        378,
+        378,
+        377,
+        377,
+        378,
+        378,
+        378,
+        378
+      ],
+      "range_pixels": 1,
+      "target_baseline": 378,
+      "display_height": 180,
+      "drift_world_pixels": 0.46875
+    },
+    "void_idle": {
+      "bottom_pixels": [
+        376,
+        376,
+        376,
+        376,
+        377,
+        376,
+        377,
+        376
+      ],
+      "range_pixels": 1,
+      "target_baseline": 377,
+      "display_height": 210,
+      "drift_world_pixels": 0.546875
+    },
+    "void_command": {
+      "bottom_pixels": [
+        375,
+        375,
+        375,
+        375,
+        375,
+        375,
+        375,
+        375
+      ],
+      "range_pixels": 0,
+      "target_baseline": 375,
+      "display_height": 238,
+      "drift_world_pixels": 0.0
+    },
+    "void_frenzy": {
+      "bottom_pixels": [
+        373,
+        374,
+        374,
+        374,
+        373,
+        374,
+        374,
+        374
+      ],
+      "range_pixels": 1,
+      "target_baseline": 374,
+      "display_height": 222,
+      "drift_world_pixels": 0.578125
+    },
+    "void_lash": {
+      "bottom_pixels": [
+        378,
+        378,
+        377,
+        378,
+        377,
+        377,
+        377,
+        377
+      ],
+      "range_pixels": 1,
+      "target_baseline": 378,
+      "display_height": 200,
+      "drift_world_pixels": 0.5208333333333334
+    },
+    "void_puppet": {
+      "bottom_pixels": [
+        372,
+        372,
+        372,
+        372,
+        372,
+        371,
+        372,
+        371
+      ],
+      "range_pixels": 1,
+      "target_baseline": 372,
+      "display_height": 104,
+      "drift_world_pixels": 0.2708333333333333
+    },
+    "keeper_back": {
+      "bottom_pixels": [
+        377,
+        377,
+        377,
+        377,
+        378,
+        377,
+        377,
+        377
+      ],
+      "range_pixels": 1,
+      "target_baseline": 378,
+      "display_height": 124,
+      "drift_world_pixels": 0.3229166666666667
+    },
+    "keeper_hidden": {
+      "bottom_pixels": [
+        378,
+        377,
+        377,
+        378,
+        378,
+        378,
+        378,
+        378
+      ],
+      "range_pixels": 1,
+      "target_baseline": 378,
+      "display_height": 118,
+      "drift_world_pixels": 0.3072916666666667
+    },
+    "keeper_unmasked": {
+      "bottom_pixels": [
+        375,
+        375,
+        375,
+        375,
+        375,
+        375,
+        375,
+        375
+      ],
+      "range_pixels": 0,
+      "target_baseline": 375,
+      "display_height": 118,
+      "drift_world_pixels": 0.0
+    },
+    "ling_crouch": {
+      "bottom_pixels": [
+        378,
+        378,
+        378,
+        378,
+        378,
+        378,
+        378,
+        377
+      ],
+      "range_pixels": 1,
+      "target_baseline": 378,
+      "display_height": 78,
+      "drift_world_pixels": 0.203125
+    },
+    "ling_giant": {
+      "bottom_pixels": [
+        384,
+        383,
+        384,
+        384,
+        384,
+        384,
+        384,
+        384
+      ],
+      "range_pixels": 1,
+      "target_baseline": 384,
+      "display_height": 600,
+      "drift_world_pixels": 1.5625
+    },
+    "ling_hand": {
+      "bottom_pixels": [
+        382,
+        382,
+        382,
+        382,
+        382,
+        382,
+        382,
+        382
+      ],
+      "range_pixels": 0,
+      "target_baseline": 382,
+      "display_height": 96,
+      "drift_world_pixels": 0.0
+    },
+    "fury_idle": {
+      "bottom_pixels": [
+        378,
+        378,
+        378,
+        378,
+        378,
+        378,
+        378,
+        378
+      ],
+      "range_pixels": 0,
+      "target_baseline": 378,
+      "display_height": 118,
+      "drift_world_pixels": 0.0
+    },
+    "fury_lunge": {
+      "bottom_pixels": [
+        378,
+        378,
+        378,
+        378,
+        377,
+        377,
+        378,
+        378
+      ],
+      "range_pixels": 1,
+      "target_baseline": 378,
+      "display_height": 118,
+      "drift_world_pixels": 0.3072916666666667
+    },
+    "fury_punch": {
+      "bottom_pixels": [
+        378,
+        378,
+        378,
+        378,
+        378,
+        378,
+        378,
+        378
+      ],
+      "range_pixels": 0,
+      "target_baseline": 378,
+      "display_height": 118,
+      "drift_world_pixels": 0.0
+    },
+    "detective": {
+      "bottom_pixels": [
+        384,
+        384,
+        384,
+        384,
+        384,
+        384,
+        384,
+        383
+      ],
+      "range_pixels": 1,
+      "target_baseline": 384,
+      "display_height": 120,
+      "drift_world_pixels": 0.3125
+    },
+    "hero_idle": {
+      "bottom_pixels": [
+        384,
+        384,
+        384,
+        384,
+        384,
+        384,
+        384,
+        384
+      ],
+      "range_pixels": 0,
+      "target_baseline": 384,
+      "display_height": 105,
+      "drift_world_pixels": 0.0
+    },
+    "hero_run": {
+      "bottom_pixels": [
+        384,
+        384,
+        384,
+        383,
+        384,
+        384,
+        384,
+        384
+      ],
+      "range_pixels": 1,
+      "target_baseline": 384,
+      "display_height": 105,
+      "drift_world_pixels": 0.2734375
+    },
+    "hero_jump": {
+      "bottom_pixels": [
+        383,
+        384,
+        383,
+        383,
+        384,
+        384,
+        384,
+        382
+      ],
+      "range_pixels": 2,
+      "target_baseline": 384,
+      "display_height": 105,
+      "drift_world_pixels": 0.546875
+    },
+    "hero_fall": {
+      "bottom_pixels": [
+        383,
+        384,
+        384,
+        383,
+        384,
+        384,
+        384,
+        384
+      ],
+      "range_pixels": 1,
+      "target_baseline": 384,
+      "display_height": 105,
+      "drift_world_pixels": 0.2734375
+    },
+    "hero_climb": {
+      "bottom_pixels": [
+        384,
+        384,
+        383,
+        384,
+        384,
+        384,
+        384,
+        384
+      ],
+      "range_pixels": 1,
+      "target_baseline": 384,
+      "display_height": 105,
+      "drift_world_pixels": 0.2734375
+    },
+    "hero_dash": {
+      "bottom_pixels": [
+        383,
+        384,
+        384,
+        384,
+        384,
+        383,
+        384,
+        384
+      ],
+      "range_pixels": 1,
+      "target_baseline": 384,
+      "display_height": 105,
+      "drift_world_pixels": 0.2734375
+    },
+    "hero_death": {
+      "bottom_pixels": [
+        384,
+        383,
+        383,
+        384,
+        384,
+        384,
+        383,
+        383
+      ],
+      "range_pixels": 1,
+      "target_baseline": 384,
+      "display_height": 105,
+      "drift_world_pixels": 0.2734375
+    },
+    "hero_windup": {
+      "bottom_pixels": [
+        383,
+        383,
+        383,
+        383,
+        384,
+        384,
+        384,
+        384
+      ],
+      "range_pixels": 1,
+      "target_baseline": 384,
+      "display_height": 105,
+      "drift_world_pixels": 0.2734375
+    },
+    "hero_active": {
+      "bottom_pixels": [
+        383,
+        384,
+        384,
+        384,
+        384,
+        384,
+        384,
+        384
+      ],
+      "range_pixels": 1,
+      "target_baseline": 384,
+      "display_height": 105,
+      "drift_world_pixels": 0.2734375
+    },
+    "hero_recover": {
+      "bottom_pixels": [
+        384,
+        384,
+        384,
+        384,
+        384,
+        384,
+        384,
+        384
+      ],
+      "range_pixels": 0,
+      "target_baseline": 384,
+      "display_height": 105,
+      "drift_world_pixels": 0.0
+    },
+    "npcs_a_0": {
+      "bottom_pixels": [
+        383,
+        383,
+        383,
+        383,
+        384,
+        384,
+        384,
+        384
+      ],
+      "range_pixels": 1,
+      "target_baseline": 384,
+      "display_height": 120,
+      "drift_world_pixels": 0.3125
+    },
+    "npcs_a_1": {
+      "bottom_pixels": [
+        384,
+        384,
+        384,
+        384,
+        384,
+        384,
+        384,
+        384
+      ],
+      "range_pixels": 0,
+      "target_baseline": 384,
+      "display_height": 120,
+      "drift_world_pixels": 0.0
+    },
+    "npcs_a_2": {
+      "bottom_pixels": [
+        384,
+        384,
+        384,
+        384,
+        384,
+        383,
+        383,
+        383
+      ],
+      "range_pixels": 1,
+      "target_baseline": 384,
+      "display_height": 120,
+      "drift_world_pixels": 0.3125
+    },
+    "npcs_a_3": {
+      "bottom_pixels": [
+        384,
+        383,
+        384,
+        384,
+        384,
+        384,
+        384,
+        384
+      ],
+      "range_pixels": 1,
+      "target_baseline": 384,
+      "display_height": 120,
+      "drift_world_pixels": 0.3125
+    },
+    "npcs_b_0": {
+      "bottom_pixels": [
+        384,
+        383,
+        384,
+        384,
+        384,
+        384,
+        384,
+        384
+      ],
+      "range_pixels": 1,
+      "target_baseline": 384,
+      "display_height": 120,
+      "drift_world_pixels": 0.3125
+    },
+    "npcs_b_1": {
+      "bottom_pixels": [
+        384,
+        384,
+        383,
+        384,
+        384,
+        384,
+        384,
+        384
+      ],
+      "range_pixels": 1,
+      "target_baseline": 384,
+      "display_height": 120,
+      "drift_world_pixels": 0.3125
+    },
+    "npcs_b_2": {
+      "bottom_pixels": [
+        384,
+        384,
+        384,
+        384,
+        384,
+        384,
+        384,
+        384
+      ],
+      "range_pixels": 0,
+      "target_baseline": 384,
+      "display_height": 120,
+      "drift_world_pixels": 0.0
+    },
+    "npcs_b_3": {
+      "bottom_pixels": [
+        384,
+        384,
+        384,
+        384,
+        384,
+        384,
+        384,
+        384
+      ],
+      "range_pixels": 0,
+      "target_baseline": 384,
+      "display_height": 120,
+      "drift_world_pixels": 0.0
+    },
+    "keeper_limb": {
+      "bottom_pixels": [
+        383,
+        384,
+        384,
+        384,
+        384,
+        384,
+        383,
+        383
+      ],
+      "range_pixels": 1,
+      "target_baseline": 384,
+      "display_height": 122,
+      "drift_world_pixels": 0.3177083333333333
+    },
+    "enemies_a_0_move": {
+      "bottom_pixels": [
+        383,
+        384,
+        382,
+        383,
+        384,
+        382,
+        383,
+        384
+      ],
+      "range_pixels": 2,
+      "target_baseline": 384,
+      "display_height": 98,
+      "drift_world_pixels": 0.5104166666666666
+    },
+    "enemies_a_0_windup": {
+      "bottom_pixels": [
+        383,
+        383,
+        383,
+        383,
+        383,
+        383,
+        383,
+        383
+      ],
+      "range_pixels": 0,
+      "target_baseline": 384,
+      "display_height": 98,
+      "drift_world_pixels": 0.0
+    },
+    "enemies_a_0_active": {
+      "bottom_pixels": [
+        383,
+        383,
+        384,
+        382,
+        384,
+        383,
+        384,
+        382
+      ],
+      "range_pixels": 2,
+      "target_baseline": 384,
+      "display_height": 98,
+      "drift_world_pixels": 0.5104166666666666
+    },
+    "enemies_a_0_recover": {
+      "bottom_pixels": [
+        384,
+        383,
+        384,
+        384,
+        384,
+        383,
+        384,
+        383
+      ],
+      "range_pixels": 1,
+      "target_baseline": 384,
+      "display_height": 98,
+      "drift_world_pixels": 0.2552083333333333
+    },
+    "enemies_a_1_move": {
+      "bottom_pixels": [
+        384,
+        384,
+        384,
+        383,
+        382,
+        382,
+        382,
+        383
+      ],
+      "range_pixels": 2,
+      "target_baseline": 384,
+      "display_height": 110,
+      "drift_world_pixels": 0.5729166666666666
+    },
+    "enemies_a_1_windup": {
+      "bottom_pixels": [
+        384,
+        383,
+        382,
+        384,
+        384,
+        384,
+        384,
+        383
+      ],
+      "range_pixels": 2,
+      "target_baseline": 384,
+      "display_height": 110,
+      "drift_world_pixels": 0.5729166666666666
+    },
+    "enemies_a_1_active": {
+      "bottom_pixels": [
+        382,
+        382,
+        384,
+        384,
+        382,
+        382,
+        384,
+        384
+      ],
+      "range_pixels": 2,
+      "target_baseline": 384,
+      "display_height": 110,
+      "drift_world_pixels": 0.5729166666666666
+    },
+    "enemies_a_1_recover": {
+      "bottom_pixels": [
+        384,
+        384,
+        384,
+        383,
+        383,
+        383,
+        382,
+        383
+      ],
+      "range_pixels": 2,
+      "target_baseline": 384,
+      "display_height": 110,
+      "drift_world_pixels": 0.5729166666666666
+    },
+    "enemies_a_3_move": {
+      "bottom_pixels": [
+        384,
+        384,
+        382,
+        384,
+        382,
+        383,
+        382,
+        383
+      ],
+      "range_pixels": 2,
+      "target_baseline": 384,
+      "display_height": 64,
+      "drift_world_pixels": 0.3333333333333333
+    },
+    "enemies_a_3_windup": {
+      "bottom_pixels": [
+        384,
+        384,
+        383,
+        383,
+        383,
+        382,
+        383,
+        383
+      ],
+      "range_pixels": 2,
+      "target_baseline": 384,
+      "display_height": 64,
+      "drift_world_pixels": 0.3333333333333333
+    },
+    "enemies_a_3_active": {
+      "bottom_pixels": [
+        383,
+        382,
+        383,
+        384,
+        382,
+        383,
+        384,
+        383
+      ],
+      "range_pixels": 2,
+      "target_baseline": 384,
+      "display_height": 64,
+      "drift_world_pixels": 0.3333333333333333
+    },
+    "enemies_a_3_recover": {
+      "bottom_pixels": [
+        384,
+        384,
+        382,
+        383,
+        384,
+        382,
+        384,
+        384
+      ],
+      "range_pixels": 2,
+      "target_baseline": 384,
+      "display_height": 64,
+      "drift_world_pixels": 0.3333333333333333
+    },
+    "enemies_b_0_move": {
+      "bottom_pixels": [
+        382,
+        384,
+        384,
+        384,
+        384,
+        384,
+        384,
+        384
+      ],
+      "range_pixels": 2,
+      "target_baseline": 384,
+      "display_height": 67,
+      "drift_world_pixels": 0.3489583333333333
+    },
+    "enemies_b_0_windup": {
+      "bottom_pixels": [
+        384,
+        384,
+        384,
+        384,
+        384,
+        384,
+        384,
+        384
+      ],
+      "range_pixels": 0,
+      "target_baseline": 384,
+      "display_height": 67,
+      "drift_world_pixels": 0.0
+    },
+    "enemies_b_0_active": {
+      "bottom_pixels": [
+        384,
+        382,
+        384,
+        384,
+        382,
+        380,
+        384,
+        381
+      ],
+      "range_pixels": 4,
+      "target_baseline": 384,
+      "display_height": 67,
+      "drift_world_pixels": 0.6979166666666666
+    },
+    "enemies_b_0_recover": {
+      "bottom_pixels": [
+        380,
+        384,
+        384,
+        384,
+        384,
+        384,
+        382,
+        384
+      ],
+      "range_pixels": 4,
+      "target_baseline": 384,
+      "display_height": 67,
+      "drift_world_pixels": 0.6979166666666666
+    },
+    "enemies_b_1_move": {
+      "bottom_pixels": [
+        384,
+        382,
+        382,
+        381,
+        381,
+        384,
+        383,
+        384
+      ],
+      "range_pixels": 3,
+      "target_baseline": 384,
+      "display_height": 100,
+      "drift_world_pixels": 0.78125
+    },
+    "enemies_b_1_windup": {
+      "bottom_pixels": [
+        382,
+        384,
+        382,
+        382,
+        384,
+        384,
+        382,
+        384
+      ],
+      "range_pixels": 2,
+      "target_baseline": 384,
+      "display_height": 100,
+      "drift_world_pixels": 0.5208333333333334
+    },
+    "enemies_b_1_active": {
+      "bottom_pixels": [
+        382,
+        383,
+        382,
+        384,
+        384,
+        382,
+        382,
+        382
+      ],
+      "range_pixels": 2,
+      "target_baseline": 384,
+      "display_height": 100,
+      "drift_world_pixels": 0.5208333333333334
+    },
+    "enemies_b_1_recover": {
+      "bottom_pixels": [
+        384,
+        384,
+        384,
+        384,
+        382,
+        384,
+        382,
+        382
+      ],
+      "range_pixels": 2,
+      "target_baseline": 384,
+      "display_height": 100,
+      "drift_world_pixels": 0.5208333333333334
+    },
+    "enemies_b_2_move": {
+      "bottom_pixels": [
+        382,
+        382,
+        382,
+        383,
+        383,
+        383,
+        382,
+        382
+      ],
+      "range_pixels": 1,
+      "target_baseline": 384,
+      "display_height": 116,
+      "drift_world_pixels": 0.3020833333333333
+    },
+    "enemies_b_2_windup": {
+      "bottom_pixels": [
+        384,
+        384,
+        384,
+        384,
+        383,
+        384,
+        384,
+        384
+      ],
+      "range_pixels": 1,
+      "target_baseline": 384,
+      "display_height": 116,
+      "drift_world_pixels": 0.3020833333333333
+    },
+    "enemies_b_2_active": {
+      "bottom_pixels": [
+        383,
+        383,
+        384,
+        384,
+        383,
+        384,
+        384,
+        384
+      ],
+      "range_pixels": 1,
+      "target_baseline": 384,
+      "display_height": 116,
+      "drift_world_pixels": 0.3020833333333333
+    },
+    "enemies_b_2_recover": {
+      "bottom_pixels": [
+        383,
+        384,
+        384,
+        384,
+        384,
+        383,
+        383,
+        383
+      ],
+      "range_pixels": 1,
+      "target_baseline": 384,
+      "display_height": 116,
+      "drift_world_pixels": 0.3020833333333333
+    },
+    "enemies_b_3_move": {
+      "bottom_pixels": [
+        382,
+        383,
+        383,
+        383,
+        384,
+        382,
+        382,
+        383
+      ],
+      "range_pixels": 2,
+      "target_baseline": 384,
+      "display_height": 103,
+      "drift_world_pixels": 0.5364583333333334
+    },
+    "enemies_b_3_windup": {
+      "bottom_pixels": [
+        384,
+        382,
+        384,
+        382,
+        384,
+        382,
+        384,
+        383
+      ],
+      "range_pixels": 2,
+      "target_baseline": 384,
+      "display_height": 103,
+      "drift_world_pixels": 0.5364583333333334
+    },
+    "enemies_b_3_active": {
+      "bottom_pixels": [
+        382,
+        383,
+        383,
+        382,
+        384,
+        383,
+        382,
+        383
+      ],
+      "range_pixels": 2,
+      "target_baseline": 384,
+      "display_height": 103,
+      "drift_world_pixels": 0.5364583333333334
+    },
+    "enemies_b_3_recover": {
+      "bottom_pixels": [
+        382,
+        382,
+        382,
+        382,
+        382,
+        383,
+        382,
+        384
+      ],
+      "range_pixels": 2,
+      "target_baseline": 384,
+      "display_height": 103,
+      "drift_world_pixels": 0.5364583333333334
+    },
+    "void_puppet_move": {
+      "bottom_pixels": [
+        372,
+        372,
+        372,
+        372,
+        372,
+        372,
+        372,
+        372
+      ],
+      "range_pixels": 0,
+      "target_baseline": 372,
+      "display_height": 104,
+      "drift_world_pixels": 0.0
+    },
+    "void_puppet_windup": {
+      "bottom_pixels": [
+        372,
+        371,
+        371,
+        372,
+        372,
+        372,
+        372,
+        371
+      ],
+      "range_pixels": 1,
+      "target_baseline": 372,
+      "display_height": 104,
+      "drift_world_pixels": 0.2708333333333333
+    },
+    "void_puppet_active": {
+      "bottom_pixels": [
+        372,
+        372,
+        372,
+        372,
+        371,
+        372,
+        372,
+        371
+      ],
+      "range_pixels": 1,
+      "target_baseline": 372,
+      "display_height": 104,
+      "drift_world_pixels": 0.2708333333333333
+    },
+    "void_puppet_recover": {
+      "bottom_pixels": [
+        371,
+        372,
+        371,
+        372,
+        372,
+        371,
+        371,
+        371
+      ],
+      "range_pixels": 1,
+      "target_baseline": 372,
+      "display_height": 104,
+      "drift_world_pixels": 0.2708333333333333
+    },
+    "may_statue_move": {
+      "bottom_pixels": [
+        377,
+        378,
+        378,
+        378,
+        377,
+        378,
+        378,
+        378
+      ],
+      "range_pixels": 1,
+      "target_baseline": 378,
+      "display_height": 180,
+      "drift_world_pixels": 0.46875
+    },
+    "may_statue_windup": {
+      "bottom_pixels": [
+        378,
+        378,
+        378,
+        377,
+        378,
+        377,
+        377,
+        377
+      ],
+      "range_pixels": 1,
+      "target_baseline": 378,
+      "display_height": 180,
+      "drift_world_pixels": 0.46875
+    },
+    "may_statue_active": {
+      "bottom_pixels": [
+        378,
+        378,
+        378,
+        377,
+        378,
+        378,
+        377,
+        377
+      ],
+      "range_pixels": 1,
+      "target_baseline": 378,
+      "display_height": 180,
+      "drift_world_pixels": 0.46875
+    },
+    "may_statue_recover": {
+      "bottom_pixels": [
+        378,
+        377,
+        377,
+        378,
+        378,
+        378,
+        378,
+        378
+      ],
+      "range_pixels": 1,
+      "target_baseline": 378,
+      "display_height": 180,
+      "drift_world_pixels": 0.46875
+    }
+  },
+  "museum_outside_portraits_unchanged": true
+}

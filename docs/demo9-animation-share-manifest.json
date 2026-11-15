@@ -1,0 +1,870 @@
+{
+  "version": "Demo 9",
+  "sheets": 50,
+  "clips": 77,
+  "cels": 616,
+  "art_qa": "48 passed, 0 failed",
+  "animation_qa": "828 passed, 0 failed",
+  "files": {
+    "README-animation.md": {
+      "bytes": 830,
+      "sha256": "af5e862c24525150cae82e5789cbbeff353d90468ae40552a7b832deeb2e8961"
+    },
+    "demo9-anim-hero_run-strip.png": {
+      "bytes": 376838,
+      "sha256": "d107159ac4f99f53d38b27731b691730180f5b4d58f73ef58140546aa0e6c198"
+    },
+    "demo9-anim-hero_run.gif": {
+      "bytes": 431151,
+      "sha256": "88a8a1d0002da69b37ec16e914b0e1c7c8ef321f963df1486db3f2e2d8553390"
+    },
+    "demo9-anim-keeper_unmasked-strip.png": {
+      "bytes": 289355,
+      "sha256": "0df497193bfaf2087512b7472fc1175e03b285ac3acd20463484e173277a2625"
+    },
+    "demo9-anim-keeper_unmasked.gif": {
+      "bytes": 339811,
+      "sha256": "f548933df5572e6cbbf9d0a916d20c54f963374922b30e21630531ab936122ef"
+    },
+    "demo9-anim-may_slash-strip.png": {
+      "bytes": 315114,
+      "sha256": "64c56f1430d4ffdb6dd4962c2e6818aa3438777563ec18d719d35eb8a7982411"
+    },
+    "demo9-anim-may_slash.gif": {
+      "bytes": 473408,
+      "sha256": "3cd96c8a84a022bd84a09ecb2081c7a79e405a0ad1355b3316fc42080eae4b3b"
+    },
+    "demo9-anim-void_lash-strip.png": {
+      "bytes": 129307,
+      "sha256": "2622257a3784c5b4ff72b8c354a1751d448bd0e3fd13851af92f6d360eb89b2c"
+    },
+    "demo9-anim-void_lash.gif": {
+      "bytes": 516189,
+      "sha256": "5c289e99362237277eb992b953bb03140941c7e36b1320e1aba49bcea2ec7f80"
+    },
+    "demo9-animation-before/keeper_unmasked.png": {
+      "bytes": 1188304,
+      "sha256": "6dde7d07e94b4394863e26e632c9a20706c7da6fa4dd0cec02b27af6faa028cf"
+    },
+    "demo9-animation-before/museum.png": {
+      "bytes": 2527560,
+      "sha256": "0c9427dba44c37030f4a956f80d351493d8aed57eea356b6210db62a060dff7d"
+    },
+    "demo9-animation-contact-validation.json": {
+      "bytes": 22547,
+      "sha256": "3edd75544d54c07f5cc511cdb61c813168a0528de60f3160ac611148639b9205"
+    },
+    "demo9-animation-pack.json": {
+      "bytes": 10334,
+      "sha256": "e93103568310b68bc42f99c5da07f3b60ecb8cd4dfa976fce10db34808908455"
+    },
+    "demo9-animation-pixel-validation.json": {
+      "bytes": 53017,
+      "sha256": "8bc096a72cb9ffa9b93dcbcf490c684e0d64282948bfc51050d3af027d8e6ca6"
+    },
+    "demo9-animation-prompts.json": {
+      "bytes": 46872,
+      "sha256": "95b106170b651b7a01ebca027242554b3462bbe96c5000c24946ba91453d0959"
+    },
+    "demo9-animation-qa.log": {
+      "bytes": 27651,
+      "sha256": "9a011b15b9c520b18b00bc6587f71b4029080fdd0e8267ff68f0d200152dffb0"
+    },
+    "demo9-animations.json": {
+      "bytes": 28700,
+      "sha256": "418875dd5e03e65e65ac8996b9034fffaffe00cb01b2c6de512e9d20f84f0b24"
+    },
+    "demo9-art-qa.log": {
+      "bytes": 2179,
+      "sha256": "15bf89d977ed7cb5899e75753138024da1d77bb113f5e36de27e0f6c3cc82613"
+    },
+    "demo9-codex-anim-result.md": {
+      "bytes": 18356,
+      "sha256": "97074554594d79217289fe4325e292f58ef6cd107a2a3712c78b5a918fe0d7fa"
+    },
+    "demo9-keeper-feet-before-after.png": {
+      "bytes": 550299,
+      "sha256": "88e59cccee2d7b325d3cb6eef13d2ad2932683690ed58f459c6921c2b1fd9ea5"
+    },
+    "demo9-keeper-feet-detail.png": {
+      "bytes": 139281,
+      "sha256": "c5ca66ea2312f409288037eaddf3e09512bd55b080cd4add37ccfcabb65ada50"
+    },
+    "demo9-museum-eyes.json": {
+      "bytes": 2450,
+      "sha256": "55fbaf0b5cd56fbb4069f5680f4fbb24b4a073f63bbc784a76180e2d603474b6"
+    },
+    "demo9-museum-gaze-closeup.gif": {
+      "bytes": 704989,
+      "sha256": "584bcf0d6deeb7fb30f1294562119b2d227f596be850064b9823eda29a23c649"
+    },
+    "demo9-museum-portraits-before-after.png": {
+      "bytes": 1084987,
+      "sha256": "722f1bdf8abeeb0ddbbcb5025b1d426bf53935084d48304fe410a2c450a16282"
+    },
+    "demo9-museum-portraits.png": {
+      "bytes": 2846405,
+      "sha256": "b893c980fc48d660d68d806ede6e2f68ae190c3f00cc111ce6bc7267f6422d8f"
+    },
+    "場景-中景/demo9-share-depth-clock_shaft.png": {
+      "bytes": 3408884,
+      "sha256": "61e64c9642d543b61af545e96e4d0d27ba541e66301bcb13a264ee53753ad883"
+    },
+    "場景-中景/demo9-share-depth-wax_shaft.png": {
+      "bytes": 3227660,
+      "sha256": "8a893c61392890c18423c1d23d0b375b0ea5740971380a39c30a0d268e93de7d"
+    },
+    "場景-中景/demo9-share-depth-well_shaft.png": {
+      "bytes": 3811105,
+      "sha256": "7af89656a78c15df57a34863a5e9190e10edd18463b2a209f96166d2fb6f3f6e"
+    },
+    "場景-中景/demo9-share-mid-clock_mid.png": {
+      "bytes": 2990396,
+      "sha256": "03121d29ba65c0f00b044174e57f7901c4c64d9d34c674d477d02b96da4b80d6"
+    },
+    "場景-中景/demo9-share-mid-fire_mid.png": {
+      "bytes": 2600656,
+      "sha256": "a53a2fe823e60d6ec0e526f8340979ea3dc8009c52791e402f3ff1b58ba50777"
+    },
+    "場景-中景/demo9-share-mid-museum_depth.png": {
+      "bytes": 2319423,
+      "sha256": "03f79aefbb436230d0dc30e22e4cf9f9a174a11860aa8c63b6371b0bae1a8bf5"
+    },
+    "場景-中景/demo9-share-mid-museum_mid.png": {
+      "bytes": 2200877,
+      "sha256": "b55d1924b4c69d0d269ce4ff2d2254fd50faf8718bacf39a44e1936ef1dde7eb"
+    },
+    "場景-中景/demo9-share-mid-stage_depth_v7.png": {
+      "bytes": 2180084,
+      "sha256": "5302574be7630aa69f626fad51f53e8af18b47b678c6af9ffa4de3fb46d4115b"
+    },
+    "場景-中景/demo9-share-mid-station_mid.png": {
+      "bytes": 2530806,
+      "sha256": "88e29e23090a0e37b900c8314f3999fca5b4c83c28d710707278f8ce5c36d323"
+    },
+    "場景-中景/demo9-share-mid-theater_mid.png": {
+      "bytes": 2871754,
+      "sha256": "bfcc286a0c7103b440a2f0cee42e37deb08fba7357ced237c59b13c669e230e1"
+    },
+    "場景-中景/demo9-share-mid-town_depth_v7.png": {
+      "bytes": 3098254,
+      "sha256": "1c190abd77d7a44c6b977abad60c99de75f77196686494b53db251fe7f074401"
+    },
+    "場景-中景/demo9-share-mid-town_mid.png": {
+      "bytes": 3082565,
+      "sha256": "a7c1e441112a68b2b318e37520bf13fe3c23ea0abd9c30515392477a09ac4388"
+    },
+    "場景-中景/demo9-share-mid-wax_depth_v7.png": {
+      "bytes": 2601294,
+      "sha256": "ad303ae766e28a1944c8ad4ce7dbc33d79879795b889bbc013b47ebced33c5d5"
+    },
+    "場景-中景/demo9-share-mid-wax_mid.png": {
+      "bytes": 3089271,
+      "sha256": "bd7f55857bd3640a4671293be1d8ac081abdc79213ed0fbbdd0bea21a2b6f0b9"
+    },
+    "場景-中景/demo9-share-mid-well_depth_v7.png": {
+      "bytes": 3030194,
+      "sha256": "1e57cab20fafa9d2270e05b62cdb3a2f5417f87722469535dc2eb6e18f0f12a7"
+    },
+    "場景-中景/demo9-share-mid-well_mid.png": {
+      "bytes": 2856440,
+      "sha256": "61f97a5fa2f6a645626a1ddd5cbd8d9676f1f46c8f034bc2a2d07f471d14e795"
+    },
+    "場景-中景/demo9-share-museum-flat-platform.png": {
+      "bytes": 835650,
+      "sha256": "e21dd126e7f86e5befd130d52ca5a1fecc67a85dccf2f57c4572e3f49b1cda2b"
+    },
+    "場景-對比/demo9-chars-before-after.png": {
+      "bytes": 855488,
+      "sha256": "95d3e8654ae1a459d228e221981e70e13ca20e3e9ff7d530144ccb462f87cc0a"
+    },
+    "場景-對比/demo9-chars-scale-feet-before-after.png": {
+      "bytes": 905793,
+      "sha256": "364285a895f003f8734b216a33b8247d8f393c0c5854ccbd43130ada48008346"
+    },
+    "場景-對比/demo9-keeper-feet-before-after.png": {
+      "bytes": 550299,
+      "sha256": "88e59cccee2d7b325d3cb6eef13d2ad2932683690ed58f459c6921c2b1fd9ea5"
+    },
+    "場景-對比/demo9-keeper-feet-detail.png": {
+      "bytes": 139281,
+      "sha256": "c5ca66ea2312f409288037eaddf3e09512bd55b080cd4add37ccfcabb65ada50"
+    },
+    "場景-對比/demo9-museum-before-after.png": {
+      "bytes": 1084987,
+      "sha256": "722f1bdf8abeeb0ddbbcb5025b1d426bf53935084d48304fe410a2c450a16282"
+    },
+    "場景-對比/demo9-share-backgrounds-overview.png": {
+      "bytes": 3112897,
+      "sha256": "48e21a5b4f111a9ae45e93a15fc4a1a9dc6036ef5077b2359e3ad6474dfca923"
+    },
+    "場景-對比/demo9-share-compare-bg-basement.png": {
+      "bytes": 1157387,
+      "sha256": "df76fdb3413cf3ac35064e2adbc53e2ffb71ce59b6e5d22806004bfe596428b2"
+    },
+    "場景-對比/demo9-share-compare-bg-museum.png": {
+      "bytes": 1084987,
+      "sha256": "722f1bdf8abeeb0ddbbcb5025b1d426bf53935084d48304fe410a2c450a16282"
+    },
+    "場景-對比/demo9-share-compare-bg-wax.png": {
+      "bytes": 1237984,
+      "sha256": "99a87075bb8031df80cff045e2e2f458d8cdecf6ffa12aa9dad960df6b342039"
+    },
+    "場景-對比/demo9-share-harvest-night.png": {
+      "bytes": 2242248,
+      "sha256": "bbf3fee5f8e1ebee5c1cd347279efd345b06dc9071f591bb185d59de36122b48"
+    },
+    "場景-對比/demo9-share-museum-mid.png": {
+      "bytes": 1389914,
+      "sha256": "1df3cfcc91b218e792ed628602c8fa21d9149a067f7a40c0089af03c40358857"
+    },
+    "場景-對比/demo9-share-preview-fire-bg.png": {
+      "bytes": 2499368,
+      "sha256": "e05012c5a14fb6ba4dbe327d5bdd866b0c40d00ff856f20677a3ed4bf24aeefc"
+    },
+    "場景-對比/demo9-share-preview-item3-props.png": {
+      "bytes": 605325,
+      "sha256": "d47b4cf6e0cc4229c529034dd4dccf5d772411b55f42e637a6fdf447dcb4dde9"
+    },
+    "場景-對比/demo9-share-preview-museum-mid.png": {
+      "bytes": 4504212,
+      "sha256": "6331646bd8469cb105c5d66189cb8fd99876cdd167ca1b34d317ea2ee7ce68a2"
+    },
+    "場景-房間/demo9-share-scene-back_stage.png": {
+      "bytes": 1604032,
+      "sha256": "2f241a76f641d3132757574f2fbf9e202aa220b0a0e35936a69b9b5bc14bcadf"
+    },
+    "場景-房間/demo9-share-scene-clock_tower.png": {
+      "bytes": 1603907,
+      "sha256": "911bd43ab9ca34e88f17d7141907434b4825f748376f6b7ddf4def025a5e3e6d"
+    },
+    "場景-房間/demo9-share-scene-dry_well.png": {
+      "bytes": 1650183,
+      "sha256": "05adb2ec72acafcb24a1be75b30ef8e5f69bc51ff71918c66819931033aace37"
+    },
+    "場景-房間/demo9-share-scene-fire_town.png": {
+      "bytes": 1538868,
+      "sha256": "30fbfc7856212ab801e2a19f5d18b1b118674dbaa905738f51a6e3d4b3980cf3"
+    },
+    "場景-房間/demo9-share-scene-old_theater.png": {
+      "bytes": 1597786,
+      "sha256": "5255e5d571d3faed1a412b43f4a8a43c8beebf4a177119b718b8ff170044bcc7"
+    },
+    "場景-房間/demo9-share-scene-town_entrance.png": {
+      "bytes": 1593226,
+      "sha256": "8e92b5a461f48a4c1ffb8bda12bb403a6b648096413cce9bdda9d4a5501b57f6"
+    },
+    "場景-房間/demo9-share-scene-train_station.png": {
+      "bytes": 1821995,
+      "sha256": "8c8d5b68669aedb12fc46d6b37633666e6a7efc4cd5f00a1f3704ea86e63115d"
+    },
+    "場景-房間/demo9-share-scene-wax_basement.png": {
+      "bytes": 1701760,
+      "sha256": "c8029dc7943bb024aa7877ed7d75c266cc1985e074802d41710dcb496749ffb0"
+    },
+    "場景-房間/demo9-share-scene-wax_museum.png": {
+      "bytes": 1553382,
+      "sha256": "df2a3234af418c8c57fc5fefe70e49dc4d1001f68835d589923a916558a3b937"
+    },
+    "場景-房間/demo9-share-scene-well_interior.png": {
+      "bytes": 1837188,
+      "sha256": "7c98d207a81ef69ac8a430ad9429c6b3bd176d0697171352ed88301fc1970008"
+    },
+    "場景-背景/demo9-share-bg-backstage.png": {
+      "bytes": 2909485,
+      "sha256": "77469a418b1be386598cca9ac8a17a5d217a77e3582678ff3e0ef3bb59965049"
+    },
+    "場景-背景/demo9-share-bg-basement.png": {
+      "bytes": 2918404,
+      "sha256": "749176aa51326f53c1e00a694d29c5144f0e4d36ab0b71f0b36a33601cabc379"
+    },
+    "場景-背景/demo9-share-bg-clocktower.png": {
+      "bytes": 2693036,
+      "sha256": "dd390b80e11017660093ee59165366391f133895cfcc6b6ba5740364be31bda4"
+    },
+    "場景-背景/demo9-share-bg-dry_well.png": {
+      "bytes": 2771328,
+      "sha256": "ef8633363560639c1686fc1e491f69fc0f6e0eefb5411ec4fd1b276778fce775"
+    },
+    "場景-背景/demo9-share-bg-fire.png": {
+      "bytes": 2499368,
+      "sha256": "e05012c5a14fb6ba4dbe327d5bdd866b0c40d00ff856f20677a3ed4bf24aeefc"
+    },
+    "場景-背景/demo9-share-bg-museum.png": {
+      "bytes": 2846405,
+      "sha256": "b893c980fc48d660d68d806ede6e2f68ae190c3f00cc111ce6bc7267f6422d8f"
+    },
+    "場景-背景/demo9-share-bg-station.png": {
+      "bytes": 3021157,
+      "sha256": "6e68dbd20f4afe208c87d82b9a55e1f08c766bb62d317f4cd456cafc7917b69a"
+    },
+    "場景-背景/demo9-share-bg-theater.png": {
+      "bytes": 2834771,
+      "sha256": "a31aff36d473f1a74294002804dd4899d4847df9c93575720310088e22080f6e"
+    },
+    "場景-背景/demo9-share-bg-town.png": {
+      "bytes": 2566752,
+      "sha256": "ba9029d40ed270c003fca1b40f0fe7c21171605396209a3e10119d608e78ff24"
+    },
+    "場景-背景/demo9-share-bg-wax.png": {
+      "bytes": 3187098,
+      "sha256": "70bfc79969a66b6b95c95dcd496e32bab3aea07badf1f8ccaafcc842d396d35c"
+    },
+    "場景-背景/demo9-share-bg-well.png": {
+      "bytes": 3133247,
+      "sha256": "792451e60762740c9c1840bfd5c5569eee5d3386e9536a42eba5be0c5609efa3"
+    },
+    "建築/demo9-share-arch-boardinghouse.png": {
+      "bytes": 2052154,
+      "sha256": "6257e48ab1b7c170b9ae7a9e69ac47059db11a9e6ae3f8e405d8ec40aa7cd6ec"
+    },
+    "建築/demo9-share-arch-burnt_house.png": {
+      "bytes": 2575931,
+      "sha256": "a346dfc4a11cf7caeda78d5ff97080f3e5bde87b0df396a32a37416ad8d4337a"
+    },
+    "建築/demo9-share-arch-florist.png": {
+      "bytes": 2814583,
+      "sha256": "e767ba3373331ce4de764d3a80ad26e0bf8aec0097105b65491f138c065cc7dc"
+    },
+    "建築/demo9-share-arch-theater_entry.png": {
+      "bytes": 2329139,
+      "sha256": "4d9e3d4d8eb3151242d398ad9f91b8ad77656b995c80336e09493ab1475a0a3a"
+    },
+    "建築/demo9-share-arch-well_shelter.png": {
+      "bytes": 2379524,
+      "sha256": "f72dfd9cdfb7b05ce038cd908b9bc7359b4b3afe3d4b8b7fd2b7ca376b804df8"
+    },
+    "角色-動畫幀條/detective.png": {
+      "bytes": 208751,
+      "sha256": "c16b1f10cade2c7ab33b67ba95a3e683511c76acf2f84af9ba5dacfe36350d0e"
+    },
+    "角色-動畫幀條/enemies_a_0_active.png": {
+      "bytes": 299278,
+      "sha256": "e8f08e12c8c4e3aed29dff10ba258fa61a76fd3e47ca22e9a53bc7e971080af8"
+    },
+    "角色-動畫幀條/enemies_a_0_move.png": {
+      "bytes": 294978,
+      "sha256": "01049dd12f855278551b649005569239b7ee2846707e21069c52d3c304cda959"
+    },
+    "角色-動畫幀條/enemies_a_0_recover.png": {
+      "bytes": 292195,
+      "sha256": "2ebe5831c752ae67236423841b89083a9edb50b32b4cc547dc936532ff0bfc10"
+    },
+    "角色-動畫幀條/enemies_a_0_windup.png": {
+      "bytes": 293501,
+      "sha256": "ae91a54af0a05d139c40b57cd3ce3287d6aae1e3a2b2374177d9816eacd90838"
+    },
+    "角色-動畫幀條/enemies_a_1_active.png": {
+      "bytes": 318672,
+      "sha256": "8efccf3a8cd2fcd031f4ebae57599d37226f4958722fdc27c82e8bfbc4a34123"
+    },
+    "角色-動畫幀條/enemies_a_1_move.png": {
+      "bytes": 313997,
+      "sha256": "a134a40936b288a0ed71261f43da95d6077da2e02091baad1147c306f562b0f2"
+    },
+    "角色-動畫幀條/enemies_a_1_recover.png": {
+      "bytes": 315846,
+      "sha256": "f8363fa81e38b6757fdc5728ceac58aaf31bc143ad9b6537fc75fc6b0d2754f7"
+    },
+    "角色-動畫幀條/enemies_a_1_windup.png": {
+      "bytes": 322078,
+      "sha256": "36faa90f1d8266c18e9af44329c5f3f6c0b082b979b08cecce2ad4a6dbc91a44"
+    },
+    "角色-動畫幀條/enemies_a_3_active.png": {
+      "bytes": 213112,
+      "sha256": "aa4c2b5bdd52c8f2224a2adeb7fd9c1c4d56d41048bf841e80989d8fdbfe9b21"
+    },
+    "角色-動畫幀條/enemies_a_3_move.png": {
+      "bytes": 222484,
+      "sha256": "8b81fa65e97a741449edae4bf351aee289981859971fd134a0e2ca04acc50a44"
+    },
+    "角色-動畫幀條/enemies_a_3_recover.png": {
+      "bytes": 226701,
+      "sha256": "5408a8c884c34d75184dd90c32462233be155b7ef0aaa85b262526eeefdcf1dd"
+    },
+    "角色-動畫幀條/enemies_a_3_windup.png": {
+      "bytes": 227423,
+      "sha256": "b579e884300c2d7e674817c4c6414718d858cfdf8df4c988f7fc9aa9bab8adda"
+    },
+    "角色-動畫幀條/enemies_b_0_active.png": {
+      "bytes": 152364,
+      "sha256": "1239f23121a439a18035b51e60700c7b8349256a39f184f5247e2956dd0ead8c"
+    },
+    "角色-動畫幀條/enemies_b_0_move.png": {
+      "bytes": 132884,
+      "sha256": "5ed3fb8e550b142d25c44f24be9edaebdeba0639b91ba0418b28153477eede64"
+    },
+    "角色-動畫幀條/enemies_b_0_recover.png": {
+      "bytes": 136068,
+      "sha256": "bec6e4aeaf853565d1500e5c5b829b4f585aebc351c66fa3c37b20e56be02cb8"
+    },
+    "角色-動畫幀條/enemies_b_0_windup.png": {
+      "bytes": 147641,
+      "sha256": "338424c9c292743d3947d57e172162c60c1e51b2e2a6f4bba6527da4b1a9c90e"
+    },
+    "角色-動畫幀條/enemies_b_1_active.png": {
+      "bytes": 258016,
+      "sha256": "c1999b85251ec302690c56f0396cc34481ff7734eef8a55195416e1a54c5e81c"
+    },
+    "角色-動畫幀條/enemies_b_1_move.png": {
+      "bytes": 225375,
+      "sha256": "b42d6db0fd0ee0cab967c4eb85bca8bd71de1875f522f648beb356ac9f5fbcfe"
+    },
+    "角色-動畫幀條/enemies_b_1_recover.png": {
+      "bytes": 232623,
+      "sha256": "6bbc4cf337ec58534355beba87a7e2f3f908daf51e9202d732e10498a99ae2b1"
+    },
+    "角色-動畫幀條/enemies_b_1_windup.png": {
+      "bytes": 244271,
+      "sha256": "a73af6c4b2ba5bebd65a951e1e1c0adae083b20752f317c9c9174ed7e922c01d"
+    },
+    "角色-動畫幀條/enemies_b_2_active.png": {
+      "bytes": 360446,
+      "sha256": "ead7a414cf0d3ddaa2a8cfc5add34c2cd9dbe431455cab94ae10894ebd8df501"
+    },
+    "角色-動畫幀條/enemies_b_2_move.png": {
+      "bytes": 362641,
+      "sha256": "a5a55ae2481e7317082ac47c8222b476b29b0986c653ae4ba54e506fbec8c9e4"
+    },
+    "角色-動畫幀條/enemies_b_2_recover.png": {
+      "bytes": 367398,
+      "sha256": "2be97e716f637d1ccb99aaffb5f9eb8ae46888ae801cab706adb1991e9a87a94"
+    },
+    "角色-動畫幀條/enemies_b_2_windup.png": {
+      "bytes": 364835,
+      "sha256": "3b9b25305c053a87fe4ed28c596ff52bf586c08db8aefdca6fc4cb1cee0af5bf"
+    },
+    "角色-動畫幀條/enemies_b_3_active.png": {
+      "bytes": 273314,
+      "sha256": "3b83fe0ba4424e45c180fe30ef50de90948a221e6c215e93b166ab24cb34f566"
+    },
+    "角色-動畫幀條/enemies_b_3_move.png": {
+      "bytes": 237628,
+      "sha256": "e291b9f467e60f2040f05055be2ce7add86833d449b48d26f591fcd26e12fe53"
+    },
+    "角色-動畫幀條/enemies_b_3_recover.png": {
+      "bytes": 240003,
+      "sha256": "44511fc07f9f3c751be02e0dd4b0bd691b3d8411a145a60cb5dbcc1b4c3b2bd8"
+    },
+    "角色-動畫幀條/enemies_b_3_windup.png": {
+      "bytes": 255448,
+      "sha256": "794c4d535c2d1203d980afe36512fab4622966461867073b6864e17e7868bdcf"
+    },
+    "角色-動畫幀條/fury_idle.png": {
+      "bytes": 373658,
+      "sha256": "f86c5cd2f24290f356eb157af7498ee08060cab06894656068a2b2b765f54342"
+    },
+    "角色-動畫幀條/fury_lunge.png": {
+      "bytes": 197326,
+      "sha256": "444119f0979aa5a1e66f51f2c4c5fb061d8b32236a8d113da295a4679e1f8151"
+    },
+    "角色-動畫幀條/fury_punch.png": {
+      "bytes": 277101,
+      "sha256": "ae1f5b654535aa863489d729e81ecf35768503dff4654e0ee341d8abfcc3304a"
+    },
+    "角色-動畫幀條/hero_active.png": {
+      "bytes": 255816,
+      "sha256": "cf26c81bbce51b27ca58be16abab712905d4ca2b73fbbf786a1b0394bd325200"
+    },
+    "角色-動畫幀條/hero_climb.png": {
+      "bytes": 361725,
+      "sha256": "822ea1a2c4fb52f92398d09a2dff894e1b7af53de0bd168d13f018fee5aaed06"
+    },
+    "角色-動畫幀條/hero_dash.png": {
+      "bytes": 306502,
+      "sha256": "cc6ad2584f01ac46ea9b1c00f80a3644ee3ed233c33b462a90cd22f443426225"
+    },
+    "角色-動畫幀條/hero_death.png": {
+      "bytes": 372689,
+      "sha256": "32d442d9986a62366c3e0fe2288541f409cb08cccb920051847147678a312bc2"
+    },
+    "角色-動畫幀條/hero_fall.png": {
+      "bytes": 417610,
+      "sha256": "807cbc7657cf9d848e6b2b7f52c8cd0b0579370bfb3fe8ce5fe44f432516d221"
+    },
+    "角色-動畫幀條/hero_idle.png": {
+      "bytes": 389586,
+      "sha256": "68c2c491f1b419a84cffe75436c602429f7a2b36428a475dd7af3d39f08805cc"
+    },
+    "角色-動畫幀條/hero_jump.png": {
+      "bytes": 411882,
+      "sha256": "1ddb15860a4aab88b9969cec57b82bcd72c95d8dcbbdc8bbaa127f0407093e01"
+    },
+    "角色-動畫幀條/hero_recover.png": {
+      "bytes": 222048,
+      "sha256": "a8b40fa747066c7b564640d3062b7c9aa7f212d0204bfe13a0d6b1eb5b615488"
+    },
+    "角色-動畫幀條/hero_run.png": {
+      "bytes": 376838,
+      "sha256": "d107159ac4f99f53d38b27731b691730180f5b4d58f73ef58140546aa0e6c198"
+    },
+    "角色-動畫幀條/hero_windup.png": {
+      "bytes": 407116,
+      "sha256": "ddae8b97b35c3839c2498d88fc79da031c7c0458fa1694977e67756f9eb76ea6"
+    },
+    "角色-動畫幀條/keeper_back.png": {
+      "bytes": 402916,
+      "sha256": "aaa8a727638e7797b554d8cb1eb90f4990206b0702d1e24c6120bebbf4ddfb0d"
+    },
+    "角色-動畫幀條/keeper_hidden.png": {
+      "bytes": 269115,
+      "sha256": "135ae2280fb5cb7b5fd595cebe65c14c4fdda2b2308f8fc3491da41366b43bd8"
+    },
+    "角色-動畫幀條/keeper_limb.png": {
+      "bytes": 211843,
+      "sha256": "d7937330e8b6d3629d1d4aa3084cd4bf7b9f0c4147edc1f4a3d2e5ccbbbadfe2"
+    },
+    "角色-動畫幀條/keeper_unmasked.png": {
+      "bytes": 289355,
+      "sha256": "0df497193bfaf2087512b7472fc1175e03b285ac3acd20463484e173277a2625"
+    },
+    "角色-動畫幀條/ling_crouch.png": {
+      "bytes": 516888,
+      "sha256": "a292b322b5fac7aa62d1017e496ffdc68d81e1ea3a5f55247f3c2b2f5ea169b3"
+    },
+    "角色-動畫幀條/ling_giant.png": {
+      "bytes": 453672,
+      "sha256": "c9e2589ee0b6060ad4ae6cfc7c708383ecb13513ae507d6686d2d73eb14be457"
+    },
+    "角色-動畫幀條/ling_hand.png": {
+      "bytes": 105536,
+      "sha256": "9bbfbe613a35efe3232b5594aeb38b8814bd140c3905110c28610fa4efa3dfb1"
+    },
+    "角色-動畫幀條/may_brush.png": {
+      "bytes": 422887,
+      "sha256": "7299b1d6b7fa892c2177a14aeba6ac86a3dba2b31d6d488ae0c1870199f23e0f"
+    },
+    "角色-動畫幀條/may_brush_strike.png": {
+      "bytes": 120940,
+      "sha256": "9185e7b0332c174268dc95a9be14c6ac3cef0b248cc2394c672cbe413f8d8017"
+    },
+    "角色-動畫幀條/may_idle.png": {
+      "bytes": 488139,
+      "sha256": "61aeb4625ba3099c45d7d3bab381376f799a35af0821df346eb11637f4f36daa"
+    },
+    "角色-動畫幀條/may_slash.png": {
+      "bytes": 315114,
+      "sha256": "64c56f1430d4ffdb6dd4962c2e6818aa3438777563ec18d719d35eb8a7982411"
+    },
+    "角色-動畫幀條/may_statue.png": {
+      "bytes": 366169,
+      "sha256": "2cf043741e586d2c4f0708a7cce6932ec44f713f8580ce97d6f12a1315d7aaf1"
+    },
+    "角色-動畫幀條/may_statue_active.png": {
+      "bytes": 277479,
+      "sha256": "c6c178ed84305fba9c4670e2e55df8d578db70a163c05747a53eac3bbb03a5e9"
+    },
+    "角色-動畫幀條/may_statue_move.png": {
+      "bytes": 245149,
+      "sha256": "2d322ce423cd34961d7e280c812825dd1bf84322ce9d36dbc9c3be0687dfe664"
+    },
+    "角色-動畫幀條/may_statue_recover.png": {
+      "bytes": 261168,
+      "sha256": "778634707ba97442f2ea47ec3239648dcb395cfe21b85c5efd17909d2fcfa7d2"
+    },
+    "角色-動畫幀條/may_statue_windup.png": {
+      "bytes": 265999,
+      "sha256": "e6a2b01774a93ab699927f2257e5d7f11d9335031e8b79b766595ee03b5cbe13"
+    },
+    "角色-動畫幀條/may_summon.png": {
+      "bytes": 374615,
+      "sha256": "63230128533a28f865b42741e147a5a7c688721b3c5dc901f5dd4d7aa593a8e8"
+    },
+    "角色-動畫幀條/may_windup.png": {
+      "bytes": 357412,
+      "sha256": "c82938fa4d46b123c2fd822cf088337c04973c473c2125e757e445d095ee8bdd"
+    },
+    "角色-動畫幀條/npcs_a_0.png": {
+      "bytes": 438655,
+      "sha256": "497136f772a29ad9c3be7d55a7144f4a6cf54d495d7899d34e18c25ac175eca2"
+    },
+    "角色-動畫幀條/npcs_a_1.png": {
+      "bytes": 361797,
+      "sha256": "54c71be399e19c277cae737752f161e1566fa6457361ba6eb8c98a962d0c4e86"
+    },
+    "角色-動畫幀條/npcs_a_2.png": {
+      "bytes": 510948,
+      "sha256": "d4aa2ccfe3e367399bc2df478911a38cfec4129d454c955580ca80d350181d6b"
+    },
+    "角色-動畫幀條/npcs_a_3.png": {
+      "bytes": 336623,
+      "sha256": "a3540d8a7304d29d1b981c1bebbf2265e43b279c54aa2c537001cc3f87866ad7"
+    },
+    "角色-動畫幀條/npcs_b_0.png": {
+      "bytes": 439948,
+      "sha256": "7422ea4d517618b18ac82ce7ee2c52aaf8e05c4b0f694a28dcc79a2eb17ce530"
+    },
+    "角色-動畫幀條/npcs_b_1.png": {
+      "bytes": 269626,
+      "sha256": "1747230f1be298e0968366111ee49bbf2dd3426294b49e311257acdfdb86dcef"
+    },
+    "角色-動畫幀條/npcs_b_2.png": {
+      "bytes": 521616,
+      "sha256": "60ca97f04250ca2a2e49fdc3e5a637dbfc0c76b87ed517c1ab7c354489d15d2b"
+    },
+    "角色-動畫幀條/npcs_b_3.png": {
+      "bytes": 315407,
+      "sha256": "75911b78f7475affb102ac93d8577c1aaa40ea638edf04d540335c35f094616e"
+    },
+    "角色-動畫幀條/void_command.png": {
+      "bytes": 224450,
+      "sha256": "bd17bd54c7e9b0393220e97ac528de6b5a0df6aba3ef2b57946a9e4ba1372b3f"
+    },
+    "角色-動畫幀條/void_frenzy.png": {
+      "bytes": 493933,
+      "sha256": "1518f63f6b9e67ccb68c59300e093e46d41c7c398f083bffa5736c72a127d89a"
+    },
+    "角色-動畫幀條/void_idle.png": {
+      "bytes": 278191,
+      "sha256": "4706d88309e17f5cec0900527c5e6db01bf164d52d7ab0bedddd96a31a16b1ef"
+    },
+    "角色-動畫幀條/void_lash.png": {
+      "bytes": 129307,
+      "sha256": "2622257a3784c5b4ff72b8c354a1751d448bd0e3fd13851af92f6d360eb89b2c"
+    },
+    "角色-動畫幀條/void_puppet.png": {
+      "bytes": 283344,
+      "sha256": "82740a5a6c1f4a7990b1047a8d9c02c6ef8ec535d130a20ff23e4814feaf3be5"
+    },
+    "角色-動畫幀條/void_puppet_active.png": {
+      "bytes": 206073,
+      "sha256": "7ba098a99709fca84f36ad1fed29495be42cd2142a013e141440aa0426778c8e"
+    },
+    "角色-動畫幀條/void_puppet_move.png": {
+      "bytes": 189005,
+      "sha256": "f18bc236e481f11e0709f560fead42db4c606b97285ea0719ea774006006c749"
+    },
+    "角色-動畫幀條/void_puppet_recover.png": {
+      "bytes": 200132,
+      "sha256": "9d3a6f6e6c5b4f785d49219edad43ce22d321d4226ec3b476b8bc0aced51217d"
+    },
+    "角色-動畫幀條/void_puppet_windup.png": {
+      "bytes": 203789,
+      "sha256": "c563397e6c0f9221a51892c9d75f26e6cb972f26b005b5fa34ea81e8d1425199"
+    },
+    "角色-合成/demo9-share-cast-full.png": {
+      "bytes": 2224872,
+      "sha256": "3d9d5fe7190d233bff0842bd4ce821003e7e9c5c08da0e2642d766506b1e4144"
+    },
+    "角色-合成/demo9-share-cast-fury.png": {
+      "bytes": 290133,
+      "sha256": "87ab6e277845a8a2f5ad8b6f9c478d421d2b372571656434d055aa5a06363f08"
+    },
+    "角色-合成/demo9-share-cast-keeper.png": {
+      "bytes": 315533,
+      "sha256": "804227196140b64c545fe4ce9b0b21475a617fee191d406d141eea9eba3bf3ec"
+    },
+    "角色-合成/demo9-share-cast-ling.png": {
+      "bytes": 378428,
+      "sha256": "944912810f6f7e9fb8cfd075289d1dfee35a5d9aa9312d89be2791b077823afa"
+    },
+    "角色-合成/demo9-share-cast-may.png": {
+      "bytes": 739442,
+      "sha256": "f63e67b5f8e5a0e94b35b52eeca9c7cd8d307e0c66ba4cd1fecb851d52c7bfe0"
+    },
+    "角色-合成/demo9-share-cast-overview.png": {
+      "bytes": 1533307,
+      "sha256": "04b4fff714158a7b87da9834735f77d27ae4d3dced4ab7aab32a027e7e7ad8ba"
+    },
+    "角色-合成/demo9-share-cast-void.png": {
+      "bytes": 435276,
+      "sha256": "223262810336921c147ce99fc0f7245918a2cd68600fb9f59c4d2d21e46be6ab"
+    },
+    "角色-姿勢/demo9-share-fury-poses.png": {
+      "bytes": 290133,
+      "sha256": "87ab6e277845a8a2f5ad8b6f9c478d421d2b372571656434d055aa5a06363f08"
+    },
+    "角色-姿勢/demo9-share-keeper-poses.png": {
+      "bytes": 315533,
+      "sha256": "804227196140b64c545fe4ce9b0b21475a617fee191d406d141eea9eba3bf3ec"
+    },
+    "角色-姿勢/demo9-share-ling-poses.png": {
+      "bytes": 378428,
+      "sha256": "944912810f6f7e9fb8cfd075289d1dfee35a5d9aa9312d89be2791b077823afa"
+    },
+    "角色-姿勢/demo9-share-may-poses.png": {
+      "bytes": 739442,
+      "sha256": "f63e67b5f8e5a0e94b35b52eeca9c7cd8d307e0c66ba4cd1fecb851d52c7bfe0"
+    },
+    "角色-姿勢/demo9-share-void-poses.png": {
+      "bytes": 435276,
+      "sha256": "223262810336921c147ce99fc0f7245918a2cd68600fb9f59c4d2d21e46be6ab"
+    },
+    "角色-立繪/demo9-share-detective.png": {
+      "bytes": 678094,
+      "sha256": "30a1a3005407e761ba0bcbc97ad789cb22b435e4f51a583bce5bb851b2810cc4"
+    },
+    "角色-立繪/demo9-share-fury_idle.png": {
+      "bytes": 1577093,
+      "sha256": "405208a9b0b98afeb1a4130e363aa4d9d02d849db287debac50765f98d0e40a2"
+    },
+    "角色-立繪/demo9-share-fury_lunge.png": {
+      "bytes": 1862237,
+      "sha256": "44ff5b5e9b99354659f6d2d8edff353913f18a4c5cea7f8a37af3d194a8a2754"
+    },
+    "角色-立繪/demo9-share-fury_punch.png": {
+      "bytes": 2905946,
+      "sha256": "1180043d8dbf9150429e336e6152dfe3f310b04994541b3c0aec9c375020457c"
+    },
+    "角色-立繪/demo9-share-hero.png": {
+      "bytes": 1682333,
+      "sha256": "b161f098129a71704b5730a8c94581d7a9a7eb900c5f54f7b9bbb5c2c82d26ca"
+    },
+    "角色-立繪/demo9-share-keeper_back.png": {
+      "bytes": 1761014,
+      "sha256": "6ee768c62184cf2468604d93f61ef5cbeaee15d7ac068ddb2d10b43b1f475e12"
+    },
+    "角色-立繪/demo9-share-keeper_hidden.png": {
+      "bytes": 1016068,
+      "sha256": "6025dc4bc005731c97599c9257c625822fcdbef7c23c5c7a6ca62896da88490f"
+    },
+    "角色-立繪/demo9-share-keeper_unmasked.png": {
+      "bytes": 1181130,
+      "sha256": "52bc3fb40a849499944d3690568d6156de714ad4cda49ceb81994040f033ce2a"
+    },
+    "角色-立繪/demo9-share-ling_crouch.png": {
+      "bytes": 1175663,
+      "sha256": "30c322a04c2e2bddbfa8e734d4401cb47c2d868fbf194d9d37cab1e92f148074"
+    },
+    "角色-立繪/demo9-share-ling_giant.png": {
+      "bytes": 2842722,
+      "sha256": "78b75f81775489eee4d7a766da2e9a712fe8142adb732753e4d142dca8e55274"
+    },
+    "角色-立繪/demo9-share-ling_hand.png": {
+      "bytes": 990402,
+      "sha256": "87ec603a6379410762d7c11299540fb5db5c53af36d4c678eb7d714813ea8d36"
+    },
+    "角色-立繪/demo9-share-may_brush.png": {
+      "bytes": 1635273,
+      "sha256": "8b169e6500e337f283268c01d9d872e10434f42204e9cd507521952d3450caa6"
+    },
+    "角色-立繪/demo9-share-may_brush_strike.png": {
+      "bytes": 2753942,
+      "sha256": "4c72584395c6e82e2636e7bef3de6361bdb3e3e053cfc2f9ece882ea9e519e6a"
+    },
+    "角色-立繪/demo9-share-may_idle.png": {
+      "bytes": 1432008,
+      "sha256": "19f88ccce83a424a8a58de60c9aaa5204bf3ecc780849c4aa09493a5ce6876c7"
+    },
+    "角色-立繪/demo9-share-may_slash.png": {
+      "bytes": 2395742,
+      "sha256": "632880e6cb05c37099a6cefc2b9522942bfc74cbf7863884c01a0f5512030966"
+    },
+    "角色-立繪/demo9-share-may_statue.png": {
+      "bytes": 1269306,
+      "sha256": "a34cdc08a4613c151b9537bcfa2822fd984b5666430560246c858a164ab3918c"
+    },
+    "角色-立繪/demo9-share-may_summon.png": {
+      "bytes": 1673559,
+      "sha256": "da26205d2f8ddf106e581c0ac088f9a0994d33ecc9eb47008bf5fe1e69aa45e4"
+    },
+    "角色-立繪/demo9-share-may_windup.png": {
+      "bytes": 1607973,
+      "sha256": "0c3c81dbbd7bd7af15b4db8726a93cf367a8a0a7c2d36c93a271030b321a0e02"
+    },
+    "角色-立繪/demo9-share-void_command.png": {
+      "bytes": 996788,
+      "sha256": "5e086116756d3cb5973cffbeeabbcf8c5b27e788977e9844ef72b5a8242e7787"
+    },
+    "角色-立繪/demo9-share-void_frenzy.png": {
+      "bytes": 2371836,
+      "sha256": "5f3675d113fbcd276fe3e25318b1ff686b12c654f9ff2afafde418322f087747"
+    },
+    "角色-立繪/demo9-share-void_idle.png": {
+      "bytes": 1190611,
+      "sha256": "b73cd667beb21006a3981e362026a0940554a9dbe888188342c0e6fae35d6804"
+    },
+    "角色-立繪/demo9-share-void_lash.png": {
+      "bytes": 2309496,
+      "sha256": "cb6c65bf30945fa449095f2d0298ce41df30b6d8d3cf0a1f6ed2b1ffba7b1a48"
+    },
+    "角色-立繪/demo9-share-void_puppet.png": {
+      "bytes": 1198703,
+      "sha256": "13e17f3d1f057af5f43dc309fb6fdc1d58330072b06a265a19f70102488a9338"
+    },
+    "角色-預覽/demo9-share-preview-fury-lunge.png": {
+      "bytes": 1866019,
+      "sha256": "b9c4b8d4bfb4cfe776d799001b74d10cb2d75c04bd7466edf4d6d6e72f295940"
+    },
+    "角色-預覽/demo9-share-preview-fury.png": {
+      "bytes": 1866267,
+      "sha256": "91893dbb5e8ecc1aa53949241affcf512b90e8c06299e920b9266658b88a2b5f"
+    },
+    "角色-預覽/demo9-share-preview-keeper-back.png": {
+      "bytes": 1660378,
+      "sha256": "824843d41093a7a8b531bf303e59c3e1dec3b8d417637cd7ba109f462c711055"
+    },
+    "角色-預覽/demo9-share-preview-keeper-unmasked.png": {
+      "bytes": 1659070,
+      "sha256": "4081038be66bce240e8a7583894082a9b89d1ed5d273e77d88edf243765e4eb9"
+    },
+    "角色-預覽/demo9-share-preview-ling-crouch.png": {
+      "bytes": 1679940,
+      "sha256": "2b703856f715c624cfe54f808f10842ebbeef397b330327973c6991a64ee387d"
+    },
+    "角色-預覽/demo9-share-preview-ling-giant.png": {
+      "bytes": 1825261,
+      "sha256": "b95e99d42353e60f5f6fd6133c7075b55d3f641492833d6c6d9fb27379af78f8"
+    },
+    "角色-預覽/demo9-share-preview-may-brush.png": {
+      "bytes": 1544819,
+      "sha256": "4d7d6bdb928fa19accee5ca16d9a010bf30b8fcab04f4e2ac7be358c3c750dd3"
+    },
+    "角色-預覽/demo9-share-preview-may-brush_strike.png": {
+      "bytes": 1533183,
+      "sha256": "b9f49a96bc3f990978a81ce61efaa8a20d41144cd09dff5e77f06fc9ed97ec8b"
+    },
+    "角色-預覽/demo9-share-preview-may-idle.png": {
+      "bytes": 1543371,
+      "sha256": "26666965c37a4b1bfac08502762e5f402e19b647d933411e485d39f99cb0b120"
+    },
+    "角色-預覽/demo9-share-preview-may-statue.png": {
+      "bytes": 1538724,
+      "sha256": "c2dd374e5cf855797298b655be302e4cd46afd5c20a0c8f0b8082bc7bfe8282a"
+    },
+    "角色-預覽/demo9-share-preview-void-idle.png": {
+      "bytes": 1667142,
+      "sha256": "57a75707546e9d260c5fad41f923ca11c80abd4a480a740598bf55010ce42a8e"
+    },
+    "角色-預覽/demo9-share-preview-void-lash.png": {
+      "bytes": 1675270,
+      "sha256": "b98c5e8c684489e6aa0cb3e4bc2209406ebeeacb5f6a12b22c8d1387669df9ec"
+    },
+    "道具/demo9-share-item3-props.png": {
+      "bytes": 172507,
+      "sha256": "bf24cfc6baef2c6b7db52eb8bae52d821357662981a468c02c0956539e912004"
+    },
+    "道具/demo9-share-prop-arch.png": {
+      "bytes": 2375529,
+      "sha256": "bd394e638a1d469490d4bbd7742614cd5a755189caaa4d23297c7979ce9b9945"
+    },
+    "道具/demo9-share-prop-caution_tape.png": {
+      "bytes": 782931,
+      "sha256": "70fa7db9a76ae9fa0a89c5cce354f6fcba36d38e529d668ad5eee10a1beb0ba8"
+    },
+    "道具/demo9-share-prop-ground_hand.png": {
+      "bytes": 2499476,
+      "sha256": "bb7547e6dd427f7fc4026a7c0312c808404254b47ee1a2700b1e510657c9f2b0"
+    },
+    "道具/demo9-share-prop-lantern.png": {
+      "bytes": 808638,
+      "sha256": "1ca8d8bfe06f4a63b71fbe59e9230f1f9b2baee192ea00d05970a4a2d8b5f5e1"
+    },
+    "道具/demo9-share-prop-mirror.png": {
+      "bytes": 2391537,
+      "sha256": "0b8976b6a1dda0e9fe07a802be77d9d0f7279c62632948780cd6bb2f4281f746"
+    },
+    "道具/demo9-share-prop-red_thread.png": {
+      "bytes": 346368,
+      "sha256": "87156fc5f24d8ffff7ca184269d7ad9d0f40deeb85897c2b19098f45ed155973"
+    },
+    "道具/demo9-share-prop-vine.png": {
+      "bytes": 375713,
+      "sha256": "eb93a8e3c0612696e0c295790c3e05393fca74fe8a2deb85d1094acef428ee92"
+    },
+    "道具/demo9-share-prop-well_mouth.png": {
+      "bytes": 2451906,
+      "sha256": "e3a479e300b1c340fed5734b68de124332775ae653a48dd42efc0711c7122c8e"
+    }
+  }
+}

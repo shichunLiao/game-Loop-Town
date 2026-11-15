@@ -415,7 +415,7 @@ const BODY_WIDTH: float = 720
 func _draw_body() -> void:
 	var sway: float = sin(_clock*1.3)
 	var head := Vector2(0,-500)
-	var body: Texture2D = ExplorationArt.sprite("ling_giant")
+	var body: Texture2D = ExplorationArt.moving_sprite("ling_giant",_clock)
 	if body!=null:
 		var size := Vector2(BODY_WIDTH,BODY_WIDTH*body.get_height()/body.get_width())
 		draw_texture_rect(body,Rect2(Vector2(-size.x*.5+sway*5,-size.y+14),size),false)

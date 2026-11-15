@@ -13,3 +13,10 @@ __pycache__/
 
 # Build outputs (exe/pck/zip exceed GitHub 100 MB limit)
 /dist/
+.DS_Store
+
+# 不進 GitHub（論文簡報在 iCloud；暫存與記錄）
+thesis/
+tmp/
+logs/
+*.zip

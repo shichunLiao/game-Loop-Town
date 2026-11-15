@@ -31,6 +31,8 @@ func shows(sprite: Sprite2D, id: String) -> bool:
 	if sprite==null or sprite.texture==null:
 		return false
 	var texture: Texture2D = sprite.texture
+	if ExplorationArt.source_id(texture)==id:
+		return true
 	if texture is AtlasTexture:
 		texture = (texture as AtlasTexture).atlas
 	return texture.resource_path.ends_with("/"+id+".png")
@@ -69,6 +71,7 @@ func _run() -> void:
 	await enter("wax_museum",Vector2(2780,1137))
 	var may: Node = boss()
 	check(may is ExplorationBoss,"May Morley spawns in the museum")
+	await shot("museum-portraits")
 	may.set_physics_process(false)
 	for pose: Array in [[1,"sleep","fan","may_idle"],[1,"windup","cleave","may_windup"],[1,"active","cleave","may_slash"],
 			[2,"active","copies","may_summon"],[3,"recover","rain","may_brush"],[3,"active","rush","may_brush_strike"]]:
@@ -77,7 +80,7 @@ func _run() -> void:
 		may.attack = pose[2]
 		may._visual_update()
 		check(shows(may.visual,pose[3]),"May phase %d %s %s shows %s" % [pose[0],pose[1],pose[2],pose[3]])
-		if pose[3] in ["may_idle","may_brush_strike"]:
+		if pose[3] in ["may_idle","may_brush","may_brush_strike"]:
 			await shot("may-"+str(pose[3]).trim_prefix("may_"))
 	may.phase = 2
 	may.state = "recover"
@@ -144,6 +147,7 @@ func _run() -> void:
 		fury._step = "lunge"
 		fury._visual_update()
 		check(shows(fury.visual,"fury_lunge"),"Fury lunges as fury_lunge")
+		await shot("fury-lunge")
 		fury.become_jerry(60)
 		fury._visual_update()
 		check(shows(fury.visual,"hero"),"After the flash the other body is Jerry")

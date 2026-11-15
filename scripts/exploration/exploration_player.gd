@@ -334,7 +334,7 @@ func wear(atlas: String, height: float, cell: int = -1, attack_pose: String = ""
 func _worn_shift() -> float:
 	if not _worn_faces_left or visual.texture==null:
 		return 0.0
-	var id: String = visual.texture.resource_path.get_file().get_basename()
+	var id: String = ExplorationArt.source_id(visual.texture)
 	return ExplorationArt.foot_shift(id,visual.texture,visual.scale.x,visual.flip_h)
 
 func _worn_pose() -> void:

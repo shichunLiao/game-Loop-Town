@@ -35,11 +35,11 @@ func _draw() -> void:
 		draw_line(Vector2(-35,-3),Vector2(35,-3),Color(red,.4+progress*.5),4,true)
 		draw_arc(Vector2(0,-5),12+progress*18,PI,TAU,20,red,2,true)
 		return
-	# Forearm and five fingers, rising then sinking back.
-	var rise: float = sin(clampf((_age-warning)/.4,0,1)*PI)
-	var skin := Color("3a2a2c")
-	var wrist := Vector2(0,-92*rise)
-	draw_line(Vector2.ZERO,wrist,skin,16,true)
-	for i: int in range(5):
-		var finger := Vector2.from_angle(-PI*.5+(i-2)*.32)
-		draw_line(wrist,wrist+finger*30*rise,skin,5,true)
+	# Generated cels replace the former line-drawn hand; collision and timing are untouched.
+	var elapsed: float = clampf((_age-warning)/.4,0,1)
+	var clip: String = "keeper_limb"
+	var texture: Texture2D = ExplorationArt.animation_frame(clip,mini(7,int(elapsed*8)))
+	if texture != null:
+		var height: float = 122
+		var width: float = height*texture.get_width()/texture.get_height()
+		draw_texture_rect(texture,Rect2(-width*.5,-height,width,height),false)

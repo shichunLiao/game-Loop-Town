@@ -1,0 +1,146 @@
+{
+  "canvas": [
+    1672,
+    941
+  ],
+  "eyes": [
+    {
+      "id": "portrait_1_left_iris",
+      "portrait": 1,
+      "center": [
+        165.5,
+        471.5
+      ],
+      "path": "res://assets/environments/exploration/portraits/portrait_1_left_iris.png",
+      "size": [
+        7,
+        7
+      ],
+      "travel": [
+        2.2,
+        0.8
+      ],
+      "sclera_patch": [
+        159,
+        468,
+        172,
+        475
+      ]
+    },
+    {
+      "id": "portrait_1_right_iris",
+      "portrait": 1,
+      "center": [
+        201.5,
+        471.5
+      ],
+      "path": "res://assets/environments/exploration/portraits/portrait_1_right_iris.png",
+      "size": [
+        7,
+        7
+      ],
+      "travel": [
+        2.2,
+        0.8
+      ],
+      "sclera_patch": [
+        195,
+        468,
+        208,
+        475
+      ]
+    },
+    {
+      "id": "portrait_2_left_iris",
+      "portrait": 2,
+      "center": [
+        738.5,
+        463.5
+      ],
+      "path": "res://assets/environments/exploration/portraits/portrait_2_left_iris.png",
+      "size": [
+        7,
+        7
+      ],
+      "travel": [
+        2.2,
+        0.8
+      ],
+      "sclera_patch": [
+        732,
+        460,
+        745,
+        467
+      ]
+    },
+    {
+      "id": "portrait_2_right_iris",
+      "portrait": 2,
+      "center": [
+        776.5,
+        463.5
+      ],
+      "path": "res://assets/environments/exploration/portraits/portrait_2_right_iris.png",
+      "size": [
+        7,
+        7
+      ],
+      "travel": [
+        2.2,
+        0.8
+      ],
+      "sclera_patch": [
+        770,
+        460,
+        783,
+        467
+      ]
+    },
+    {
+      "id": "portrait_3_left_iris",
+      "portrait": 3,
+      "center": [
+        1485.5,
+        471.5
+      ],
+      "path": "res://assets/environments/exploration/portraits/portrait_3_left_iris.png",
+      "size": [
+        7,
+        7
+      ],
+      "travel": [
+        2.2,
+        0.8
+      ],
+      "sclera_patch": [
+        1479,
+        468,
+        1492,
+        475
+      ]
+    },
+    {
+      "id": "portrait_3_right_iris",
+      "portrait": 3,
+      "center": [
+        1521.5,
+        471.5
+      ],
+      "path": "res://assets/environments/exploration/portraits/portrait_3_right_iris.png",
+      "size": [
+        7,
+        7
+      ],
+      "travel": [
+        2.2,
+        0.8
+      ],
+      "sclera_patch": [
+        1515,
+        468,
+        1528,
+        475
+      ]
+    }
+  ]
+}

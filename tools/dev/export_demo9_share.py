@@ -33,6 +33,10 @@ SETS = {
 
 def fit(im: Image.Image, box: tuple[int, int]) -> Image.Image:
     im = im.convert("RGBA")
+    # Wide attack canvases can have large empty margins after a pose revision.
+    # Trim for presentation only; gameplay PNG dimensions remain unchanged.
+    if im.getbbox():
+        im = im.crop(im.getbbox())
     im.thumbnail(box, Image.Resampling.LANCZOS)
     canvas = Image.new("RGBA", box, (0, 0, 0, 0))
     x = (box[0] - im.width) // 2

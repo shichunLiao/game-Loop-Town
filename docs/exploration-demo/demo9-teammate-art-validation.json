@@ -1,0 +1,52 @@
+{
+  "version": "Demo 9",
+  "actors": [
+    {
+      "asset": "assets/environments/exploration/actors/may_brush.png",
+      "size": [
+        970,
+        1300
+      ],
+      "transparent_pixels": 666125,
+      "share_identical": true
+    },
+    {
+      "asset": "assets/environments/exploration/actors/may_brush_strike.png",
+      "size": [
+        2580,
+        1300
+      ],
+      "transparent_pixels": 2590970,
+      "share_identical": true
+    },
+    {
+      "asset": "assets/environments/exploration/actors/void_lash.png",
+      "size": [
+        2603,
+        1300
+      ],
+      "transparent_pixels": 3049934,
+      "share_identical": true
+    },
+    {
+      "asset": "assets/environments/exploration/actors/fury_lunge.png",
+      "size": [
+        1864,
+        1280
+      ],
+      "transparent_pixels": 1605424,
+      "share_identical": true
+    },
+    {
+      "asset": "assets/environments/exploration/actors/ling_giant.png",
+      "size": [
+        1541,
+        1320
+      ],
+      "transparent_pixels": 921249,
+      "share_identical": true
+    }
+  ],
+  "museum_atlas_cells": 8,
+  "museum_share_identical": true
+}

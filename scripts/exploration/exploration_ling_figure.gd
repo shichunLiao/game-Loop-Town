@@ -4,12 +4,15 @@ extends Node2D
 
 var session: ExplorationSession
 var _shown: bool = false
+var _animation_age: float = 0
 
 func _ready() -> void:
 	z_index = 4
 	modulate.a = 0
 
 func _process(_delta: float) -> void:
+	_animation_age += _delta
+	queue_redraw()
 	if not _shown and session.has("boss_ling"):
 		_shown = true
 		var tween := create_tween()
@@ -21,7 +24,7 @@ const HEIGHT: float = 78
 func _draw() -> void:
 	for scrap: Rect2 in [Rect2(-120,-5,26,7),Rect2(-76,-4,18,6),Rect2(-168,-6,30,8),Rect2(52,-4,20,6)]:
 		draw_rect(scrap,Color("37506e") if int(scrap.position.x)%4==0 else Color("c4bba6"))
-	var girl: Texture2D = ExplorationArt.sprite("ling_crouch")
+	var girl: Texture2D = ExplorationArt.moving_sprite("ling_crouch",_animation_age)
 	if girl!=null:
 		var size := Vector2(HEIGHT*girl.get_width()/girl.get_height(),HEIGHT)
 		draw_texture_rect(girl,Rect2(Vector2(-size.x*.5,-size.y),size),false)

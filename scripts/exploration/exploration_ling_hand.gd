@@ -38,7 +38,7 @@ func _draw() -> void:
 		return
 	var rise: float = 1.0 if _holding else sin(clampf((_age-warning)/.45,0,1)*PI)
 	# A mud hand out of the mud (Codex art, Demo 9), rising and sinking back.
-	var hand: Texture2D = ExplorationArt.sprite("ling_hand")
+	var hand: Texture2D = ExplorationArt.animation_frame("ling_hand",mini(7,int(maxf(0,_age-warning)/.45*8)))
 	if hand!=null and rise>.02:
 		var height: float = 96*rise
 		var width: float = 96*hand.get_width()/hand.get_height()
