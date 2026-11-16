@@ -12,6 +12,8 @@ var direction: Vector2 = Vector2.RIGHT
 var _hit: Dictionary = {}
 var _age: float = 0.0
 var finisher: bool = false
+## Set when the attacker draws its own blow.
+var silent: bool = false
 
 func _ready() -> void:
 	collision_layer = 0
@@ -42,6 +44,8 @@ func _on_area(area: Area2D) -> void:
 		source.call("on_attack_landed",receiver,direction)
 
 func _draw() -> void:
+	if silent:
+		return
 	var tint: Color = Color({"notebook":"b5f2e3","shears":"e2e8cf","thread":"f18fa2","ember":"72eee3","clock":"f2ca82"}.get(kind,"a9f3ef")) if target_layer==16 else Color("efb078")
 	var progress: float = clampf(_age/lifetime,0,1)
 	tint.a = 1-progress*.7

@@ -36,6 +36,25 @@ var _air_jump: bool = false
 var _clock: float = 0.0
 var _last_ground_y: float = 0.0
 var weapon: ExplorationWeapon
+## Void's puppets turn Jerry into cloth: slower, weaker, then unable to hold the blade.
+var cloth: int = 0
+## May Morley story 1.1: paper tear / plaster statue / paint-into-canvas stacks.
+var paper: int = 0
+var plaster: int = 0
+var paint: int = 0
+var last_may_kind: String = ""
+var entangled: float = 0.0
+var _entangle_tick: float = 0.0
+## Ling's mud and hands: how deep he stands, how many kicks free him, and her voice turning left and right around.
+var mired: float = 0.0
+var grip: int = 0
+var confused: float = 0.0
+## Whose body the player's hands are on.
+var body_height: float = 105.0
+var unarmed: bool = false
+var _worn_rest: Texture2D
+var _worn_attack: Texture2D
+var _worn_faces_left: bool = false
 
 func _ready() -> void:
 	_last_ground_y = position.y
@@ -69,6 +88,17 @@ func _physics_process(delta: float) -> void:
 	_slow_cooldown = maxf(0,_slow_cooldown-delta)
 	_combo_window = maxf(0,_combo_window-delta)
 	_knockback = move_toward(_knockback,0,delta*900)
+	if entangled > 0.0:
+		entangled -= delta
+		_entangle_tick -= delta
+		if _entangle_tick <= 0.0:
+			_entangle_tick = .4
+			health = maxi(1,health-3)
+	confused = maxf(0.0,confused-delta)
+	if grip > 0:
+		_knockback = 0.0
+		if Input.is_action_just_pressed("jump") or Input.is_action_just_pressed("move_left") or Input.is_action_just_pressed("move_right"):
+			grip -= 1
 	_update_combat(delta)
 	if _drop_timer>0:
 		_drop_timer -= delta
@@ -86,31 +116,37 @@ func _physics_process(delta: float) -> void:
 			_buffer = 0
 		else:
 			_buffer = 0.14
-	var direction: float = Input.get_axis("move_left", "move_right")
+	if grip > 0:
+		_buffer = 0.0
+	var direction: float = Input.get_axis("move_left", "move_right")*(-1.0 if confused > 0.0 else 1.0)
 	if direction != 0.0:
 		facing = direction
-	var climbing: bool = near_vine and session != null and session.has("vine") and Input.get_axis("move_up", "move_down") != 0.0
+	var climbing: bool = near_vine and grip == 0 and session != null and session.has("vine") and Input.get_axis("move_up", "move_down") != 0.0
 	if climbing:
 		_last_ground_y = position.y
 		velocity = Vector2(direction * 140.0, Input.get_axis("move_up", "move_down") * 235.0)
 		state = "climb"
 		_air_jump = false
 	else:
-		velocity.x = direction * SPEED * (.6 if attack_phase == "windup" else 1.0) + _knockback
+		velocity.x = direction * SPEED * _hindrance() * (.6 if attack_phase == "windup" else 1.0) + _knockback
 		velocity.y = minf(velocity.y + GRAVITY * delta, 1050.0)
 		state = "run" if direction != 0.0 else "idle"
 		if not on_floor_before:
 			state = "jump" if velocity.y < 0.0 else "fall"
 	if _buffer > 0.0 and (_coyote > 0.0 or (session != null and session.has("double_jump") and not _air_jump)):
-		if _coyote <= 0.0:
-			_air_jump = true
-		velocity.y = JUMP
-		_buffer = 0.0
-		_coyote = 0.0
-		get_node("/root/AudioManager").play_sfx("sfx_jump")
+		var paint_lock: float = 1.0 if paint < 2 else (0.0 if paint >= 4 else 0.45)
+		if paint_lock <= 0.0:
+			_buffer = 0.0
+		else:
+			if _coyote <= 0.0:
+				_air_jump = true
+			velocity.y = JUMP*(1.0-.45*mired)*paint_lock
+			_buffer = 0.0
+			_coyote = 0.0
+			get_node("/root/AudioManager").play_sfx("sfx_jump")
 	if Input.is_action_just_released("jump") and velocity.y < -300.0:
 		velocity.y *= 0.5
-	if Input.is_action_just_pressed("explore_dash") and session != null and session.has("dash") and _dash_cooldown <= 0.0:
+	if Input.is_action_just_pressed("explore_dash") and session != null and session.has("dash") and _dash_cooldown <= 0.0 and grip == 0:
 		_dash = 0.16
 		_dash_cooldown = 0.7
 	if _dash > 0.0:
@@ -119,18 +155,24 @@ func _physics_process(delta: float) -> void:
 		state = "dash"
 		_invulnerability = maxf(_invulnerability,.05)
 	move_and_slide()
-	visual.flip_h = facing < 0
+	_worn_pose()
+	visual.flip_h = (facing < 0) != _worn_faces_left
 	visual.rotation = clampf(velocity.x/6000,-.07,.07) if is_on_floor() else -.06*facing
-	visual.position.y = -52.5 + (sin(_clock*17)*2 if state == "run" else sin(_clock*2)*.7)
-	visual.scale.y = (105.0/visual.texture.get_height()) * (1.0+sin(_clock*17)*.025 if state=="run" else 1.0)
-	visual.modulate = Color(1,1,1,.35 if _invulnerability>0 and int(_clock*15)%2==0 else 1)
+	visual.position.y = -body_height*.5 + (sin(_clock*17)*2 if state == "run" else sin(_clock*2)*.7)
+	visual.scale.y = (body_height/visual.texture.get_height()) * (1.0+sin(_clock*17)*.025 if state=="run" else 1.0)
+	visual.modulate = Color.WHITE.lerp(Color("e3c3ae"),minf(1,cloth/6.0))
+	var paint_tint := Color.WHITE
+	if paint > 0:
+		paint_tint = Color(0.78, 0.84, 1.0).lerp(Color(0.52, 0.62, 0.95), clampf(float(paint) / 4.0, 0.0, 1.0))
+	visual.modulate = paint_tint
+	visual.modulate.a = .35 if _invulnerability>0 and int(_clock*15)%2==0 else 1.0
 	if attack_phase!="ready":
 		var pose: float = -0.18 if attack_phase=="windup" else .22 if attack_phase=="active" else .09
 		visual.rotation += pose*facing*(-1 if combo==2 else 1)
-		visual.position.x = (-5 if attack_phase=="windup" else 8)*facing
+		visual.position.x = (-5 if attack_phase=="windup" else 8)*facing+_worn_shift()
 		visual.scale.y *= .94 if attack_phase=="windup" else 1.035
 	else:
-		visual.position.x = move_toward(visual.position.x,0,delta*90)
+		visual.position.x = move_toward(visual.position.x,_worn_shift(),delta*90)
 	if not on_floor_before and is_on_floor():
 		landed.emit()
 		get_node("/root/AudioManager").play_sfx("sfx_land")
@@ -151,15 +193,44 @@ func take_damage(amount: int) -> void:
 		state = "death"
 		died.emit()
 
-func receive_hit(amount: int, origin: Vector2, _kind: String = "hit") -> void:
+func receive_hit(amount: int, origin: Vector2, kind: String = "hit") -> void:
 	if _invulnerability > 0 or not enabled:
 		return
 	_knockback = signf(global_position.x-origin.x)*330
 	attack_phase = "ready"
+	if kind == "puppet":
+		cloth += 1
+	elif kind == "void_lash":
+		entangled = 1.6
+	elif kind in ["may_slash", "wax_claw"]:
+		paper += 1
+		last_may_kind = "may_slash"
+	elif kind == "statue":
+		plaster += 1
+		last_may_kind = "statue"
+	elif kind == "may_brush":
+		paint += 1
+		last_may_kind = "may_brush"
+	var may_kinds := ["may_slash", "wax_claw", "statue", "may_brush"]
+	if kind in may_kinds and health - amount <= 0:
+		_trigger_may_defeat()
+		return
 	take_damage(amount)
 	var demo: Node = get_tree().get_first_node_in_group("exploration_demo")
 	if demo != null:
 		demo.screen_shake(.15)
+
+func _trigger_may_defeat() -> void:
+	for node: Node in get_tree().get_nodes_in_group("may_boss"):
+		if node.has_method("_defeat") and not bool(node.get("_ending_sent")):
+			var id: String = "torn"
+			if last_may_kind == "statue" or plaster >= 3:
+				id = "sculpted"
+			elif last_may_kind == "may_brush" or paint >= 3 or int(node.get("phase")) >= 3:
+				id = "painted"
+			node.call("_defeat", id)
+			return
+	take_damage(health)
 
 func _try_drop() -> bool:
 	if not is_on_floor():
@@ -219,7 +290,7 @@ func _update_combat(delta: float) -> void:
 				add_child(echo)
 	elif attack_phase == "active":
 		attack_phase = "recover"
-		_attack_timer = float(ExplorationWeapon.profile(session)["recovery"])+(0 if combo<3 else .09)
+		_attack_timer = (float(ExplorationWeapon.profile(session)["recovery"])+(0 if combo<3 else .09))*_cloth_slow()
 	else:
 		attack_phase = "ready"
 		_combo_window = .35
@@ -236,8 +307,43 @@ func begin_attack(special: bool = false) -> void:
 	elif Input.is_action_pressed("move_down") and not is_on_floor():
 		_attack_direction = Vector2.DOWN
 	attack_phase = "windup"
-	_attack_timer = float(ExplorationWeapon.profile(session)["windup"])*(1.7 if special else 1.0)
+	_attack_timer = float(ExplorationWeapon.profile(session)["windup"])*(1.7 if special else 1.0)*_cloth_slow()
 	get_node("/root/AudioManager").play_sfx("sfx_attack_swing")
+
+func _cloth_slow() -> float:
+	return 1.0+.08*mini(cloth,6)
+
+func _hindrance() -> float:
+	if grip > 0:
+		return 0.0
+	return (1.0-.06*mini(cloth,6))*(.45 if entangled > 0.0 else 1.0)*(1.0-.7*mired)
+
+## Story 1.1: at the well the player's hands are on someone else's body.
+## attack_pose is shown while a blow is out; faces_left marks art drawn facing left.
+func wear(atlas: String, height: float, cell: int = -1, attack_pose: String = "", faces_left: bool = false) -> void:
+	visual.texture = ExplorationArt.sprite(atlas,cell)
+	visual.scale = Vector2.ONE*height/visual.texture.get_height()
+	body_height = height
+	unarmed = atlas != "hero"
+	weapon.visible = not unarmed
+	_worn_rest = visual.texture
+	_worn_attack = ExplorationArt.sprite(attack_pose) if not attack_pose.is_empty() else null
+	_worn_faces_left = faces_left
+
+## A worn left-facing body (Fury) keeps its feet over the player's collision box.
+func _worn_shift() -> float:
+	if not _worn_faces_left or visual.texture==null:
+		return 0.0
+	var id: String = ExplorationArt.source_id(visual.texture)
+	return ExplorationArt.foot_shift(id,visual.texture,visual.scale.x,visual.flip_h)
+
+func _worn_pose() -> void:
+	if _worn_attack==null:
+		return
+	var texture: Texture2D = _worn_attack if attack_phase in ["windup","active"] else _worn_rest
+	if visual.texture!=texture:
+		visual.texture = texture
+		visual.scale.x = body_height/texture.get_height()
 
 func _spawn_swing() -> void:
 	var hit := ExplorationHitArea.new()
@@ -257,6 +363,14 @@ func _spawn_swing() -> void:
 	if _attack_direction.y != 0:
 		hit.dimensions = Vector2(80,110)
 	hit.position = Vector2(0,-35)+_attack_direction*(float(stats["reach"])*.5)
+	# Cloth hands lose the blade at six stacks; what is left is a weak shove.
+	if cloth >= 6 or unarmed:
+		hit.damage = 3
+		hit.kind = "fist"
+		hit.dimensions = Vector2(60,70)
+		hit.position = Vector2(0,-35)+_attack_direction*30
+	elif cloth > 0:
+		hit.damage = roundi(hit.damage*(1.0-.07*cloth))
 	add_child(hit)
 	# Threads are also physical targets: the blade must overlap their short
 	# interaction bounds, so a remote attack cannot open a whole stage.

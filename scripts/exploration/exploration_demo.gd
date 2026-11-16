@@ -24,6 +24,8 @@ var _arrival_anchor: Vector2
 var _arrival_released: bool = true
 var _story_slot: String = "exploration_v2"
 var _starting_practice: bool = false
+var _defeat: Dictionary = {}
+var _caption: Label
 
 func _ready() -> void:
 	add_to_group("exploration_demo")
@@ -38,7 +40,7 @@ func _ready() -> void:
 	add_child(session)
 	session.reset()
 	var saved: Dictionary = get_node("/root/SaveManager").load_exploration()
-	session.loop_count = int(saved.get("loop",247))
+	session.loop_count = int(saved.get("loop",0))
 	actions = ExplorationActions.new()
 	actions.demo = self
 	hud = ExplorationHUD.new()
@@ -53,6 +55,9 @@ func _ready() -> void:
 	_fade.color = Color(0.015,0.025,0.035,0)
 	_fade.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	fade_layer.add_child(_fade)
+	_caption = hud.label(fade_layer,Vector2(140,330),Vector2(1000,60),"",30,Color("e9d19c"))
+	_caption.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+	_caption.modulate.a = 0
 	hud.show_menu()
 	_check_capture_arguments.call_deferred()
 
@@ -105,7 +110,7 @@ func start_boss_practice() -> void:
 	player.position = Vector2(2600,1137)
 	session.save_at("wax_museum",Vector2(2600,1137))
 	camera.reset_smoothing()
-	hud.toast("莫里斯演练 · 大剪刀已装备 · J 连击 / K 突进 / H 恢复")
+	hud.toast("梅·莫里演练 · 美工刀已装备 · J 连击 / K 突进 / H 恢复")
 
 func enter_building(building: Dictionary) -> void:
 	request_room(str(building["interior_scene"]))
@@ -226,6 +231,8 @@ func _physics_process(delta: float) -> void:
 		hud.prompt_label.text = ""
 	if _npc_focused != null:
 		hud.prompt_label.text = _npc_focused.interaction_prompt()
+	if player.grip > 0:
+		hud.prompt_label.text = "连按 空格 / A / D 挣脱 · 还差 %d 下" % player.grip
 	for passage: ExplorationPassage in room.passages:
 		if str(passage.spec["id"])==_arrival_exit and not _arrival_released:
 			continue
@@ -234,8 +241,6 @@ func _physics_process(delta: float) -> void:
 				if bool(passage.spec.get("manual_entry",false)):
 					continue
 				if _passage_cooldown<=0 and passage.moving_toward(player):
-					if session.room_id=="well_interior" and session.has("well_seal"):
-						session.switches["well_escaped"] = true
 					request_room(str(passage.spec["target"]),str(passage.spec["id"]))
 					return
 			else:
@@ -332,12 +337,34 @@ func show_pause() -> void:
 func fast_travel(id: String) -> void:
 	hud.toast("地图用于查看通路。请沿实际道路前往目的地。")
 
+## Story 1.1 defeat endings: a special death shows its ending card, then rewinds to the lamp.
+func defeat(id: String, title: String, text: String) -> void:
+	if mode != "play" or not is_instance_valid(player):
+		return
+	session.switches["ending_"+id] = true
+	_defeat = {"title":title, "text":text}
+	player.health = 0
+	player.enabled = false
+	player.died.emit()
+
 func _on_died() -> void:
 	if mode != "play":
 		return
 	mode = "respawn"
 	_set_playing(false)
 	session.deaths += 1
+	if not _defeat.is_empty():
+		var ending: Dictionary = _defeat
+		_defeat = {}
+		show_dialogue(str(ending["title"]),str(ending["text"]),[{"label":"回溯", "action":_respawn}])
+		mode = "ending"
+		return
+	await _respawn()
+
+func _respawn() -> void:
+	mode = "respawn"
+	hud.overlay.hide()
+	_set_playing(false)
 	await _fade_to(1,.35)
 	load_room(session.checkpoint_room)
 	player.position = session.checkpoint
@@ -347,7 +374,7 @@ func _on_died() -> void:
 	mode = "play"
 	_set_playing(true)
 	await _fade_to(0,.35)
-	hud.toast("回到最近点亮的路灯。记忆仍然留在笔记本中。")
+	hud.toast("回到最近点亮的路灯。记忆仍然留在速写本中。")
 
 func screen_shake(duration: float) -> void:
 	_shake = maxf(_shake,duration)
@@ -356,6 +383,32 @@ func _fade_to(alpha: float, seconds: float) -> void:
 	var tween := create_tween()
 	tween.tween_property(_fade,"color:a",alpha,seconds)
 	await tween.finished
+
+## One line in the middle of the screen, readable over a black fade.
+func caption(text: String, seconds: float) -> void:
+	_caption.text = text
+	var tween := create_tween()
+	tween.tween_property(_caption,"modulate:a",1.0,.3)
+	tween.tween_interval(seconds)
+	tween.tween_property(_caption,"modulate:a",0.0,.3)
+	await tween.finished
+
+## A white flash over the world; whatever changes at full strength is not seen changing.
+func flash_to(alpha: float, seconds: float) -> void:
+	_fade.color = Color(1,.97,.9,_fade.color.a)
+	await _fade_to(alpha,seconds)
+	if alpha <= 0.0:
+		_fade.color = Color(0.015,0.025,0.035,0)
+
+## Story 1.1: Jerry goes down the well the hard way; the screen comes up at the bottom.
+func fall_into(id: String, point: Vector2) -> void:
+	mode = "play"
+	_arrival = point
+	load_room(id)
+	player.health = 100
+	player.energy = 100
+	camera.reset_smoothing()
+	await _fade_to(0,1.4)
 
 func show_ending(title: String, text: String) -> void:
 	show_dialogue(title,text,[{"label":"返回标题", "action":func(): session.save(); mode="menu"; hud.show_menu()}])
@@ -484,7 +537,7 @@ func _capture_boss_action(value: String) -> void:
 	var parts: PackedStringArray = value.split(",")
 	var phase_value: int = clampi(int(parts[0]),1,3)
 	boss.phase = phase_value
-	boss.phase_title = "蜡匠的执念" if phase_value==1 else "蜡壳裂开" if phase_value==2 else "熔炉中的真身"
+	boss.phase_title = "恩师的面孔" if phase_value==1 else "雕像替身" if phase_value==2 else "入画"
 	boss.health = int(boss.max_health*(1 if phase_value==1 else .58 if phase_value==2 else .24))
 	boss._clear_owned()
 	boss.position = Vector2(3220,1140)

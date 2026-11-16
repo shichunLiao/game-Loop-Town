@@ -12,8 +12,6 @@ var npcs: Array[ExplorationNPC] = []
 var actors: Node2D
 var buildings: Array[ExplorationBuilding] = []
 var bounds: Vector2
-var _flood_time: float = 0.0
-var _flood_y: float = 10000.0
 
 func _ready() -> void:
 	data = ExplorationCatalog.room(room_id)
@@ -45,6 +43,7 @@ func _ready() -> void:
 		platform.dimensions = Vector2(float(rect[2]),float(rect[3]))
 		platform.one_way = bool(entry.get("one_way",false))
 		platform.theme = str(entry.get("material",data["terrain"]))
+		platform.flat_gallery = str(data.get("background","")) == "museum"
 		platform.variant = int(entry.get("variant",0))
 		platform.travel = ExplorationCatalog.vec(entry.get("travel", [0,0]))
 		platform.period = float(entry.get("period", 4.5))
@@ -128,12 +127,34 @@ func _ready() -> void:
 		enemy.spec = entry
 		enemy.session = session
 		actors.add_child(enemy)
-	if data.has("boss") and not session.has("boss_morris"):
-		var enemy := ExplorationBoss.new()
+	var boss_type: String = str(data.get("boss",{}).get("type","morris"))
+	if data.has("boss") and not session.has("boss_"+boss_type) and session.satisfies(data["boss"].get("requires",[])):
+		var enemy: ExplorationEnemy = ExplorationVoidBoss.new() if boss_type=="void" else ExplorationLingBoss.new() if boss_type=="ling" else ExplorationBoss.new()
 		enemy.spec = data["boss"].duplicate(true)
-		enemy.spec["id"] = "morris"
+		enemy.spec["id"] = boss_type
 		enemy.session = session
 		actors.add_child(enemy)
+	if data.has("keeper_chase"):
+		var chase := ExplorationKeeperChase.new()
+		chase.spec = data["keeper_chase"]
+		chase.session = session
+		add_child(chase)
+	if data.has("keeper_figure") and not session.has("keeper_truth"):
+		var figure := ExplorationKeeperFigure.new()
+		figure.position = ExplorationCatalog.vec(data["keeper_figure"])
+		figure.session = session
+		figure.leaves_on = "keeper_truth"
+		actors.add_child(figure)
+	if data.has("fury_scene"):
+		var fury := ExplorationFuryScene.new()
+		fury.spec = data["fury_scene"]
+		fury.session = session
+		add_child(fury)
+	if data.has("ling_figure"):
+		var ling := ExplorationLingFigure.new()
+		ling.position = ExplorationCatalog.vec(data["ling_figure"])
+		ling.session = session
+		actors.add_child(ling)
 	var foreground := Node2D.new()
 	foreground.name = "Foreground"
 	foreground.z_index = 30
@@ -169,29 +190,13 @@ func _process(_delta: float) -> void:
 		queue_redraw()
 
 
-func _physics_process(delta: float) -> void:
-	if session == null or room_id != "well_interior":
-		return
-	if session.has("well_escape_active") and not session.has("well_escaped"):
-		_flood_time += delta
-		_flood_y = bounds.y+650.0-_flood_time*85.0
-		var player: ExplorationPlayer = get_tree().get_first_node_in_group("exploration_player") as ExplorationPlayer
-		if player != null and player.position.y > _flood_y:
-			player.take_damage(100)
-
 func _draw() -> void:
 	if session == null:
 		return
-	if _flood_y < bounds.y:
-		draw_rect(Rect2(0,_flood_y,bounds.x,bounds.y-_flood_y+300),Color("10202b"))
-		for x: int in range(0,int(bounds.x),24):
-			draw_line(Vector2(x,_flood_y+sin(x*.03+_flood_time*2)*6),Vector2(x+24,_flood_y+sin((x+24)*.03+_flood_time*2)*6),Color("77a5ac"),3,true)
 	for entry: Array in data.get("vines", []):
 		var x: float = float(entry[0]) + float(entry[2])*.5
 		for offset: float in [-24.0,0.0,24.0]:
-			draw_line(Vector2(x+offset,float(entry[1])),Vector2(x+offset,float(entry[1])+float(entry[3])),Color("44635b"),7,true)
-			for y: int in range(int(entry[1]),int(entry[1])+int(entry[3]),30):
-				draw_line(Vector2(x+offset,y),Vector2(x+offset+19,y-12),Color("719b7d"),3,true)
+			ExplorationArt.strand(self,"vine",Vector2(x+offset,float(entry[1])),Vector2(x+offset,float(entry[1])+float(entry[3])),28)
 	if room_id == "wax_basement":
 		var solution: Array = ExplorationCatalog.data()["mirror_solution"]
 		var last := Vector2(170, float(data["floor"])-55)

@@ -147,16 +147,16 @@ func show_menu() -> void:
 	overlay.add_child(background)
 	shade(.48)
 	label(overlay,Vector2(76,137),Vector2(800,90),"回 环 镇",74,Color("f2e7cc"))
-	label(overlay,Vector2(80,235),Vector2(600,30),"L O O P   T O W N   /   第 %d 次循环" % controller.session.loop_count,17,Color("bad1cc"))
-	label(overlay,Vector2(80,284),Vector2(610,50),"在一座没有出口的小镇，找回那一夜。",21,Color("d4c5ad"))
+	label(overlay,Vector2(80,235),Vector2(600,30),"L O O P   T O W N   /   杰利的回乡",17,Color("bad1cc"))
+	label(overlay,Vector2(80,284),Vector2(610,50),"回到小镇，找回丰收祭那一夜被遗忘的真相。",21,Color("d4c5ad"))
 	button(overlay,Vector2(80,371),Vector2(270,46),"新探索（重新开始）",func(): controller.start_game(false))
 	var continue_button: Button = button(overlay,Vector2(80,430),Vector2(270,46),"继续上一次探索",func(): controller.start_game(true))
 	continue_button.disabled = get_node("/root/SaveManager").load_exploration().is_empty()
 	button(overlay,Vector2(80,489),Vector2(270,46),"查看完整大地图",func(): controller.open_map(true))
 	button(overlay,Vector2(80,548),Vector2(270,46),"退出",func(): get_tree().quit())
 	button(overlay,Vector2(370,489),Vector2(220,46),"人物与敌人图鉴",controller.open_cast)
-	button(overlay,Vector2(370,548),Vector2(220,46),"莫里斯演练",controller.start_boss_practice)
-	label(overlay,Vector2(80,652),Vector2(1100,30),"动作探索 Demo 8  /  连续街道 · 房屋屋顶支路 · 落地中景 · 实体井道 · 三阶段莫里斯",14,Color("aabdb7"))
+	button(overlay,Vector2(370,548),Vector2(220,46),"梅·莫里演练",controller.start_boss_practice)
+	label(overlay,Vector2(80,652),Vector2(1100,30),"动作探索 Demo 8  /  连续街道 · 房屋屋顶支路 · 落地中景 · 实体井道 · 三阶段梅·莫里 · 剧情 1.1",14,Color("aabdb7"))
 
 func show_map(overview: bool = false) -> void:
 	clear_overlay()
@@ -249,7 +249,7 @@ func _quest_card(host: Control, y: float, id: String, title: String, text: Strin
 func show_notebook() -> void:
 	clear_overlay()
 	shade(.95)
-	label(overlay,Vector2(64,36),Vector2(900,50),"空白笔记本 · 已留下的记忆",31,Color("e5cf9f"))
+	label(overlay,Vector2(64,36),Vector2(900,50),"空白速写本 · 已留下的记忆",31,Color("e5cf9f"))
 	button(overlay,Vector2(1080,34),Vector2(140,40),"合上  Tab",controller.close_overlay)
 	var body := RichTextLabel.new()
 	body.position = Vector2(80,116)
@@ -263,7 +263,7 @@ func show_notebook() -> void:
 		var unlocked: bool = str(skill["id"])=="notebook" or controller.session.has(str(skill["id"]))
 		body.append_text(("✓ " if unlocked else "○ ")+str(skill["name"])+"  ·  "+str(skill["keys"])+"  ·  "+str(skill["stage"])+"\n")
 	body.append_text("\nH：消耗 50 墨光恢复 30 生命。命中敌人与停留可恢复墨光。\n\n[color=#e9c78a]已记录的线索[/color]\n")
-	body.append_text("[color=#e9c78a]阶段武器[/color]\n墨页短刃：纸页斩；大剪刀：K 突进剪断；红线双剪：K 环身双重剪击；井火钩刃：K 余火突进；钟钥细剑：K 穿刺并短暂缓时。\nW+J 上挑；空中 S+J 下劈，命中敌人可反弹。连续 J 为三连击，第三击范围与伤害提高。\n\n")
+	body.append_text("[color=#e9c78a]阶段武器[/color]\n调色刀：刀锋挥斩；美工刀：K 突进割断；红线双剪：K 环身双重剪击；井藤钩刃：K 藤刺突进；钟钥细剑：K 穿刺并短暂缓时。\nW+J 上挑；空中 S+J 下劈，命中敌人可反弹。连续 J 为三连击，第三击范围与伤害提高。\n\n")
 	for id: String in memories:
 		if controller.session.has(id):
 			body.append_text("[color=#e9c78a]"+str(memories[id]["title"])+"[/color]\n"+str(memories[id]["text"])+"\n\n")
@@ -283,24 +283,36 @@ func show_cast() -> void:
 	var data: Dictionary = ExplorationArt.actors()
 	var groups: Array = [data["npcs"].values(),data["enemies"].values()]
 	for row: int in range(2):
-		label(overlay,Vector2(44,83+row*229),Vector2(900,30),"居民 / 对话与循环动作" if row==0 else "敌人 / 八种外观与行为",18,Color("94b9b8"))
+		label(overlay,Vector2(44,83+row*229),Vector2(900,30),"居民 / 对话与重复的动作" if row==0 else "敌人 / 八种外观与行为",18,Color("94b9b8"))
 		for i: int in range(groups[row].size()):
 			var actor: Dictionary = groups[row][i]
 			var portrait := Sprite2D.new()
-			portrait.texture = ExplorationArt.sprite(str(actor["atlas"]),int(actor["cell"]))
+			portrait.texture = ExplorationArt.sprite(str(actor["atlas"]),int(actor.get("cell",-1)))
 			portrait.position = Vector2(113+i*148,194+row*229)
 			portrait.scale = Vector2.ONE*minf(130.0/portrait.texture.get_width(),150.0/portrait.texture.get_height())
 			overlay.add_child(portrait)
 			var text := label(overlay,Vector2(42+i*148,276+row*229),Vector2(142,30),str(actor["name"]),15,Color("e2d3b6"))
 			text.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
-	for i: int in range(2):
+	# Story 1.1 cast (Demo 9 art by Codex): Jerry and the five selves he meets.
+	var cast: Array = [
+		["hero","杰利\n调色刀 / 美工刀"],
+		["may_idle","梅·莫里\n美工刀 / 雕像替身"],
+		["void_idle","沃伊德\n红线 / 人偶"],
+		["keeper_hidden","守钟人\n发条 / 倒带"],
+		["fury_idle","弗瑞\n井边的拳头"],
+		["ling_crouch","玲\n井底的她"],
+	]
+	for i: int in range(cast.size()):
 		var portrait := Sprite2D.new()
-		portrait.texture = ExplorationArt.sprite("hero" if i==0 else "morris")
-		portrait.position = Vector2(110+i*300,624)
-		portrait.scale = Vector2.ONE*minf(100.0/portrait.texture.get_width(),130.0/portrait.texture.get_height())
+		portrait.texture = ExplorationArt.sprite(str(cast[i][0]))
+		if portrait.texture==null:
+			continue
+		portrait.position = Vector2(110+i*212,612)
+		portrait.scale = Vector2.ONE*minf(100.0/portrait.texture.get_width(),112.0/portrait.texture.get_height())
 		overlay.add_child(portrait)
-		label(overlay,Vector2(170+i*300,585),Vector2(180,70),"侦探\n笔记本 / 大剪刀" if i==0 else "莫里斯\n熔蜡 / 突进 / 替身",16,Color("d5c5ab"))
-	label(overlay,Vector2(700,584),Vector2(510,80),"他们在重复某个动作，等待一句迟来的回答。\n\n路灯会记住你走过的地方。",17,Color("9fb7b4"))
+		var text := label(overlay,Vector2(20+i*212,668),Vector2(180,44),str(cast[i][1]),13,Color("d5c5ab"))
+		text.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+	label(overlay,Vector2(560,30),Vector2(540,30),"他们在重复某个动作，等待一句迟来的回答。",15,Color("9fb7b4"))
 
 func _process(delta: float) -> void:
 	_toast_time = maxf(0.0,_toast_time-delta)
@@ -313,7 +325,7 @@ func _process(delta: float) -> void:
 	objective_label.text = "[ L 任务 ] "+str(objective["title"])+"\n"+str(objective["text"])
 	var practice: bool = get_node("/root/SaveManager").exploration_slot_name=="exploration_boss_practice"
 	if practice:
-		objective_label.text = "莫里斯演练 · 观察预警，利用收招反击\n跳过突进，绕到横扫背后，离开地刺与烛雨标记。"
+		objective_label.text = "梅·莫里演练 · 观察预警，利用收招反击\n跳过突进，绕到横扫背后，离开地刺与颜料雨标记。"
 	_navigation_clock -= delta
 	if _navigation_clock<=0 and is_instance_valid(controller.player):
 		_navigation_clock = .25
@@ -323,12 +335,12 @@ func _process(delta: float) -> void:
 		var arrow: String = "↑" if absf(relative.y)>absf(relative.x)*.75 and relative.y< -100 else "↓" if absf(relative.y)>absf(relative.x)*.75 and relative.y>100 else "→" if relative.x>0 else "←"
 		direction_label.text = arrow+" "+str(navigation.get("step",ExplorationCatalog.title(str(navigation.get("room",session.room_id)))))+" · %d 米" % int(relative.length()/64)
 		if practice:
-			direction_label.text = "J 连击 / K 剪刃突进 / H 墨光恢复"
+			direction_label.text = "J 连击 / K 美工刀突进 / H 墨光恢复"
 	var main_count: int = 0
 	for id: String in session.visited:
 		if bool(ExplorationCatalog.room(id).get("main_region",true)):
 			main_count += 1
-	counter_label.text = "第 %d 次循环   ·   印记 %d / 3   ·   记忆 %d   ·   区域 %d / 18" % [session.loop_count,session.seal_count(),session.memory_count(),main_count]
+	counter_label.text = "回溯 %d 次   ·   印记 %d / 3   ·   记忆 %d   ·   区域 %d / 18" % [session.loop_count,session.seal_count(),session.memory_count(),main_count]
 	var abilities: Array[String] = []
 	abilities.append("J "+str(ExplorationWeapon.profile(session)["name"])+" · 三连击"+(" / K 阶段技能" if session.has("scissors") else ""))
 	for pair: Array in [["double_jump","二段跳"],["vine","W/S 攀爬"],["dash","Shift 冲刺"],["time_slow","Q 缓时"]]:
@@ -347,13 +359,20 @@ func _process(delta: float) -> void:
 				distance = candidate
 				nearest = str(block["name"])
 		block_label.text = nearest
-	var boss: Node = get_tree().get_first_node_in_group("exploration_boss")
-	var show_boss: bool = boss != null and not boss.dead and boss.state!="sleep" and controller.mode=="play"
+	# The clock tower can hold a sleeping boss and an awake one at the same time.
+	var boss: Node
+	for candidate: Node in get_tree().get_nodes_in_group("exploration_boss"):
+		if not candidate.dead and candidate.state!="sleep":
+			boss = candidate
+			break
+	var show_boss: bool = boss != null and controller.mode=="play"
+	# The boss bar sits where prompts sit; a prompt during a fight may be all that saves Jerry.
+	prompt_label.position.y = 549.0 if show_boss else 595.0
 	boss_health.visible = show_boss
 	boss_label.visible = show_boss
 	if show_boss:
 		boss_health.max_value = boss.max_health
 		boss_health.value = boss.health
-		boss_label.text = "莫里斯 · "+str(boss.phase_title)+" / 阶段 %d" % boss.phase
+		boss_label.text = str(boss.boss_title)+" · "+str(boss.phase_title)+(" / 阶段 %d" % boss.phase if boss.phase>0 else "")
 		if boss.state=="windup":
 			boss_label.text = str(boss.attack_name)

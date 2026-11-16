@@ -15,6 +15,7 @@ var session: ExplorationSession
 var geometry: String = ""
 var masonry: int = 0
 var manual_lift: bool = false
+var flat_gallery: bool = false
 var lift_unlock: String = ""
 var lift_up: String = ""
 var lift_speed: float = 430.0
@@ -39,7 +40,7 @@ func _ready() -> void:
 	shape.one_way_collision = one_way
 	shape.one_way_collision_margin = 12.0
 	add_child(shape)
-	texture = terrain_texture(theme)
+	texture = load("res://assets/environments/exploration/terrain/museum_flat.png") as Texture2D if flat_gallery else terrain_texture(theme)
 	queue_redraw()
 
 static func terrain_texture(id: String) -> Texture2D:
@@ -81,7 +82,7 @@ func _draw() -> void:
 		var x: float = 0.0
 		var segment: int = 0
 		while x < dimensions.x:
-			var tile: Texture2D = ExplorationArt.sprite(theme+"_variants",(variant+segment)%4,"terrain")
+			var tile: Texture2D = texture if flat_gallery else ExplorationArt.sprite(theme+"_variants",(variant+segment)%4,"terrain")
 			if tile == null:
 				tile = texture
 			var segment_width: float = tile.get_width()/float(tile.get_height())*shown_height
@@ -94,7 +95,8 @@ func _draw() -> void:
 	var rim := Color("b4c4be")
 	if theme == "brass":
 		rim = Color("d8aa64")
-	draw_line(Vector2(0, 1), Vector2(dimensions.x, 1), Color(rim, 0.7), 1.5, true)
+	if not flat_gallery:
+		draw_line(Vector2(0, 1), Vector2(dimensions.x, 1), Color(rim, 0.7), 1.5, true)
 	if manual_lift:
 		_draw_cabin()
 

@@ -3,7 +3,7 @@ extends Node
 ## 音频管理器（autoload）— 提示词【三十六】。
 ##
 ## Demo 没有正式配乐，但结构必须搭好：
-##   - 每个区域（Town / Wax / Theater / Well / ClockTower / Fire / Ending）独立音轨
+##   - 每个区域（Town / Wax=美术馆 / Theater / Well / ClockTower / Fire / Ending）独立音轨
 ##   - 环境声、脚步声、攻击声、受击声、Boss 音效、钟声、童谣、火焰、风声
 ##   - 钟声必须成为全游戏的重要叙事声音（因此单独提供 play_bell）
 ##
@@ -74,6 +74,13 @@ const SFX_FILES: Dictionary = {
 	"wind": "sfx_wind",
 	"mirror_turn": "sfx_mirror_turn",
 	"light_focus": "sfx_light_focus",
+	# Demo 9 story 1.1
+	"ling_cry": "sfx_ling_cry",
+	"vine_lash": "sfx_vine_lash",
+	"thread_cut": "sfx_thread_cut",
+	"brush_slash": "sfx_brush_slash",
+	"mud_grab": "sfx_mud_grab",
+	"statue_crack": "sfx_statue_crack",
 }
 
 const MUSIC_BUS: StringName = &"Music"
@@ -227,18 +234,21 @@ func get_bell_ring_count() -> int:
 	return _bell_ring_count
 
 
-## 童谣（井底 / 回忆段落）。井底版本是倒放的。
+## 童谣（回忆段落可选）。Demo 9 玲的战斗哭喊请用 play_sfx("ling_cry")。
 func play_nursery_rhyme(reversed_playback: bool = false) -> void:
-	var stream := _load_stream("nursery_rhyme", "sfx")
+	var id: String = "sfx_nursery_rhyme_reversed" if reversed_playback else "sfx_nursery_rhyme"
+	var stream := _load_stream(id, "sfx")
 	if stream == null:
 		return
 	var player := _next_sfx_player(SFX_BUS)
 	player.stream = stream
 	player.pitch_scale = 1.0
-	if reversed_playback:
-		# 反向播放通过负的 pitch_scale 做不到，这里用音高与音量近似表现“倒放感”。
-		player.pitch_scale = 0.92
 	player.play()
+
+
+## Demo 9：玲的声音干扰哭喊（程序化合成，取代倒放童谣占位）。
+func play_ling_cry() -> void:
+	play_sfx("ling_cry", SFX_BUS)
 
 
 func _next_sfx_player(bus: StringName) -> AudioStreamPlayer:

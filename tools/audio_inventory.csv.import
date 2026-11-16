@@ -15,5 +15,3 @@ dest_files=["res://tools/audio_inventory.group.translation", "res://tools/audio_
 
 compress=1
 delimiter=0
-unescape_keys=false
-unescape_translations=true

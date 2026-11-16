@@ -1,7 +1,7 @@
 [
   {
     "id": "notebook",
-    "name": "墨页短刃",
+    "name": "调色刀",
     "requires": "",
     "cell": -1,
     "damage": 18,
@@ -13,7 +13,7 @@
   },
   {
     "id": "shears",
-    "name": "裁断大剪刀",
+    "name": "美工刀",
     "requires": "scissors",
     "cell": 0,
     "damage": 28,
@@ -37,7 +37,7 @@
   },
   {
     "id": "ember",
-    "name": "井火钩刃",
+    "name": "井藤钩刃",
     "requires": "well_seal",
     "cell": 2,
     "damage": 36,

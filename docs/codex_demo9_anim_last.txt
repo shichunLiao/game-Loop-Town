@@ -1,0 +1,9 @@
+三項都已完成並接入 Demo 9：
+
+- Keeper 雙腳已修成側面，靴子區域外像素保持不變。
+- 美術館三幅人像、六隻獨立眼睛已落地，會追視玩家或出招角色。
+- 50 張 sheet、77 段動畫、616 幀已實際播放。
+
+Godot 4.6.2 驗證：美術 **48/48**、動畫與追視 **828/828** 通過。未 commit、未 push。
+
+[完整結果與樣張](/Users/tsun/Projects/game-Loop-Town/docs/demo9-codex-anim-result.md) · [修腳對比](/Users/tsun/Projects/game-Loop-Town/docs/demo9-keeper-feet-detail.png) · [人像追視預覽](/Users/tsun/Projects/game-Loop-Town/docs/demo9-museum-gaze-closeup.gif) · [更新分享包](/Users/tsun/Projects/game-Loop-Town/docs/demo9-share.zip)

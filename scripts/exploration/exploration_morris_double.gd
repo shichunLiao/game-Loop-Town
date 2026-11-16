@@ -1,6 +1,6 @@
 class_name ExplorationMorrisDouble
 extends ExplorationEnemy
-## A solid-looking false Morris, with a cold eye and a brittle wax shell.
+## A statue double of May Morley: his shape, all in white plaster, stiff and slow (art: may_statue).
 
 var summoner: Node2D
 
@@ -11,15 +11,12 @@ func _ready() -> void:
 	data["damage"] = 10
 	data["speed"] = 80
 	data["range"] = 115
-	visual.texture = ExplorationArt.sprite("morris")
-	var cold := ShaderMaterial.new()
-	cold.shader = load("res://assets/environments/exploration/actors/morris_false.gdshader") as Shader
-	visual.material = cold
+	visual.texture = ExplorationArt.sprite("may_statue")
 	visual.scale = Vector2.ONE*180/visual.texture.get_height()
 	visual.position.y = -90
 	max_health = 1
 	health = 1
-	modulate = Color(.57,.66,.64,1)
+	modulate = Color(.92,.94,.95,1)
 	add_to_group("morris_owned")
 	set_meta("boss_id",summoner.get_instance_id())
 
@@ -28,3 +25,17 @@ func _physics_process(delta: float) -> void:
 		queue_free()
 		return
 	super._physics_process(delta)
+
+func _attack(player: ExplorationPlayer, behavior: String) -> void:
+	if behavior == "ranged":
+		shoot((player.global_position+Vector2(0,-35)-global_position).normalized()*340)
+		return
+	var hit := ExplorationHitArea.new()
+	hit.source = self
+	hit.target_layer = 8
+	hit.damage = int(data["damage"])
+	hit.kind = "statue"
+	hit.position = Vector2(facing*46,-40)
+	hit.dimensions = Vector2(95,70)
+	hit.direction = Vector2(facing,0)
+	add_child(hit)

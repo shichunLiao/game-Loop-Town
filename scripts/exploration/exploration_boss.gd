@@ -1,13 +1,16 @@
 class_name ExplorationBoss
 extends ExplorationEnemy
-## Morris: three forms, directional anticipation, committed attacks, recovery windows.
+## May Morley: three forms, directional anticipation, committed attacks, recovery windows.
+## Art (Codex, Demo 9): may_idle / may_windup / may_slash / may_summon / may_brush / may_brush_strike.
 
 var phase: int = 1
 var pattern: int = 0
 var arena: Vector2 = Vector2(2350,3780)
 var attack: String = "fan"
 var attack_name: String = ""
-var phase_title: String = "蜡匠的执念"
+var phase_title: String = "恩师的面孔"
+var boss_title: String = "梅·莫里"
+var echo: bool = false
 var _floor: float = 1140
 var _locked_facing: float = -1
 var _target_x: float = 0
@@ -23,15 +26,31 @@ var _pose_cache: Dictionary = {}
 var _pose_key: String = ""
 var _base_scale: Vector2 = Vector2.ONE
 var _rush_hit: ExplorationHitArea
+var _ending_sent: bool = false
+var _intro_done: bool = false
+var _covers: Array = []
+const DEFEATS := {
+	"torn": ["结局 · 被撕碎", "美工刀切开你的时候，身体像纸一样裂开、飘落。\n画框里只剩下一地碎屑。\n钟声响起——你又站在美术馆门口。"],
+	"sculpted": ["结局 · 雕塑", "纯白的替身把你按进石膏里。\n凝固的瞬间，你看见自己也成了廊上的一座未完成雕像。\n钟声响起——你又站在美术馆门口。"],
+	"painted": ["结局 · 入画", "画笔在虚空里划开一道口子，把你拖进画布。\n颜料漫过脚踝、膝盖，你成了墙上的一笔。\n钟声响起——你又站在美术馆门口。"],
+}
 
 func _ready() -> void:
 	boss = true
-	data = {"hp":int(spec.get("hp",840)),"height":235,"damage":20,"atlas":"morris","speed":55,"behavior":"boss"}
+	add_to_group("may_boss")
+	data = {"hp":int(spec.get("hp",840)),"height":235,"damage":20,"atlas":"may_idle","speed":55,"behavior":"boss"}
 	arena = ExplorationCatalog.vec(spec.get("arena",[2350,3780]))
 	_floor = float(spec.get("floor",spec["pos"][1]))
 	state = "sleep"
 	super._ready()
 	_create_fences()
+	# The keeper's perfect version skips the opening form and looks too clean.
+	echo = bool(spec.get("echo",false))
+	if echo:
+		phase = 2
+		phase_title = "完美版本"
+		boss_title = str(spec.get("label",boss_title))
+		modulate = Color(.86,.9,1)
 
 func _create_fences() -> void:
 	for x: float in [arena.x,arena.y]:
@@ -49,13 +68,12 @@ func _create_fences() -> void:
 
 func _boss_behavior(player: ExplorationPlayer, offset: Vector2, delta: float) -> void:
 	_phase_invulnerability = maxf(0,_phase_invulnerability-delta)
+	_watch_player(player)
 	velocity.x = 0
 	if state=="sleep":
 		if player.position.x>arena.x+40 and player.position.x<arena.y and absf(offset.y)<220:
-			state = "intro"
-			timer = 1.4
-			_set_fences(true)
-			_notice("莫里斯 · 别碰那些脸")
+			_begin_intro()
+			_notice("梅·莫里 · 别碰那些画")
 		return
 	if state=="intro" or state=="phase_break":
 		if timer<=0:
@@ -100,7 +118,7 @@ func _select_attack(player: ExplorationPlayer) -> void:
 	_locked_facing = signf(player.position.x-position.x) if distance>8 else facing
 	facing = _locked_facing
 	_target_x = clampf(player.position.x,arena.x+115,arena.y-115)
-	attack_name = str({"fan":"烛泪散射 · 留意弹道间隙","cleave":"蜡刃横扫 · 跳起或绕后","slam":"熔蜡地刺 · 离开地面标记","rush":"熔蜡突进 · 跳跃越过","copies":"第 247 张脸 · 真身眼中有火","rain":"坠落烛雨 · 留在预警间隙"}[attack])
+	attack_name = str({"fan":"颜料散射 · 留意弹道间隙","cleave":"美工刀横扫 · 跳起或绕后","slam":"石膏地刺 · 离开地面标记","rush":"画笔突进 · 跳跃越过","copies":"雕像替身 · 认出真身","rain":"坠落颜料 · 留在预警间隙"}[attack])
 	_windup_length = 1.05 if attack in ["slam","rain","copies"] else .85 if phase==1 else .74
 	timer = _windup_length
 	state = "windup"
@@ -118,7 +136,12 @@ func _select_attack(player: ExplorationPlayer) -> void:
 			_effect(Vector2(x,_floor),"rain",_windup_length+.2+float(i)*.12,.65,78,350)
 
 func _release_attack(player: ExplorationPlayer) -> void:
-	get_node("/root/AudioManager").play_sfx("sfx_attack_swing")
+	if attack=="copies":
+		get_node("/root/AudioManager").play_sfx("sfx_statue_crack")
+	elif attack in ["cleave","rush","fan","slam","rain"]:
+		get_node("/root/AudioManager").play_sfx("sfx_brush_slash")
+	else:
+		get_node("/root/AudioManager").play_sfx("sfx_attack_swing")
 	if attack=="fan":
 		_fan(player,3 if phase==1 else 5 if phase==2 else 7,.19 if phase<3 else .16)
 	elif attack=="cleave":
@@ -143,7 +166,7 @@ func _melee(size: Vector2, point: Vector2, length: float, damage_value: int) -> 
 	hit.position = point
 	hit.direction = Vector2(_locked_facing,0)
 	hit.lifetime = length
-	hit.kind = "wax_claw"
+	hit.kind = "may_brush" if phase >= 3 else "may_slash"
 	add_child(hit)
 	return hit
 
@@ -193,14 +216,14 @@ func _summon_copies() -> void:
 func _start_phase(value: int) -> void:
 	phase = value
 	pattern = 0
-	phase_title = "蜡壳裂开" if phase==2 else "熔炉中的真身"
+	phase_title = "雕像替身" if phase==2 else "入画"
 	state = "phase_break"
 	timer = 1.55
 	_phase_invulnerability = .7
 	_clear_owned()
 	velocity.x = 0
 	_stagger = 0
-	_notice("第二阶段 · 蜡壳裂开" if phase==2 else "第三阶段 · 熔炉中的真身")
+	_notice("第二阶段 · 雕像替身" if phase==2 else "第三阶段 · 入画")
 	get_node("/root/AudioManager").play_bell()
 	var demo: Node = get_tree().get_first_node_in_group("exploration_demo")
 	if demo!=null:
@@ -214,9 +237,8 @@ func receive_hit(amount: int, _origin_value: Vector2, _kind: String = "slash") -
 	if not can_receive_hit():
 		return
 	if state=="sleep":
-		state = "intro"
-		timer = 1.0
-		_set_fences(true)
+		_begin_intro()
+		return
 	health = maxi(0,health-amount)
 	_flash = .11
 	_stagger += amount
@@ -224,7 +246,7 @@ func receive_hit(amount: int, _origin_value: Vector2, _kind: String = "slash") -
 	if _stagger>=125 and state=="recover":
 		timer = maxf(timer,.62)
 		_stagger = 0
-		_notice("蜡壳失衡 · 乘机攻击")
+		_notice("画框失衡 · 乘机攻击")
 	get_node("/root/AudioManager").play_sfx("sfx_hurt")
 	if health<=0:
 		_die()
@@ -250,14 +272,21 @@ func _die() -> void:
 	state = "death"
 	_clear_owned()
 	_set_fences(false)
-	session.switches["defeated_morris"] = true
-	session.acquire("boss_morris")
-	session.save()
+	if echo:
+		session.switches[str(spec["id"])] = true
+		session.changed.emit()
+	else:
+		session.switches["defeated_morris"] = true
+		session.acquire("boss_morris")
+		session.save()
 	var demo: Node = get_tree().get_first_node_in_group("exploration_demo")
 	if demo!=null:
 		demo.player.health = mini(100,demo.player.health+35)
 		demo.screen_shake(.3)
-		demo.hud.toast("蜡壳崩解 · 镜室门锁已松开")
+		if echo:
+			demo.hud.toast("完美的梅·莫里碎成了石膏")
+		else:
+			_victory_cutscene(demo)
 	get_node("/root/AudioManager").play_bell()
 	var tween := create_tween()
 	tween.tween_property(visual,"scale:y",visual.scale.y*.3,.7)
@@ -269,34 +298,42 @@ func _notice(text: String) -> void:
 	if demo!=null:
 		demo.hud.toast(text)
 
-func _pose(atlas_name: String, cell: int) -> Texture2D:
-	var key: String = atlas_name+str(cell)
-	if not _pose_cache.has(key):
-		_pose_cache[key] = ExplorationArt.sprite(atlas_name,cell)
-	return _pose_cache[key]
+## On-screen height of each pose. Raised arms and the frenzy form stand taller than the idle teacher.
+const POSE_HEIGHT := {"may_idle":235.0,"may_windup":262.0,"may_slash":228.0,"may_summon":250.0,"may_brush":245.0,"may_brush_strike":232.0}
+
+func _pose(pose: String) -> Texture2D:
+	if not _pose_cache.has(pose):
+		_pose_cache[pose] = ExplorationArt.sprite(pose)
+	return _pose_cache[pose]
+
+## Phase 1 is the teacher with the box cutter, phase 2 adds the statue doubles,
+## phase 3 swaps the cutter for the brush that cuts into the painting.
+func _pose_name() -> String:
+	var attacking: bool = state in ["active","windup"]
+	if state=="sleep" or not attacking:
+		return "may_brush" if phase==3 else "may_idle"
+	if attack=="copies":
+		return "may_brush" if phase==3 else "may_summon"
+	if phase==3:
+		return "may_brush" if state=="windup" else "may_brush_strike"
+	if state=="windup":
+		return "may_windup"
+	return "may_summon" if attack=="rain" else "may_slash"
 
 func _visual_update() -> void:
-	var attacking: bool = state in ["active","windup"]
-	var atlas_name: String = "morris_actions_v2"
-	var cell: int = 0 if state=="windup" else 1 if attack in ["cleave","rush"] else 3 if attack=="slam" else 2
-	if phase>=2:
-		atlas_name = "morris_forms_v2"
-		cell = (0 if phase==2 else 2)+(1 if state=="active" else 0)
-	var idle: bool = state=="sleep" or (phase==1 and not attacking)
-	var key: String = "morris" if idle else atlas_name+str(cell)
+	var key: String = _pose_name()
 	if key!=_pose_key:
 		_pose_key = key
-		visual.texture = ExplorationArt.sprite("morris") if idle else _pose(atlas_name,cell)
-		var reference: Texture2D = ExplorationArt.sprite("morris") if idle else _pose(atlas_name,2 if phase==1 or phase==3 else 0)
-		_base_scale = Vector2.ONE*235.0/reference.get_height()
+		visual.texture = _pose(key)
+		_base_scale = Vector2.ONE*float(POSE_HEIGHT.get(key,235.0))/visual.texture.get_height()
 	visual.flip_h = facing>0
-	visual.position = Vector2(0,-visual.texture.get_height()*_base_scale.y*.5)
+	visual.position = Vector2(ExplorationArt.foot_shift(_pose_key,visual.texture,_base_scale.x,visual.flip_h),-visual.texture.get_height()*_base_scale.y*.5)
 	var lean: float = -.1 if state=="windup" else .13 if state=="active" else 0
 	visual.rotation = lean*facing+sin(_clock*2)*.015
 	visual.scale = _base_scale*Vector2(1.06,.96) if state=="windup" else _base_scale
 	visual.modulate = Color(2,1.5,1) if _flash>0 else Color(1.15,.92,.8) if phase==3 else Color.WHITE
 	if state=="phase_break":
-		visual.position.x = sin(_clock*60)*3
+		visual.position.x += sin(_clock*60)*3
 	queue_redraw()
 
 func _draw() -> void:
@@ -326,3 +363,61 @@ func _draw() -> void:
 			var local_x: float = edge-position.x
 			for i: int in range(4):
 				draw_line(Vector2(local_x+i*4-6,0),Vector2(local_x+i*4-6,-245+sin(_clock*3+i)*10),Color("89613c"),3,true)
+
+func _begin_intro() -> void:
+	state = "intro"
+	timer = 2.4
+	_set_fences(true)
+	_spawn_covers()
+	if _intro_done or echo:
+		return
+	_intro_done = true
+	var demo: Node = get_tree().get_first_node_in_group("exploration_demo")
+	if demo == null:
+		return
+	demo.show_dialogue("梅·莫里", "杰利……你脸上的神情，和玲失踪之后一样。\n他是不是疯了？——不，是这座美术馆在疯。\n画里的人在笑。画框在裂。", [
+		{"label":"……准备战斗", "action": demo.close_overlay}
+	])
+	demo.mode = "ending"
+
+func _spawn_covers() -> void:
+	if echo or not _covers.is_empty():
+		return
+	var xs: Array = [arena.x + 420.0, (arena.x + arena.y) * 0.5, arena.y - 420.0]
+	for x in xs:
+		var cover := ExplorationPushCover.new()
+		cover.position = Vector2(x, _floor)
+		cover.floor_y = _floor
+		cover.add_to_group("morris_owned")
+		cover.set_meta("boss_id", get_instance_id())
+		get_parent().add_child(cover)
+		_covers.append(cover)
+
+func _watch_player(player: ExplorationPlayer) -> void:
+	if echo or _ending_sent or dead or state in ["sleep", "death"]:
+		return
+	if not is_instance_valid(player) or player.health > 0:
+		return
+	var kind: String = player.last_may_kind
+	if kind == "statue" or player.plaster >= 3:
+		_defeat("sculpted")
+	elif kind == "may_brush" or phase >= 3 or player.paint >= 3:
+		_defeat("painted")
+	else:
+		_defeat("torn")
+
+func _defeat(id: String) -> void:
+	if _ending_sent:
+		return
+	var demo: Node = get_tree().get_first_node_in_group("exploration_demo")
+	if demo == null or not DEFEATS.has(id):
+		return
+	_ending_sent = true
+	demo.defeat.call_deferred(id, str(DEFEATS[id][0]), str(DEFEATS[id][1]))
+
+func _victory_cutscene(demo: Node) -> void:
+	demo.hud.toast("梅·莫里消散 · 镜室门锁已松开")
+	demo.show_dialogue("画室回忆", "钟声响起。画面闪烁。\n你看见美术室里两个孩子并排画画：文静的你，活泼的玲。\n梅的呼喊把你拉回现实——还是刚才说话的场景。\n他记得：玲失踪那天下午，来要了两张丰收祭演出的海报。\n剧院。线索指向剧院。", [
+		{"label":"前往剧院", "action": demo.close_overlay}
+	])
+	demo.mode = "ending"

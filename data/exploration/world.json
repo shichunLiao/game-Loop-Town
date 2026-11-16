@@ -1,5 +1,5 @@
 {
-  "version": 8,
+  "version": 9,
   "rooms": {
     "town_entrance": {
       "id": "town_entrance",
@@ -83,8 +83,8 @@
             940
           ],
           "item": "letter",
-          "title": "一封没有署名的信",
-          "text": "请找到小铃，带她回家。",
+          "title": "刑警留下的传唤单",
+          "text": "姑姑的葬礼之后，刑警找上门：施工队在枯井下挖出一具遗骸，已确认是玲。\n请你明天到警局配合调查。",
           "uid": "town_entrance:object:letter"
         },
         {
@@ -137,6 +137,15 @@
           ],
           "role": "等信的母亲",
           "echo": false
+        },
+        {
+          "id": "detective_town_entrance",
+          "type": "detective",
+          "pos": [
+            980,
+            940
+          ],
+          "role": "刑警"
         }
       ],
       "enemies": [
@@ -209,7 +218,7 @@
           "balcony": false,
           "terrain": "stone",
           "clue_title": "未退的房间",
-          "clue_text": "钥匙下压着一张旅客登记纸。姓名被涂黑，只留下一个帽子的简笔画。",
+          "clue_text": "钥匙下压着一张旅客登记纸。姓名被涂黑，旁边是一张小孩画的自画像，右脸涂成了黑色。",
           "clue_item": "building_town_entrance_1_note",
           "interior_scene": "inside_building_town_entrance_1"
         },
@@ -468,10 +477,9 @@
           ],
           "requires": [
             "wax_seal",
-            "theater_seal",
-            "well_seal"
+            "theater_seal"
           ],
-          "hint": "钟楼门上还缺三枚记忆印记",
+          "hint": "钟楼门上还缺两枚记忆印记",
           "label": "钟楼外庭",
           "direction": "right",
           "corridor": true,
@@ -491,7 +499,7 @@
             1240
           ],
           "title": "所有路，都会回到钟楼",
-          "text": "西环的上行楼梯通向蜡像馆；东环的上层通向剧院，下层通向枯井。三枚印记能开启钟楼。地图只标记路线，所有道路都需实际走过。",
+          "text": "西环的上行楼梯通向美术馆；东环的上层通向剧院，下层通向枯井。两枚印记能开启钟楼。地图只标记路线，所有道路都需实际走过。",
           "uid": "town_hub:object:0"
         }
       ],
@@ -655,7 +663,7 @@
           "balcony": false,
           "terrain": "stone",
           "clue_title": "未退的房间",
-          "clue_text": "钥匙下压着一张旅客登记纸。姓名被涂黑，只留下一个帽子的简笔画。",
+          "clue_text": "钥匙下压着一张旅客登记纸。姓名被涂黑，旁边是一张小孩画的自画像，右脸涂成了黑色。",
           "clue_item": "building_town_hub_3_note",
           "interior_scene": "inside_building_town_hub_3"
         }
@@ -937,7 +945,7 @@
           ],
           "requires": [],
           "hint": "",
-          "label": "蜡像巷",
+          "label": "美术馆前街",
           "direction": "right",
           "corridor": true,
           "spawn_inset": 145,
@@ -1291,7 +1299,7 @@
     },
     "wax_lane": {
       "id": "wax_lane",
-      "name": "蜡像巷",
+      "name": "美术馆前街",
       "theme": "wax",
       "terrain": "stone",
       "size": [
@@ -1495,7 +1503,7 @@
           ],
           "requires": [],
           "hint": "",
-          "label": "蜡像馆 · 熔炉",
+          "label": "美术馆 · 无尽走廊",
           "direction": "left",
           "corridor": true,
           "spawn_inset": 210
@@ -1509,7 +1517,7 @@
             940
           ],
           "title": "橱窗里的空位",
-          "text": "记住每一张脸。\n蜡像馆在巷子的西端。熔蜡池每隔一段时间喷涌，观察亮起的预兆。",
+          "text": "画里的每一张脸都记得你。\n美术馆在街的西端。颜料池每隔一段时间喷涌，观察亮起的预兆。",
           "uid": "wax_lane:object:0"
         },
         {
@@ -1519,8 +1527,8 @@
             700
           ],
           "item": "wax_faces",
-          "title": "不会消失的脸",
-          "text": "如果我停下制作，蜡像就会开始流血。",
+          "title": "盯着你的画像",
+          "text": "画里的人都在看你。只要停下脚步，它们就开始笑。",
           "uid": "wax_lane:object:wax_faces"
         }
       ],
@@ -1564,7 +1572,7 @@
             460,
             940
           ],
-          "role": "送蜡工",
+          "role": "送画工",
           "echo": false
         },
         {
@@ -1574,7 +1582,7 @@
             2460,
             940
           ],
-          "role": "订单抄写员",
+          "role": "画册抄写员",
           "echo": false,
           "quest_id": "request_4"
         }
@@ -1610,19 +1618,19 @@
       ],
       "blocks": [
         {
-          "name": "蜡面陈列店",
+          "name": "石膏像陈列店",
           "x": 660,
           "y": 940,
           "variant": 0
         },
         {
-          "name": "莫里斯的工棚",
+          "name": "梅·莫里的画室",
           "x": 1920,
           "y": 940,
           "variant": 1
         },
         {
-          "name": "烛泪桥",
+          "name": "颜料桥",
           "x": 2970,
           "y": 940,
           "variant": 2
@@ -1640,13 +1648,13 @@
           ],
           "height": 440,
           "max_width": 690,
-          "name": "蜡面陈列店",
+          "name": "石膏像陈列店",
           "enterable": true,
           "interior": "wax_room",
           "balcony": true,
           "terrain": "stone",
           "clue_title": "陈列架的空位",
-          "clue_text": "蜡滴绕开了最中间的空位。这里像是一直缺着最后一件作品。",
+          "clue_text": "石膏像绕开了最中间的空位。这里像是一直缺着最后一件作品。",
           "clue_item": "building_wax_lane_0_note",
           "interior_scene": "inside_building_wax_lane_0"
         },
@@ -1661,19 +1669,19 @@
           ],
           "height": 400,
           "max_width": 690,
-          "name": "莫里斯的工棚",
+          "name": "梅·莫里的画室",
           "enterable": true,
           "interior": "wax_room",
           "balcony": false,
           "terrain": "stone",
           "clue_title": "擦拭过的工具",
-          "clue_text": "雕刻刀的握柄被磨得很亮。蜡屑里混着一小片烧焦的布。",
+          "clue_text": "雕刻刀的握柄被磨得很亮。石膏屑里混着一小片蓝色的裙布。",
           "clue_item": "building_wax_lane_1_note",
           "interior_scene": "inside_building_wax_lane_1"
         },
         {
           "id": "building_wax_lane_2",
-          "asset": "wax_mid",
+          "asset": "museum_mid",
           "cell": 2,
           "folder": "midgrounds",
           "pos": [
@@ -1682,7 +1690,7 @@
           ],
           "height": 450,
           "max_width": 760,
-          "name": "烛泪桥",
+          "name": "颜料桥",
           "enterable": false,
           "interior": "wax_room",
           "balcony": false,
@@ -1729,7 +1737,7 @@
       ],
       "rear_scenery": [
         {
-          "asset": "wax_mid",
+          "asset": "museum_mid",
           "cell": 3,
           "pos": [
             260.0,
@@ -1740,7 +1748,7 @@
           "mount": "ground"
         },
         {
-          "asset": "wax_depth_v7",
+          "asset": "museum_depth",
           "cell": 0,
           "pos": [
             1005.0,
@@ -1751,7 +1759,7 @@
           "mount": "ground"
         },
         {
-          "asset": "wax_depth_v7",
+          "asset": "museum_depth",
           "cell": 1,
           "pos": [
             1750.0,
@@ -1762,7 +1770,7 @@
           "mount": "ground"
         },
         {
-          "asset": "wax_depth_v7",
+          "asset": "museum_depth",
           "cell": 2,
           "pos": [
             2495.0,
@@ -1773,7 +1781,7 @@
           "mount": "ground"
         },
         {
-          "asset": "wax_depth_v7",
+          "asset": "museum_depth",
           "cell": 3,
           "pos": [
             3240.0,
@@ -1789,7 +1797,7 @@
     },
     "wax_museum": {
       "id": "wax_museum",
-      "name": "蜡像馆 · 熔炉",
+      "name": "美术馆 · 无尽走廊",
       "theme": "wax",
       "terrain": "stone",
       "size": [
@@ -1942,7 +1950,7 @@
           ],
           "requires": [],
           "hint": "",
-          "label": "蜡像巷",
+          "label": "美术馆前街",
           "direction": "right",
           "corridor": true,
           "spawn_inset": 210
@@ -1962,12 +1970,12 @@
             "scissors",
             "boss_morris"
           ],
-          "hint": "先在熔炉战场击败莫里斯，镜室的机械锁才会松开。",
-          "label": "七镜地下室",
+          "hint": "先在无尽走廊击败梅·莫里，镜室的机械锁才会松开。",
+          "label": "七镜画室",
           "direction": "right",
           "corridor": true,
           "gate_type": "cellar_door",
-          "gate_title": "蜡像馆地窖门",
+          "gate_title": "美术馆地窖门",
           "kind": "passage",
           "gate_id": "wax_museum--wax_basement",
           "spawn_inset": 145
@@ -1981,8 +1989,8 @@
             1140
           ],
           "item": "scissors",
-          "title": "大剪刀",
-          "text": "获得大剪刀：J 的近战范围与伤害提升；K 剪刃突进。W / S + J 可向上 / 下攻击。击败熔炉前的莫里斯，打开镜室通路。",
+          "title": "美工刀",
+          "text": "获得美工刀：J 的近战范围与伤害提升；K 美工刀突进。W / S + J 可向上 / 下攻击。击败走廊尽头的梅·莫里，打开镜室通路。",
           "uid": "wax_museum:object:scissors"
         },
         {
@@ -1991,8 +1999,8 @@
             2480,
             1140
           ],
-          "title": "永远未完成的订单",
-          "text": "全镇居民尺寸蜡像一套。数量：247。\n地下室入口藏在熔炉左侧，那里留下了七面镜子。",
+          "title": "永远画不完的画",
+          "text": "画室墙上并排挂着两幅孩子的画。\n地下画室的入口藏在走廊左侧，那里留下了七面镜子。",
           "uid": "wax_museum:object:1"
         }
       ],
@@ -2026,7 +2034,7 @@
             880,
             1140
           ],
-          "role": "熔炉守灯人",
+          "role": "美术馆守灯人",
           "echo": false
         }
       ],
@@ -2058,7 +2066,7 @@
           "variant": 0
         },
         {
-          "name": "莫里斯的工棚",
+          "name": "梅·莫里的画室",
           "x": 1740,
           "y": 1140,
           "variant": 1
@@ -2086,7 +2094,7 @@
       "buildings": [
         {
           "id": "building_wax_museum_0",
-          "asset": "wax_mid",
+          "asset": "museum_mid",
           "cell": 0,
           "folder": "midgrounds",
           "pos": [
@@ -2115,19 +2123,19 @@
           ],
           "height": 430,
           "max_width": 690,
-          "name": "莫里斯的工棚",
+          "name": "梅·莫里的画室",
           "enterable": true,
           "interior": "wax_room",
           "balcony": false,
           "terrain": "stone",
           "clue_title": "擦拭过的工具",
-          "clue_text": "雕刻刀的握柄被磨得很亮。蜡屑里混着一小片烧焦的布。",
+          "clue_text": "雕刻刀的握柄被磨得很亮。石膏屑里混着一小片蓝色的裙布。",
           "clue_item": "building_wax_museum_1_note",
           "interior_scene": "inside_building_wax_museum_1"
         },
         {
           "id": "building_wax_museum_2",
-          "asset": "wax_mid",
+          "asset": "museum_mid",
           "cell": 1,
           "folder": "midgrounds",
           "pos": [
@@ -2183,7 +2191,7 @@
       ],
       "rear_scenery": [
         {
-          "asset": "wax_depth_v7",
+          "asset": "museum_depth",
           "cell": 3,
           "pos": [
             260.0,
@@ -2194,7 +2202,7 @@
           "mount": "ground"
         },
         {
-          "asset": "wax_mid",
+          "asset": "museum_mid",
           "cell": 0,
           "pos": [
             956.0,
@@ -2205,7 +2213,7 @@
           "mount": "ground"
         },
         {
-          "asset": "wax_mid",
+          "asset": "museum_mid",
           "cell": 1,
           "pos": [
             1652.0,
@@ -2216,7 +2224,7 @@
           "mount": "ground"
         },
         {
-          "asset": "wax_mid",
+          "asset": "museum_mid",
           "cell": 2,
           "pos": [
             2348.0,
@@ -2227,7 +2235,7 @@
           "mount": "ground"
         },
         {
-          "asset": "wax_mid",
+          "asset": "museum_mid",
           "cell": 3,
           "pos": [
             3044.0,
@@ -2238,7 +2246,7 @@
           "mount": "ground"
         },
         {
-          "asset": "wax_depth_v7",
+          "asset": "museum_depth",
           "cell": 0,
           "pos": [
             3740.0,
@@ -2254,7 +2262,7 @@
     },
     "wax_basement": {
       "id": "wax_basement",
-      "name": "七镜地下室",
+      "name": "七镜画室",
       "theme": "wax",
       "terrain": "stone",
       "size": [
@@ -2376,12 +2384,12 @@
             "scissors",
             "boss_morris"
           ],
-          "hint": "先在熔炉战场击败莫里斯，镜室的机械锁才会松开。",
-          "label": "蜡像馆 · 熔炉",
+          "hint": "先在无尽走廊击败梅·莫里，镜室的机械锁才会松开。",
+          "label": "美术馆 · 无尽走廊",
           "direction": "right",
           "corridor": true,
           "gate_type": "cellar_door",
-          "gate_title": "蜡像馆地窖门",
+          "gate_title": "美术馆地窖门",
           "kind": "passage",
           "gate_id": "wax_museum--wax_basement",
           "spawn_inset": 210
@@ -2401,7 +2409,7 @@
             "wax_seal",
             "double_jump"
           ],
-          "hint": "上方档案室需要蜡像印记和二段跳",
+          "hint": "上方档案室需要美术馆印记和二段跳",
           "label": "被遗忘的档案室",
           "direction": "right",
           "corridor": true,
@@ -2507,7 +2515,7 @@
             840
           ],
           "title": "镜框后的刻度",
-          "text": "七镜的正确刻度依次为：\n2 · 3 · 4 · 1 · 2 · 4 · 3\n每按一次 E 转动一格。所有角度吻合时，光会沿着七面镜子传向未完成的蜡块。",
+          "text": "七镜的正确刻度依次为：\n2 · 3 · 4 · 1 · 2 · 4 · 3\n每按一次 E 转动一格。所有角度吻合时，光会沿着七面镜子传向那幅没有画完的画。",
           "uid": "wax_basement:object:7"
         }
       ],
@@ -2545,8 +2553,8 @@
       "buildings": [
         {
           "id": "building_wax_basement_0",
-          "asset": "wax_mid",
-          "cell": 3,
+          "asset": "museum_mid",
+          "cell": 2,
           "folder": "midgrounds",
           "pos": [
             850,
@@ -2590,7 +2598,7 @@
       ],
       "rear_scenery": [
         {
-          "asset": "wax_mid",
+          "asset": "museum_mid",
           "cell": 2,
           "pos": [
             260.0,
@@ -2601,7 +2609,7 @@
           "mount": "ground"
         },
         {
-          "asset": "wax_mid",
+          "asset": "museum_mid",
           "cell": 3,
           "pos": [
             900.0,
@@ -2612,7 +2620,7 @@
           "mount": "ground"
         },
         {
-          "asset": "wax_depth_v7",
+          "asset": "museum_depth",
           "cell": 0,
           "pos": [
             1540.0,
@@ -2702,8 +2710,8 @@
             "wax_seal",
             "double_jump"
           ],
-          "hint": "上方档案室需要蜡像印记和二段跳",
-          "label": "七镜地下室",
+          "hint": "上方档案室需要美术馆印记和二段跳",
+          "label": "七镜画室",
           "direction": "left",
           "corridor": true,
           "gate_type": "archive_door",
@@ -2721,8 +2729,8 @@
             840
           ],
           "item": "fire_tag",
-          "title": "磨平的消防志愿队牌",
-          "text": "金属牌上没有姓名。\n不是她。还有另一个走进火场的人，被压在这段记忆里。",
+          "title": "旧报纸上的寻人启事",
+          "text": "失踪：玲，十岁。丰收祭当晚未归。\n启事下压着一行铅笔字：那天下午，她拿走了两张演出海报。",
           "uid": "hidden_archive:object:fire_tag"
         },
         {
@@ -3097,7 +3105,7 @@
           "requires": [
             "scissors"
           ],
-          "hint": "门缝被红线封住，需要大剪刀",
+          "hint": "门缝被红线封住，需要美工刀",
           "label": "东环 · 屋顶回廊",
           "direction": "left",
           "corridor": true,
@@ -3755,11 +3763,15 @@
             "doll",
             "double_jump",
             "vine",
-            "final_ticket"
+            "final_ticket",
+            "dash"
           ],
           "title": "完整的双眼",
-          "text": "所有破旧的布偶中，只有这一只没有裂痕。\n获得女孩布偶、剧院印记、二段跳与藤蔓攀爬。\n新的能力让旧地图的上层支路变得可达。",
-          "uid": "back_stage:object:theater_seal"
+          "text": "所有破旧的布偶中，只有这一只没有裂痕。那是你小时候亲手做、想送给玲的玩偶。\n获得玲的布偶、剧院印记、二段跳、藤蔓攀爬与冲刺（Shift）。\n新的能力让旧地图的上层支路变得可达。",
+          "uid": "back_stage:object:theater_seal",
+          "requires": [
+            "boss_void"
+          ]
         },
         {
           "kind": "memory",
@@ -3768,8 +3780,8 @@
             700
           ],
           "item": "pierrot_note",
-          "title": "最后的戏票",
-          "text": "本券可作为『不被忘记』的凭证。票边卷曲，那不是血迹，是焦痕。",
+          "title": "两张丰收祭海报",
+          "text": "丰收祭夜场演出。两张海报叠在一起，背面写着：给杰利。\n有一张，从来没有被撕开过。",
           "uid": "back_stage:object:pierrot_note"
         }
       ],
@@ -3797,7 +3809,7 @@
           "id": "guide_back_stage_0",
           "type": "seamstress",
           "pos": [
-            1950,
+            520,
             940
           ],
           "role": "布偶保管人",
@@ -3944,7 +3956,20 @@
         }
       ],
       "masonry": 1,
-      "static_vertical_background": false
+      "static_vertical_background": false,
+      "boss": {
+        "type": "void",
+        "pos": [
+          1760,
+          940
+        ],
+        "arena": [
+          960,
+          2120
+        ],
+        "hp": 760,
+        "floor": 940
+      }
     },
     "ring_east": {
       "id": "ring_east",
@@ -4033,7 +4058,7 @@
           "requires": [
             "scissors"
           ],
-          "hint": "门缝被红线封住，需要大剪刀",
+          "hint": "门缝被红线封住，需要美工刀",
           "label": "旧剧院 · 红线舞台",
           "direction": "right",
           "corridor": true,
@@ -4081,11 +4106,10 @@
             1137
           ],
           "requires": [
-            "wax_seal",
-            "theater_seal"
+            "keeper_truth"
           ],
-          "hint": "先带回蜡像与剧院的两枚印记",
-          "label": "枯井 · 风向相同的树",
+          "hint": "先在钟楼顶回应守钟人",
+          "label": "枯井 · 警戒线",
           "direction": "right",
           "corridor": true,
           "gate_type": "street_door",
@@ -4104,8 +4128,8 @@
             850
           ],
           "item": "old_rooftops",
-          "title": "另一圈路",
-          "text": "你曾经从这里背着人跑过。现在只剩窗里的光。",
+          "title": "放学的路",
+          "text": "放学后，你和她从这里一路跑去美术室。现在只剩窗里的光。",
           "uid": "ring_east:object:old_rooftops"
         }
       ],
@@ -4390,7 +4414,7 @@
     },
     "dry_well": {
       "id": "dry_well",
-      "name": "枯井 · 风向相同的树",
+      "name": "枯井 · 警戒线",
       "theme": "well",
       "terrain": "stone",
       "size": [
@@ -4620,10 +4644,9 @@
             1237
           ],
           "requires": [
-            "wax_seal",
-            "theater_seal"
+            "keeper_truth"
           ],
-          "hint": "先带回蜡像与剧院的两枚印记",
+          "hint": "先在钟楼顶回应守钟人",
           "label": "东环 · 屋顶回廊",
           "direction": "left",
           "corridor": true,
@@ -4645,9 +4668,9 @@
             877
           ],
           "requires": [
-            "doll"
+            "fury_done"
           ],
-          "hint": "铁栅栏旁留着一个布偶形状的凹槽",
+          "hint": "检修门从里面锁死了。井口在下面的空地上，拉着警戒线。",
           "label": "倒悬之井",
           "direction": "right",
           "corridor": true,
@@ -4669,10 +4692,10 @@
             877
           ],
           "requires": [
-            "clock_memory"
+            "keeper_truth"
           ],
-          "hint": "火海中的旧井房",
-          "label": "最终循环 · 火海",
+          "hint": "丰收祭夜的旧井房",
+          "label": "丰收祭之夜",
           "direction": "left",
           "corridor": true,
           "gate_type": "clock_door",
@@ -4690,7 +4713,7 @@
             1240
           ],
           "title": "铁栅栏下的童谣",
-          "text": "带着布偶进入井底。藤蔓旁按 W / S 攀爬；长距离坠落会失去生命。取得印记会唤醒黑泥。左侧排水闸是一条逃生近路。\nS + Space 可穿下脚边的平台。井道要逐层下降，不要直接跳到底。",
+          "text": "井口已经被施工队挖开了，旁边拉着警戒线。刑警已经撤了。\n藤蔓旁按 W / S 攀爬；S + Space 可穿下脚边的平台。",
           "uid": "dry_well:object:0"
         }
       ],
@@ -4725,6 +4748,18 @@
           ],
           "role": "守夜屋访客",
           "echo": false
+        },
+        {
+          "id": "detective_dry_well",
+          "type": "detective",
+          "pos": [
+            1180,
+            1240
+          ],
+          "role": "刑警",
+          "requires": [
+            "fury_done"
+          ]
         }
       ],
       "enemies": [
@@ -4932,7 +4967,24 @@
         }
       ],
       "masonry": 3,
-      "static_vertical_background": false
+      "static_vertical_background": false,
+      "fury_scene": {
+        "trigger": 3040,
+        "well": [
+          3330,
+          1240
+        ],
+        "arena": [
+          2560,
+          3480
+        ],
+        "behind": 330,
+        "target": "well_interior",
+        "arrival": [
+          700,
+          2837
+        ]
+      }
     },
     "well_interior": {
       "id": "well_interior",
@@ -5603,7 +5655,7 @@
             "well_shortcut"
           ],
           "hint": "从井底找到并打开排水闸",
-          "label": "七镜地下室",
+          "label": "七镜画室",
           "direction": "left",
           "corridor": true,
           "gate_type": "drain_gate",
@@ -5624,10 +5676,10 @@
             187
           ],
           "requires": [
-            "doll"
+            "fury_done"
           ],
-          "hint": "铁栅栏旁留着一个布偶形状的凹槽",
-          "label": "枯井 · 风向相同的树",
+          "hint": "检修门从里面锁死了。井口在下面的空地上，拉着警戒线。",
+          "label": "枯井 · 警戒线",
           "direction": "right",
           "corridor": true,
           "gate_type": "well_hatch",
@@ -5646,12 +5698,14 @@
           ],
           "item": "well_seal",
           "grants": [
-            "summer_photo",
-            "dash"
+            "summer_photo"
           ],
-          "title": "夏令营合照",
-          "text": "最后一天，他说要玩一个游戏。获得井底印记与冲刺（Shift）。黑泥开始上涌！抓住藤蔓返回，或拉开左侧排水闸，从近路离开。",
-          "uid": "well_interior:object:well_seal"
+          "title": "美术室的合照",
+          "text": "照片里，扎双马尾的女孩在笑，旁边的男孩用手挡住了右脸。",
+          "uid": "well_interior:object:well_seal",
+          "appears_after": [
+            "boss_ling"
+          ]
         },
         {
           "kind": "switch",
@@ -5661,21 +5715,24 @@
           ],
           "flag": "well_shortcut",
           "title": "排水闸",
-          "text": "井底与蜡像馆地下室重新连通。",
+          "text": "井底与美术馆地下画室重新连通。",
           "uid": "well_interior:object:well_shortcut"
         },
         {
           "kind": "true_memory",
           "pos": [
-            1060,
+            1620,
             2840
           ],
-          "title": "那句话的后半截",
-          "text": "来不及了，再进去就出不来了——把他拉出来！\n这一次，你终于听完了那句话。",
+          "title": "我找到你了",
+          "text": "站在那里的是玲。真正的她。双马尾，白衬衫，蓝裙子。干净，安静。\n她蹲在枯井的角落里，头埋得很低，很害怕的样子。\n\n「我找到你了。」\n\n她挡在你前面，被推倒，头撞在井口。弗瑞他们逼你一起把她抬起来……你看见她的手，好像还在动。\n这一次，你终于想起来了。",
           "requires": [
             "clock_memory"
           ],
-          "uid": "well_interior:object:2"
+          "uid": "well_interior:object:2",
+          "appears_after": [
+            "boss_ling"
+          ]
         },
         {
           "kind": "checkpoint",
@@ -5718,6 +5775,12 @@
           340,
           95,
           2430
+        ],
+        [
+          900,
+          2250,
+          70,
+          590
         ]
       ],
       "checkpoint": [
@@ -5729,24 +5792,6 @@
       "main_region": true,
       "npcs": [],
       "enemies": [
-        {
-          "id": "well_interior_0",
-          "type": "well_wisp",
-          "pos": [
-            1120,
-            2356
-          ],
-          "patrol": 240
-        },
-        {
-          "id": "well_interior_1",
-          "type": "mud_crawler",
-          "pos": [
-            1530,
-            2840
-          ],
-          "patrol": 240
-        },
         {
           "id": "well_interior_2",
           "type": "well_wisp",
@@ -5936,7 +5981,58 @@
           "mount": "deck"
         }
       ],
-      "static_vertical_background": true
+      "static_vertical_background": true,
+      "boss": {
+        "type": "ling",
+        "pos": [
+          1320,
+          2840
+        ],
+        "arena": [
+          215,
+          1660
+        ],
+        "hp": 1800,
+        "floor": 2840,
+        "top": 2150,
+        "start": [
+          700,
+          2837
+        ],
+        "requires": [
+          "fury_done"
+        ],
+        "knots": [
+          [
+            620,
+            2790
+          ],
+          [
+            760,
+            2660
+          ],
+          [
+            1120,
+            2420
+          ],
+          [
+            520,
+            2540
+          ],
+          [
+            1240,
+            2300
+          ],
+          [
+            420,
+            2180
+          ]
+        ]
+      },
+      "ling_figure": [
+        1650,
+        2840
+      ]
     },
     "clock_exterior": {
       "id": "clock_exterior",
@@ -5988,10 +6084,9 @@
           ],
           "requires": [
             "wax_seal",
-            "theater_seal",
-            "well_seal"
+            "theater_seal"
           ],
-          "hint": "钟楼门上还缺三枚记忆印记",
+          "hint": "钟楼门上还缺两枚记忆印记",
           "label": "钟楼广场",
           "direction": "left",
           "corridor": true,
@@ -7519,7 +7614,42 @@
           "mount": "deck"
         }
       ],
-      "static_vertical_background": true
+      "static_vertical_background": true,
+      "keeper_chase": {
+        "interval": 40,
+        "echoes": [
+          {
+            "type": "morris",
+            "label": "梅·莫里",
+            "flag": "echo_morris",
+            "pos": [
+              820,
+              3600
+            ],
+            "arena": [
+              230,
+              1240
+            ],
+            "hp": 560,
+            "floor": 3600
+          },
+          {
+            "type": "void",
+            "label": "沃伊德",
+            "flag": "echo_void",
+            "pos": [
+              760,
+              2112
+            ],
+            "arena": [
+              230,
+              1240
+            ],
+            "hp": 520,
+            "floor": 2112
+          }
+        ]
+      }
     },
     "clock_top": {
       "id": "clock_top",
@@ -7658,10 +7788,10 @@
             1137
           ],
           "requires": [
-            "clock_memory"
+            "keeper_truth"
           ],
-          "hint": "先触碰发条旁的记忆",
-          "label": "最终循环 · 火海",
+          "hint": "先回应钟楼顶的守钟人",
+          "label": "丰收祭之夜",
           "direction": "right",
           "corridor": true,
           "gate_type": "clock_door",
@@ -7679,8 +7809,8 @@
             1140
           ],
           "item": "clock_memory",
-          "title": "七年前 · 那一夜",
-          "text": "他冲进去。一趟，又一趟。\n最后一趟是为了小铃。他把她从井口拉上来，用外套裹住，背起来。\n横梁砸中右脸。意识断开前，他只听见：『来不及了——』",
+          "title": "丰收祭 · 那一夜",
+          "text": "丰收祭的夜晚。火把里人影晃动，弗瑞在笑，玲的父母在人群里喊她的名字。\n钟声响起。你站在人群里，神情呆滞，像在看别人的事。\n从那一夜开始，你把她忘了。",
           "uid": "clock_top:object:clock_memory"
         },
         {
@@ -7690,7 +7820,7 @@
             1140
           ],
           "ending": "keeper",
-          "title": "我帮你拧发条",
+          "title": "面对守钟人",
           "requires": [
             "clock_memory"
           ],
@@ -7857,11 +7987,15 @@
         }
       ],
       "masonry": 2,
-      "static_vertical_background": false
+      "static_vertical_background": false,
+      "keeper_figure": [
+        790,
+        1140
+      ]
     },
     "fire_town": {
       "id": "fire_town",
-      "name": "最终循环 · 火海",
+      "name": "丰收祭之夜",
       "theme": "fire",
       "terrain": "stone",
       "size": [
@@ -8249,10 +8383,10 @@
             977
           ],
           "requires": [
-            "clock_memory"
+            "keeper_truth"
           ],
-          "hint": "火海中的旧井房",
-          "label": "枯井 · 风向相同的树",
+          "hint": "丰收祭夜的旧井房",
+          "label": "枯井 · 警戒线",
           "direction": "right",
           "corridor": true,
           "gate_type": "clock_door",
@@ -8273,9 +8407,9 @@
             1337
           ],
           "requires": [
-            "clock_memory"
+            "keeper_truth"
           ],
-          "hint": "先触碰发条旁的记忆",
+          "hint": "先回应钟楼顶的守钟人",
           "label": "钟楼顶 · 发条之心",
           "direction": "left",
           "corridor": true,
@@ -8311,8 +8445,8 @@
             1000,
             1340
           ],
-          "title": "最后一趟",
-          "text": "同一座小镇，终于显出了那一夜的颜色。\n前往停钟之处，或者再回一次枯井，找回那句话的后半截。",
+          "title": "最后一眼",
+          "text": "同一座小镇，终于显出了丰收祭那一夜的颜色。\n前往停钟之处见守钟人，或者再回一次枯井，想起那天真正发生的事。",
           "uid": "fire_town:object:0"
         },
         {
@@ -8322,8 +8456,8 @@
             1100
           ],
           "item": "seven_selves",
-          "title": "七个自己",
-          "text": "七年，七个部分。你不需要抹去它们，才能离开这里。",
+          "title": "分出去的自己",
+          "text": "梅、沃伊德、守钟人、弗瑞、玲……它们都是你分出去的一部分。你不需要抹去它们，才能离开这里。",
           "uid": "fire_town:object:seven_selves"
         }
       ],
@@ -8378,7 +8512,7 @@
             900,
             1340
           ],
-          "role": "火光中的旧影",
+          "role": "火把下的旧影",
           "echo": true
         },
         {
@@ -8441,7 +8575,7 @@
       ],
       "blocks": [
         {
-          "name": "余烬民居",
+          "name": "丰收祭夜的民居",
           "x": 580,
           "y": 1340,
           "variant": 0
@@ -8459,13 +8593,13 @@
           "variant": 2
         },
         {
-          "name": "炭化广场",
+          "name": "火把广场",
           "x": 4140,
           "y": 1340,
           "variant": 3
         },
         {
-          "name": "余烬高架",
+          "name": "灯笼高架",
           "x": 5460,
           "y": 1340,
           "variant": 0
@@ -8483,13 +8617,13 @@
           ],
           "height": 430,
           "max_width": 690,
-          "name": "余烬民居",
+          "name": "丰收祭夜的民居",
           "enterable": true,
           "interior": "mechanical_room",
           "balcony": true,
           "terrain": "stone",
-          "clue_title": "门后的水桶",
-          "clue_text": "门后留着半只烧裂的木桶。桶把上缠着一块灰色布条。",
+          "clue_title": "门后的灯笼",
+          "clue_text": "门后靠着半盏丰收祭的灯笼。提手上缠着一块灰色布条。",
           "clue_item": "building_fire_town_0_note",
           "interior_scene": "inside_building_fire_town_0"
         },
@@ -8544,7 +8678,7 @@
           ],
           "height": 480,
           "max_width": 760,
-          "name": "炭化广场",
+          "name": "火把广场",
           "enterable": false,
           "interior": "mechanical_room",
           "balcony": false,
@@ -8564,7 +8698,7 @@
           ],
           "height": 410,
           "max_width": 760,
-          "name": "余烬高架",
+          "name": "灯笼高架",
           "enterable": false,
           "interior": "mechanical_room",
           "balcony": false,
@@ -8908,7 +9042,7 @@
           ],
           "requires": [],
           "hint": "",
-          "label": "最终循环 · 火海",
+          "label": "丰收祭之夜",
           "direction": "left",
           "corridor": true,
           "spawn_inset": 210
@@ -8928,7 +9062,7 @@
             "zero_loop"
           ],
           "hint": "停下时钟，放下审判",
-          "label": "第零次 · 火车站",
+          "label": "清晨 · 小镇车站",
           "direction": "left",
           "corridor": true,
           "gate_type": "station_door",
@@ -8946,7 +9080,7 @@
             1140
           ],
           "ending": "loop",
-          "title": "举起武器",
+          "title": "让钟声倒带",
           "uid": "shadow_roof:object:0"
         },
         {
@@ -8956,7 +9090,7 @@
             1140
           ],
           "ending": "accept",
-          "title": "摘下帽子",
+          "title": "守钟人留下的帽子",
           "uid": "shadow_roof:object:1"
         }
       ],
@@ -9102,7 +9236,7 @@
     },
     "train_station": {
       "id": "train_station",
-      "name": "第零次 · 火车站",
+      "name": "清晨 · 小镇车站",
       "theme": "station",
       "terrain": "stone",
       "size": [
@@ -9170,7 +9304,7 @@
             840
           ],
           "ending": "zero",
-          "title": "第零次循环",
+          "title": "清晨",
           "uid": "train_station:object:0"
         }
       ],
@@ -9238,7 +9372,7 @@
           "balcony": true,
           "terrain": "stone",
           "clue_title": "空着的长椅",
-          "clue_text": "候车室的长椅被擦得很干净。窗边留着一个放帽子的位置。",
+          "clue_text": "候车室的长椅被擦得很干净。窗边放着一束还没有送出去的花。",
           "clue_item": "building_train_station_0_note",
           "interior_scene": "inside_building_train_station_0"
         },
@@ -10971,7 +11105,7 @@
             197
           ],
           "requires": [],
-          "label": "蜡像巷",
+          "label": "美术馆前街",
           "direction": "left",
           "corridor": true,
           "spawn_inset": 145
@@ -12084,7 +12218,7 @@
       "enemies": [],
       "blocks": [
         {
-          "name": "熔炉检修口",
+          "name": "画廊检修口",
           "x": 605,
           "y": 1740,
           "variant": 0
@@ -12518,7 +12652,7 @@
             1737
           ],
           "requires": [],
-          "label": "蜡像巷",
+          "label": "美术馆前街",
           "direction": "right",
           "corridor": true,
           "spawn_inset": 210
@@ -12535,7 +12669,7 @@
             197
           ],
           "requires": [],
-          "label": "蜡像馆 · 熔炉",
+          "label": "美术馆 · 无尽走廊",
           "direction": "left",
           "corridor": true,
           "spawn_inset": 145
@@ -12555,7 +12689,7 @@
           "y": 950
         },
         {
-          "name": "熔炉底座",
+          "name": "画廊底座",
           "y": 1596
         }
       ],
@@ -12688,7 +12822,7 @@
       "enemies": [],
       "blocks": [
         {
-          "name": "熔炉检修口",
+          "name": "画廊检修口",
           "x": 770,
           "y": 1740,
           "variant": 0
@@ -12990,7 +13124,7 @@
             197
           ],
           "requires": [],
-          "label": "蜡像馆 · 熔炉",
+          "label": "美术馆 · 无尽走廊",
           "direction": "left",
           "corridor": true,
           "spawn_inset": 145
@@ -13007,7 +13141,7 @@
             1737
           ],
           "requires": [],
-          "label": "七镜地下室",
+          "label": "七镜画室",
           "direction": "left",
           "corridor": true,
           "spawn_inset": 210
@@ -13027,7 +13161,7 @@
           "y": 950
         },
         {
-          "name": "熔炉底座",
+          "name": "画廊底座",
           "y": 1596
         }
       ],
@@ -13135,7 +13269,7 @@
       "enemies": [],
       "blocks": [
         {
-          "name": "七镜地下室 → 被遗忘的档案室",
+          "name": "七镜画室 → 被遗忘的档案室",
           "x": 860,
           "y": 820,
           "variant": 2
@@ -13204,7 +13338,7 @@
             817
           ],
           "requires": [],
-          "label": "七镜地下室",
+          "label": "七镜画室",
           "direction": "left",
           "corridor": true,
           "spawn_inset": 210
@@ -13331,7 +13465,7 @@
       "enemies": [],
       "blocks": [
         {
-          "name": "熔炉检修口",
+          "name": "画廊检修口",
           "x": 770,
           "y": 1740,
           "variant": 0
@@ -13648,7 +13782,7 @@
             197
           ],
           "requires": [],
-          "label": "七镜地下室",
+          "label": "七镜画室",
           "direction": "left",
           "corridor": true,
           "spawn_inset": 145
@@ -13685,7 +13819,7 @@
           "y": 950
         },
         {
-          "name": "熔炉底座",
+          "name": "画廊底座",
           "y": 1596
         }
       ],
@@ -15439,7 +15573,7 @@
             1737
           ],
           "requires": [],
-          "label": "枯井 · 风向相同的树",
+          "label": "枯井 · 警戒线",
           "direction": "right",
           "corridor": true,
           "spawn_inset": 210
@@ -16039,7 +16173,7 @@
             197
           ],
           "requires": [],
-          "label": "枯井 · 风向相同的树",
+          "label": "枯井 · 警戒线",
           "direction": "left",
           "corridor": true,
           "spawn_inset": 145
@@ -16196,7 +16330,7 @@
       "enemies": [],
       "blocks": [
         {
-          "name": "枯井 · 风向相同的树 → 最终循环 · 火海",
+          "name": "枯井 · 警戒线 → 丰收祭之夜",
           "x": 860,
           "y": 820,
           "variant": 1
@@ -16265,7 +16399,7 @@
             817
           ],
           "requires": [],
-          "label": "枯井 · 风向相同的树",
+          "label": "枯井 · 警戒线",
           "direction": "right",
           "corridor": true,
           "spawn_inset": 210
@@ -16282,7 +16416,7 @@
             817
           ],
           "requires": [],
-          "label": "最终循环 · 火海",
+          "label": "丰收祭之夜",
           "direction": "left",
           "corridor": true,
           "spawn_inset": 210
@@ -17845,7 +17979,7 @@
             1737
           ],
           "requires": [],
-          "label": "最终循环 · 火海",
+          "label": "丰收祭之夜",
           "direction": "right",
           "corridor": true,
           "spawn_inset": 210
@@ -18004,7 +18138,7 @@
           "variant": 0
         },
         {
-          "name": "余烬拱廊",
+          "name": "火把拱廊",
           "x": 770,
           "y": 1190,
           "variant": 1
@@ -18300,7 +18434,7 @@
             197
           ],
           "requires": [],
-          "label": "最终循环 · 火海",
+          "label": "丰收祭之夜",
           "direction": "left",
           "corridor": true,
           "spawn_inset": 145
@@ -18445,7 +18579,7 @@
       "enemies": [],
       "blocks": [
         {
-          "name": "停钟之处 → 第零次 · 火车站",
+          "name": "停钟之处 → 清晨 · 小镇车站",
           "x": 860,
           "y": 820,
           "variant": 2
@@ -18531,7 +18665,7 @@
             817
           ],
           "requires": [],
-          "label": "第零次 · 火车站",
+          "label": "清晨 · 小镇车站",
           "direction": "left",
           "corridor": true,
           "spawn_inset": 210
@@ -18752,7 +18886,7 @@
           ],
           "item": "building_town_entrance_1_note",
           "title": "未退的房间",
-          "text": "钥匙下压着一张旅客登记纸。姓名被涂黑，只留下一个帽子的简笔画。",
+          "text": "钥匙下压着一张旅客登记纸。姓名被涂黑，旁边是一张小孩画的自画像，右脸涂成了黑色。",
           "uid": "building_town_entrance_1_note",
           "style": "paper"
         }
@@ -19287,7 +19421,7 @@
           ],
           "item": "building_town_hub_3_note",
           "title": "未退的房间",
-          "text": "钥匙下压着一张旅客登记纸。姓名被涂黑，只留下一个帽子的简笔画。",
+          "text": "钥匙下压着一张旅客登记纸。姓名被涂黑，旁边是一张小孩画的自画像，右脸涂成了黑色。",
           "uid": "building_town_hub_3_note",
           "style": "paper"
         }
@@ -19671,7 +19805,7 @@
     },
     "inside_building_wax_lane_0": {
       "id": "inside_building_wax_lane_0",
-      "name": "蜡面陈列店 · 室内",
+      "name": "石膏像陈列店 · 室内",
       "theme": "wax",
       "terrain": "wood",
       "audio": "Wax",
@@ -19719,7 +19853,7 @@
           ],
           "item": "building_wax_lane_0_note",
           "title": "陈列架的空位",
-          "text": "蜡滴绕开了最中间的空位。这里像是一直缺着最后一件作品。",
+          "text": "石膏像绕开了最中间的空位。这里像是一直缺着最后一件作品。",
           "uid": "building_wax_lane_0_note",
           "style": "paper"
         }
@@ -19784,7 +19918,7 @@
     },
     "inside_building_wax_lane_1": {
       "id": "inside_building_wax_lane_1",
-      "name": "莫里斯的工棚 · 室内",
+      "name": "梅·莫里的画室 · 室内",
       "theme": "wax",
       "terrain": "wood",
       "audio": "Wax",
@@ -19832,7 +19966,7 @@
           ],
           "item": "building_wax_lane_1_note",
           "title": "擦拭过的工具",
-          "text": "雕刻刀的握柄被磨得很亮。蜡屑里混着一小片烧焦的布。",
+          "text": "雕刻刀的握柄被磨得很亮。石膏屑里混着一小片蓝色的裙布。",
           "uid": "building_wax_lane_1_note",
           "style": "paper"
         }
@@ -19887,7 +20021,7 @@
     },
     "inside_building_wax_museum_1": {
       "id": "inside_building_wax_museum_1",
-      "name": "莫里斯的工棚 · 室内",
+      "name": "梅·莫里的画室 · 室内",
       "theme": "wax",
       "terrain": "wood",
       "audio": "Wax",
@@ -19935,7 +20069,7 @@
           ],
           "item": "building_wax_museum_1_note",
           "title": "擦拭过的工具",
-          "text": "雕刻刀的握柄被磨得很亮。蜡屑里混着一小片烧焦的布。",
+          "text": "雕刻刀的握柄被磨得很亮。石膏屑里混着一小片蓝色的裙布。",
           "uid": "building_wax_museum_1_note",
           "style": "paper"
         }
@@ -21399,7 +21533,7 @@
     },
     "inside_building_fire_town_0": {
       "id": "inside_building_fire_town_0",
-      "name": "余烬民居 · 室内",
+      "name": "丰收祭夜的民居 · 室内",
       "theme": "fire",
       "terrain": "wood",
       "audio": "Fire",
@@ -21446,8 +21580,8 @@
             960
           ],
           "item": "building_fire_town_0_note",
-          "title": "门后的水桶",
-          "text": "门后留着半只烧裂的木桶。桶把上缠着一块灰色布条。",
+          "title": "门后的灯笼",
+          "text": "门后靠着半盏丰收祭的灯笼。提手上缠着一块灰色布条。",
           "uid": "building_fire_town_0_note",
           "style": "paper"
         }
@@ -21560,7 +21694,7 @@
           ],
           "item": "building_train_station_0_note",
           "title": "空着的长椅",
-          "text": "候车室的长椅被擦得很干净。窗边留着一个放帽子的位置。",
+          "text": "候车室的长椅被擦得很干净。窗边放着一束还没有送出去的花。",
           "uid": "building_train_station_0_note",
           "style": "paper"
         }
@@ -21616,8 +21750,8 @@
   },
   "memories": {
     "letter": {
-      "title": "一封没有署名的信",
-      "text": "请找到小铃，带她回家。",
+      "title": "刑警留下的传唤单",
+      "text": "姑姑的葬礼之后，刑警找上门：施工队在枯井下挖出一具遗骸，已确认是玲。\n请你明天到警局配合调查。",
       "room": "town_entrance"
     },
     "resident_note": {
@@ -21626,23 +21760,23 @@
       "room": "ring_west"
     },
     "wax_faces": {
-      "title": "不会消失的脸",
-      "text": "如果我停下制作，蜡像就会开始流血。",
+      "title": "盯着你的画像",
+      "text": "画里的人都在看你。只要停下脚步，它们就开始笑。",
       "room": "wax_lane"
     },
     "fire_tag": {
-      "title": "磨平的消防志愿队牌",
-      "text": "金属牌上没有姓名。\n不是她。还有另一个走进火场的人，被压在这段记忆里。",
+      "title": "旧报纸上的寻人启事",
+      "text": "失踪：玲，十岁。丰收祭当晚未归。\n启事下压着一行铅笔字：那天下午，她拿走了两张演出海报。",
       "room": "hidden_archive"
     },
     "pierrot_note": {
-      "title": "最后的戏票",
-      "text": "本券可作为『不被忘记』的凭证。票边卷曲，那不是血迹，是焦痕。",
+      "title": "两张丰收祭海报",
+      "text": "丰收祭夜场演出。两张海报叠在一起，背面写着：给杰利。\n有一张，从来没有被撕开过。",
       "room": "back_stage"
     },
     "old_rooftops": {
-      "title": "另一圈路",
-      "text": "你曾经从这里背着人跑过。现在只剩窗里的光。",
+      "title": "放学的路",
+      "text": "放学后，你和她从这里一路跑去美术室。现在只剩窗里的光。",
       "room": "ring_east"
     },
     "warden_note": {
@@ -21651,8 +21785,8 @@
       "room": "clock_tower"
     },
     "seven_selves": {
-      "title": "七个自己",
-      "text": "七年，七个部分。你不需要抹去它们，才能离开这里。",
+      "title": "分出去的自己",
+      "text": "梅、沃伊德、守钟人、弗瑞、玲……它们都是你分出去的一部分。你不需要抹去它们，才能离开这里。",
       "room": "fire_town"
     },
     "shaft_note_passage_04": {
@@ -21737,7 +21871,7 @@
     },
     "building_town_entrance_1_note": {
       "title": "未退的房间",
-      "text": "钥匙下压着一张旅客登记纸。姓名被涂黑，只留下一个帽子的简笔画。",
+      "text": "钥匙下压着一张旅客登记纸。姓名被涂黑，旁边是一张小孩画的自画像，右脸涂成了黑色。",
       "room": "town_entrance"
     },
     "building_town_entrance_2_note": {
@@ -21762,7 +21896,7 @@
     },
     "building_town_hub_3_note": {
       "title": "未退的房间",
-      "text": "钥匙下压着一张旅客登记纸。姓名被涂黑，只留下一个帽子的简笔画。",
+      "text": "钥匙下压着一张旅客登记纸。姓名被涂黑，旁边是一张小孩画的自画像，右脸涂成了黑色。",
       "room": "town_hub"
     },
     "building_ring_west_0_note": {
@@ -21782,17 +21916,17 @@
     },
     "building_wax_lane_0_note": {
       "title": "陈列架的空位",
-      "text": "蜡滴绕开了最中间的空位。这里像是一直缺着最后一件作品。",
+      "text": "石膏像绕开了最中间的空位。这里像是一直缺着最后一件作品。",
       "room": "wax_lane"
     },
     "building_wax_lane_1_note": {
       "title": "擦拭过的工具",
-      "text": "雕刻刀的握柄被磨得很亮。蜡屑里混着一小片烧焦的布。",
+      "text": "雕刻刀的握柄被磨得很亮。石膏屑里混着一小片蓝色的裙布。",
       "room": "wax_lane"
     },
     "building_wax_museum_1_note": {
       "title": "擦拭过的工具",
-      "text": "雕刻刀的握柄被磨得很亮。蜡屑里混着一小片烧焦的布。",
+      "text": "雕刻刀的握柄被磨得很亮。石膏屑里混着一小片蓝色的裙布。",
       "room": "wax_museum"
     },
     "building_hidden_archive_0_note": {
@@ -21861,34 +21995,34 @@
       "room": "clock_top"
     },
     "building_fire_town_0_note": {
-      "title": "门后的水桶",
-      "text": "门后留着半只烧裂的木桶。桶把上缠着一块灰色布条。",
+      "title": "门后的灯笼",
+      "text": "门后靠着半盏丰收祭的灯笼。提手上缠着一块灰色布条。",
       "room": "fire_town"
     },
     "building_train_station_0_note": {
       "title": "空着的长椅",
-      "text": "候车室的长椅被擦得很干净。窗边留着一个放帽子的位置。",
+      "text": "候车室的长椅被擦得很干净。窗边放着一束还没有送出去的花。",
       "room": "train_station"
     },
     "wax_seal": {
-      "title": "蜡像订单",
-      "text": "全镇居民尺寸蜡像一套。数量：247。订购人的名字被涂黑。"
+      "title": "并排的两幅画",
+      "text": "画室墙上并排挂着两幅孩子的画：一幅安静、灰暗，一幅明亮、热闹。署名是杰利和玲。"
     },
     "final_ticket": {
-      "title": "最后的戏票",
-      "text": "本券可作为『不被忘记』的凭证。"
+      "title": "两张丰收祭海报",
+      "text": "丰收祭夜场演出。海报背面写着：给杰利。"
     },
     "summer_photo": {
-      "title": "夏令营合照",
-      "text": "最后一天，他说要玩一个游戏。"
+      "title": "美术室的合照",
+      "text": "照片里，扎双马尾的女孩在笑，旁边的男孩用手挡住了右脸。"
     },
     "clock_memory": {
-      "title": "七年前的火光",
-      "text": "他冲进去。一趟，又一趟。最后只听见：『来不及了——』"
+      "title": "丰收祭的钟声",
+      "text": "火把里人影晃动。弗瑞在笑，玲的父母在人群里喊她的名字。钟声响起，你像在看别人的事。"
     },
     "true_memory": {
-      "title": "完整的记忆",
-      "text": "来不及了，再进去就出不来了——把他拉出来！"
+      "title": "井边的那一天",
+      "text": "她挡在你前面，被推倒，头撞在井口。弗瑞他们逼你一起把她抬起来……你看见她的手，好像还在动。"
     }
   },
   "mirror_solution": [

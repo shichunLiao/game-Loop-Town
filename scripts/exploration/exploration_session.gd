@@ -12,7 +12,7 @@ var items: Dictionary = {}
 var visited: Array = []
 var switches: Dictionary = {}
 var mirrors: Array = [0, 0, 0, 0, 0, 0, 0]
-var loop_count: int = 247
+var loop_count: int = 0
 var stage: int = 0
 var deaths: int = 0
 var elapsed: float = 0.0
@@ -51,6 +51,13 @@ func acquire(id: String) -> void:
 	items[id] = true
 	stage = maxi(stage, mini(seal_count(), 3))
 	changed.emit()
+
+func chase_done() -> bool:
+	return has("echo_morris") and has("echo_void")
+
+## The bell and Ling's mud both put the lamps out until the fight is over.
+func lamps_out() -> bool:
+	return (room_id=="clock_tower" and not chase_done()) or (room_id=="well_interior" and has("fury_done") and not has("boss_ling"))
 
 func seal_count() -> int:
 	var count: int = 0
@@ -97,7 +104,7 @@ func restore() -> bool:
 	collected = saved.get("collected",{}).duplicate(true)
 	quest_state = saved.get("quests",{"tracked":"main"}).duplicate(true)
 	mirrors = saved.get("mirrors", [0, 0, 0, 0, 0, 0, 0]).duplicate()
-	loop_count = int(saved.get("loop", 247))
+	loop_count = int(saved.get("loop", 0))
 	stage = int(saved.get("stage", 0))
 	deaths = int(saved.get("deaths", 0))
 	elapsed = float(saved.get("elapsed", 0.0))
@@ -106,20 +113,48 @@ func restore() -> bool:
 		items["time_slow"] = true
 	if has("wax_seal"):
 		items["boss_morris"] = true
+	# Story 1.1 moved dash to the theater and the keeper's choice before the well.
+	if has("theater_seal"):
+		items["dash"] = true
+		items["boss_void"] = true
+	if has("clock_memory"):
+		items["echo_morris"] = true
+		items["echo_void"] = true
+	if has("clock_memory") and (visited.has("fire_town") or has("true_memory")):
+		items["keeper_truth"] = true
+	# Story 1.1: Jerry only reaches the well bottom by being pushed in, so saves past the
+	# ending skip it, and saves on the far side of the keeper's gates go back to town.
+	if has("true_memory"):
+		items["fury_done"] = true
+		items["boss_ling"] = true
+	if not has("fury_done"):
+		switches.erase("opened_dry_well--well_interior")
+		if checkpoint_room=="well_interior" or (checkpoint_room in ["dry_well","fire_town"] and not has("keeper_truth")):
+			checkpoint_room = "dry_well" if has("keeper_truth") else "town_entrance"
+			room_id = checkpoint_room
+			checkpoint = ExplorationCatalog.vec(ExplorationCatalog.room(checkpoint_room)["spawn"])
 	changed.emit()
 	return true
 
 func objective() -> String:
-	if stage >= 4:
-		return "火海中的最后一趟 · 重访井底，或前往钟楼顶"
+	if has("boss_ling"):
+		return "倒悬之井 · 走到角落里，那里蹲着真正的玲"
+	if has("fury_done"):
+		return "倒悬之井 · 砍断发光的藤结，趁泥浆退去攻击玲的身体"
+	if has("keeper_truth"):
+		return "丰收祭之夜 · 穿过安静的小镇，走到枯井边的警戒线"
+	if has("clock_memory"):
+		return "钟楼顶 · 守钟人在等你做出选择"
 	if not has("scissors"):
-		return "沿小镇西环前往蜡像馆 · 找到大剪刀"
+		return "沿小镇西环前往美术馆 · 找到美工刀"
 	if not has("wax_seal"):
 		if not has("boss_morris"):
-			return "蜡像馆熔炉 · 击败莫里斯，打开地下镜室"
-		return "蜡像馆地下室 · 按墙上的刻度转动七面镜子"
+			return "美术馆走廊 · 击败梅·莫里，打开地下画室"
+		return "美术馆地下画室 · 按墙上的刻度转动七面镜子"
 	if not has("theater_seal"):
-		return "旧剧院 · 剪断三道红线，找回完整布偶"
-	if not has("well_seal"):
-		return "枯井 · 带着布偶开启井盖，寻找井底的合照"
-	return "三枚记忆印记已齐 · 返回广场，进入钟楼"
+		return "旧剧院 · 剪断三道红线，在后台击败沃伊德，取回布偶"
+	if chase_done():
+		return "七层钟楼 · 只剩下守钟人了，去钟楼顶"
+	if visited.has("clock_tower"):
+		return "七层钟楼 · 追赶守钟人，击败完美版本的梅·莫里与沃伊德"
+	return "两枚记忆印记已齐 · 返回广场，进入钟楼"

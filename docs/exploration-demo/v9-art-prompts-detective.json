@@ -1,0 +1,10 @@
+{
+  "tool": "built-in image_gen",
+  "asset": "assets/environments/exploration/actors/detective.png",
+  "transparent_background": true,
+  "references": [
+    "assets/environments/exploration/actors/keeper_unmasked.png",
+    "assets/environments/exploration/actors/hero.png"
+  ],
+  "prompt": "Use case: stylized-concept.\nAsset type: ONE finished transparent RGBA character sprite for Loop Town Demo 9, side-scrolling gothic game.\nInput images: keeper_unmasked.png and hero.png are STYLE REFERENCES ONLY. Match their dark hand-ink contours, fine etched cross-hatching, weathered painted fabric texture, controlled muted desaturated colors, readable silhouette and tall full-body proportions. Do not copy their fantasy costumes or characters.\nSubject: adult male provincial Chinese plainclothes criminal police detective / 刑警, around forty, early-2000s ordinary small-town investigator. Short dark slightly unkempt hair, bare head, tired alert face, restrained warm skin with cold gray shadows. Practical muted charcoal knee-length overcoat with modest lapels, subdued gray shirt, dark trousers and worn dark leather shoes. Quiet serious observant expression. Hands relaxed naturally at his sides. Grounded ordinary human investigator in the same gothic etched art language as references.\nComposition: one standing full-body figure facing image LEFT, left-facing profile with slight three-quarter torso, nose clearly pointing LEFT. Entire head, hands, coat and both shoes visible. Tall narrow portrait canvas approximately 706:1280, similar proportions to keeper_unmasked. Figure fills almost entire height; soles touch the very bottom edge of canvas with no empty strip beneath feet; small clear margin above hair and at sides. Natural adult anatomy.\nPalette: desaturated charcoal and slate, restrained warm skin, cold shadows, dark ink details, no bright accents. Restrained highlights inside silhouette.\nBackground: genuine transparent alpha, no scene, floor, ground shadow, fog or halo. No text, letters, logos, watermark, HUD, frame, border, weapons or extra people. Generate exactly one sprite."
+}

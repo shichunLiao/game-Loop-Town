@@ -1,0 +1,832 @@
+Godot Engine v4.6.2.stable.official.71f334935 - https://godotengine.org
+
+[godot_ai game_helper] registered mcp capture (debugger active=false, logger=true)
+PASS complete clip inventory
+PASS cel loads may_idle/0
+PASS cel loads may_idle/1
+PASS cel loads may_idle/2
+PASS cel loads may_idle/3
+PASS cel loads may_idle/4
+PASS cel loads may_idle/5
+PASS cel loads may_idle/6
+PASS cel loads may_idle/7
+PASS 8 distinct atlas regions may_idle
+PASS all 8 cels advance may_idle
+PASS cel loads may_windup/0
+PASS cel loads may_windup/1
+PASS cel loads may_windup/2
+PASS cel loads may_windup/3
+PASS cel loads may_windup/4
+PASS cel loads may_windup/5
+PASS cel loads may_windup/6
+PASS cel loads may_windup/7
+PASS 8 distinct atlas regions may_windup
+PASS all 8 cels advance may_windup
+PASS cel loads may_slash/0
+PASS cel loads may_slash/1
+PASS cel loads may_slash/2
+PASS cel loads may_slash/3
+PASS cel loads may_slash/4
+PASS cel loads may_slash/5
+PASS cel loads may_slash/6
+PASS cel loads may_slash/7
+PASS 8 distinct atlas regions may_slash
+PASS all 8 cels advance may_slash
+PASS cel loads may_summon/0
+PASS cel loads may_summon/1
+PASS cel loads may_summon/2
+PASS cel loads may_summon/3
+PASS cel loads may_summon/4
+PASS cel loads may_summon/5
+PASS cel loads may_summon/6
+PASS cel loads may_summon/7
+PASS 8 distinct atlas regions may_summon
+PASS all 8 cels advance may_summon
+PASS cel loads may_brush/0
+PASS cel loads may_brush/1
+PASS cel loads may_brush/2
+PASS cel loads may_brush/3
+PASS cel loads may_brush/4
+PASS cel loads may_brush/5
+PASS cel loads may_brush/6
+PASS cel loads may_brush/7
+PASS 8 distinct atlas regions may_brush
+PASS all 8 cels advance may_brush
+PASS cel loads may_brush_strike/0
+PASS cel loads may_brush_strike/1
+PASS cel loads may_brush_strike/2
+PASS cel loads may_brush_strike/3
+PASS cel loads may_brush_strike/4
+PASS cel loads may_brush_strike/5
+PASS cel loads may_brush_strike/6
+PASS cel loads may_brush_strike/7
+PASS 8 distinct atlas regions may_brush_strike
+PASS all 8 cels advance may_brush_strike
+PASS cel loads may_statue/0
+PASS cel loads may_statue/1
+PASS cel loads may_statue/2
+PASS cel loads may_statue/3
+PASS cel loads may_statue/4
+PASS cel loads may_statue/5
+PASS cel loads may_statue/6
+PASS cel loads may_statue/7
+PASS 8 distinct atlas regions may_statue
+PASS all 8 cels advance may_statue
+PASS cel loads void_idle/0
+PASS cel loads void_idle/1
+PASS cel loads void_idle/2
+PASS cel loads void_idle/3
+PASS cel loads void_idle/4
+PASS cel loads void_idle/5
+PASS cel loads void_idle/6
+PASS cel loads void_idle/7
+PASS 8 distinct atlas regions void_idle
+PASS all 8 cels advance void_idle
+PASS cel loads void_command/0
+PASS cel loads void_command/1
+PASS cel loads void_command/2
+PASS cel loads void_command/3
+PASS cel loads void_command/4
+PASS cel loads void_command/5
+PASS cel loads void_command/6
+PASS cel loads void_command/7
+PASS 8 distinct atlas regions void_command
+PASS all 8 cels advance void_command
+PASS cel loads void_frenzy/0
+PASS cel loads void_frenzy/1
+PASS cel loads void_frenzy/2
+PASS cel loads void_frenzy/3
+PASS cel loads void_frenzy/4
+PASS cel loads void_frenzy/5
+PASS cel loads void_frenzy/6
+PASS cel loads void_frenzy/7
+PASS 8 distinct atlas regions void_frenzy
+PASS all 8 cels advance void_frenzy
+PASS cel loads void_lash/0
+PASS cel loads void_lash/1
+PASS cel loads void_lash/2
+PASS cel loads void_lash/3
+PASS cel loads void_lash/4
+PASS cel loads void_lash/5
+PASS cel loads void_lash/6
+PASS cel loads void_lash/7
+PASS 8 distinct atlas regions void_lash
+PASS all 8 cels advance void_lash
+PASS cel loads void_puppet/0
+PASS cel loads void_puppet/1
+PASS cel loads void_puppet/2
+PASS cel loads void_puppet/3
+PASS cel loads void_puppet/4
+PASS cel loads void_puppet/5
+PASS cel loads void_puppet/6
+PASS cel loads void_puppet/7
+PASS 8 distinct atlas regions void_puppet
+PASS all 8 cels advance void_puppet
+PASS cel loads keeper_back/0
+PASS cel loads keeper_back/1
+PASS cel loads keeper_back/2
+PASS cel loads keeper_back/3
+PASS cel loads keeper_back/4
+PASS cel loads keeper_back/5
+PASS cel loads keeper_back/6
+PASS cel loads keeper_back/7
+PASS 8 distinct atlas regions keeper_back
+PASS all 8 cels advance keeper_back
+PASS cel loads keeper_hidden/0
+PASS cel loads keeper_hidden/1
+PASS cel loads keeper_hidden/2
+PASS cel loads keeper_hidden/3
+PASS cel loads keeper_hidden/4
+PASS cel loads keeper_hidden/5
+PASS cel loads keeper_hidden/6
+PASS cel loads keeper_hidden/7
+PASS 8 distinct atlas regions keeper_hidden
+PASS all 8 cels advance keeper_hidden
+PASS cel loads keeper_unmasked/0
+PASS cel loads keeper_unmasked/1
+PASS cel loads keeper_unmasked/2
+PASS cel loads keeper_unmasked/3
+PASS cel loads keeper_unmasked/4
+PASS cel loads keeper_unmasked/5
+PASS cel loads keeper_unmasked/6
+PASS cel loads keeper_unmasked/7
+PASS 8 distinct atlas regions keeper_unmasked
+PASS all 8 cels advance keeper_unmasked
+PASS cel loads ling_crouch/0
+PASS cel loads ling_crouch/1
+PASS cel loads ling_crouch/2
+PASS cel loads ling_crouch/3
+PASS cel loads ling_crouch/4
+PASS cel loads ling_crouch/5
+PASS cel loads ling_crouch/6
+PASS cel loads ling_crouch/7
+PASS 8 distinct atlas regions ling_crouch
+PASS all 8 cels advance ling_crouch
+PASS cel loads ling_giant/0
+PASS cel loads ling_giant/1
+PASS cel loads ling_giant/2
+PASS cel loads ling_giant/3
+PASS cel loads ling_giant/4
+PASS cel loads ling_giant/5
+PASS cel loads ling_giant/6
+PASS cel loads ling_giant/7
+PASS 8 distinct atlas regions ling_giant
+PASS all 8 cels advance ling_giant
+PASS cel loads ling_hand/0
+PASS cel loads ling_hand/1
+PASS cel loads ling_hand/2
+PASS cel loads ling_hand/3
+PASS cel loads ling_hand/4
+PASS cel loads ling_hand/5
+PASS cel loads ling_hand/6
+PASS cel loads ling_hand/7
+PASS 8 distinct atlas regions ling_hand
+PASS all 8 cels advance ling_hand
+PASS cel loads fury_idle/0
+PASS cel loads fury_idle/1
+PASS cel loads fury_idle/2
+PASS cel loads fury_idle/3
+PASS cel loads fury_idle/4
+PASS cel loads fury_idle/5
+PASS cel loads fury_idle/6
+PASS cel loads fury_idle/7
+PASS 8 distinct atlas regions fury_idle
+PASS all 8 cels advance fury_idle
+PASS cel loads fury_lunge/0
+PASS cel loads fury_lunge/1
+PASS cel loads fury_lunge/2
+PASS cel loads fury_lunge/3
+PASS cel loads fury_lunge/4
+PASS cel loads fury_lunge/5
+PASS cel loads fury_lunge/6
+PASS cel loads fury_lunge/7
+PASS 8 distinct atlas regions fury_lunge
+PASS all 8 cels advance fury_lunge
+PASS cel loads fury_punch/0
+PASS cel loads fury_punch/1
+PASS cel loads fury_punch/2
+PASS cel loads fury_punch/3
+PASS cel loads fury_punch/4
+PASS cel loads fury_punch/5
+PASS cel loads fury_punch/6
+PASS cel loads fury_punch/7
+PASS 8 distinct atlas regions fury_punch
+PASS all 8 cels advance fury_punch
+PASS cel loads detective/0
+PASS cel loads detective/1
+PASS cel loads detective/2
+PASS cel loads detective/3
+PASS cel loads detective/4
+PASS cel loads detective/5
+PASS cel loads detective/6
+PASS cel loads detective/7
+PASS 8 distinct atlas regions detective
+PASS all 8 cels advance detective
+PASS cel loads hero_idle/0
+PASS cel loads hero_idle/1
+PASS cel loads hero_idle/2
+PASS cel loads hero_idle/3
+PASS cel loads hero_idle/4
+PASS cel loads hero_idle/5
+PASS cel loads hero_idle/6
+PASS cel loads hero_idle/7
+PASS 8 distinct atlas regions hero_idle
+PASS all 8 cels advance hero_idle
+PASS cel loads hero_run/0
+PASS cel loads hero_run/1
+PASS cel loads hero_run/2
+PASS cel loads hero_run/3
+PASS cel loads hero_run/4
+PASS cel loads hero_run/5
+PASS cel loads hero_run/6
+PASS cel loads hero_run/7
+PASS 8 distinct atlas regions hero_run
+PASS all 8 cels advance hero_run
+PASS cel loads hero_jump/0
+PASS cel loads hero_jump/1
+PASS cel loads hero_jump/2
+PASS cel loads hero_jump/3
+PASS cel loads hero_jump/4
+PASS cel loads hero_jump/5
+PASS cel loads hero_jump/6
+PASS cel loads hero_jump/7
+PASS 8 distinct atlas regions hero_jump
+PASS all 8 cels advance hero_jump
+PASS cel loads hero_fall/0
+PASS cel loads hero_fall/1
+PASS cel loads hero_fall/2
+PASS cel loads hero_fall/3
+PASS cel loads hero_fall/4
+PASS cel loads hero_fall/5
+PASS cel loads hero_fall/6
+PASS cel loads hero_fall/7
+PASS 8 distinct atlas regions hero_fall
+PASS all 8 cels advance hero_fall
+PASS cel loads hero_climb/0
+PASS cel loads hero_climb/1
+PASS cel loads hero_climb/2
+PASS cel loads hero_climb/3
+PASS cel loads hero_climb/4
+PASS cel loads hero_climb/5
+PASS cel loads hero_climb/6
+PASS cel loads hero_climb/7
+PASS 8 distinct atlas regions hero_climb
+PASS all 8 cels advance hero_climb
+PASS cel loads hero_dash/0
+PASS cel loads hero_dash/1
+PASS cel loads hero_dash/2
+PASS cel loads hero_dash/3
+PASS cel loads hero_dash/4
+PASS cel loads hero_dash/5
+PASS cel loads hero_dash/6
+PASS cel loads hero_dash/7
+PASS 8 distinct atlas regions hero_dash
+PASS all 8 cels advance hero_dash
+PASS cel loads hero_death/0
+PASS cel loads hero_death/1
+PASS cel loads hero_death/2
+PASS cel loads hero_death/3
+PASS cel loads hero_death/4
+PASS cel loads hero_death/5
+PASS cel loads hero_death/6
+PASS cel loads hero_death/7
+PASS 8 distinct atlas regions hero_death
+PASS all 8 cels advance hero_death
+PASS cel loads hero_windup/0
+PASS cel loads hero_windup/1
+PASS cel loads hero_windup/2
+PASS cel loads hero_windup/3
+PASS cel loads hero_windup/4
+PASS cel loads hero_windup/5
+PASS cel loads hero_windup/6
+PASS cel loads hero_windup/7
+PASS 8 distinct atlas regions hero_windup
+PASS all 8 cels advance hero_windup
+PASS cel loads hero_active/0
+PASS cel loads hero_active/1
+PASS cel loads hero_active/2
+PASS cel loads hero_active/3
+PASS cel loads hero_active/4
+PASS cel loads hero_active/5
+PASS cel loads hero_active/6
+PASS cel loads hero_active/7
+PASS 8 distinct atlas regions hero_active
+PASS all 8 cels advance hero_active
+PASS cel loads hero_recover/0
+PASS cel loads hero_recover/1
+PASS cel loads hero_recover/2
+PASS cel loads hero_recover/3
+PASS cel loads hero_recover/4
+PASS cel loads hero_recover/5
+PASS cel loads hero_recover/6
+PASS cel loads hero_recover/7
+PASS 8 distinct atlas regions hero_recover
+PASS all 8 cels advance hero_recover
+PASS cel loads npcs_a_0/0
+PASS cel loads npcs_a_0/1
+PASS cel loads npcs_a_0/2
+PASS cel loads npcs_a_0/3
+PASS cel loads npcs_a_0/4
+PASS cel loads npcs_a_0/5
+PASS cel loads npcs_a_0/6
+PASS cel loads npcs_a_0/7
+PASS 8 distinct atlas regions npcs_a_0
+PASS all 8 cels advance npcs_a_0
+PASS cel loads npcs_a_1/0
+PASS cel loads npcs_a_1/1
+PASS cel loads npcs_a_1/2
+PASS cel loads npcs_a_1/3
+PASS cel loads npcs_a_1/4
+PASS cel loads npcs_a_1/5
+PASS cel loads npcs_a_1/6
+PASS cel loads npcs_a_1/7
+PASS 8 distinct atlas regions npcs_a_1
+PASS all 8 cels advance npcs_a_1
+PASS cel loads npcs_a_2/0
+PASS cel loads npcs_a_2/1
+PASS cel loads npcs_a_2/2
+PASS cel loads npcs_a_2/3
+PASS cel loads npcs_a_2/4
+PASS cel loads npcs_a_2/5
+PASS cel loads npcs_a_2/6
+PASS cel loads npcs_a_2/7
+PASS 8 distinct atlas regions npcs_a_2
+PASS all 8 cels advance npcs_a_2
+PASS cel loads npcs_a_3/0
+PASS cel loads npcs_a_3/1
+PASS cel loads npcs_a_3/2
+PASS cel loads npcs_a_3/3
+PASS cel loads npcs_a_3/4
+PASS cel loads npcs_a_3/5
+PASS cel loads npcs_a_3/6
+PASS cel loads npcs_a_3/7
+PASS 8 distinct atlas regions npcs_a_3
+PASS all 8 cels advance npcs_a_3
+PASS cel loads npcs_b_0/0
+PASS cel loads npcs_b_0/1
+PASS cel loads npcs_b_0/2
+PASS cel loads npcs_b_0/3
+PASS cel loads npcs_b_0/4
+PASS cel loads npcs_b_0/5
+PASS cel loads npcs_b_0/6
+PASS cel loads npcs_b_0/7
+PASS 8 distinct atlas regions npcs_b_0
+PASS all 8 cels advance npcs_b_0
+PASS cel loads npcs_b_1/0
+PASS cel loads npcs_b_1/1
+PASS cel loads npcs_b_1/2
+PASS cel loads npcs_b_1/3
+PASS cel loads npcs_b_1/4
+PASS cel loads npcs_b_1/5
+PASS cel loads npcs_b_1/6
+PASS cel loads npcs_b_1/7
+PASS 8 distinct atlas regions npcs_b_1
+PASS all 8 cels advance npcs_b_1
+PASS cel loads npcs_b_2/0
+PASS cel loads npcs_b_2/1
+PASS cel loads npcs_b_2/2
+PASS cel loads npcs_b_2/3
+PASS cel loads npcs_b_2/4
+PASS cel loads npcs_b_2/5
+PASS cel loads npcs_b_2/6
+PASS cel loads npcs_b_2/7
+PASS 8 distinct atlas regions npcs_b_2
+PASS all 8 cels advance npcs_b_2
+PASS cel loads npcs_b_3/0
+PASS cel loads npcs_b_3/1
+PASS cel loads npcs_b_3/2
+PASS cel loads npcs_b_3/3
+PASS cel loads npcs_b_3/4
+PASS cel loads npcs_b_3/5
+PASS cel loads npcs_b_3/6
+PASS cel loads npcs_b_3/7
+PASS 8 distinct atlas regions npcs_b_3
+PASS all 8 cels advance npcs_b_3
+PASS cel loads keeper_limb/0
+PASS cel loads keeper_limb/1
+PASS cel loads keeper_limb/2
+PASS cel loads keeper_limb/3
+PASS cel loads keeper_limb/4
+PASS cel loads keeper_limb/5
+PASS cel loads keeper_limb/6
+PASS cel loads keeper_limb/7
+PASS 8 distinct atlas regions keeper_limb
+PASS all 8 cels advance keeper_limb
+PASS cel loads enemies_a_0_move/0
+PASS cel loads enemies_a_0_move/1
+PASS cel loads enemies_a_0_move/2
+PASS cel loads enemies_a_0_move/3
+PASS cel loads enemies_a_0_move/4
+PASS cel loads enemies_a_0_move/5
+PASS cel loads enemies_a_0_move/6
+PASS cel loads enemies_a_0_move/7
+PASS 8 distinct atlas regions enemies_a_0_move
+PASS all 8 cels advance enemies_a_0_move
+PASS cel loads enemies_a_0_windup/0
+PASS cel loads enemies_a_0_windup/1
+PASS cel loads enemies_a_0_windup/2
+PASS cel loads enemies_a_0_windup/3
+PASS cel loads enemies_a_0_windup/4
+PASS cel loads enemies_a_0_windup/5
+PASS cel loads enemies_a_0_windup/6
+PASS cel loads enemies_a_0_windup/7
+PASS 8 distinct atlas regions enemies_a_0_windup
+PASS all 8 cels advance enemies_a_0_windup
+PASS cel loads enemies_a_0_active/0
+PASS cel loads enemies_a_0_active/1
+PASS cel loads enemies_a_0_active/2
+PASS cel loads enemies_a_0_active/3
+PASS cel loads enemies_a_0_active/4
+PASS cel loads enemies_a_0_active/5
+PASS cel loads enemies_a_0_active/6
+PASS cel loads enemies_a_0_active/7
+PASS 8 distinct atlas regions enemies_a_0_active
+PASS all 8 cels advance enemies_a_0_active
+PASS cel loads enemies_a_0_recover/0
+PASS cel loads enemies_a_0_recover/1
+PASS cel loads enemies_a_0_recover/2
+PASS cel loads enemies_a_0_recover/3
+PASS cel loads enemies_a_0_recover/4
+PASS cel loads enemies_a_0_recover/5
+PASS cel loads enemies_a_0_recover/6
+PASS cel loads enemies_a_0_recover/7
+PASS 8 distinct atlas regions enemies_a_0_recover
+PASS all 8 cels advance enemies_a_0_recover
+PASS cel loads enemies_a_1_move/0
+PASS cel loads enemies_a_1_move/1
+PASS cel loads enemies_a_1_move/2
+PASS cel loads enemies_a_1_move/3
+PASS cel loads enemies_a_1_move/4
+PASS cel loads enemies_a_1_move/5
+PASS cel loads enemies_a_1_move/6
+PASS cel loads enemies_a_1_move/7
+PASS 8 distinct atlas regions enemies_a_1_move
+PASS all 8 cels advance enemies_a_1_move
+PASS cel loads enemies_a_1_windup/0
+PASS cel loads enemies_a_1_windup/1
+PASS cel loads enemies_a_1_windup/2
+PASS cel loads enemies_a_1_windup/3
+PASS cel loads enemies_a_1_windup/4
+PASS cel loads enemies_a_1_windup/5
+PASS cel loads enemies_a_1_windup/6
+PASS cel loads enemies_a_1_windup/7
+PASS 8 distinct atlas regions enemies_a_1_windup
+PASS all 8 cels advance enemies_a_1_windup
+PASS cel loads enemies_a_1_active/0
+PASS cel loads enemies_a_1_active/1
+PASS cel loads enemies_a_1_active/2
+PASS cel loads enemies_a_1_active/3
+PASS cel loads enemies_a_1_active/4
+PASS cel loads enemies_a_1_active/5
+PASS cel loads enemies_a_1_active/6
+PASS cel loads enemies_a_1_active/7
+PASS 8 distinct atlas regions enemies_a_1_active
+PASS all 8 cels advance enemies_a_1_active
+PASS cel loads enemies_a_1_recover/0
+PASS cel loads enemies_a_1_recover/1
+PASS cel loads enemies_a_1_recover/2
+PASS cel loads enemies_a_1_recover/3
+PASS cel loads enemies_a_1_recover/4
+PASS cel loads enemies_a_1_recover/5
+PASS cel loads enemies_a_1_recover/6
+PASS cel loads enemies_a_1_recover/7
+PASS 8 distinct atlas regions enemies_a_1_recover
+PASS all 8 cels advance enemies_a_1_recover
+PASS cel loads enemies_a_3_move/0
+PASS cel loads enemies_a_3_move/1
+PASS cel loads enemies_a_3_move/2
+PASS cel loads enemies_a_3_move/3
+PASS cel loads enemies_a_3_move/4
+PASS cel loads enemies_a_3_move/5
+PASS cel loads enemies_a_3_move/6
+PASS cel loads enemies_a_3_move/7
+PASS 8 distinct atlas regions enemies_a_3_move
+PASS all 8 cels advance enemies_a_3_move
+PASS cel loads enemies_a_3_windup/0
+PASS cel loads enemies_a_3_windup/1
+PASS cel loads enemies_a_3_windup/2
+PASS cel loads enemies_a_3_windup/3
+PASS cel loads enemies_a_3_windup/4
+PASS cel loads enemies_a_3_windup/5
+PASS cel loads enemies_a_3_windup/6
+PASS cel loads enemies_a_3_windup/7
+PASS 8 distinct atlas regions enemies_a_3_windup
+PASS all 8 cels advance enemies_a_3_windup
+PASS cel loads enemies_a_3_active/0
+PASS cel loads enemies_a_3_active/1
+PASS cel loads enemies_a_3_active/2
+PASS cel loads enemies_a_3_active/3
+PASS cel loads enemies_a_3_active/4
+PASS cel loads enemies_a_3_active/5
+PASS cel loads enemies_a_3_active/6
+PASS cel loads enemies_a_3_active/7
+PASS 8 distinct atlas regions enemies_a_3_active
+PASS all 8 cels advance enemies_a_3_active
+PASS cel loads enemies_a_3_recover/0
+PASS cel loads enemies_a_3_recover/1
+PASS cel loads enemies_a_3_recover/2
+PASS cel loads enemies_a_3_recover/3
+PASS cel loads enemies_a_3_recover/4
+PASS cel loads enemies_a_3_recover/5
+PASS cel loads enemies_a_3_recover/6
+PASS cel loads enemies_a_3_recover/7
+PASS 8 distinct atlas regions enemies_a_3_recover
+PASS all 8 cels advance enemies_a_3_recover
+PASS cel loads enemies_b_0_move/0
+PASS cel loads enemies_b_0_move/1
+PASS cel loads enemies_b_0_move/2
+PASS cel loads enemies_b_0_move/3
+PASS cel loads enemies_b_0_move/4
+PASS cel loads enemies_b_0_move/5
+PASS cel loads enemies_b_0_move/6
+PASS cel loads enemies_b_0_move/7
+PASS 8 distinct atlas regions enemies_b_0_move
+PASS all 8 cels advance enemies_b_0_move
+PASS cel loads enemies_b_0_windup/0
+PASS cel loads enemies_b_0_windup/1
+PASS cel loads enemies_b_0_windup/2
+PASS cel loads enemies_b_0_windup/3
+PASS cel loads enemies_b_0_windup/4
+PASS cel loads enemies_b_0_windup/5
+PASS cel loads enemies_b_0_windup/6
+PASS cel loads enemies_b_0_windup/7
+PASS 8 distinct atlas regions enemies_b_0_windup
+PASS all 8 cels advance enemies_b_0_windup
+PASS cel loads enemies_b_0_active/0
+PASS cel loads enemies_b_0_active/1
+PASS cel loads enemies_b_0_active/2
+PASS cel loads enemies_b_0_active/3
+PASS cel loads enemies_b_0_active/4
+PASS cel loads enemies_b_0_active/5
+PASS cel loads enemies_b_0_active/6
+PASS cel loads enemies_b_0_active/7
+PASS 8 distinct atlas regions enemies_b_0_active
+PASS all 8 cels advance enemies_b_0_active
+PASS cel loads enemies_b_0_recover/0
+PASS cel loads enemies_b_0_recover/1
+PASS cel loads enemies_b_0_recover/2
+PASS cel loads enemies_b_0_recover/3
+PASS cel loads enemies_b_0_recover/4
+PASS cel loads enemies_b_0_recover/5
+PASS cel loads enemies_b_0_recover/6
+PASS cel loads enemies_b_0_recover/7
+PASS 8 distinct atlas regions enemies_b_0_recover
+PASS all 8 cels advance enemies_b_0_recover
+PASS cel loads enemies_b_1_move/0
+PASS cel loads enemies_b_1_move/1
+PASS cel loads enemies_b_1_move/2
+PASS cel loads enemies_b_1_move/3
+PASS cel loads enemies_b_1_move/4
+PASS cel loads enemies_b_1_move/5
+PASS cel loads enemies_b_1_move/6
+PASS cel loads enemies_b_1_move/7
+PASS 8 distinct atlas regions enemies_b_1_move
+PASS all 8 cels advance enemies_b_1_move
+PASS cel loads enemies_b_1_windup/0
+PASS cel loads enemies_b_1_windup/1
+PASS cel loads enemies_b_1_windup/2
+PASS cel loads enemies_b_1_windup/3
+PASS cel loads enemies_b_1_windup/4
+PASS cel loads enemies_b_1_windup/5
+PASS cel loads enemies_b_1_windup/6
+PASS cel loads enemies_b_1_windup/7
+PASS 8 distinct atlas regions enemies_b_1_windup
+PASS all 8 cels advance enemies_b_1_windup
+PASS cel loads enemies_b_1_active/0
+PASS cel loads enemies_b_1_active/1
+PASS cel loads enemies_b_1_active/2
+PASS cel loads enemies_b_1_active/3
+PASS cel loads enemies_b_1_active/4
+PASS cel loads enemies_b_1_active/5
+PASS cel loads enemies_b_1_active/6
+PASS cel loads enemies_b_1_active/7
+PASS 8 distinct atlas regions enemies_b_1_active
+PASS all 8 cels advance enemies_b_1_active
+PASS cel loads enemies_b_1_recover/0
+PASS cel loads enemies_b_1_recover/1
+PASS cel loads enemies_b_1_recover/2
+PASS cel loads enemies_b_1_recover/3
+PASS cel loads enemies_b_1_recover/4
+PASS cel loads enemies_b_1_recover/5
+PASS cel loads enemies_b_1_recover/6
+PASS cel loads enemies_b_1_recover/7
+PASS 8 distinct atlas regions enemies_b_1_recover
+PASS all 8 cels advance enemies_b_1_recover
+PASS cel loads enemies_b_2_move/0
+PASS cel loads enemies_b_2_move/1
+PASS cel loads enemies_b_2_move/2
+PASS cel loads enemies_b_2_move/3
+PASS cel loads enemies_b_2_move/4
+PASS cel loads enemies_b_2_move/5
+PASS cel loads enemies_b_2_move/6
+PASS cel loads enemies_b_2_move/7
+PASS 8 distinct atlas regions enemies_b_2_move
+PASS all 8 cels advance enemies_b_2_move
+PASS cel loads enemies_b_2_windup/0
+PASS cel loads enemies_b_2_windup/1
+PASS cel loads enemies_b_2_windup/2
+PASS cel loads enemies_b_2_windup/3
+PASS cel loads enemies_b_2_windup/4
+PASS cel loads enemies_b_2_windup/5
+PASS cel loads enemies_b_2_windup/6
+PASS cel loads enemies_b_2_windup/7
+PASS 8 distinct atlas regions enemies_b_2_windup
+PASS all 8 cels advance enemies_b_2_windup
+PASS cel loads enemies_b_2_active/0
+PASS cel loads enemies_b_2_active/1
+PASS cel loads enemies_b_2_active/2
+PASS cel loads enemies_b_2_active/3
+PASS cel loads enemies_b_2_active/4
+PASS cel loads enemies_b_2_active/5
+PASS cel loads enemies_b_2_active/6
+PASS cel loads enemies_b_2_active/7
+PASS 8 distinct atlas regions enemies_b_2_active
+PASS all 8 cels advance enemies_b_2_active
+PASS cel loads enemies_b_2_recover/0
+PASS cel loads enemies_b_2_recover/1
+PASS cel loads enemies_b_2_recover/2
+PASS cel loads enemies_b_2_recover/3
+PASS cel loads enemies_b_2_recover/4
+PASS cel loads enemies_b_2_recover/5
+PASS cel loads enemies_b_2_recover/6
+PASS cel loads enemies_b_2_recover/7
+PASS 8 distinct atlas regions enemies_b_2_recover
+PASS all 8 cels advance enemies_b_2_recover
+PASS cel loads enemies_b_3_move/0
+PASS cel loads enemies_b_3_move/1
+PASS cel loads enemies_b_3_move/2
+PASS cel loads enemies_b_3_move/3
+PASS cel loads enemies_b_3_move/4
+PASS cel loads enemies_b_3_move/5
+PASS cel loads enemies_b_3_move/6
+PASS cel loads enemies_b_3_move/7
+PASS 8 distinct atlas regions enemies_b_3_move
+PASS all 8 cels advance enemies_b_3_move
+PASS cel loads enemies_b_3_windup/0
+PASS cel loads enemies_b_3_windup/1
+PASS cel loads enemies_b_3_windup/2
+PASS cel loads enemies_b_3_windup/3
+PASS cel loads enemies_b_3_windup/4
+PASS cel loads enemies_b_3_windup/5
+PASS cel loads enemies_b_3_windup/6
+PASS cel loads enemies_b_3_windup/7
+PASS 8 distinct atlas regions enemies_b_3_windup
+PASS all 8 cels advance enemies_b_3_windup
+PASS cel loads enemies_b_3_active/0
+PASS cel loads enemies_b_3_active/1
+PASS cel loads enemies_b_3_active/2
+PASS cel loads enemies_b_3_active/3
+PASS cel loads enemies_b_3_active/4
+PASS cel loads enemies_b_3_active/5
+PASS cel loads enemies_b_3_active/6
+PASS cel loads enemies_b_3_active/7
+PASS 8 distinct atlas regions enemies_b_3_active
+PASS all 8 cels advance enemies_b_3_active
+PASS cel loads enemies_b_3_recover/0
+PASS cel loads enemies_b_3_recover/1
+PASS cel loads enemies_b_3_recover/2
+PASS cel loads enemies_b_3_recover/3
+PASS cel loads enemies_b_3_recover/4
+PASS cel loads enemies_b_3_recover/5
+PASS cel loads enemies_b_3_recover/6
+PASS cel loads enemies_b_3_recover/7
+PASS 8 distinct atlas regions enemies_b_3_recover
+PASS all 8 cels advance enemies_b_3_recover
+PASS cel loads void_puppet_move/0
+PASS cel loads void_puppet_move/1
+PASS cel loads void_puppet_move/2
+PASS cel loads void_puppet_move/3
+PASS cel loads void_puppet_move/4
+PASS cel loads void_puppet_move/5
+PASS cel loads void_puppet_move/6
+PASS cel loads void_puppet_move/7
+PASS 8 distinct atlas regions void_puppet_move
+PASS all 8 cels advance void_puppet_move
+PASS cel loads void_puppet_windup/0
+PASS cel loads void_puppet_windup/1
+PASS cel loads void_puppet_windup/2
+PASS cel loads void_puppet_windup/3
+PASS cel loads void_puppet_windup/4
+PASS cel loads void_puppet_windup/5
+PASS cel loads void_puppet_windup/6
+PASS cel loads void_puppet_windup/7
+PASS 8 distinct atlas regions void_puppet_windup
+PASS all 8 cels advance void_puppet_windup
+PASS cel loads void_puppet_active/0
+PASS cel loads void_puppet_active/1
+PASS cel loads void_puppet_active/2
+PASS cel loads void_puppet_active/3
+PASS cel loads void_puppet_active/4
+PASS cel loads void_puppet_active/5
+PASS cel loads void_puppet_active/6
+PASS cel loads void_puppet_active/7
+PASS 8 distinct atlas regions void_puppet_active
+PASS all 8 cels advance void_puppet_active
+PASS cel loads void_puppet_recover/0
+PASS cel loads void_puppet_recover/1
+PASS cel loads void_puppet_recover/2
+PASS cel loads void_puppet_recover/3
+PASS cel loads void_puppet_recover/4
+PASS cel loads void_puppet_recover/5
+PASS cel loads void_puppet_recover/6
+PASS cel loads void_puppet_recover/7
+PASS 8 distinct atlas regions void_puppet_recover
+PASS all 8 cels advance void_puppet_recover
+PASS cel loads may_statue_move/0
+PASS cel loads may_statue_move/1
+PASS cel loads may_statue_move/2
+PASS cel loads may_statue_move/3
+PASS cel loads may_statue_move/4
+PASS cel loads may_statue_move/5
+PASS cel loads may_statue_move/6
+PASS cel loads may_statue_move/7
+PASS 8 distinct atlas regions may_statue_move
+PASS all 8 cels advance may_statue_move
+PASS cel loads may_statue_windup/0
+PASS cel loads may_statue_windup/1
+PASS cel loads may_statue_windup/2
+PASS cel loads may_statue_windup/3
+PASS cel loads may_statue_windup/4
+PASS cel loads may_statue_windup/5
+PASS cel loads may_statue_windup/6
+PASS cel loads may_statue_windup/7
+PASS 8 distinct atlas regions may_statue_windup
+PASS all 8 cels advance may_statue_windup
+PASS cel loads may_statue_active/0
+PASS cel loads may_statue_active/1
+PASS cel loads may_statue_active/2
+PASS cel loads may_statue_active/3
+PASS cel loads may_statue_active/4
+PASS cel loads may_statue_active/5
+PASS cel loads may_statue_active/6
+PASS cel loads may_statue_active/7
+PASS 8 distinct atlas regions may_statue_active
+PASS all 8 cels advance may_statue_active
+PASS cel loads may_statue_recover/0
+PASS cel loads may_statue_recover/1
+PASS cel loads may_statue_recover/2
+PASS cel loads may_statue_recover/3
+PASS cel loads may_statue_recover/4
+PASS cel loads may_statue_recover/5
+PASS cel loads may_statue_recover/6
+PASS cel loads may_statue_recover/7
+PASS 8 distinct atlas regions may_statue_recover
+PASS all 8 cels advance may_statue_recover
+PASS plays hero_idle
+PASS plays hero_run
+PASS plays hero_jump
+PASS plays hero_fall
+PASS plays hero_climb
+PASS plays hero_dash
+PASS plays hero_death
+PASS plays hero_windup
+PASS plays hero_active
+PASS plays hero_recover
+PASS plays enemies_a_0_move
+PASS plays enemies_a_0_windup
+PASS plays enemies_a_0_active
+PASS plays enemies_a_0_recover
+PASS plays enemies_a_1_move
+PASS plays enemies_a_1_windup
+PASS plays enemies_a_1_active
+PASS plays enemies_a_1_recover
+PASS plays void_puppet_move
+PASS plays void_puppet_windup
+PASS plays void_puppet_active
+PASS plays void_puppet_recover
+PASS plays enemies_a_3_move
+PASS plays enemies_a_3_windup
+PASS plays enemies_a_3_active
+PASS plays enemies_a_3_recover
+PASS plays enemies_b_0_move
+PASS plays enemies_b_0_windup
+PASS plays enemies_b_0_active
+PASS plays enemies_b_0_recover
+PASS plays enemies_b_1_move
+PASS plays enemies_b_1_windup
+PASS plays enemies_b_1_active
+PASS plays enemies_b_1_recover
+PASS plays enemies_b_2_move
+PASS plays enemies_b_2_windup
+PASS plays enemies_b_2_active
+PASS plays enemies_b_2_recover
+PASS plays enemies_b_3_move
+PASS plays enemies_b_3_windup
+PASS plays enemies_b_3_active
+PASS plays enemies_b_3_recover
+PASS plays may_idle
+PASS plays may_windup
+PASS plays may_slash
+PASS plays may_summon
+PASS plays may_brush
+PASS plays may_brush_strike
+PASS six independent museum irises
+PASS gaze tracks both axes through background transform
+PASS gaze stays inside eye travel
+PASS portraits watch attacking opponent
+PASS portraits watch attacking player
+PASS Fury lunge reaches last cel within .36s
+PASS hero dash reaches last cel within .16s
+PASS plays fury_idle
+PASS plays fury_punch
+V9_ANIMATION_QA 828 passed, 0 failed

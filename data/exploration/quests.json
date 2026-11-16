@@ -3,8 +3,8 @@
     {
       "id": "main_letter",
       "flag": "letter",
-      "title": "第一张纸页",
-      "text": "调查镇口路灯左侧的信，再沿西环街进入蜡像馆。",
+      "title": "刑警的传唤",
+      "text": "调查镇口路灯左侧的传唤单，再沿西环街前往美术馆，拜访梅·莫里老师。",
       "room": "town_entrance",
       "pos": [
         240,
@@ -14,8 +14,8 @@
     {
       "id": "main_scissors",
       "flag": "scissors",
-      "title": "蜡像馆的剪刃",
-      "text": "沿西环街、蜡像巷进入蜡像馆，拾取大剪刀。",
+      "title": "美术馆的美工刀",
+      "text": "沿西环街、美术馆前街进入美术馆，拾取美工刀。",
       "room": "wax_museum",
       "pos": [
         550,
@@ -25,8 +25,8 @@
     {
       "id": "main_boss_morris",
       "flag": "boss_morris",
-      "title": "熔炉前的阻拦",
-      "text": "击败蜡像馆深处的莫里斯。J 连击，H 恢复。",
+      "title": "恩师扭曲的脸",
+      "text": "击败美术馆走廊深处的梅·莫里。J 连击，H 恢复。",
       "room": "wax_museum",
       "pos": [
         3060,
@@ -48,7 +48,7 @@
       "id": "main_theater_seal",
       "flag": "theater_seal",
       "title": "没有剪完的戏",
-      "text": "从东街打开剧院侧门，剪断三组红线，再打开后台防火门，调查完整布偶。",
+      "text": "从东街打开剧院侧门，剪断三组红线，再打开后台防火门。击败道具师沃伊德，取回那只完整的布偶。",
       "room": "back_stage",
       "pos": [
         1670,
@@ -56,21 +56,10 @@
       ]
     },
     {
-      "id": "main_well_seal",
-      "flag": "well_seal",
-      "title": "井底的合照",
-      "text": "到枯井，带布偶打开井口检修门。沿藤蔓下井，取得合照后立刻撤离。",
-      "room": "well_interior",
-      "pos": [
-        1680,
-        2840
-      ]
-    },
-    {
       "id": "main_warden_note",
       "flag": "warden_note",
       "title": "进入七层钟楼",
-      "text": "三枚印记齐全，回广场启动钟门，沿实际楼梯登塔，在中层调查守钟人的笔记。",
+      "text": "两枚印记齐全，回广场启动钟门。沿楼梯追赶守钟人，在中层调查他留下的笔记。",
       "room": "clock_tower",
       "pos": [
         650,
@@ -81,7 +70,7 @@
       "id": "main_clock_memory",
       "flag": "clock_memory",
       "title": "让钟声停止",
-      "text": "继续登塔，在顶层触碰那一夜的记忆。",
+      "text": "击败完美版本的梅·莫里与沃伊德，在顶层触碰丰收祭那一夜的记忆。",
       "room": "clock_top",
       "pos": [
         1450,
@@ -89,25 +78,47 @@
       ]
     },
     {
-      "id": "main_true_memory",
-      "flag": "true_memory",
-      "title": "再回一次井底",
-      "text": "火光之后重访井底，听完被打断的话。",
+      "id": "main_zero_loop",
+      "flag": "keeper_truth",
+      "title": "守钟人的选择",
+      "text": "在钟楼顶回应摘下帽子的守钟人：听他的话离开，或者去井边找回真相。",
+      "room": "clock_top",
+      "pos": [
+        880,
+        1140
+      ]
+    },
+    {
+      "id": "main_well_seal",
+      "flag": "fury_done",
+      "title": "枯井边的警戒线",
+      "text": "穿过丰收祭之夜来到枯井，走到警戒线旁的井口。",
+      "room": "dry_well",
+      "pos": [
+        3330,
+        1240
+      ]
+    },
+    {
+      "id": "main_ling",
+      "flag": "boss_ling",
+      "title": "井底的玲",
+      "text": "砍断发光的藤结，趁泥浆退去、藤蔓松开时攻击她的身体。别让泥浆没过胸口。",
       "room": "well_interior",
       "pos": [
-        1060,
+        1320,
         2840
       ]
     },
     {
-      "id": "main_zero_loop",
-      "flag": "zero_loop",
-      "title": "放下帽子",
-      "text": "前往影子屋顶，选择摘下帽子，再沿右侧道路前往车站。",
-      "room": "shadow_roof",
+      "id": "main_true_memory",
+      "flag": "true_memory",
+      "title": "我找到你了",
+      "text": "走到井底的角落，那里蹲着真正的玲。",
+      "room": "well_interior",
       "pos": [
-        1570,
-        1140
+        1620,
+        2840
       ]
     }
   ],
@@ -192,7 +203,7 @@
       "id": "request_4",
       "title": "工具上的灰",
       "giver": "guide_wax_lane_1",
-      "giver_name": "订单抄写员",
+      "giver_name": "画册抄写员",
       "return_room": "wax_lane",
       "return_pos": [
         2460,
@@ -204,7 +215,7 @@
         1620,
         960
       ],
-      "text": "进入莫里斯的工棚，寻找「擦拭过的工具」，再回来交谈。",
+      "text": "进入梅·莫里的画室，寻找「擦拭过的工具」，再回来交谈。",
       "reward": "恢复生命与墨光，并记录居民的回忆"
     },
     {
@@ -247,7 +258,7 @@
     },
     {
       "id": "request_7",
-      "title": "留给帽子的位置",
+      "title": "窗边的一束花",
       "giver": "resident_train_station_0",
       "giver_name": "站台列车员",
       "return_room": "train_station",
@@ -269,13 +280,12 @@
     "town_hub--clock_exterior": {
       "id": "town_hub--clock_exterior",
       "title": "广场钟楼大门",
-      "text": "蜡像馆、剧院、井底各有一枚印记。收齐三枚后回广场，按 E 转动大门的钟钥。",
+      "text": "美术馆与剧院各有一枚印记。收齐两枚后回广场，按 E 转动大门的钟钥。",
       "giver_name": "广场修表匠",
       "hint_room": "town_hub",
       "requires": [
         "wax_seal",
-        "theater_seal",
-        "well_seal"
+        "theater_seal"
       ],
       "room": "clock_exterior",
       "pos": [
@@ -315,9 +325,9 @@
     },
     "wax_museum--wax_basement": {
       "id": "wax_museum--wax_basement",
-      "title": "蜡像馆地窖门",
-      "text": "先击败莫里斯，再拿大剪刀剪开门轴蜡封，按 E 打开地窖门。",
-      "giver_name": "熔炉守灯人",
+      "title": "美术馆地窖门",
+      "text": "先击败梅·莫里，再用美工刀割开门轴上的封条，按 E 打开地窖门。",
+      "giver_name": "美术馆守灯人",
       "hint_room": "wax_museum",
       "requires": [
         "scissors",
@@ -348,7 +358,7 @@
     "well_interior--wax_basement": {
       "id": "well_interior--wax_basement",
       "title": "排水隧道闸门",
-      "text": "井底左侧有排水拉杆。先拉闸，再从排水隧道返回蜡像地下室。",
+      "text": "井底左侧有排水拉杆。先拉闸，再从排水隧道返回美术馆地下画室。",
       "giver_name": "井边提桶人",
       "hint_room": "dry_well",
       "requires": [
@@ -363,7 +373,7 @@
     "ring_east--old_theater": {
       "id": "ring_east--old_theater",
       "title": "缠线的剧院侧门",
-      "text": "大剪刀在蜡像馆。拿到后可切开门锁旁的红线，按 E 推开侧门。",
+      "text": "美工刀在美术馆。拿到后可割断门锁旁的红线，按 E 推开侧门。",
       "giver_name": "东街检票员",
       "hint_room": "ring_east",
       "requires": [
@@ -395,7 +405,7 @@
     "back_stage--ring_east": {
       "id": "back_stage--ring_east",
       "title": "东街防疫路障",
-      "text": "后台有一个完整布偶，带回它的印记。蜡像与剧院两枚印记可以释放东街的道路绞盘。",
+      "text": "后台有一个完整的布偶，带回它的印记，再从后台回到东街。",
       "giver_name": "东街检票员",
       "hint_room": "ring_east",
       "requires": [
@@ -410,12 +420,11 @@
     "ring_east--dry_well": {
       "id": "ring_east--dry_well",
       "title": "东街防疫路障",
-      "text": "后台有一个完整布偶，带回它的印记。蜡像与剧院两枚印记可以释放东街的道路绞盘。",
+      "text": "井口拉着警戒线。在钟楼顶回应守钟人之后，再从这里走向枯井。",
       "giver_name": "东街检票员",
       "hint_room": "ring_east",
       "requires": [
-        "wax_seal",
-        "theater_seal"
+        "keeper_truth"
       ],
       "room": "dry_well",
       "pos": [
@@ -426,11 +435,11 @@
     "dry_well--well_interior": {
       "id": "dry_well--well_interior",
       "title": "井口检修门",
-      "text": "布偶在剧院后台。带着它来到井边，按 E 打开检修门，再沿井道下行。",
+      "text": "检修门从里面锁死了。井口在下面的空地上，拉着警戒线。",
       "giver_name": "井边提桶人",
       "hint_room": "dry_well",
       "requires": [
-        "doll"
+        "fury_done"
       ],
       "room": "well_interior",
       "pos": [
@@ -441,11 +450,11 @@
     "fire_town--dry_well": {
       "id": "fire_town--dry_well",
       "title": "钟顶封闭回廊",
-      "text": "触碰顶层记忆后，钟顶通往旧日街道的门才会回应。",
+      "text": "在钟楼顶回应守钟人之后，通往丰收祭之夜的门才会打开。",
       "giver_name": "停钟值守者",
       "hint_room": "clock_top",
       "requires": [
-        "clock_memory"
+        "keeper_truth"
       ],
       "room": "fire_town",
       "pos": [
@@ -456,11 +465,11 @@
     "clock_top--fire_town": {
       "id": "clock_top--fire_town",
       "title": "钟顶封闭回廊",
-      "text": "触碰顶层记忆后，钟顶通往旧日街道的门才会回应。",
+      "text": "在钟楼顶回应守钟人之后，通往丰收祭之夜的门才会打开。",
       "giver_name": "停钟值守者",
       "hint_room": "clock_top",
       "requires": [
-        "clock_memory"
+        "keeper_truth"
       ],
       "room": "fire_town",
       "pos": [
@@ -471,7 +480,7 @@
     "shadow_roof--train_station": {
       "id": "shadow_roof--train_station",
       "title": "清晨车站门",
-      "text": "先听完井底的话，在影子面前摘下帽子，再推开通向车站的门。",
+      "text": "先想起井边发生的事，在守钟人面前做出选择，再推开通向车站的门。",
       "giver_name": "晨班列车员",
       "hint_room": "train_station",
       "requires": [

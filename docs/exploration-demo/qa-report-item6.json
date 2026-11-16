@@ -1,0 +1,11 @@
+{
+  "failures": [],
+  "item": 6,
+  "mode": "headless_scripted",
+  "notes": [
+    "Fury sequence completed with scripted beatdown emit + push/fall_into"
+  ],
+  "passes": 32,
+  "room_count": 69,
+  "windowed": "skipped_known_crash_risk"
+}

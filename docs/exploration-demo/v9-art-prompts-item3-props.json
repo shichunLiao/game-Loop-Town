@@ -1,0 +1,37 @@
+[
+  {
+    "key": "well_mouth",
+    "prompt": "Use case: stylized-concept. Transparent RGBA game prop, gothic hand-inked copperplate etching, dense dark crosshatching, muted desaturated palette matching a tragic gothic town game. Isolated clean silhouette, no text, letters, people, faces, background or watermark. A low dug-out weathered stone well mouth, wide shallow oval dark opening, broken gray masonry rim, side-ish orthographic view. Entire prop centered with transparent margins. Width about three times height. No roof or bucket.",
+    "provider": "built-in image_gen (model selection not exposed)",
+    "source": "/Users/tsun/.codex/generated_images/01a1bb5f-73f8-7922-b691-22a72da5aa8c/exec-101f46db-e6fe-43f4-9a48-65b06bb671dc.png",
+    "output": "assets/environments/exploration/props/well_mouth.png"
+  },
+  {
+    "key": "caution_tape",
+    "prompt": "Use case: stylized-concept. Transparent RGBA game prop, gothic hand-inked copperplate etching, dense dark crosshatching, muted desaturated palette matching a tragic gothic town game. Isolated clean silhouette, no text, letters, people, faces, background or watermark. One horizontal yellow ochre and black diagonal striped hazard tape stretched between two slender dark weathered posts. Entire barrier centered, horizontal tape near top of posts. Wide composition. Blank stripes only, no words. Transparent space between posts.",
+    "provider": "built-in image_gen (model selection not exposed)",
+    "source": "/Users/tsun/.codex/generated_images/01a1bb5f-73f8-7922-b691-22a72da5aa8c/exec-f9f5a1c5-3024-4b26-a749-01c3c1cbe4b2.png",
+    "output": "assets/environments/exploration/props/caution_tape.png"
+  },
+  {
+    "key": "vine",
+    "prompt": "Use case: stylized-concept. Transparent RGBA game prop, gothic hand-inked copperplate etching, dense dark crosshatching, muted desaturated palette matching a tragic gothic town game. Isolated clean silhouette, no text, letters, people, faces, background or watermark. One single straight horizontal thorned muddy green woody vine strand, left to right, fine curled thorns and etched bark. Long thin silhouette, centered across canvas, no coils or other objects. Suitable stretching and rotating as climb vine and combat lash.",
+    "provider": "built-in image_gen (model selection not exposed)",
+    "source": "/Users/tsun/.codex/generated_images/01a1bb5f-73f8-7922-b691-22a72da5aa8c/exec-d208ac0e-f1b2-4ff7-8cc8-efca76518e0a.png",
+    "output": "assets/environments/exploration/props/vine.png"
+  },
+  {
+    "key": "red_thread",
+    "prompt": "Use case: stylized-concept. Transparent RGBA game prop, gothic hand-inked copperplate etching, dense dark crosshatching, muted desaturated palette matching a tragic gothic town game. Isolated clean silhouette, no text, letters, people, faces, background or watermark. Sprite atlas with TWO isolated elements: upper half contains a single perfectly straight horizontal taut crimson sewing thread, thick enough to read in game, delicate frayed fibers. Lower half contains a small round tangled crimson thread knot bead centered, no hanging strands. Generous transparent separation. No other objects.",
+    "provider": "built-in image_gen (model selection not exposed)",
+    "source": "/Users/tsun/.codex/generated_images/01a1bb5f-73f8-7922-b691-22a72da5aa8c/exec-536aa76a-1617-4ddd-892f-038b64771aec.png",
+    "output": "assets/environments/exploration/props/red_thread.png"
+  },
+  {
+    "key": "ground_hand",
+    "prompt": "Use case: stylized-concept. Transparent RGBA game prop, gothic hand-inked copperplate etching, dense dark crosshatching, muted desaturated palette matching a tragic gothic town game. Isolated clean silhouette, no text, letters, people, faces, background or watermark. A flattened muddy hand imprint pressed into a small ragged patch of wet earth, five recognizable fingers splayed, tragic memory stain beside a well. Low side-ish top-down view, dark brown ink and muted clay highlights. Wider than tall, distinct from a raised combat hand. No arm, no face.",
+    "provider": "built-in image_gen (model selection not exposed)",
+    "source": "/Users/tsun/.codex/generated_images/01a1bb5f-73f8-7922-b691-22a72da5aa8c/exec-6a65506b-e121-4c14-a545-41b7f200369b.png",
+    "output": "assets/environments/exploration/props/ground_hand.png"
+  }
+]

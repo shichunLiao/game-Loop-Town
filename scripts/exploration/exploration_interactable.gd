@@ -20,6 +20,8 @@ func _ready() -> void:
 
 func is_finished() -> bool:
 	var kind: String = str(spec.get("kind", ""))
+	if not session.satisfies(spec.get("appears_after", [])):
+		return true
 	if kind in ["memory", "ability", "relic", "flashback", "true_memory"]:
 		return session.has(str(spec.get("item", "true_memory" if kind=="true_memory" else ""))) or bool(session.collected.get(str(spec.get("uid","")),false))
 	if kind in ["switch", "thread"]:
@@ -31,6 +33,8 @@ func prompt() -> String:
 	if kind == "exit":
 		return "E  前往 · " + ExplorationCatalog.title(str(spec["target"]))
 	if kind == "checkpoint":
+		if session.lamps_out():
+			return "钟声之下，路灯点不亮" if session.room_id == "clock_tower" else "泥浆淹没了灯芯，路灯点不亮"
 		return "E  点亮路灯 · 保存 / 恢复"
 	if kind == "interior_exit":
 		return "E  推门返回 · "+ExplorationCatalog.title(str(spec["target"]))
@@ -81,8 +85,8 @@ func _draw() -> void:
 		draw_string(_font, Vector2(-6, -107), str(int(session.mirrors[index])+1), HORIZONTAL_ALIGNMENT_LEFT, -1, 19, Color("e2c48d"))
 	elif kind == "thread":
 		if not is_finished():
-			draw_line(Vector2(-55, -155), Vector2(55, 0), Color("d97277"), 2.5, true)
-			draw_line(Vector2(55, -155), Vector2(-55, 0), Color("d97277"), 2.5, true)
+			ExplorationArt.strand(self,"red_thread",Vector2(-55,-155),Vector2(55,0),4)
+			ExplorationArt.strand(self,"red_thread",Vector2(55,-155),Vector2(-55,0),4)
 	elif kind == "lift_call":
 		draw_rect(Rect2(-20,-66,40,66),Color("263339"))
 		draw_rect(Rect2(-17,-63,34,54),Color("68614a"),false,3)

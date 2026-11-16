@@ -1,0 +1,802 @@
+[
+  {
+    "id": "may_idle",
+    "generated_size": [
+      1448,
+      1086
+    ],
+    "grid": [
+      4,
+      2
+    ],
+    "sheet_size": [
+      1176,
+      768
+    ],
+    "scale": 0.7630263781393145
+  },
+  {
+    "id": "may_windup",
+    "generated_size": [
+      1448,
+      1086
+    ],
+    "grid": [
+      4,
+      2
+    ],
+    "sheet_size": [
+      1188,
+      768
+    ],
+    "scale": 0.767390959555908
+  },
+  {
+    "id": "may_slash",
+    "generated_size": [
+      1448,
+      1086
+    ],
+    "grid": [
+      4,
+      2
+    ],
+    "sheet_size": [
+      1728,
+      768
+    ],
+    "scale": 0.8798690671031096
+  },
+  {
+    "id": "may_summon",
+    "generated_size": [
+      1448,
+      1086
+    ],
+    "grid": [
+      4,
+      2
+    ],
+    "sheet_size": [
+      1160,
+      768
+    ],
+    "scale": 0.7806593406593407
+  },
+  {
+    "id": "may_brush",
+    "generated_size": [
+      1448,
+      1086
+    ],
+    "grid": [
+      4,
+      2
+    ],
+    "sheet_size": [
+      1148,
+      768
+    ],
+    "scale": 0.7721672518353015
+  },
+  {
+    "id": "may_brush_strike",
+    "generated_size": [
+      1448,
+      1086
+    ],
+    "grid": [
+      4,
+      2
+    ],
+    "sheet_size": [
+      3048,
+      768
+    ],
+    "scale": 0.895406858202039
+  },
+  {
+    "id": "may_statue",
+    "generated_size": [
+      1448,
+      1086
+    ],
+    "grid": [
+      4,
+      2
+    ],
+    "sheet_size": [
+      1176,
+      768
+    ],
+    "scale": 0.7747692307692308
+  },
+  {
+    "id": "void_idle",
+    "generated_size": [
+      1448,
+      1086
+    ],
+    "grid": [
+      4,
+      2
+    ],
+    "sheet_size": [
+      912,
+      768
+    ],
+    "scale": 0.7499152276295132
+  },
+  {
+    "id": "void_command",
+    "generated_size": [
+      1448,
+      1086
+    ],
+    "grid": [
+      4,
+      2
+    ],
+    "sheet_size": [
+      912,
+      768
+    ],
+    "scale": 0.6706586826347305
+  },
+  {
+    "id": "void_frenzy",
+    "generated_size": [
+      1448,
+      1086
+    ],
+    "grid": [
+      4,
+      2
+    ],
+    "sheet_size": [
+      1500,
+      768
+    ],
+    "scale": 0.9088757396449705
+  },
+  {
+    "id": "void_lash",
+    "generated_size": [
+      1448,
+      1086
+    ],
+    "grid": [
+      4,
+      2
+    ],
+    "sheet_size": [
+      3076,
+      768
+    ],
+    "scale": 1.225552725420275
+  },
+  {
+    "id": "void_puppet",
+    "generated_size": [
+      1448,
+      1086
+    ],
+    "grid": [
+      4,
+      2
+    ],
+    "sheet_size": [
+      1056,
+      768
+    ],
+    "scale": 0.7528930113545498
+  },
+  {
+    "id": "keeper_back",
+    "generated_size": [
+      1774,
+      887
+    ],
+    "grid": [
+      4,
+      2
+    ],
+    "sheet_size": [
+      1408,
+      768
+    ],
+    "scale": 0.8985507246376812
+  },
+  {
+    "id": "keeper_hidden",
+    "generated_size": [
+      1448,
+      1086
+    ],
+    "grid": [
+      4,
+      2
+    ],
+    "sheet_size": [
+      616,
+      768
+    ],
+    "scale": 0.7875000000000001
+  },
+  {
+    "id": "keeper_unmasked",
+    "generated_size": [
+      1774,
+      887
+    ],
+    "grid": [
+      4,
+      2
+    ],
+    "sheet_size": [
+      848,
+      768
+    ],
+    "scale": 0.8905797101449276
+  },
+  {
+    "id": "ling_crouch",
+    "generated_size": [
+      1774,
+      887
+    ],
+    "grid": [
+      4,
+      2
+    ],
+    "sheet_size": [
+      1212,
+      768
+    ],
+    "scale": 0.8820058997050148
+  },
+  {
+    "id": "ling_giant",
+    "generated_size": [
+      1774,
+      887
+    ],
+    "grid": [
+      4,
+      2
+    ],
+    "sheet_size": [
+      1792,
+      768
+    ],
+    "scale": 0.8399179767600821
+  },
+  {
+    "id": "ling_hand",
+    "generated_size": [
+      1774,
+      887
+    ],
+    "grid": [
+      4,
+      2
+    ],
+    "sheet_size": [
+      740,
+      768
+    ],
+    "scale": 0.48010610079575594
+  },
+  {
+    "id": "fury_idle",
+    "generated_size": [
+      1774,
+      887
+    ],
+    "grid": [
+      4,
+      2
+    ],
+    "sheet_size": [
+      912,
+      768
+    ],
+    "scale": 0.8787234042553193
+  },
+  {
+    "id": "fury_lunge",
+    "generated_size": [
+      1774,
+      887
+    ],
+    "grid": [
+      4,
+      2
+    ],
+    "sheet_size": [
+      2236,
+      768
+    ],
+    "scale": 0.9341538461538462
+  },
+  {
+    "id": "fury_punch",
+    "generated_size": [
+      1774,
+      887
+    ],
+    "grid": [
+      4,
+      2
+    ],
+    "sheet_size": [
+      2184,
+      768
+    ],
+    "scale": 0.9523076923076923
+  },
+  {
+    "id": "detective",
+    "generated_size": [
+      1448,
+      1086
+    ],
+    "grid": [
+      4,
+      2
+    ],
+    "sheet_size": [
+      848,
+      768
+    ],
+    "scale": 0.7508470968394825
+  },
+  {
+    "id": "hero_idle",
+    "generated_size": [
+      1774,
+      887
+    ],
+    "grid": [
+      4,
+      2
+    ],
+    "sheet_size": [
+      1112,
+      768
+    ],
+    "scale": 0.9343065693430657
+  },
+  {
+    "id": "hero_run",
+    "generated_size": [
+      1448,
+      1086
+    ],
+    "grid": [
+      4,
+      2
+    ],
+    "sheet_size": [
+      1112,
+      768
+    ],
+    "scale": 0.7988338192419825
+  },
+  {
+    "id": "hero_jump",
+    "generated_size": [
+      1774,
+      887
+    ],
+    "grid": [
+      4,
+      2
+    ],
+    "sheet_size": [
+      1112,
+      768
+    ],
+    "scale": 0.8616352201257862
+  },
+  {
+    "id": "hero_fall",
+    "generated_size": [
+      1448,
+      1086
+    ],
+    "grid": [
+      4,
+      2
+    ],
+    "sheet_size": [
+      1112,
+      768
+    ],
+    "scale": 0.847682119205298
+  },
+  {
+    "id": "hero_climb",
+    "generated_size": [
+      1448,
+      1086
+    ],
+    "grid": [
+      4,
+      2
+    ],
+    "sheet_size": [
+      1112,
+      768
+    ],
+    "scale": 0.7917525773195876
+  },
+  {
+    "id": "hero_dash",
+    "generated_size": [
+      1448,
+      1086
+    ],
+    "grid": [
+      4,
+      2
+    ],
+    "sheet_size": [
+      1112,
+      768
+    ],
+    "scale": 0.7569060773480663
+  },
+  {
+    "id": "hero_death",
+    "generated_size": [
+      1448,
+      1086
+    ],
+    "grid": [
+      4,
+      2
+    ],
+    "sheet_size": [
+      1112,
+      768
+    ],
+    "scale": 0.7806267806267806
+  },
+  {
+    "id": "hero_windup",
+    "generated_size": [
+      1448,
+      1086
+    ],
+    "grid": [
+      4,
+      2
+    ],
+    "sheet_size": [
+      1112,
+      768
+    ],
+    "scale": 0.8050314465408805
+  },
+  {
+    "id": "hero_active",
+    "generated_size": [
+      1774,
+      887
+    ],
+    "grid": [
+      4,
+      2
+    ],
+    "sheet_size": [
+      1112,
+      768
+    ],
+    "scale": 0.738544474393531
+  },
+  {
+    "id": "hero_recover",
+    "generated_size": [
+      1774,
+      887
+    ],
+    "grid": [
+      4,
+      2
+    ],
+    "sheet_size": [
+      1112,
+      768
+    ],
+    "scale": 0.6342592592592593
+  },
+  {
+    "id": "npcs_a_0",
+    "generated_size": [
+      1448,
+      1086
+    ],
+    "grid": [
+      4,
+      2
+    ],
+    "sheet_size": [
+      1160,
+      768
+    ],
+    "scale": 0.8347826086956521
+  },
+  {
+    "id": "npcs_a_1",
+    "generated_size": [
+      1774,
+      887
+    ],
+    "grid": [
+      4,
+      2
+    ],
+    "sheet_size": [
+      900,
+      768
+    ],
+    "scale": 0.8951048951048951
+  },
+  {
+    "id": "npcs_a_2",
+    "generated_size": [
+      1448,
+      1086
+    ],
+    "grid": [
+      4,
+      2
+    ],
+    "sheet_size": [
+      1216,
+      768
+    ],
+    "scale": 0.8366013071895425
+  },
+  {
+    "id": "npcs_a_3",
+    "generated_size": [
+      1448,
+      1086
+    ],
+    "grid": [
+      4,
+      2
+    ],
+    "sheet_size": [
+      908,
+      768
+    ],
+    "scale": 0.768
+  },
+  {
+    "id": "npcs_b_0",
+    "generated_size": [
+      1774,
+      887
+    ],
+    "grid": [
+      4,
+      2
+    ],
+    "sheet_size": [
+      1228,
+      768
+    ],
+    "scale": 0.9121140142517815
+  },
+  {
+    "id": "npcs_b_1",
+    "generated_size": [
+      1448,
+      1086
+    ],
+    "grid": [
+      4,
+      2
+    ],
+    "sheet_size": [
+      968,
+      768
+    ],
+    "scale": 0.8084210526315789
+  },
+  {
+    "id": "npcs_b_2",
+    "generated_size": [
+      1448,
+      1086
+    ],
+    "grid": [
+      4,
+      2
+    ],
+    "sheet_size": [
+      1216,
+      768
+    ],
+    "scale": 0.847682119205298
+  },
+  {
+    "id": "npcs_b_3",
+    "generated_size": [
+      1774,
+      887
+    ],
+    "grid": [
+      4,
+      2
+    ],
+    "sheet_size": [
+      1044,
+      768
+    ],
+    "scale": 0.9388753056234719
+  },
+  {
+    "id": "keeper_limb",
+    "generated_size": [
+      1774,
+      887
+    ],
+    "grid": [
+      4,
+      2
+    ],
+    "sheet_size": [
+      936,
+      768
+    ],
+    "scale": 0.9186602870813397
+  },
+  {
+    "id": "enemies_a_0_actions",
+    "generated_size": [
+      1536,
+      1024
+    ],
+    "grid": [
+      8,
+      4
+    ],
+    "sheet_size": [
+      3680,
+      1536
+    ],
+    "scale": 1.6842105263157894
+  },
+  {
+    "id": "enemies_a_1_actions",
+    "generated_size": [
+      1536,
+      1024
+    ],
+    "grid": [
+      8,
+      4
+    ],
+    "sheet_size": [
+      4096,
+      1536
+    ],
+    "scale": 2.1942857142857144
+  },
+  {
+    "id": "enemies_a_3_actions",
+    "generated_size": [
+      1536,
+      1024
+    ],
+    "grid": [
+      8,
+      4
+    ],
+    "sheet_size": [
+      4400,
+      1536
+    ],
+    "scale": 2.053475935828877
+  },
+  {
+    "id": "enemies_b_0_actions",
+    "generated_size": [
+      1536,
+      1024
+    ],
+    "grid": [
+      8,
+      4
+    ],
+    "sheet_size": [
+      6656,
+      1536
+    ],
+    "scale": 2.526315789473684
+  },
+  {
+    "id": "enemies_b_1_actions",
+    "generated_size": [
+      1536,
+      1024
+    ],
+    "grid": [
+      8,
+      4
+    ],
+    "sheet_size": [
+      4432,
+      1536
+    ],
+    "scale": 1.8461538461538463
+  },
+  {
+    "id": "enemies_b_2_actions",
+    "generated_size": [
+      1774,
+      887
+    ],
+    "grid": [
+      8,
+      4
+    ],
+    "sheet_size": [
+      4120,
+      1536
+    ],
+    "scale": 1.9896373056994818
+  },
+  {
+    "id": "enemies_b_3_actions",
+    "generated_size": [
+      1774,
+      887
+    ],
+    "grid": [
+      8,
+      4
+    ],
+    "sheet_size": [
+      4520,
+      1536
+    ],
+    "scale": 1.855072463768116
+  },
+  {
+    "id": "void_puppet_actions",
+    "generated_size": [
+      1774,
+      887
+    ],
+    "grid": [
+      8,
+      4
+    ],
+    "sheet_size": [
+      2112,
+      1536
+    ],
+    "scale": 1.3541666666666667
+  },
+  {
+    "id": "may_statue_actions",
+    "generated_size": [
+      1774,
+      887
+    ],
+    "grid": [
+      8,
+      4
+    ],
+    "sheet_size": [
+      2352,
+      1536
+    ],
+    "scale": 1.4146341463414633
+  }
+]
