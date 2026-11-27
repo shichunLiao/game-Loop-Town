@@ -51,6 +51,8 @@ func _ready() -> void:
 		phase_title = "完美版本"
 		boss_title = str(spec.get("label",boss_title))
 		modulate = Color(.86,.9,1)
+		if session.switches.has("tower_hp_"+str(spec["id"])):
+			health = clampi(int(session.switches["tower_hp_"+str(spec["id"])]),1,max_health)
 
 func _create_fences() -> void:
 	for x: float in [arena.x,arena.y]:
@@ -240,6 +242,8 @@ func receive_hit(amount: int, _origin_value: Vector2, _kind: String = "slash") -
 		_begin_intro()
 		return
 	health = maxi(0,health-amount)
+	if echo:
+		session.switches["tower_hp_"+str(spec["id"])] = health
 	_flash = .11
 	_stagger += amount
 	# Heavy recovery hits can stagger; a light hit cannot repeatedly cancel a skill.
@@ -274,7 +278,9 @@ func _die() -> void:
 	_set_fences(false)
 	if echo:
 		session.switches[str(spec["id"])] = true
+		session.switches.erase("tower_hp_"+str(spec["id"]))
 		session.changed.emit()
+		session.save()
 	else:
 		session.switches["defeated_morris"] = true
 		session.acquire("boss_morris")

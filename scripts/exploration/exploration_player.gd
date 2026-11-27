@@ -185,6 +185,9 @@ func take_damage(amount: int) -> void:
 	if _invulnerability > 0.0 or not enabled:
 		return
 	health = maxi(0, health - amount)
+	if amount > 0 and session != null and not session.has("tutorial_heal"):
+		session.switches["tutorial_heal"] = true
+		_tip("受伤了：H 消耗墨光恢复生命，也可清除一层致死状态。")
 	_invulnerability = 1.1
 	velocity.y = -300.0
 	get_node("/root/AudioManager").play_sfx("sfx_hurt")
@@ -200,17 +203,22 @@ func receive_hit(amount: int, origin: Vector2, kind: String = "hit") -> void:
 	attack_phase = "ready"
 	if kind == "puppet":
 		cloth += 1
+		_status_tip("tutorial_cloth","沃布化 %d/6：按 H 拆线，或斩断操偶红线。" % cloth)
 	elif kind == "void_lash":
 		entangled = 1.6
+		_status_tip("tutorial_entangled","丝线缠身：持续移动脱离，别停在红线上。")
 	elif kind in ["may_slash", "wax_claw"]:
 		paper += 1
 		last_may_kind = "may_slash"
+		_status_tip("tutorial_paper","纸裂 %d/3：按 H 修补一层；避开美工刀正面。" % paper)
 	elif kind == "statue":
 		plaster += 1
 		last_may_kind = "statue"
+		_status_tip("tutorial_plaster","石膏 %d/3：按 H 震落一层；远离替身。" % plaster)
 	elif kind == "may_brush":
 		paint += 1
 		last_may_kind = "may_brush"
+		_status_tip("tutorial_paint","入画 %d/4：按 H 擦除一层；离开颜料标记。" % paint)
 	var may_kinds := ["may_slash", "wax_claw", "statue", "may_brush"]
 	if kind in may_kinds and health - amount <= 0:
 		_trigger_may_defeat()
@@ -260,9 +268,10 @@ func _update_combat(delta: float) -> void:
 		energy -= 35
 		session.slow_time = 2.8
 		_slow_cooldown = 9
-	if Input.is_action_just_pressed("explore_heal") and energy>=50 and health<100 and attack_phase=="ready":
+	if Input.is_action_just_pressed("explore_heal") and energy>=50 and (health<100 or has_status()) and attack_phase=="ready":
 		energy -= 50
 		health = mini(100,health+30)
+		_clear_status_layer()
 		_invulnerability = .3
 	if attack_phase == "ready":
 		return
@@ -317,6 +326,57 @@ func _hindrance() -> float:
 	if grip > 0:
 		return 0.0
 	return (1.0-.06*mini(cloth,6))*(.45 if entangled > 0.0 else 1.0)*(1.0-.7*mired)
+
+func grant_safe_window(seconds: float = .5) -> void:
+	_invulnerability = maxf(_invulnerability,seconds)
+
+func has_status() -> bool:
+	return paper>0 or plaster>0 or paint>0 or cloth>0 or entangled>0 or mired>.05 or grip>0 or confused>0
+
+func status_text() -> String:
+	var states: Array[String] = []
+	if paper>0:
+		states.append("纸裂 %d/3 · H修补" % paper)
+	if plaster>0:
+		states.append("石膏 %d/3 · H震落" % plaster)
+	if paint>0:
+		states.append("入画 %d/4 · H擦除" % paint)
+	if cloth>0:
+		states.append("沃布化 %d/6 · H拆线" % cloth)
+	if entangled>0:
+		states.append("缠身 %.1fs · 持续移动" % entangled)
+	if mired>.05:
+		states.append("泥深 %d%% · 跳离泥面" % roundi(mired*100))
+	if grip>0:
+		states.append("抓取 %d下 · 连按A/D/Space" % grip)
+	if confused>0:
+		states.append("反向 %.1fs · 左右已颠倒" % confused)
+	return "  /  ".join(states)
+
+func _clear_status_layer() -> void:
+	if paint>0:
+		paint -= 1
+	elif plaster>0:
+		plaster -= 1
+	elif paper>0:
+		paper -= 1
+	elif cloth>0:
+		cloth -= 1
+	elif entangled>0:
+		entangled = 0
+	elif confused>0:
+		confused = 0
+
+func _status_tip(flag: String, text: String) -> void:
+	if session==null or session.has(flag):
+		return
+	session.switches[flag] = true
+	_tip(text)
+
+func _tip(text: String) -> void:
+	var demo: Node = get_tree().get_first_node_in_group("exploration_demo")
+	if demo!=null:
+		demo.hud.toast(text)
 
 ## Story 1.1: at the well the player's hands are on someone else's body.
 ## attack_pose is shown while a blow is out; faces_left marks art drawn facing left.

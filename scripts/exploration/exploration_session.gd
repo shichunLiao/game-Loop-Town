@@ -86,7 +86,7 @@ func save_at(id: String, point: Vector2) -> bool:
 
 func save() -> bool:
 	return get_node("/root/SaveManager").save_exploration({"version": 2, "room": checkpoint_room,
-		"collected":collected,"quests":quest_state,"revision":8,
+		"collected":collected,"quests":quest_state,"revision":9,
 		"checkpoint": [checkpoint.x, checkpoint.y], "items": items,
 		"visited": visited, "switches": switches, "mirrors": mirrors,
 		"loop": loop_count, "stage": stage, "deaths": deaths, "elapsed": elapsed})
@@ -135,6 +135,18 @@ func restore() -> bool:
 			checkpoint = ExplorationCatalog.vec(ExplorationCatalog.room(checkpoint_room)["spawn"])
 	changed.emit()
 	return true
+
+func tower_checkpoint_tier() -> int:
+	return int(switches.get("tower_checkpoint_tier",0))
+
+func save_tower_section(tier: int, point: Vector2) -> bool:
+	if tier<=tower_checkpoint_tier():
+		return false
+	switches["tower_checkpoint_tier"] = tier
+	checkpoint_room = "clock_tower"
+	checkpoint = point
+	changed.emit()
+	return save()
 
 func objective() -> String:
 	if has("boss_ling"):

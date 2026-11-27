@@ -26,6 +26,13 @@ var _story_slot: String = "exploration_v2"
 var _starting_practice: bool = false
 var _defeat: Dictionary = {}
 var _caption: Label
+var _death_pending: bool = false
+var _realm: String = "reality"
+
+const SPIRIT_ROOMS: Array[String] = [
+	"wax_museum", "wax_basement", "old_theater", "back_stage",
+	"clock_tower", "clock_top", "well_interior"
+]
 
 func _ready() -> void:
 	add_to_group("exploration_demo")
@@ -88,13 +95,22 @@ func start_game(continue_game: bool = false, initial_room: String = "") -> void:
 	hud.overlay.hide()
 	mode = "play"
 	load_room(session.room_id)
+	_realm = _room_realm(session.room_id)
 	if continue_game:
 		player.position = session.checkpoint
 		camera.reset_smoothing()
+	else:
+		hud.toast("先试四件事：A/D 移动 · E 调查 · Space 跳跃 · J 攻击。其他操作会在需要时出现。")
 
 func request_room(id: String, source_exit: String = "") -> void:
 	if _transitioning:
 		return
+	var route: Dictionary = _compressed_route(session.room_id,id,source_exit)
+	id = str(route.get("target",id))
+	source_exit = str(route.get("arrival_exit",source_exit))
+	var note: String = str(route.get("note",""))
+	if not note.is_empty():
+		hud.toast(note)
 	_transitioning = true
 	_load_deferred.call_deferred(id,source_exit)
 
@@ -121,11 +137,18 @@ func leave_building() -> void:
 
 func _load_deferred(id: String, source_exit: String) -> void:
 	_set_playing(false)
-	await _fade_to(.8,.12)
+	var next_realm: String = _room_realm(id)
+	if next_realm != _realm:
+		await _realm_shift(next_realm)
+	else:
+		await _fade_to(.8,.12)
 	load_room(id,source_exit)
-	await _fade_to(0,.14)
+	await _fade_to(0,.45 if next_realm != _realm else .14)
+	_realm = next_realm
 	_transitioning = false
 	_set_playing(mode=="play")
+	if is_instance_valid(player):
+		player.grant_safe_window(.5)
 
 func load_room(id: String, source_exit: String = "") -> void:
 	if is_instance_valid(room):
@@ -156,6 +179,7 @@ func load_room(id: String, source_exit: String = "") -> void:
 		_arrival = Vector2.INF
 	if source_exit == "__lamp":
 		spawn = ExplorationCatalog.vec(room.data["checkpoint"])+Vector2(65,-2)
+	spawn = _safe_spawn(room.data,spawn)
 	player.name = "DetectivePrototype"
 	player.session = session
 	player.health = _health
@@ -348,7 +372,16 @@ func defeat(id: String, title: String, text: String) -> void:
 	player.died.emit()
 
 func _on_died() -> void:
+	if mode != "play" or _death_pending:
+		return
+	# Area2D overlap signals run while the physics server is flushing queries.  Defer
+	# every process/collision state change until the callback has fully returned.
+	_death_pending = true
+	_finish_death.call_deferred()
+
+func _finish_death() -> void:
 	if mode != "play":
+		_death_pending = false
 		return
 	mode = "respawn"
 	_set_playing(false)
@@ -370,11 +403,67 @@ func _respawn() -> void:
 	player.position = session.checkpoint
 	player.health = 100
 	player.energy = 100
+	player.grant_safe_window(.5)
 	camera.reset_smoothing()
 	mode = "play"
 	_set_playing(true)
 	await _fade_to(0,.35)
+	_death_pending = false
 	hud.toast("回到最近点亮的路灯。记忆仍然留在速写本中。")
+
+func _safe_spawn(room_data: Dictionary, requested: Vector2) -> Vector2:
+	var bounds := ExplorationCatalog.vec(room_data["size"])
+	var point := Vector2(clampf(requested.x,32.0,bounds.x-32.0),clampf(requested.y,40.0,bounds.y-20.0))
+	var best_score: float = INF
+	var best := point
+	for entry: Dictionary in room_data.get("platforms",[]):
+		if ExplorationCatalog.vec(entry.get("travel",[0,0])) != Vector2.ZERO:
+			continue
+		var rect: Array = entry["rect"]
+		var left: float = float(rect[0])+28.0
+		var right: float = float(rect[0])+float(rect[2])-28.0
+		if right < left:
+			continue
+		var x: float = clampf(point.x,left,right)
+		var y: float = float(rect[1])-3.0
+		var horizontal: float = absf(x-point.x)
+		var vertical: float = absf(y-point.y)
+		# Prefer the intended floor immediately below the authored spawn, but recover
+		# malformed passage spawns to the nearest real static platform.
+		var below_penalty: float = 0.0 if y >= point.y-90.0 else 900.0
+		var score: float = horizontal*2.0+vertical+below_penalty
+		if score < best_score:
+			best_score = score
+			best = Vector2(x,y)
+	return best
+
+func _compressed_route(from_room: String, requested: String, source_exit: String) -> Dictionary:
+	# Demo 9 keeps the old passage room IDs loadable for existing saves and optional
+	# exploration, while the first-chapter tracked route uses two continuous hops.
+	if from_room=="town_entrance" and requested=="passage_00" and source_exit=="town_entrance--ring_west_a":
+		return {"target":"wax_lane","arrival_exit":"ring_west--wax_lane_b","note":"玲留下的粉笔箭头穿过西环：『别在雾里绕圈。』"}
+	if from_room=="wax_lane" and requested=="passage_05" and source_exit=="ring_west--wax_lane_b":
+		return {"target":"town_entrance","arrival_exit":"town_entrance--ring_west_a","note":"沿粉笔箭头返回镇口。旧西环仍可从广场探索。"}
+	if from_room=="wax_lane" and requested=="passage_08" and source_exit=="wax_lane--wax_museum_a":
+		return {"target":"wax_museum","arrival_exit":"wax_lane--wax_museum_b","note":"梅的裁纸声从门后传来。你推门进入美术馆。"}
+	if from_room=="wax_museum" and requested=="passage_08" and source_exit=="wax_lane--wax_museum_b":
+		return {"target":"wax_lane","arrival_exit":"wax_lane--wax_museum_a","note":"现实的街灯重新映在玻璃上。"}
+	return {}
+
+func _room_realm(id: String) -> String:
+	return "memory" if id in SPIRIT_ROOMS else "reality"
+
+func _realm_shift(next_realm: String) -> void:
+	var entering: bool = next_realm=="memory"
+	_fade.color = Color(.12,.23,.28,0) if entering else Color(.31,.25,.14,0)
+	get_node("/root/AudioManager").play_bell()
+	await _fade_to(.72,.55)
+	_caption.text = "◇ 记忆覆写现实 ◇" if entering else "◇ 现实重新对焦 ◇"
+	_caption.modulate.a = 1.0
+	await get_tree().create_timer(1.35).timeout
+	_caption.modulate.a = 0.0
+	await _fade_to(1.0,.55)
+	_fade.color = Color(.015,.025,.035,1)
 
 func screen_shake(duration: float) -> void:
 	_shake = maxf(_shake,duration)

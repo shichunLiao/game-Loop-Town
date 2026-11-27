@@ -22,6 +22,8 @@ var _toast_time: float = 0.0
 var _font: Font
 var direction_label: Label
 var _navigation_clock: float = 0
+var control_label: Label
+var status_label: Label
 
 func _ready() -> void:
 	layer = 20
@@ -72,9 +74,11 @@ func _ready() -> void:
 	counter_label = label(root,Vector2(680,104),Vector2(565,28),"",13,Color("a8c2c1"))
 	counter_label.horizontal_alignment = HORIZONTAL_ALIGNMENT_RIGHT
 	ability_label = label(root,Vector2(30,114),Vector2(830,28),"",13,Color("97b8bb"))
+	status_label = label(root,Vector2(250,554),Vector2(780,32),"",15,Color("f0b98b"))
+	status_label.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 	prompt_label = label(root,Vector2(200,595),Vector2(880,42),"",19,Color("f5e6c6"))
 	prompt_label.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
-	label(root,Vector2(30,683),Vector2(1220,26),"A/D 移动  Space 跳  J 三连击  K 技能  H 恢复  E 交谈/机关  Shift 冲刺  Q 缓时  L 任务  M 地图  Tab 笔记",13,Color("9cbbb9"))
+	control_label = label(root,Vector2(30,683),Vector2(1220,26),"",13,Color("9cbbb9"))
 	direction_label = label(root,Vector2(800,142),Vector2(445,38),"",14,Color("e4c88f"))
 	direction_label.horizontal_alignment = HORIZONTAL_ALIGNMENT_RIGHT
 	toast_label = label(root,Vector2(240,140),Vector2(800,48),"",18,Color("e9d19c"))
@@ -156,7 +160,7 @@ func show_menu() -> void:
 	button(overlay,Vector2(80,548),Vector2(270,46),"退出",func(): get_tree().quit())
 	button(overlay,Vector2(370,489),Vector2(220,46),"人物与敌人图鉴",controller.open_cast)
 	button(overlay,Vector2(370,548),Vector2(220,46),"梅·莫里演练",controller.start_boss_practice)
-	label(overlay,Vector2(80,652),Vector2(1100,30),"动作探索 Demo 8  /  连续街道 · 房屋屋顶支路 · 落地中景 · 实体井道 · 三阶段梅·莫里 · 剧情 1.1",14,Color("aabdb7"))
+	label(overlay,Vector2(80,652),Vector2(1100,30),"动作探索 Demo 9  /  连续街道 · 房屋屋顶支路 · 落地中景 · 实体井道 · 三阶段梅·莫里 · 剧情 1.1",14,Color("aabdb7"))
 
 func show_map(overview: bool = false) -> void:
 	clear_overlay()
@@ -340,7 +344,7 @@ func _process(delta: float) -> void:
 	for id: String in session.visited:
 		if bool(ExplorationCatalog.room(id).get("main_region",true)):
 			main_count += 1
-	counter_label.text = "回溯 %d 次   ·   印记 %d / 3   ·   记忆 %d   ·   区域 %d / 18" % [session.loop_count,session.seal_count(),session.memory_count(),main_count]
+	counter_label.text = "回溯 %d 次   ·   印记 %d / 3   ·   记忆 %d   ·   主区 %d / 18   ·   全图 69" % [session.loop_count,session.seal_count(),session.memory_count(),main_count]
 	var abilities: Array[String] = []
 	abilities.append("J "+str(ExplorationWeapon.profile(session)["name"])+" · 三连击"+(" / K 阶段技能" if session.has("scissors") else ""))
 	for pair: Array in [["double_jump","二段跳"],["vine","W/S 攀爬"],["dash","Shift 冲刺"],["time_slow","Q 缓时"]]:
@@ -348,6 +352,9 @@ func _process(delta: float) -> void:
 			abilities.append(str(pair[1]))
 	ability_label.text = "  /  ".join(abilities)
 	if is_instance_valid(controller.player):
+		status_label.text = controller.player.status_text()
+		status_label.visible = not status_label.text.is_empty()
+		control_label.text = _visible_controls(session)
 		health.value = controller.player.health
 		energy.value = controller.player.energy
 		health.tooltip_text = "%d / 100" % controller.player.health
@@ -376,3 +383,23 @@ func _process(delta: float) -> void:
 		boss_label.text = str(boss.boss_title)+" · "+str(boss.phase_title)+(" / 阶段 %d" % boss.phase if boss.phase>0 else "")
 		if boss.state=="windup":
 			boss_label.text = str(boss.attack_name)
+
+func _visible_controls(session: ExplorationSession) -> String:
+	var controls: Array[String] = ["A/D 移动","E 调查/交谈","Space 跳跃","J 攻击"]
+	if session.has("read_letter"):
+		controls.append("L 任务")
+		controls.append("M 地图")
+		controls.append("Tab 笔记")
+	if session.has("tutorial_heal"):
+		controls.append("H 恢复/清状态")
+	if session.has("scissors"):
+		controls.append("K 阶段技能")
+	if session.has("vine"):
+		controls.append("W/S 攀爬")
+	if session.has("dash"):
+		controls.append("Shift 冲刺")
+	if session.has("time_slow"):
+		controls.append("Q 缓时")
+	if session.room_id in ["clock_tower","well_interior"]:
+		controls.append("S+Space 下穿平台")
+	return "  ".join(controls)

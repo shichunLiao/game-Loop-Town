@@ -1,6 +1,6 @@
 class_name ExplorationWorldMap
 extends Control
-## Draws all 18 actual rooms, platform silhouettes, reciprocal links and lock state.
+## Draws Demo 9's 18 main regions plus its passage/interior connection layers.
 
 signal travel_requested(room_id: String)
 var session: ExplorationSession
@@ -41,6 +41,16 @@ func _draw() -> void:
 			continue
 		var r: Array = rooms[id]["map_rect"]
 		_rectangles[id] = Rect2(Vector2(float(r[0]),float(r[1]))*scale_factor+offset,Vector2(float(r[2]),float(r[3]))*scale_factor)
+	# The tracked first-chapter route is a continuous travel layer: legacy passage
+	# rooms remain explorable, but are no longer presented as mandatory black-screen nodes.
+	if _rectangles.has("town_entrance") and _rectangles.has("wax_lane") and _rectangles.has("wax_museum"):
+		var first_route := PackedVector2Array([
+			(_rectangles["town_entrance"] as Rect2).get_center(),
+			(_rectangles["wax_lane"] as Rect2).get_center(),
+			(_rectangles["wax_museum"] as Rect2).get_center()
+		])
+		draw_polyline(first_route,Color("e8bd72"),3*ratio,true)
+		draw_string(font,first_route[1]+Vector2(-90,-10)*ratio,"首章连续路线 · 2次换场",HORIZONTAL_ALIGNMENT_CENTER,180*ratio,int(11*ratio),Color("e8bd72"))
 	for id: String in rooms:
 		if not rooms[id].has("region_pair"):
 			continue

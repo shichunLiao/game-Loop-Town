@@ -15,6 +15,7 @@ var _busy: bool = false
 var _hooked: bool = false
 var _settled: bool = false
 var _echoes: Dictionary = {}
+var _checkpoint_tier: int = 0
 
 func _ready() -> void:
 	z_index = -1
@@ -30,6 +31,7 @@ func _ready() -> void:
 	_keeper.position = _keeper_spot(_keeper_tier)
 	room.actors.add_child(_keeper)
 	_keeper.visible = not session.chase_done()
+	_checkpoint_tier = session.tower_checkpoint_tier()
 
 func _keeper_spot(tier: int) -> Vector2:
 	return Vector2(1150 if tier%2==0 else 320,_tiers[tier])
@@ -55,6 +57,7 @@ func _physics_process(delta: float) -> void:
 		_settle()
 		return
 	var rate: float = .3 if session.slow_time>0 else 1.0
+	_update_section_checkpoint(player)
 	_spawn_echoes(player)
 	_limb_timer -= delta*rate
 	if _limb_timer<=0 and player.is_on_floor():
@@ -89,15 +92,15 @@ func _begin(player: ExplorationPlayer) -> void:
 	player.died.connect(_on_player_died)
 	if session.chase_done():
 		return
-	session.save_at("clock_tower",ExplorationCatalog.vec((get_parent() as ExplorationRoom).data["spawn"]))
-	_notice("戴帽子的身影背对着你，不断拧着巨大的发条。")
+	if session.tower_checkpoint_tier()==0:
+		session.save_at("clock_tower",ExplorationCatalog.vec((get_parent() as ExplorationRoom).data["spawn"]))
+	_notice("第一段 · 追逐：跟住守钟人；每两层会永久记录进度。")
 
 ## Story 1.1: beaten by a perfect version, Jerry starts the whole climb over.
 func _on_player_died() -> void:
-	if session.chase_done():
-		return
-	for entry: Dictionary in spec.get("echoes",[]):
-		session.switches.erase(str(entry["flag"]))
+	# Completed echoes and saved boss damage survive a retry.  Respawn is handled by
+	# the demo's deferred death flow at the latest two-floor checkpoint.
+	pass
 
 func _spawn_echoes(player: ExplorationPlayer) -> void:
 	for entry: Dictionary in spec.get("echoes",[]):
@@ -119,21 +122,29 @@ func _rewind(player: ExplorationPlayer) -> void:
 	var demo: Node = get_tree().get_first_node_in_group("exploration_demo")
 	get_node("/root/AudioManager").play_bell()
 	demo.screen_shake(.4)
-	demo.hud.toast("钟声响起 · 时间倒转 · 你被带回了下方")
+	demo.hud.toast("钟声响起 · 仅回退一层；已击败的回声与伤害进度保留")
 	await demo._fade_to(.85,.12)
-	var target: int = maxi(0,_tier_of(player.global_position.y)-2)
+	var target: int = maxi(_checkpoint_tier,_tier_of(player.global_position.y)-1)
 	player.global_position = Vector2(300,_tiers[target]-3)
 	player.velocity = Vector2.ZERO
 	player._last_ground_y = player.position.y
 	demo.camera.reset_smoothing()
-	for flag: String in _echoes:
-		if is_instance_valid(_echoes[flag]) and not _echoes[flag].dead:
-			_echoes[flag].restore_health(.3)
 	_keeper_tier = mini(target+1,_tiers.size()-1)
 	_climb = 0
 	_keeper.warp_to(_keeper_spot(_keeper_tier))
 	await demo._fade_to(0,.25)
 	_busy = false
+
+func _update_section_checkpoint(player: ExplorationPlayer) -> void:
+	var tier: int = _tier_of(player.global_position.y)
+	var milestone: int = mini(int(tier/2)*2,6)
+	if milestone<=_checkpoint_tier or milestone<=0:
+		return
+	_checkpoint_tier = milestone
+	var point := Vector2(clampf(player.global_position.x,260.0,1540.0),_tiers[milestone]-3.0)
+	session.save_tower_section(milestone,point)
+	var section: String = "第二段 · 战斗：完美回声不会跨段回血。" if milestone<6 else "第三段 · 选择：登顶面对守钟人。"
+	_notice("永久检查点 · 第 %d 层 / %s" % [milestone,section])
 
 func _settle() -> void:
 	if _settled:

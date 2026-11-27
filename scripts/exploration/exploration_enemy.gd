@@ -23,7 +23,11 @@ func _ready() -> void:
 	position = ExplorationCatalog.vec(spec["pos"])
 	_origin = position
 	if not boss:
-		data = ExplorationArt.actors()["enemies"][str(spec["type"])]
+		data = ExplorationArt.actors()["enemies"][str(spec["type"])].duplicate(true)
+		if bool(spec.get("practice",false)):
+			data["hp"] = 45
+			data["damage"] = 0
+			data["speed"] = minf(float(data["speed"]),28.0)
 	max_health = int(data["hp"])
 	health = max_health
 	collision_layer = 4
@@ -42,7 +46,9 @@ func _ready() -> void:
 		add_to_group("exploration_boss")
 
 func _physics_process(delta: float) -> void:
-	if dead:
+	# A room swap can detach an enemy after the physics list was built.  Never ask
+	# move_and_slide() to query a space after its room has left the scene tree.
+	if dead or not is_inside_tree():
 		return
 	var rate: float = .3 if session.slow_time > 0 else 1.0
 	var dt: float = delta*rate
@@ -142,6 +148,11 @@ func receive_hit(amount: int, origin: Vector2, _kind: String = "slash") -> void:
 	if str(data["behavior"]) == "guard" and (origin.x-global_position.x)*facing>0:
 		amount = maxi(1,amount/2)
 	health = maxi(0,health-amount)
+	if bool(spec.get("practice",false)) and not session.has("tutorial_practice_done"):
+		session.switches["tutorial_practice_done"] = true
+		var demo: Node = get_tree().get_first_node_in_group("exploration_demo")
+		if demo!=null:
+			demo.hud.toast("安全练习：连续按 J 完成三连击；这个蜡偶不会造成伤害。")
 	_flash = .12
 	stun = .10 if boss else .24
 	velocity.x = signf(global_position.x-origin.x)*(70 if boss else 190)

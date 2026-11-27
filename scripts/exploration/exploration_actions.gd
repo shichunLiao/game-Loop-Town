@@ -91,9 +91,12 @@ func _rotate_mirror(index: int) -> void:
 	if session.has("wax_seal"):
 		demo.hud.toast("光已经汇聚。那幅没有画完的画上，留着两个孩子的签名。")
 		return
-	session.mirrors[index] = (int(session.mirrors[index]) + 1) % 4
-	demo.get_node("/root/AudioManager").play_sfx("sfx_mirror_turn")
 	var solution: Array = ExplorationCatalog.data()["mirror_solution"]
+	# The etched scale is readable in Demo 9: one deliberate interaction aligns a
+	# mirror to its marked value instead of asking for repeated blind rotations.
+	session.mirrors[index] = int(solution[index])
+	demo.get_node("/root/AudioManager").play_sfx("sfx_mirror_turn")
+	demo.hud.toast("第 %d 面镜子已对准刻度 %d" % [index+1,int(solution[index])+1])
 	var solved: bool = true
 	for i: int in range(7):
 		if int(session.mirrors[i]) != int(solution[i]):

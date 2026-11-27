@@ -175,6 +175,9 @@ func _flow_mud(delta: float) -> void:
 func _sink_or_struggle(player: ExplorationPlayer, delta: float) -> void:
 	var depth: float = player.global_position.y-mud_y
 	player.mired = clampf(depth/DROWN_DEPTH,0,1)
+	if player.mired>.25 and not session.has("tutorial_mired"):
+		session.switches["tutorial_mired"] = true
+		_notice("泥深 %d%%：跳到高处；满深后会被拖走。" % roundi(player.mired*100))
 	_drown = _drown+delta if depth>=DROWN_DEPTH else maxf(0,_drown-delta*2)
 	if player.grip>0:
 		_gripped = true
@@ -207,6 +210,9 @@ func try_grab(x: float) -> bool:
 	if absf(player.global_position.x-x)>60 or player.global_position.y<minf(mud_y,floor_y)-24:
 		return false
 	player.grip = GRIP
+	if not session.has("tutorial_grip"):
+		session.switches["tutorial_grip"] = true
+		_notice("被抓住：连续按 A / D / Space，剩余次数显示在状态栏。")
 	_held = 0
 	_gripped = true
 	get_node("/root/AudioManager").play_sfx("sfx_hurt")
@@ -284,6 +290,9 @@ func _release(player: ExplorationPlayer) -> void:
 			get_parent().add_child(hand)
 	elif attack=="voice":
 		player.confused = 2.0
+		if not session.has("tutorial_confused"):
+			session.switches["tutorial_confused"] = true
+			_notice("反向状态：左右输入暂时颠倒；看状态栏倒计时。")
 		dark = 3.2
 		_notice(VOICES[pattern%VOICES.size()])
 		get_node("/root/AudioManager").play_sfx("sfx_ling_cry")
