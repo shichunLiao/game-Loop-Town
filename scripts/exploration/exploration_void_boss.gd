@@ -105,6 +105,9 @@ func _wake() -> void:
 	timer = 1.6
 	_set_fences(true)
 	_notice("沃伊德 · 你是不是想起来什么……")
+	if not echo:
+		# Encounter checkpoint just outside the curtain so a retry starts the fight.
+		session.save_at(session.room_id,Vector2(maxf(arena.x-90,60),floor_y-3))
 	get_node("/root/AudioManager").play_bell()
 	var xs: Array = [arena.x+110,arena.x+360,arena.y-330,arena.y-90]
 	for i: int in range(xs.size()):

@@ -381,6 +381,14 @@ func _begin_intro() -> void:
 	var demo: Node = get_tree().get_first_node_in_group("exploration_demo")
 	if demo == null:
 		return
+	# Encounter checkpoint (as Ling's fight already does): a failure retries the
+	# fight from here instead of the last lamp two black screens back in town.
+	if is_instance_valid(demo.player):
+		session.save_at(session.room_id,Vector2(clampf(demo.player.position.x,arena.x+120,arena.y-120),_floor-3))
+	if session.has("morris_intro_seen"):
+		demo.hud.toast("战前检查点 · 再来一次。留意状态栏的层数。",true)
+		return
+	session.switches["morris_intro_seen"] = true
 	demo.show_dialogue("梅·莫里", "杰利……你脸上的神情，和玲失踪之后一样。\n他是不是疯了？——不，是这座美术馆在疯。\n画里的人在笑。画框在裂。", [
 		{"label":"……准备战斗", "action": demo.close_overlay}
 	])

@@ -94,7 +94,7 @@ func _begin(player: ExplorationPlayer) -> void:
 		return
 	if session.tower_checkpoint_tier()==0:
 		session.save_at("clock_tower",ExplorationCatalog.vec((get_parent() as ExplorationRoom).data["spawn"]))
-	_notice("第一段 · 追逐：跟住守钟人；每两层会永久记录进度。",true)
+		_notice("第一段 · 追逐：跟住守钟人；每两层会永久记录进度。",true)
 
 ## Story 1.1: beaten by a perfect version, Jerry starts the whole climb over.
 func _on_player_died() -> void:

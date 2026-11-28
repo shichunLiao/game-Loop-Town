@@ -80,7 +80,7 @@ func _ready() -> void:
 	ability_label = label(root,Vector2(30,114),Vector2(830,28),"",13,Color("97b8bb"))
 	status_label = label(root,Vector2(250,554),Vector2(780,32),"",15,Color("f0b98b"))
 	status_label.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
-	realm_label = label(root,Vector2(30,140),Vector2(360,26),"",14,Color("e9d19c"))
+	realm_label = label(root,Vector2(30,176),Vector2(360,26),"",14,Color("e9d19c"))
 	set_realm("reality")
 	prompt_label = label(root,Vector2(200,595),Vector2(880,42),"",19,Color("f5e6c6"))
 	prompt_label.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
