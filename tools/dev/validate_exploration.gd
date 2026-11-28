@@ -380,7 +380,7 @@ func _check_well_traversal() -> void:
 		await frames(1)
 		waited += 1
 	check(demo.session.deaths>deaths_before,"A long well fall triggers death instead of skipping the descent")
-	while demo.mode!="play" or demo._death_pending:
+	while demo.mode!="play" or demo._death_pending or demo._fade.color.a>.01:
 		await frames(1)
 	await frames(10)
 	demo.load_room("well_interior")

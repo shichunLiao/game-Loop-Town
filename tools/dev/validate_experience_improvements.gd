@@ -69,9 +69,11 @@ func _run() -> void:
 	root.add_child(restored)
 	check(restored.restore() and int(restored.switches.get("tower_hp_echo_morris",0))==321,"Tower boss damage survives save round-trip and old-save schema remains loadable")
 
+	await _check_street_stairs()
 	await _check_practice_enemy()
 	await _check_route_and_realm()
 	await _check_in_place_return()
+	await _check_boss_checkpoint()
 	await _check_tower_sections()
 	_check_status_tips()
 
@@ -245,6 +247,26 @@ func _check_tower_sections() -> void:
 	check(demo.session.room_id=="clock_tower" and chase._tier_of(demo.player.global_position.y)==2,"Tower death respawns at the current section's checkpoint, not the base")
 	check(respawned_echo!=null and respawned_echo.health==damaged,"Echo boss keeps its damage across death/respawn (%d/%d)" % [respawned_echo.health if respawned_echo else -1,full])
 	check(respawn_ms<3000 and demo.hud.toast_label.text.contains("永久检查点"),"Tower respawn takes %d ms and names the checkpoint" % respawn_ms)
+	# A second, invulnerability-bypassing death (story defeat path) right after the
+	# respawn must still be processed instead of soft-locking a 0 HP player.
+	var deaths_before: int = demo.session.deaths
+	demo.player._invulnerability = 0
+	demo.player.take_damage(100)
+	await frames(2)
+	while demo.mode!="play":
+		await process_frame
+	await frames(3)
+	demo.player.health = 0
+	demo.player.enabled = false
+	demo.player.died.emit()
+	var guard: int = 0
+	await frames(2)
+	while (demo.mode!="play" or not demo.player.enabled) and guard<600:
+		await process_frame
+		guard += 1
+	check(demo.session.deaths==deaths_before+2 and demo.player.health==100 and demo.player.enabled,"A death during the respawn fade-in is still processed (no 0 HP soft-lock)")
+	await frames(30)
+	chase = _chase()
 	# Later sections: checkpoint 4 then 6 (choice), never backwards.
 	demo.player.grant_safe_window(3)
 	demo.player.position = Vector2(700,chase._tiers[4]-3)
@@ -278,3 +300,81 @@ func _check_status_tips() -> void:
 	player.cloth = ExplorationVoidBoss.CLOTH_LIMIT-1
 	check(player.status_text().contains("%d/%d" % [ExplorationVoidBoss.CLOTH_LIMIT-1,ExplorationVoidBoss.CLOTH_LIMIT]) and player.status_critical(),"Void cloth meter uses the real defeat threshold")
 	player.cloth = 0
+
+func _check_street_stairs() -> void:
+	# Holding A/D along a street must never be captured by a stair that dead-ends
+	# under a steep roof; the stairs stay reachable with a deliberate hop.
+	var rooms: Dictionary = ExplorationCatalog.data()["rooms"]
+	var walk_ok: bool = true
+	var hop_ok: bool = true
+	var checked: int = 0
+	for id: String in rooms:
+		for entry: Dictionary in rooms[id].get("street_access",[]):
+			if str(entry["kind"])!="stairs":
+				continue
+			checked += 1
+			var a: Array = entry["points"][0]
+			var b: Array = entry["points"][-1]
+			var low_x: float = float(a[0]) if float(a[1])>float(b[1]) else float(b[0])
+			var high_x: float = float(b[0]) if float(a[1])>float(b[1]) else float(a[0])
+			var dir: float = signf(high_x-low_x)
+			var floor_y: float = float(rooms[id]["floor"])
+			demo.mode = "play"
+			demo.hud.overlay.hide()
+			demo.load_room(id)
+			await frames(8)
+			demo.player.grant_safe_window(30)
+			demo.player.position = Vector2(low_x-dir*160,floor_y-3)
+			demo.player.velocity = Vector2.ZERO
+			await frames(4)
+			var action: String = "move_right" if dir>0 else "move_left"
+			Input.action_press(action)
+			var highest: float = floor_y
+			for index: int in range(150):
+				await physics_frame
+				highest = minf(highest,demo.player.position.y)
+				if absf(demo.player.position.x-high_x)<20 or demo._transitioning:
+					break
+			Input.action_release(action)
+			if highest<floor_y-12:
+				print("STAIR CAPTURE ",id," highest=",highest)
+				walk_ok = false
+			demo.player.position = Vector2(low_x+dir*40,floor_y-3)
+			demo.player.velocity = Vector2.ZERO
+			await frames(4)
+			Input.action_press("jump")
+			Input.action_press(action)
+			await frames(18)
+			Input.action_release("jump")
+			await frames(20)
+			Input.action_release(action)
+			await frames(20)
+			if not (demo.player.is_on_floor() and demo.player.position.y<floor_y-25):
+				print("STAIR HOP FAIL ",id," at ",demo.player.position)
+				hop_ok = false
+	check(checked>=4 and walk_ok,"Walking the street past %d stairways stays on the street (no roof dead-end)" % checked)
+	check(hop_ok,"Every stairway is still mounted with a deliberate hop")
+
+func _check_boss_checkpoint() -> void:
+	demo.session.reset()
+	demo.mode = "play"
+	demo.hud.overlay.hide()
+	demo.load_room("wax_museum","wax_lane--wax_museum_b")
+	demo._realm = "memory"
+	var waited: int = 0
+	while demo.mode=="play" and waited<240:
+		await physics_frame
+		waited += 1
+	check(demo.mode=="ending" and demo.session.checkpoint_room=="wax_museum","Mei's intro records an encounter checkpoint inside the museum")
+	demo.close_overlay()
+	await frames(10)
+	demo.player._invulnerability = 0
+	var started: int = Time.get_ticks_msec()
+	demo.player.take_damage(100)
+	await frames(2)
+	while demo.mode!="play" or demo._death_pending:
+		await process_frame
+	await frames(90)
+	var retry_ms: int = Time.get_ticks_msec()-started
+	check(demo.session.room_id=="wax_museum" and demo.mode=="play","Mei retry restarts in the museum without replaying the intro card (%d ms)" % retry_ms)
+	check(retry_ms<5000,"Mei retry returns control in under 5 s")
