@@ -15,6 +15,7 @@ extends SceneTree
 var _failures: int = 0
 var _passes: int = 0
 var _logged_active: bool = false
+var _finishing: bool = false
 
 
 func _initialize() -> void:
@@ -182,7 +183,7 @@ func _test_attack(player: CharacterBody2D) -> void:
 	var max_overlaps := 0
 	var hit_landed_count := 0
 	if hit_box.has_signal("hit_landed"):
-		hit_box.connect("hit_landed", func(_target: Node, _info: Resource) -> void:
+		hit_box.connect("hit_landed", func(_target, _info) -> void:
 			hit_landed_count += 1
 		)
 	for i in 40:
@@ -324,6 +325,19 @@ func _fail(message: String) -> void:
 
 
 func _finish() -> void:
+	if _finishing:
+		return
+	_finishing = true
 	print("")
 	print("=== 集成实测结束：通过 %d 项，失败 %d 项 ===" % [_passes, _failures])
+	_finish_async.call_deferred()
+
+func _finish_async() -> void:
+	current_scene = null
+	for node: Node in get_nodes_in_group(&"map"):
+		node.queue_free()
+	await process_frame
+	await process_frame
+	root.get_node("AudioManager").stop_all()
+	OS.delay_msec(80)
 	quit(0 if _failures == 0 else 1)

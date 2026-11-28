@@ -196,4 +196,12 @@ func _run() -> void:
 	await shot("cast")
 
 	print("V9_ART_QA %d passed, %d failed" % [passes,failures.size()])
+	current_scene = null
+	demo.queue_free()
+	await process_frame
+	await process_frame
+	ExplorationArt._animation_frames.clear()
+	ExplorationArt._textures.clear()
+	root.get_node("AudioManager").stop_all()
+	OS.delay_msec(80)
 	quit(1 if failures.size()>0 else 0)

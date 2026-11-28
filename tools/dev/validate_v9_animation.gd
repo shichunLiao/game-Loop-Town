@@ -137,8 +137,11 @@ func _run() -> void:
 	demo.player._attack_timer = .7
 	advance(demo.player.visual,"fury_punch")
 	print("V9_ANIMATION_QA %d passed, %d failed" % [passed,failures.size()])
+	current_scene = null
 	demo.queue_free()
 	await frames(3)
 	ExplorationArt._animation_frames.clear()
 	ExplorationArt._textures.clear()
+	root.get_node("AudioManager").stop_all()
+	OS.delay_msec(80)
 	quit(1 if not failures.is_empty() else 0)

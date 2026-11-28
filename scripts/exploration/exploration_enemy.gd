@@ -48,7 +48,7 @@ func _ready() -> void:
 func _physics_process(delta: float) -> void:
 	# A room swap can detach an enemy after the physics list was built.  Never ask
 	# move_and_slide() to query a space after its room has left the scene tree.
-	if dead or not is_inside_tree():
+	if dead or not is_inside_tree() or not PhysicsServer2D.body_get_space(get_rid()).is_valid():
 		return
 	var rate: float = .3 if session.slow_time > 0 else 1.0
 	var dt: float = delta*rate
@@ -105,6 +105,9 @@ func _physics_process(delta: float) -> void:
 				facing = -facing
 	var saved_velocity: Vector2 = velocity
 	velocity *= rate
+	# A scripted room swap may happen mid-physics after the entry guard above.
+	if not PhysicsServer2D.body_get_space(get_rid()).is_valid():
+		return
 	move_and_slide()
 	velocity = Vector2(saved_velocity.x,0 if is_on_floor() else saved_velocity.y)
 	if is_on_wall():

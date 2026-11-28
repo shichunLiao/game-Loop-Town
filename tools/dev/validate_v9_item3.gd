@@ -26,8 +26,13 @@ func run() -> void:
 		for i: int in range(3):
 			await process_frame
 		check(demo.room.room_id==room_id,"room instantiates: "+room_id)
+	current_scene = null
 	demo.queue_free()
 	await process_frame
 	await process_frame
+	ExplorationArt._animation_frames.clear()
+	ExplorationArt._textures.clear()
+	root.get_node("AudioManager").stop_all()
+	OS.delay_msec(80)
 	print("ITEM3 failures: ",failures)
 	quit(0 if failures==0 else 1)
