@@ -16,5 +16,4 @@ func _process(delta: float) -> void:
 
 func _draw() -> void:
 	if focused:
-		draw_circle(Vector2(0,-92),12,Color("17232b"))
-		draw_string(_font,Vector2(-5,-86),"E",HORIZONTAL_ALIGNMENT_LEFT,-1,16,Color("e9dcc0"))
+		ExplorationVisualProfile.draw_guidance(self,_font,Vector2(0,-92))

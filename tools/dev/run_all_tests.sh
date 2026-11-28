@@ -16,6 +16,7 @@ SUITES=(
   validate_transition validate_exploration validate_experience_improvements
   validate_v9_art validate_v9_museum_mid validate_v9_item3 validate_v9_item4
   validate_v9_item5 validate_v9_item6 validate_v9_animation
+  validate_visual_pass validate_visual_system
 )
 
 failed=0

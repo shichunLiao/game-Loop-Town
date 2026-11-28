@@ -31,6 +31,12 @@ func _ready() -> void:
 	add_child(exterior)
 	facade_material = ShaderMaterial.new()
 	facade_material.shader = load("res://assets/environments/exploration/architecture/window_lights.gdshader") as Shader
+	var profile := ExplorationVisualProfile.room_profile(room.room_id)
+	facade_material.set_shader_parameter("depth_contrast",profile["mid_contrast"])
+	facade_material.set_shader_parameter("depth_saturation",profile["mid_saturation"])
+	facade_material.set_shader_parameter("depth_brightness",profile["mid_brightness"])
+	facade_material.set_shader_parameter("fog_color",profile["fog_color"])
+	facade_material.set_shader_parameter("fog_strength",profile["mid_fog"])
 	exterior.material = facade_material
 	_window_offset = Vector2(width*.25,-height*.29)
 	if bool(spec["enterable"]):

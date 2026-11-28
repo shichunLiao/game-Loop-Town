@@ -126,8 +126,7 @@ func _draw() -> void:
 		draw_colored_polygon(PackedVector2Array([Vector2(0,-71+bob),Vector2(13,-51+bob),Vector2(0,-30+bob),Vector2(-13,-51+bob)]), accent)
 		draw_arc(Vector2(0,-51+bob), 23, _clock*.3, _clock*.3 + PI*1.6, 28, Color(accent,.65), 1.5, true)
 	if focused:
-		draw_circle(Vector2(0, -197 if kind in ["exit","checkpoint"] else -137), 13, Color("18242a"))
-		draw_string(_font, Vector2(-5, -191 if kind in ["exit","checkpoint"] else -131), "E", HORIZONTAL_ALIGNMENT_LEFT,-1,17,Color("d8e6db"))
+		ExplorationVisualProfile.draw_guidance(self,_font,Vector2(0,-197 if kind in ["exit","checkpoint"] else -137))
 
 func _mirror_style(correct: bool) -> StyleBoxFlat:
 	var style := StyleBoxFlat.new()

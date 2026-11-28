@@ -1,0 +1,65 @@
+{
+  "method": "sRGB luma; fixed actor/context boxes; mean local 4-neighbour edge delta",
+  "scenes": {
+    "clock_tower": {
+      "after": {
+        "actor_edge": 20.41,
+        "actor_luma": 47.37,
+        "context_edge": 8.6,
+        "context_luma": 31.04,
+        "edge_separation": 11.81,
+        "luma_gap": 16.33
+      },
+      "before": {
+        "actor_edge": 21.02,
+        "actor_luma": 52.4,
+        "context_edge": 9.88,
+        "context_luma": 36.86,
+        "edge_separation": 11.14,
+        "luma_gap": 15.54
+      },
+      "edge_separation_gain": 0.67,
+      "luma_gap_gain": 0.79
+    },
+    "town_entrance": {
+      "after": {
+        "actor_edge": 20.33,
+        "actor_luma": 50.95,
+        "context_edge": 16.44,
+        "context_luma": 71.8,
+        "edge_separation": 3.89,
+        "luma_gap": 20.85
+      },
+      "before": {
+        "actor_edge": 20.04,
+        "actor_luma": 53.4,
+        "context_edge": 16.22,
+        "context_luma": 73.06,
+        "edge_separation": 3.82,
+        "luma_gap": 19.67
+      },
+      "edge_separation_gain": 0.07,
+      "luma_gap_gain": 1.18
+    },
+    "wax_museum": {
+      "after": {
+        "actor_edge": 17.62,
+        "actor_luma": 55.14,
+        "context_edge": 5.67,
+        "context_luma": 43.53,
+        "edge_separation": 11.95,
+        "luma_gap": 11.6
+      },
+      "before": {
+        "actor_edge": 17.26,
+        "actor_luma": 57.23,
+        "context_edge": 5.84,
+        "context_luma": 44.73,
+        "edge_separation": 11.42,
+        "luma_gap": 12.5
+      },
+      "edge_separation_gain": 0.53,
+      "luma_gap_gain": -0.9
+    }
+  }
+}

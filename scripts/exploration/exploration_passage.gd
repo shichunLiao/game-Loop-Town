@@ -137,8 +137,7 @@ func _draw() -> void:
 	draw_arc(Vector2(-112,-61),18,0,TAU,20,Color("c2a26b"),3,true)
 	draw_line(Vector2(-112,-61),Vector2(-112,-61)+Vector2.from_angle(-2.4+_blend*2.8)*27,Color("c2a26b"),5,true)
 	if focused and not unlocked:
-		draw_circle(Vector2(-112,-104),12,Color("14262d"))
-		draw_string(_font,Vector2(-117,-98),"E",HORIZONTAL_ALIGNMENT_LEFT,-1,16,Color("ecdbb4"))
+		ExplorationVisualProfile.draw_guidance(self,_font,Vector2(-112,-104))
 
 func _draw_street_door() -> void:
 	var face: Texture2D = ExplorationArt.sprite("masonry_tiles_v7",0,"masonry")
@@ -159,5 +158,4 @@ func _draw_street_door() -> void:
 		draw_line(Vector2(-15,-73),Vector2(15,-73),Color("9fcab9"),2,true)
 		draw_line(Vector2(15,-73),Vector2(4,-82),Color("9fcab9"),2,true)
 	if focused:
-		draw_circle(Vector2(0,-273),12,Color("17242a"))
-		draw_string(_font,Vector2(-5,-267),"E",HORIZONTAL_ALIGNMENT_LEFT,-1,16,Color("e2d9ba"))
+		ExplorationVisualProfile.draw_guidance(self,_font,Vector2(0,-273))

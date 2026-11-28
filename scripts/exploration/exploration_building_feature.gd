@@ -50,6 +50,4 @@ func _draw() -> void:
 			draw_circle(Vector2(0,-43),3,Color("bfe9dc"))
 	if focused:
 		var height: float = -29 if feature == "window" else -82 if feature == "door" else -54
-		draw_circle(Vector2(0,height),12,Color("17232b"))
-		draw_arc(Vector2(0,height),12,0,TAU,20,Color("c9b687"),1,true)
-		draw_string(_font,Vector2(-5,height+6),"E",HORIZONTAL_ALIGNMENT_LEFT,-1,16,Color("e9dcc0"))
+		ExplorationVisualProfile.draw_guidance(self,_font,Vector2(0,height))

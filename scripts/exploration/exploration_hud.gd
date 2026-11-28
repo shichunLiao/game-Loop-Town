@@ -28,6 +28,7 @@ var control_label: Label
 var status_label: Label
 var realm_label: Label
 var realm: String = "reality"
+var _last_layout_size: Vector2 = Vector2.ZERO
 
 func _ready() -> void:
 	layer = 20
@@ -41,6 +42,7 @@ func _ready() -> void:
 	root.theme = theme
 	add_child(root)
 	location_label = label(root,Vector2(30,24),Vector2(550,38),"",27,Color("eee2c6"))
+	_add_label_backing(location_label,Color(0.025,0.035,0.04,.76),Color(0.33,0.30,0.24,.72),Vector2(10,3))
 	health = ProgressBar.new()
 	health.position = Vector2(98,72)
 	health.size = Vector2(216,12)
@@ -72,10 +74,11 @@ func _ready() -> void:
 	boss_health.add_theme_stylebox_override("fill",panel_style(Color("b46f48"),Color("dbad6b")))
 	root.add_child(boss_health)
 	boss_health.hide()
-	objective_label = label(root,Vector2(680,24),Vector2(565,70),"",15,Color("d4cab4"))
+	objective_label = label(root,Vector2(760,24),Vector2(485,58),"",14,Color("d4cab4"))
 	objective_label.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
 	objective_label.horizontal_alignment = HORIZONTAL_ALIGNMENT_RIGHT
-	counter_label = label(root,Vector2(680,104),Vector2(565,28),"",13,Color("a8c2c1"))
+	_add_label_backing(objective_label,Color(0.025,0.035,0.04,.68),Color(0.30,0.28,0.23,.58),Vector2(9,3))
+	counter_label = label(root,Vector2(835,88),Vector2(410,24),"",12,Color("a8c2c1"))
 	counter_label.horizontal_alignment = HORIZONTAL_ALIGNMENT_RIGHT
 	ability_label = label(root,Vector2(30,114),Vector2(830,28),"",13,Color("97b8bb"))
 	status_label = label(root,Vector2(250,554),Vector2(780,32),"",15,Color("f0b98b"))
@@ -84,10 +87,11 @@ func _ready() -> void:
 	set_realm("reality")
 	prompt_label = label(root,Vector2(200,595),Vector2(880,42),"",19,Color("f5e6c6"))
 	prompt_label.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+	_add_label_backing(prompt_label,Color(0.02,0.028,0.03,.82),Color(0.50,0.42,0.28,.74),Vector2(12,3))
 	control_label = label(root,Vector2(30,683),Vector2(1220,26),"",13,Color("9cbbb9"))
-	direction_label = label(root,Vector2(800,142),Vector2(445,38),"",14,Color("e4c88f"))
+	direction_label = label(root,Vector2(845,122),Vector2(400,32),"",13,Color("e4c88f"))
 	direction_label.horizontal_alignment = HORIZONTAL_ALIGNMENT_RIGHT
-	toast_label = label(root,Vector2(240,140),Vector2(800,48),"",18,Color("e9d19c"))
+	toast_label = label(root,Vector2(300,136),Vector2(680,44),"",16,Color("e9d19c"))
 	toast_label.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 	toast_label.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
 	overlay = Control.new()
@@ -95,6 +99,45 @@ func _ready() -> void:
 	overlay.mouse_filter = Control.MOUSE_FILTER_STOP
 	root.add_child(overlay)
 	overlay.hide()
+	_layout_viewport(Vector2(1280,720))
+
+static func hud_layout(viewport: Vector2, boss_active: bool = false, prompt_width: float = 520.0) -> Dictionary:
+	var width := clampf(prompt_width,280.0,minf(620.0,viewport.x-80.0))
+	return {
+		"objective":Rect2(viewport.x-520,20,490,64),
+		"counter":Rect2(viewport.x-450,92,420,23),
+		"direction":Rect2(viewport.x-450,122,420,28),
+		"toast":Rect2((viewport.x-620)*.5,148,620,42),
+		"prompt":Rect2((viewport.x-width)*.5,viewport.y-(171 if boss_active else 125),width,38),
+		"controls":Rect2(30,viewport.y-37,viewport.x-60,25),
+		"boss_label":Rect2((viewport.x-600)*.5,viewport.y-112,600,30),
+		"boss_health":Rect2((viewport.x-550)*.5,viewport.y-71,550,12)
+	}
+
+func _layout_viewport(viewport: Vector2, boss_active: bool = false) -> void:
+	if viewport.x<640 or viewport.y<360:
+		return
+	var prompt_width := 520.0
+	if prompt_label!=null and not prompt_label.text.is_empty() and _font!=null:
+		prompt_width = _font.get_string_size(prompt_label.text,HORIZONTAL_ALIGNMENT_LEFT,-1,19).x+52.0
+	var layout := hud_layout(viewport,boss_active,prompt_width)
+	objective_label.position = (layout.objective as Rect2).position
+	objective_label.size = (layout.objective as Rect2).size
+	counter_label.position = (layout.counter as Rect2).position
+	counter_label.size = (layout.counter as Rect2).size
+	direction_label.position = (layout.direction as Rect2).position
+	direction_label.size = (layout.direction as Rect2).size
+	toast_label.position = (layout.toast as Rect2).position
+	toast_label.size = (layout.toast as Rect2).size
+	prompt_label.position = (layout.prompt as Rect2).position
+	prompt_label.size = (layout.prompt as Rect2).size
+	control_label.position = (layout.controls as Rect2).position
+	control_label.size = (layout.controls as Rect2).size
+	boss_label.position = (layout.boss_label as Rect2).position
+	boss_label.size = (layout.boss_label as Rect2).size
+	boss_health.position = (layout.boss_health as Rect2).position
+	boss_health.size = (layout.boss_health as Rect2).size
+	_last_layout_size = viewport
 
 func label(host: Node, pos: Vector2, dimensions: Vector2, text: String, font_size: int = 18, color: Color = Color.WHITE) -> Label:
 	var node := Label.new()
@@ -132,6 +175,16 @@ func panel_style(fill: Color, border: Color) -> StyleBoxFlat:
 	style.set_border_width_all(1)
 	style.set_corner_radius_all(3)
 	return style
+
+func _add_label_backing(node: Label, fill: Color, border: Color, padding: Vector2) -> void:
+	var style := panel_style(fill,border)
+	style.content_margin_left = padding.x
+	style.content_margin_right = padding.x
+	style.content_margin_top = padding.y
+	style.content_margin_bottom = padding.y
+	node.add_theme_stylebox_override("normal",style)
+	node.add_theme_color_override("font_outline_color",Color(0.01,0.012,0.014,.96))
+	node.add_theme_constant_override("outline_size",1)
 
 func clear_overlay() -> void:
 	for child: Node in overlay.get_children():
@@ -179,27 +232,27 @@ func show_map(overview: bool = false) -> void:
 
 func show_dialogue(title: String, text: String, choices: Array = []) -> void:
 	clear_overlay()
-	shade(.64)
+	shade(.34)
 	var panel := Panel.new()
-	panel.position = Vector2(235,117)
-	panel.size = Vector2(810,485)
-	panel.add_theme_stylebox_override("panel",panel_style(Color("101f25"),Color("9c8c69")))
+	panel.position = Vector2(190,355)
+	panel.size = Vector2(900,300)
+	panel.add_theme_stylebox_override("panel",panel_style(Color(0.035,0.07,0.075,.96),Color("9c8c69")))
 	overlay.add_child(panel)
-	label(panel,Vector2(35,26),Vector2(740,48),title,28,Color("e7cf9f"))
+	label(panel,Vector2(32,19),Vector2(830,38),title,25,Color("e7cf9f"))
 	var body := RichTextLabel.new()
-	body.position = Vector2(35,86)
-	body.size = Vector2(740,310)
+	body.position = Vector2(32,64)
+	body.size = Vector2(836,145)
 	body.text = text
 	body.add_theme_font_size_override("normal_font_size",18)
 	body.add_theme_color_override("default_color",Color("d8e3d9"))
 	body.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
 	panel.add_child(body)
 	if choices.is_empty():
-		button(panel,Vector2(525,421),Vector2(245,42),"继续  E / Space",controller.close_overlay)
+		button(panel,Vector2(623,232),Vector2(245,40),"继续  E / Space",controller.close_overlay)
 	else:
 		for i: int in range(choices.size()):
 			var choice: Dictionary = choices[i]
-			var option: Button = button(panel,Vector2(35+i*370,421),Vector2(350,42),str(choice["label"]),choice["action"])
+			var option: Button = button(panel,Vector2(32+i*420,232),Vector2(400,40),str(choice["label"]),choice["action"])
 			if i==0:
 				option.grab_focus()
 
@@ -345,7 +398,7 @@ func _process(delta: float) -> void:
 	var session: ExplorationSession = controller.session
 	location_label.text = ExplorationCatalog.title(session.room_id)
 	var objective: Dictionary = ExplorationJournal.target(session)
-	objective_label.text = "[ L 任务 ] "+str(objective["title"])+"\n"+str(objective["text"])
+	objective_label.text = str(objective["title"])+"\n"+str(objective["text"])
 	var practice: bool = get_node("/root/SaveManager").exploration_slot_name=="exploration_boss_practice"
 	if practice:
 		objective_label.text = "梅·莫里演练 · 观察预警，利用收招反击\n跳过突进，绕到横扫背后，离开地刺与颜料雨标记。"
@@ -363,13 +416,14 @@ func _process(delta: float) -> void:
 	for id: String in session.visited:
 		if bool(ExplorationCatalog.room(id).get("main_region",true)):
 			main_count += 1
-	counter_label.text = "回溯 %d 次   ·   印记 %d / 3   ·   记忆 %d   ·   主区 %d / 18   ·   全图 69" % [session.loop_count,session.seal_count(),session.memory_count(),main_count]
+	counter_label.text = "回溯 %d · 印记 %d/3 · 记忆 %d · 主区 %d/18" % [session.loop_count,session.seal_count(),session.memory_count(),main_count]
 	var abilities: Array[String] = []
 	abilities.append("J "+str(ExplorationWeapon.profile(session)["name"])+" · 三连击"+(" / K 阶段技能" if session.has("scissors") else ""))
 	for pair: Array in [["double_jump","二段跳"],["vine","W/S 攀爬"],["dash","Shift 冲刺"],["time_slow","Q 缓时"]]:
 		if session.has(str(pair[0])):
 			abilities.append(str(pair[1]))
 	ability_label.text = "  /  ".join(abilities)
+	ability_label.visible = abilities.size()>1
 	if is_instance_valid(controller.player):
 		status_label.text = controller.player.status_text()
 		status_label.visible = not status_label.text.is_empty()
@@ -379,6 +433,7 @@ func _process(delta: float) -> void:
 		else:
 			status_label.add_theme_color_override("font_color",Color("f0b98b"))
 		control_label.text = _visible_controls(session)
+		control_label.visible = _toast_time<=0.0
 		health.value = controller.player.health
 		energy.value = controller.player.energy
 		health.tooltip_text = "%d / 100" % controller.player.health
@@ -391,14 +446,15 @@ func _process(delta: float) -> void:
 				nearest = str(block["name"])
 		block_label.text = nearest
 	# The clock tower can hold a sleeping boss and an awake one at the same time.
+	prompt_label.visible = not prompt_label.text.is_empty()
 	var boss: Node
 	for candidate: Node in get_tree().get_nodes_in_group("exploration_boss"):
 		if not candidate.dead and candidate.state!="sleep":
 			boss = candidate
 			break
 	var show_boss: bool = boss != null and controller.mode=="play"
-	# The boss bar sits where prompts sit; a prompt during a fight may be all that saves Jerry.
-	prompt_label.position.y = 549.0 if show_boss else 595.0
+	var viewport_size := root.size if root.size.x>=640 else Vector2(1280,720)
+	_layout_viewport(viewport_size,show_boss)
 	boss_health.visible = show_boss
 	boss_label.visible = show_boss
 	if show_boss:
@@ -437,5 +493,5 @@ func set_realm(next_realm: String) -> void:
 		realm_label.text = "◇ 记忆世界 · 画面偏青"
 		realm_label.add_theme_color_override("font_color",Color("b9d8e0"))
 	else:
-		realm_label.text = "● 现实 · 回环镇"
+		realm_label.text = ""
 		realm_label.add_theme_color_override("font_color",Color("e9d19c"))

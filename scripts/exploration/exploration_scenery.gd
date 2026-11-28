@@ -3,9 +3,11 @@ extends Node2D
 ## Both planes are anchored to the level, never to the camera.
 
 var data: Dictionary
+var _profile: Dictionary
 
 func _ready() -> void:
 	z_index = -32
+	_profile = ExplorationVisualProfile.room_profile(str(data.get("id","")))
 	if bool(data.get("interior",false)):
 		var wall := Sprite2D.new()
 		wall.texture = ExplorationArt.sprite(str(data["interior_art"]),-1,"interiors")
@@ -14,6 +16,7 @@ func _ready() -> void:
 			wall.scale = Vector2(2300,1050)/wall.texture.get_size()
 			wall.position = Vector2(1150,515)
 			wall.modulate = Color(.69,.77,.78)
+			wall.material = ExplorationVisualProfile.atmosphere(_profile,"far")
 		add_child(wall)
 		# Vary indoor furnishings as physical, independently arranged landmarks.
 		for i: int in range(3):
@@ -25,6 +28,7 @@ func _ready() -> void:
 			prop.scale = Vector2.ONE*h/prop.texture.get_height()
 			prop.position = Vector2(500+i*600,960-h*.5)
 			prop.modulate = Color(.65,.72,.71)
+			prop.material = ExplorationVisualProfile.atmosphere(_profile,"mid")
 			add_child(prop)
 		for p: Dictionary in data["platforms"]:
 			if not bool(p.get("one_way",false)):
@@ -56,7 +60,7 @@ func _ready() -> void:
 			silhouette.modulate = Color(.48,.63,.68,1) if str(data["theme"])!="fire" else Color(.59,.42,.34,1)
 			var solid := ShaderMaterial.new()
 			solid.shader = load("res://assets/environments/exploration/architecture/opaque_scenery.gdshader") as Shader
-			silhouette.material = solid
+			silhouette.material = ExplorationVisualProfile.atmosphere(_profile,"mid")
 			add_child(silhouette)
 	queue_redraw()
 
@@ -73,9 +77,7 @@ func _build_vertical() -> void:
 		prop.position.y += ExplorationArt.foot_gap(str(entry["asset"]),int(entry["cell"]))*prop.scale.y
 		prop.flip_h = bool(entry.get("flip",false))
 		prop.modulate = Color(.68,.76,.76,1)
-		var solid := ShaderMaterial.new()
-		solid.shader = load("res://assets/environments/exploration/architecture/opaque_scenery.gdshader") as Shader
-		prop.material = solid
+		prop.material = ExplorationVisualProfile.atmosphere(_profile,"mid")
 		add_child(prop)
 	queue_redraw()
 
