@@ -82,8 +82,13 @@ func run() -> void:
 	await process_frame
 	demo.defeat("torn", "结局 · 被撕碎", "test")
 	check(bool(demo.session.has("ending_torn")), "defeat flag torn")
+	current_scene = null
 	demo.queue_free()
 	await process_frame
 	await process_frame
+	ExplorationArt._animation_frames.clear()
+	ExplorationArt._textures.clear()
+	root.get_node("AudioManager").stop_all()
+	OS.delay_msec(80)
 	print("ITEM5 failures: ", failures)
 	quit(0 if failures == 0 else 1)

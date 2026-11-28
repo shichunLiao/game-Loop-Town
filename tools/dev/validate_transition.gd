@@ -3,6 +3,7 @@ extends SceneTree
 ## 换图实测（临时）：验证「走过出口 → 切到下一张地图 → 内容重新生成」这条链路。
 
 var _failures: int = 0
+var _finishing: bool = false
 
 
 func _initialize() -> void:
@@ -106,6 +107,15 @@ func _run() -> void:
 				"换图后只有 1 个玩家（没有重复生成）")
 			break
 	_check(switched, "走过出口能触发换图")
+	# Map id changes before fade_in finishes.  Let the real transition coroutine
+	# settle so teardown never strands a Tween/GDScriptFunctionState.
+	while bool(gm.get("_transitioning")):
+		await process_frame
+	var screen: Node = root.get_node("ScreenTransition")
+	while bool(screen.get("_busy")):
+		await process_frame
+	for index: int in range(3):
+		await process_frame
 	_finish()
 
 
@@ -131,6 +141,37 @@ func _fail(message: String) -> void:
 
 
 func _finish() -> void:
+	if _finishing:
+		return
+	_finishing = true
 	print("")
 	print("=== 换图实测结束：失败 %d 项 ===" % _failures)
+	_finish_async.call_deferred()
+
+func _finish_async() -> void:
+	current_scene = null
+	var gm: Node = root.get_node_or_null("GameManager")
+	if gm!=null:
+		var active_map: Node = gm.get("_current_map") as Node
+		if is_instance_valid(active_map):
+			active_map.queue_free()
+		gm.set("_current_map",null)
+		var game_hud: Node = gm.get("_game_hud") as Node
+		if is_instance_valid(game_hud):
+			game_hud.queue_free()
+		gm.set("_game_hud",null)
+	for node: Node in get_nodes_in_group(&"map"):
+		node.queue_free()
+	await process_frame
+	await process_frame
+	await process_frame
+	var audio: Node = root.get_node("AudioManager")
+	audio.stop_all()
+	audio.set("_stream_cache",{})
+	root.get_node("MapRegistry").set("_cache",{})
+	var memory: Node = root.get_node("MemoryManager")
+	memory.set("_all",[])
+	memory.set("_by_id",{})
+	root.get_node("WorldStateManager").set("current_profile",null)
+	OS.delay_msec(80)
 	quit(0 if _failures == 0 else 1)

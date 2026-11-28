@@ -29,4 +29,12 @@ func _run() -> void:
 			root.get_viewport().get_texture().get_image().save_png('res://docs/exploration-demo/v9-museum-mid-'+id+'.png')
 		print('PASS museum room loads: ',id)
 	print('V9_MUSEUM_MID_QA: 8 atlas cells and 3 rooms passed')
+	current_scene = null
+	demo.queue_free()
+	await process_frame
+	await process_frame
+	ExplorationArt._animation_frames.clear()
+	ExplorationArt._textures.clear()
+	root.get_node("AudioManager").stop_all()
+	OS.delay_msec(80)
 	quit()

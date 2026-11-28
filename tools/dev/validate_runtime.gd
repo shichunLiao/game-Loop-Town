@@ -27,6 +27,7 @@ const MAP_SCENES: Array[String] = [
 
 var _failures: int = 0
 var _map_index: int = 0
+var _finishing: bool = false
 
 
 func _initialize() -> void:
@@ -172,6 +173,19 @@ func _fail(message: String) -> void:
 
 
 func _finish() -> void:
+	if _finishing:
+		return
+	_finishing = true
 	print("")
 	print("=== 校验结束：失败 %d 项 ===" % _failures)
+	_finish_async.call_deferred()
+
+func _finish_async() -> void:
+	current_scene = null
+	for node: Node in get_nodes_in_group(&"map"):
+		node.queue_free()
+	await process_frame
+	await process_frame
+	root.get_node("AudioManager").stop_all()
+	OS.delay_msec(80)
 	quit(0 if _failures == 0 else 1)

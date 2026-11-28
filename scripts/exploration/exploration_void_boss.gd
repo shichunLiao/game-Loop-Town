@@ -40,6 +40,8 @@ func _ready() -> void:
 		phase_title = "完美版本"
 		boss_title = str(spec.get("label",boss_title))
 		modulate = Color(.86,.9,1)
+		if session.switches.has("tower_hp_"+str(spec["id"])):
+			health = clampi(int(session.switches["tower_hp_"+str(spec["id"])]),1,max_health)
 
 func hand_position() -> Vector2:
 	return global_position+Vector2(facing*34,-150)
@@ -103,6 +105,9 @@ func _wake() -> void:
 	timer = 1.6
 	_set_fences(true)
 	_notice("沃伊德 · 你是不是想起来什么……")
+	if not echo:
+		# Encounter checkpoint just outside the curtain so a retry starts the fight.
+		session.save_at(session.room_id,Vector2(maxf(arena.x-90,60),floor_y-3))
 	get_node("/root/AudioManager").play_bell()
 	var xs: Array = [arena.x+110,arena.x+360,arena.y-330,arena.y-90]
 	for i: int in range(xs.size()):
@@ -211,6 +216,8 @@ func receive_hit(amount: int, _origin_value: Vector2, _kind: String = "slash") -
 		return
 	# Threads hold him together: each cut leaves him softer to the blade.
 	health = maxi(0,health-maxi(1,roundi(amount*(.4+.15*cuts))))
+	if echo:
+		session.switches["tower_hp_"+str(spec["id"])] = health
 	_flash = .11
 	get_node("/root/AudioManager").play_sfx("sfx_hurt")
 	if health<=0:
@@ -240,7 +247,9 @@ func _die() -> void:
 	_set_fences(false)
 	if echo:
 		session.switches[str(spec["id"])] = true
+		session.switches.erase("tower_hp_"+str(spec["id"]))
 		session.changed.emit()
+		session.save()
 	else:
 		session.switches["defeated_void"] = true
 		session.acquire("boss_void")

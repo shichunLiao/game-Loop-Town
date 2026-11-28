@@ -1,0 +1,3 @@
+# Extended regexes for engine ERROR lines that run_all_tests.sh may ignore.
+# Keep empty unless an error is proven to be harmless engine/headless noise;
+# every entry needs a comment explaining why.

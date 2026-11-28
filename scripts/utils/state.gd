@@ -39,12 +39,9 @@ func handle_input(_event: InputEvent) -> StringName:
 	return &""
 
 
-## 该状态的名字，默认取脚本文件名（snake_case）。
+## 状态名以节点名为准；工厂会复用 enemy_idle.gd 等脚本，但节点仍叫 idle。
 func get_state_name() -> StringName:
-	var script := get_script() as Script
-	if script == null:
-		return &""
-	return StringName(script.resource_path.get_file().get_basename())
+	return StringName(name)
 
 
 ## 便捷访问宿主的常用能力（宿主必须实现对应方法，否则返回安全默认值）。

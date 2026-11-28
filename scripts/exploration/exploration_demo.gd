@@ -26,6 +26,13 @@ var _story_slot: String = "exploration_v2"
 var _starting_practice: bool = false
 var _defeat: Dictionary = {}
 var _caption: Label
+var _death_pending: bool = false
+var _realm: String = "reality"
+
+const SPIRIT_ROOMS: Array[String] = [
+	"wax_museum", "wax_basement", "old_theater", "back_stage",
+	"clock_tower", "clock_top", "well_interior"
+]
 
 func _ready() -> void:
 	add_to_group("exploration_demo")
@@ -88,13 +95,24 @@ func start_game(continue_game: bool = false, initial_room: String = "") -> void:
 	hud.overlay.hide()
 	mode = "play"
 	load_room(session.room_id)
+	_realm = _room_realm(session.room_id)
+	hud.set_realm(_realm)
+	hud.root.modulate.a = 1.0
 	if continue_game:
 		player.position = session.checkpoint
 		camera.reset_smoothing()
+	else:
+		hud.toast("先试四件事：A/D 移动 · E 调查 · Space 跳跃 · J 攻击。其他操作会在需要时出现。",true)
 
 func request_room(id: String, source_exit: String = "") -> void:
 	if _transitioning:
 		return
+	var route: Dictionary = _compressed_route(session.room_id,id,source_exit)
+	id = str(route.get("target",id))
+	source_exit = str(route.get("arrival_exit",source_exit))
+	var note: String = str(route.get("note",""))
+	if not note.is_empty():
+		hud.toast(note)
 	_transitioning = true
 	_load_deferred.call_deferred(id,source_exit)
 
@@ -121,14 +139,28 @@ func leave_building() -> void:
 
 func _load_deferred(id: String, source_exit: String) -> void:
 	_set_playing(false)
-	await _fade_to(.8,.12)
+	var next_realm: String = _room_realm(id)
+	var crossing: bool = next_realm != _realm
+	if crossing:
+		await _realm_shift(next_realm)
+	else:
+		await _fade_to(.8,.12)
 	load_room(id,source_exit)
-	await _fade_to(0,.14)
+	await _fade_to(0,.45 if crossing else .14)
+	_realm = next_realm
+	hud.set_realm(_realm)
+	_restore_hud_alpha()
 	_transitioning = false
 	_set_playing(mode=="play")
+	if is_instance_valid(player):
+		player.grant_safe_window(.5)
 
 func load_room(id: String, source_exit: String = "") -> void:
 	if is_instance_valid(room):
+		# Remove physics actors from the scheduler before detaching their room.  This
+		# also protects validator/debug teleports that intentionally swap rooms fast.
+		for body: Node in room.find_children("*","CharacterBody2D",true,false):
+			body.set_physics_process(false)
 		remove_child(room)
 		room.queue_free()
 	if is_instance_valid(player):
@@ -145,6 +177,11 @@ func load_room(id: String, source_exit: String = "") -> void:
 	room = packed.instantiate() as ExplorationRoom
 	room.session = session
 	add_child(room)
+	# Direct loads (respawn, story jumps) bypass the crossing animation but must
+	# still leave the persistent realm marker truthful.
+	if not _transitioning and is_instance_valid(hud):
+		_realm = _room_realm(id)
+		hud.set_realm(_realm)
 	var spawn: Vector2 = ExplorationCatalog.vec(room.data["spawn"])
 	if not source_exit.is_empty():
 		for exit: Dictionary in room.data["exits"]:
@@ -156,6 +193,7 @@ func load_room(id: String, source_exit: String = "") -> void:
 		_arrival = Vector2.INF
 	if source_exit == "__lamp":
 		spawn = ExplorationCatalog.vec(room.data["checkpoint"])+Vector2(65,-2)
+	spawn = _safe_spawn(room.data,spawn)
 	player.name = "DetectivePrototype"
 	player.session = session
 	player.health = _health
@@ -292,8 +330,16 @@ func _unhandled_input(event: InputEvent) -> void:
 		_on_died()
 
 func _set_playing(playing: bool) -> void:
+	# Input stops/starts immediately; the process-mode switch (which adds/removes
+	# collision objects from the physics space) is deferred so it is never applied
+	# while Area2D signals are being flushed — e.g. a killing blow that opens a story
+	# card or wakes a boss from inside a hit callback.
 	if is_instance_valid(player):
 		player.enabled = playing
+	_apply_playing.call_deferred(playing)
+
+func _apply_playing(playing: bool) -> void:
+	if is_instance_valid(player):
 		player.process_mode = Node.PROCESS_MODE_INHERIT if playing else Node.PROCESS_MODE_DISABLED
 	if is_instance_valid(room):
 		room.process_mode = Node.PROCESS_MODE_INHERIT if playing else Node.PROCESS_MODE_DISABLED
@@ -309,9 +355,12 @@ func close_overlay() -> void:
 		mode = "menu"
 		hud.show_menu()
 	else:
+		var from_story: bool = mode in ["dialogue","ending","cutscene"]
 		mode = "play"
 		hud.overlay.hide()
 		_set_playing(true)
+		if from_story and is_instance_valid(player):
+			player.grant_safe_window(.5)
 
 func open_cast() -> void:
 	_return_mode = "menu" if mode=="menu" else "play"
@@ -348,6 +397,19 @@ func defeat(id: String, title: String, text: String) -> void:
 	player.died.emit()
 
 func _on_died() -> void:
+	if mode != "play" or _death_pending:
+		return
+	# Area2D overlap signals run while the physics server is flushing queries.  Defer
+	# every process/collision state change until the callback has fully returned.
+	_death_pending = true
+	_finish_death.call_deferred()
+
+func _finish_death() -> void:
+	# Duplicate died signals raised before this deferred call are blocked by
+	# _death_pending; once mode leaves "play" they are blocked by the mode check, so
+	# the flag is released here.  Holding it through the respawn fade swallowed a
+	# second death in that window and soft-locked a 0 HP player.
+	_death_pending = false
 	if mode != "play":
 		return
 	mode = "respawn"
@@ -370,11 +432,116 @@ func _respawn() -> void:
 	player.position = session.checkpoint
 	player.health = 100
 	player.energy = 100
+	player.grant_safe_window(.5)
 	camera.reset_smoothing()
 	mode = "play"
 	_set_playing(true)
 	await _fade_to(0,.35)
-	hud.toast("回到最近点亮的路灯。记忆仍然留在速写本中。")
+	if session.checkpoint_room=="clock_tower" and session.tower_checkpoint_tier()>0:
+		hud.toast("回到钟楼第 %d 层永久检查点 · 只重做当前段；回声的伤害保留。" % session.tower_checkpoint_tier(),true)
+	else:
+		hud.toast("回到最近点亮的路灯。记忆仍然留在速写本中。")
+
+func _safe_spawn(room_data: Dictionary, requested: Vector2) -> Vector2:
+	var bounds := ExplorationCatalog.vec(room_data["size"])
+	var point := Vector2(clampf(requested.x,32.0,bounds.x-32.0),clampf(requested.y,40.0,bounds.y-20.0))
+	var best_score: float = INF
+	var best := point
+	for entry: Dictionary in room_data.get("platforms",[]):
+		if ExplorationCatalog.vec(entry.get("travel",[0,0])) != Vector2.ZERO:
+			continue
+		var rect: Array = entry["rect"]
+		var left: float = float(rect[0])+28.0
+		var right: float = float(rect[0])+float(rect[2])-28.0
+		if right < left:
+			continue
+		var x: float = clampf(point.x,left,right)
+		var y: float = float(rect[1])-3.0
+		var horizontal: float = absf(x-point.x)
+		var vertical: float = absf(y-point.y)
+		# Prefer the intended floor immediately below the authored spawn, but recover
+		# malformed passage spawns to the nearest real static platform.
+		var below_penalty: float = 0.0 if y >= point.y-90.0 else 900.0
+		var score: float = horizontal*2.0+vertical+below_penalty
+		if score < best_score:
+			best_score = score
+			best = Vector2(x,y)
+	return best
+
+func _compressed_route(from_room: String, requested: String, source_exit: String) -> Dictionary:
+	# Demo 9 keeps the old passage room IDs loadable for existing saves and optional
+	# exploration, while the first-chapter tracked route uses two continuous hops.
+	if from_room=="town_entrance" and requested=="passage_00" and source_exit=="town_entrance--ring_west_a":
+		return {"target":"wax_lane","arrival_exit":"ring_west--wax_lane_b","note":"玲留下的粉笔箭头穿过西环：『别在雾里绕圈。』"}
+	if from_room=="wax_lane" and requested=="passage_05" and source_exit=="ring_west--wax_lane_b":
+		return {"target":"town_entrance","arrival_exit":"town_entrance--ring_west_a","note":"沿粉笔箭头返回镇口。旧西环仍可从广场探索。"}
+	if from_room=="wax_lane" and requested=="passage_08" and source_exit=="wax_lane--wax_museum_a":
+		return {"target":"wax_museum","arrival_exit":"wax_lane--wax_museum_b","note":"梅的裁纸声从门后传来。你推门进入美术馆。"}
+	if from_room=="wax_museum" and requested=="passage_08" and source_exit=="wax_lane--wax_museum_b":
+		return {"target":"wax_lane","arrival_exit":"wax_lane--wax_museum_a","note":"现实的街灯重新映在玻璃上。"}
+	return {}
+
+func _room_realm(id: String) -> String:
+	# Story 1.1: after Mei falls, Jerry is "back in the room where they were talking";
+	# the museum hall is reality again while the basement mirrors stay a memory.
+	if id=="wax_museum" and session != null and session.has("boss_morris"):
+		return "reality"
+	return "memory" if id in SPIRIT_ROOMS else "reality"
+
+const REALM_SHIFT_SECONDS: float = 3.0
+const REALM_MEMORY_TINT := Color(.12,.23,.28)
+const REALM_REALITY_TINT := Color(.31,.25,.14)
+
+## One ~3 s grammar for every reality <-> memory crossing, mirrored on the way back:
+## bell -> HUD drains away + colour wash -> centred realm caption -> fade to black.
+## It is readable without sound because the tint, caption and HUD drain all change.
+func _realm_shift(next_realm: String) -> void:
+	var entering: bool = next_realm=="memory"
+	var tint: Color = REALM_MEMORY_TINT if entering else REALM_REALITY_TINT
+	_fade.color = Color(tint,_fade.color.a)
+	get_node("/root/AudioManager").play_bell()
+	screen_shake(.25)
+	var drain := create_tween()
+	drain.tween_property(hud.root,"modulate:a",0.0,.5)
+	await _fade_to(.72,.55)
+	_caption.text = "◇ 记忆覆写现实 ◇" if entering else "◇ 现实重新对焦 ◇"
+	_caption.modulate = Color(Color("b9d8e0") if entering else Color("e9d19c"),1.0)
+	await get_tree().create_timer(1.35).timeout
+	_caption.modulate.a = 0.0
+	await _fade_to(1.0,.55)
+	_fade.color = Color(.015,.025,.035,1)
+	_realm = next_realm
+	hud.set_realm(next_realm)
+
+## The same grammar without a room swap (Mei's defeat drops Jerry back into reality
+## in the very hall where they were talking).
+func shift_realm_in_place(next_realm: String) -> void:
+	if next_realm==_realm:
+		return
+	var was_playing: bool = mode=="play"
+	_set_playing(false)
+	await _realm_shift(next_realm)
+	await _fade_to(0,.45)
+	_restore_hud_alpha()
+	if was_playing and mode=="play":
+		_set_playing(true)
+		player.grant_safe_window(.5)
+
+## Plays the realm grammar, then a single-button story card; ends in "ending" mode
+## so the card's button hands control back through close_overlay's safe window.
+func realm_story_card(next_realm: String, title: String, text: String, button_label: String) -> void:
+	mode = "cutscene"
+	_set_playing(false)
+	if next_realm != _realm:
+		await _realm_shift(next_realm)
+		await _fade_to(0,.45)
+		_restore_hud_alpha()
+	show_dialogue(title,text,[{"label":button_label, "action":close_overlay}])
+	mode = "ending"
+
+func _restore_hud_alpha() -> void:
+	var tween := create_tween()
+	tween.tween_property(hud.root,"modulate:a",1.0,.3)
 
 func screen_shake(duration: float) -> void:
 	_shake = maxf(_shake,duration)
@@ -408,6 +575,7 @@ func fall_into(id: String, point: Vector2) -> void:
 	player.health = 100
 	player.energy = 100
 	camera.reset_smoothing()
+	player.grant_safe_window(.5)
 	await _fade_to(0,1.4)
 
 func show_ending(title: String, text: String) -> void:

@@ -51,6 +51,8 @@ func _ready() -> void:
 		phase_title = "完美版本"
 		boss_title = str(spec.get("label",boss_title))
 		modulate = Color(.86,.9,1)
+		if session.switches.has("tower_hp_"+str(spec["id"])):
+			health = clampi(int(session.switches["tower_hp_"+str(spec["id"])]),1,max_health)
 
 func _create_fences() -> void:
 	for x: float in [arena.x,arena.y]:
@@ -240,6 +242,8 @@ func receive_hit(amount: int, _origin_value: Vector2, _kind: String = "slash") -
 		_begin_intro()
 		return
 	health = maxi(0,health-amount)
+	if echo:
+		session.switches["tower_hp_"+str(spec["id"])] = health
 	_flash = .11
 	_stagger += amount
 	# Heavy recovery hits can stagger; a light hit cannot repeatedly cancel a skill.
@@ -274,7 +278,9 @@ func _die() -> void:
 	_set_fences(false)
 	if echo:
 		session.switches[str(spec["id"])] = true
+		session.switches.erase("tower_hp_"+str(spec["id"]))
 		session.changed.emit()
+		session.save()
 	else:
 		session.switches["defeated_morris"] = true
 		session.acquire("boss_morris")
@@ -375,6 +381,14 @@ func _begin_intro() -> void:
 	var demo: Node = get_tree().get_first_node_in_group("exploration_demo")
 	if demo == null:
 		return
+	# Encounter checkpoint (as Ling's fight already does): a failure retries the
+	# fight from here instead of the last lamp two black screens back in town.
+	if is_instance_valid(demo.player):
+		session.save_at(session.room_id,Vector2(clampf(demo.player.position.x,arena.x+120,arena.y-120),_floor-3))
+	if session.has("morris_intro_seen"):
+		demo.hud.toast("战前检查点 · 再来一次。留意状态栏的层数。",true)
+		return
+	session.switches["morris_intro_seen"] = true
 	demo.show_dialogue("梅·莫里", "杰利……你脸上的神情，和玲失踪之后一样。\n他是不是疯了？——不，是这座美术馆在疯。\n画里的人在笑。画框在裂。", [
 		{"label":"……准备战斗", "action": demo.close_overlay}
 	])
@@ -417,7 +431,7 @@ func _defeat(id: String) -> void:
 
 func _victory_cutscene(demo: Node) -> void:
 	demo.hud.toast("梅·莫里消散 · 镜室门锁已松开")
-	demo.show_dialogue("画室回忆", "钟声响起。画面闪烁。\n你看见美术室里两个孩子并排画画：文静的你，活泼的玲。\n梅的呼喊把你拉回现实——还是刚才说话的场景。\n他记得：玲失踪那天下午，来要了两张丰收祭演出的海报。\n剧院。线索指向剧院。", [
-		{"label":"前往剧院", "action": demo.close_overlay}
-	])
-	demo.mode = "ending"
+	# Mirror of the entry crossing: the same bell/tint/caption grammar returns Jerry
+	# to the hall "where they were talking" before the memory card is read.  The demo
+	# owns the coroutine because this boss frees itself while the shift plays.
+	demo.realm_story_card("reality", "画室回忆", "钟声响起。画面闪烁。\n你看见美术室里两个孩子并排画画：文静的你，活泼的玲。\n梅的呼喊把你拉回现实——还是刚才说话的场景。\n他记得：玲失踪那天下午，来要了两张丰收祭演出的海报。\n剧院。线索指向剧院。", "前往剧院")

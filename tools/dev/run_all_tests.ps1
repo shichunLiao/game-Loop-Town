@@ -22,7 +22,9 @@ $Suites = @(
     @{ Name = "asset library (definitions load + fields complete)"; Script = "validate_assets" },
     @{ Name = "map generation + player landing"; Script = "validate_runtime" },
     @{ Name = "core gameplay (move/jump/attack/hurt/death)"; Script = "validate_gameplay" },
-    @{ Name = "map transition"; Script = "validate_transition" }
+    @{ Name = "map transition"; Script = "validate_transition" },
+    @{ Name = "Demo 9 exploration (30 deaths + 92 exits + progression)"; Script = "validate_exploration" },
+    @{ Name = "five playability improvements"; Script = "validate_experience_improvements" }
 )
 
 $Failed = 0

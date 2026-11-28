@@ -8,6 +8,8 @@ func _ready() -> void:
 	z_index = -6
 	for entry: Dictionary in routes:
 		var points: PackedVector2Array = _points(entry)
+		if str(entry["kind"])=="stairs":
+			points = _hop_on_stairs(points)
 		var body := StaticBody2D.new()
 		body.collision_layer = 1
 		body.collision_mask = 0
@@ -21,6 +23,27 @@ func _ready() -> void:
 			polygon.one_way_collision_margin = 8
 			body.add_child(polygon)
 	queue_redraw()
+
+## Demo 9 playtest: stairs that rose straight from the street captured anyone
+## holding A/D and parked them under a roof slope too steep to walk (a dead end on
+## the main route).  The collision now starts STAIR_HOP px above the street, so a
+## walk along the street passes underneath and the rooftop branch is a deliberate
+## hop away.  The drawn stairs are unchanged.
+const STAIR_HOP: float = 30.0
+
+static func _hop_on_stairs(points: PackedVector2Array) -> PackedVector2Array:
+	if points.size()<2:
+		return points
+	var low_index: int = 0 if points[0].y>points[-1].y else points.size()-1
+	var high_index: int = points.size()-1-low_index
+	var low: Vector2 = points[low_index]
+	var high: Vector2 = points[high_index]
+	var rise: float = absf(low.y-high.y)
+	if rise<=STAIR_HOP*2.0:
+		return points
+	var result := PackedVector2Array(points)
+	result[low_index] = low.lerp(high,STAIR_HOP/rise)
+	return result
 
 func _points(entry: Dictionary) -> PackedVector2Array:
 	var result := PackedVector2Array()

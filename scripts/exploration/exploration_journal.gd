@@ -91,7 +91,7 @@ static func navigation(session: Node) -> Dictionary:
 		if node == destination:
 			break
 		for route: Dictionary in all[node].get("exits",[]):
-			var next: String = str(route["target"])
+			var next: String = _effective_target(node,route)
 			var price: float = float(costs[node])+1.0+(0.0 if session.satisfies(route.get("requires",[])) else 18.0)
 			if not costs.has(next) or price<float(costs[next]):
 				costs[next] = price
@@ -101,5 +101,17 @@ static func navigation(session: Node) -> Dictionary:
 	if first.has(destination):
 		var route: Dictionary = first[destination]
 		goal["pos"] = route["pos"]
-		goal["step"] = "沿通路前往 "+ExplorationCatalog.title(str(route["target"]))
+		goal["step"] = "沿连续路线前往 "+ExplorationCatalog.title(_effective_target(current,route))
 	return goal
+
+static func _effective_target(from_room: String, route: Dictionary) -> String:
+	var id: String = str(route.get("id",""))
+	if from_room=="town_entrance" and id=="town_entrance--ring_west_a":
+		return "wax_lane"
+	if from_room=="wax_lane" and id=="ring_west--wax_lane_b":
+		return "town_entrance"
+	if from_room=="wax_lane" and id=="wax_lane--wax_museum_a":
+		return "wax_museum"
+	if from_room=="wax_museum" and id=="wax_lane--wax_museum_b":
+		return "wax_lane"
+	return str(route["target"])

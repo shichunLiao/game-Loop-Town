@@ -33,5 +33,8 @@ func run() -> void:
 		audio.call("play_nursery_rhyme", true)
 		check(true, "AudioManager play calls issued")
 		audio.call("stop_all")
+	await process_frame
+	await process_frame
+	OS.delay_msec(80)
 	print("ITEM4 failures: ", failures)
 	quit(0 if failures == 0 else 1)

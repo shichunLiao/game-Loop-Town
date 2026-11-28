@@ -48,9 +48,12 @@ func _run() -> void:
 	print("ITEM6_QA ", passes, " passed, ", failures.size(), " failed")
 	for f: String in failures:
 		print("  FAIL-DETAIL ", f)
+	current_scene = null
 	demo.queue_free()
 	await process_frame
 	await process_frame
+	ExplorationArt._animation_frames.clear()
+	ExplorationArt._textures.clear()
 	root.get_node("AudioManager").stop_all()
 	OS.delay_msec(80)
 	quit(0 if failures.is_empty() else 1)

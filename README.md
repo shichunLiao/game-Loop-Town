@@ -1,10 +1,10 @@
 # 回环镇 Loop Town — Demo 开发说明
 
-最新的 Demo 8 已接入 F5。直接运行 `dist/LoopTownDemo-v8/LoopTownDemo.exe` 也可游玩。
-本版移除街道前的石柱挑战台，修正庭院图集裁切和中景落地锚点；街区支路由落地侧门进入，房屋高处通路依附实际屋檐与木楼梯。
-详见 [Demo 8 说明](docs/exploration-demo/README-V8.md)；原故事入口保留为 `scenes/ui/TitleScreen.tscn`。
-**当前为 Demo 9（world 版本 9），剧情以《剧情 1.1》为准**（`docs/story-1.1.txt`）：主线为美术馆 → 剧院 → 钟楼 → 枯井，新增沃伊德、守钟人追逐、弗瑞与玲；五位剧情角色与美术馆区域背景由 Codex 重新绘制。详见 [Demo 9 说明](docs/exploration-demo/README-V9.md) 与 [v9 构建记录](docs/exploration-demo/v9-build-notes.md)。
-下文为早期故事系统开发记录；新版操作、内容与限制以 Demo 8 说明为准。
+**当前为 Demo 9（world 版本 9），已接入 F5**，剧情以《剧情 1.1》为准（`docs/story-1.1.txt`）：主线为美术馆 → 剧院 → 钟楼 → 枯井，新增沃伊德、守钟人追逐、弗瑞与玲；五位剧情角色与美术馆区域背景由 Codex 重新绘制。详见 [Demo 9 说明](docs/exploration-demo/README-V9.md) 与 [v9 构建记录](docs/exploration-demo/v9-build-notes.md)。
+Demo 9 可玩性复测（情境教学、首章两次换场、钟楼三段检查点、现实/记忆转场、状态反馈）见 [复测报告](docs/exploration-demo/playtest-retest-20261128.md)。
+回归测试：Windows `tools/dev/run_all_tests.ps1`；macOS/Linux `GODOT=/path/to/Godot tools/dev/run_all_tests.sh`（非白名单 ERROR 与泄漏视为失败）。
+旧版 [Demo 8 说明](docs/exploration-demo/README-V8.md) 保留作历史记录；原故事入口保留为 `scenes/ui/TitleScreen.tscn`。
+下文为早期故事系统开发记录；新版操作、内容与限制以 Demo 9 说明为准。
 
 2D 横板动作冒险 · 解离与回溯 · 悬疑调查。
 本文件是**开发者文档**（怎么跑、怎么改、当前做到哪一步）。
