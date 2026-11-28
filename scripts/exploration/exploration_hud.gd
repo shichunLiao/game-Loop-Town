@@ -19,11 +19,15 @@ var boss_health: ProgressBar
 var boss_label: Label
 var current_map: ExplorationWorldMap
 var _toast_time: float = 0.0
+var _toast_pinned: String = ""
+var _toast_pinned_time: float = 0.0
 var _font: Font
 var direction_label: Label
 var _navigation_clock: float = 0
 var control_label: Label
 var status_label: Label
+var realm_label: Label
+var realm: String = "reality"
 
 func _ready() -> void:
 	layer = 20
@@ -76,6 +80,8 @@ func _ready() -> void:
 	ability_label = label(root,Vector2(30,114),Vector2(830,28),"",13,Color("97b8bb"))
 	status_label = label(root,Vector2(250,554),Vector2(780,32),"",15,Color("f0b98b"))
 	status_label.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+	realm_label = label(root,Vector2(30,140),Vector2(360,26),"",14,Color("e9d19c"))
+	set_realm("reality")
 	prompt_label = label(root,Vector2(200,595),Vector2(880,42),"",19,Color("f5e6c6"))
 	prompt_label.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 	control_label = label(root,Vector2(30,683),Vector2(1220,26),"",13,Color("9cbbb9"))
@@ -275,8 +281,20 @@ func show_notebook() -> void:
 		body.append_text("纸上尚无字迹。靠近发光的记忆，按 E 调查。")
 	overlay.add_child(body)
 
-func toast(text: String) -> void:
-	toast_label.text = text
+func toast(text: String, pinned: bool = false) -> void:
+	# A pinned notice (checkpoint / section change) stays on the first line for its
+	# full duration; notices raised in the same moment go underneath instead of
+	# silently erasing it.  Unpinned notices still stack two-high.
+	if pinned:
+		_toast_pinned = text
+		_toast_pinned_time = 4.0
+		toast_label.text = text
+	elif _toast_pinned_time>0.0 and text!=_toast_pinned:
+		toast_label.text = _toast_pinned+"\n"+text
+	elif _toast_time>3.0 and not toast_label.text.is_empty() and toast_label.text!=text and not toast_label.text.contains("\n"):
+		toast_label.text = toast_label.text+"\n"+text
+	else:
+		toast_label.text = text
 	_toast_time = 4.0
 
 func show_cast() -> void:
@@ -320,6 +338,7 @@ func show_cast() -> void:
 
 func _process(delta: float) -> void:
 	_toast_time = maxf(0.0,_toast_time-delta)
+	_toast_pinned_time = maxf(0.0,_toast_pinned_time-delta)
 	toast_label.modulate.a = minf(1,_toast_time)
 	if controller == null or controller.session == null:
 		return
@@ -354,6 +373,11 @@ func _process(delta: float) -> void:
 	if is_instance_valid(controller.player):
 		status_label.text = controller.player.status_text()
 		status_label.visible = not status_label.text.is_empty()
+		# One step from a lethal threshold the meter turns red and pulses.
+		if controller.player.status_critical():
+			status_label.add_theme_color_override("font_color",Color("ff6a5a").lerp(Color("ffd0b0"),.5+.5*sin(Time.get_ticks_msec()*.012)))
+		else:
+			status_label.add_theme_color_override("font_color",Color("f0b98b"))
 		control_label.text = _visible_controls(session)
 		health.value = controller.player.health
 		energy.value = controller.player.energy
@@ -403,3 +427,15 @@ func _visible_controls(session: ExplorationSession) -> String:
 	if session.room_id in ["clock_tower","well_interior"]:
 		controls.append("S+Space 下穿平台")
 	return "  ".join(controls)
+
+## Persistent, sound-independent realm marker; the colour matches the transition wash.
+func set_realm(next_realm: String) -> void:
+	realm = next_realm
+	if realm_label == null:
+		return
+	if realm == "memory":
+		realm_label.text = "◇ 记忆世界 · 画面偏青"
+		realm_label.add_theme_color_override("font_color",Color("b9d8e0"))
+	else:
+		realm_label.text = "● 现实 · 回环镇"
+		realm_label.add_theme_color_override("font_color",Color("e9d19c"))

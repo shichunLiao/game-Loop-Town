@@ -176,6 +176,7 @@ func _clocktower_collapse_async() -> void:
 	demo.load_room("fire_town", "clock_top--fire_town_b")
 	demo.mode = "play"
 	demo._set_playing(true)
+	demo.player.grant_safe_window(.5)
 	await demo._fade_to(0.0, 0.95)
 	demo.hud.toast("四周安静下来。去枯井吧。她在等你。")
 	demo.session.save()

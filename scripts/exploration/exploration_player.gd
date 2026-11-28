@@ -203,22 +203,22 @@ func receive_hit(amount: int, origin: Vector2, kind: String = "hit") -> void:
 	attack_phase = "ready"
 	if kind == "puppet":
 		cloth += 1
-		_status_tip("tutorial_cloth","沃布化 %d/6：按 H 拆线，或斩断操偶红线。" % cloth)
+		_status_tip("tutorial_cloth","沃布化 %d/%d：按 H 拆线，或斩断操偶红线；满层变成布偶。" % [cloth,ExplorationVoidBoss.CLOTH_LIMIT])
 	elif kind == "void_lash":
 		entangled = 1.6
 		_status_tip("tutorial_entangled","丝线缠身：持续移动脱离，别停在红线上。")
 	elif kind in ["may_slash", "wax_claw"]:
 		paper += 1
 		last_may_kind = "may_slash"
-		_status_tip("tutorial_paper","纸裂 %d/3：按 H 修补一层；避开美工刀正面。" % paper)
+		_status_tip("tutorial_paper","纸裂 %d：生命耗尽时被刀击倒会被撕碎。按 H 修补一层并回血；避开美工刀正面。" % paper)
 	elif kind == "statue":
 		plaster += 1
 		last_may_kind = "statue"
-		_status_tip("tutorial_plaster","石膏 %d/3：按 H 震落一层；远离替身。" % plaster)
+		_status_tip("tutorial_plaster","石膏 %d/3：满 3 层时倒下会变成雕塑。按 H 震落一层；远离纯白替身。" % plaster)
 	elif kind == "may_brush":
 		paint += 1
 		last_may_kind = "may_brush"
-		_status_tip("tutorial_paint","入画 %d/4：按 H 擦除一层；离开颜料标记。" % paint)
+		_status_tip("tutorial_paint","入画 %d/4：3 层时倒下会被画进画里，4 层无法起跳。按 H 擦除一层；离开颜料标记。" % paint)
 	var may_kinds := ["may_slash", "wax_claw", "statue", "may_brush"]
 	if kind in may_kinds and health - amount <= 0:
 		_trigger_may_defeat()
@@ -333,16 +333,20 @@ func grant_safe_window(seconds: float = .5) -> void:
 func has_status() -> bool:
 	return paper>0 or plaster>0 or paint>0 or cloth>0 or entangled>0 or mired>.05 or grip>0 or confused>0
 
+## True when the next stack would trigger a lethal/locking threshold.
+func status_critical() -> bool:
+	return (health<=35 and (paper>0 or plaster>0 or paint>0)) or plaster>=2 or paint>=3 or cloth>=ExplorationVoidBoss.CLOTH_LIMIT-1 or mired>=.75 or confused>0 or grip>0
+
 func status_text() -> String:
 	var states: Array[String] = []
 	if paper>0:
-		states.append("纸裂 %d/3 · H修补" % paper)
+		states.append("纸裂 %d · 被刀击倒＝撕裂 · H修补" % paper)
 	if plaster>0:
-		states.append("石膏 %d/3 · H震落" % plaster)
+		states.append("石膏 %d/3 · 满层倒下＝雕塑 · H震落" % plaster)
 	if paint>0:
-		states.append("入画 %d/4 · H擦除" % paint)
+		states.append("入画 %d/4 · 3层倒下＝入画，4层无法起跳 · H擦除" % paint)
 	if cloth>0:
-		states.append("沃布化 %d/6 · H拆线" % cloth)
+		states.append("沃布化 %d/%d · H拆线（满层＝布偶）" % [cloth,ExplorationVoidBoss.CLOTH_LIMIT])
 	if entangled>0:
 		states.append("缠身 %.1fs · 持续移动" % entangled)
 	if mired>.05:

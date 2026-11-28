@@ -94,7 +94,7 @@ func _begin(player: ExplorationPlayer) -> void:
 		return
 	if session.tower_checkpoint_tier()==0:
 		session.save_at("clock_tower",ExplorationCatalog.vec((get_parent() as ExplorationRoom).data["spawn"]))
-	_notice("第一段 · 追逐：跟住守钟人；每两层会永久记录进度。")
+	_notice("第一段 · 追逐：跟住守钟人；每两层会永久记录进度。",true)
 
 ## Story 1.1: beaten by a perfect version, Jerry starts the whole climb over.
 func _on_player_died() -> void:
@@ -144,7 +144,7 @@ func _update_section_checkpoint(player: ExplorationPlayer) -> void:
 	var point := Vector2(clampf(player.global_position.x,260.0,1540.0),_tiers[milestone]-3.0)
 	session.save_tower_section(milestone,point)
 	var section: String = "第二段 · 战斗：完美回声不会跨段回血。" if milestone<6 else "第三段 · 选择：登顶面对守钟人。"
-	_notice("永久检查点 · 第 %d 层 / %s" % [milestone,section])
+	_notice("永久检查点 · 第 %d 层 / %s" % [milestone,section],true)
 
 func _settle() -> void:
 	if _settled:
@@ -154,10 +154,10 @@ func _settle() -> void:
 		_keeper.vanish()
 		_notice("钟声停了。只剩下守钟人。他在钟楼顶等你。")
 
-func _notice(text: String) -> void:
+func _notice(text: String, pinned: bool = false) -> void:
 	var demo: Node = get_tree().get_first_node_in_group("exploration_demo")
 	if demo!=null:
-		demo.hud.toast(text)
+		demo.hud.toast(text,pinned)
 
 ## Things that should not be there: hands from the walls and button eyes on the beams,
 ## more of them on every floor.

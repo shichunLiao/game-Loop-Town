@@ -423,7 +423,7 @@ func _defeat(id: String) -> void:
 
 func _victory_cutscene(demo: Node) -> void:
 	demo.hud.toast("梅·莫里消散 · 镜室门锁已松开")
-	demo.show_dialogue("画室回忆", "钟声响起。画面闪烁。\n你看见美术室里两个孩子并排画画：文静的你，活泼的玲。\n梅的呼喊把你拉回现实——还是刚才说话的场景。\n他记得：玲失踪那天下午，来要了两张丰收祭演出的海报。\n剧院。线索指向剧院。", [
-		{"label":"前往剧院", "action": demo.close_overlay}
-	])
-	demo.mode = "ending"
+	# Mirror of the entry crossing: the same bell/tint/caption grammar returns Jerry
+	# to the hall "where they were talking" before the memory card is read.  The demo
+	# owns the coroutine because this boss frees itself while the shift plays.
+	demo.realm_story_card("reality", "画室回忆", "钟声响起。画面闪烁。\n你看见美术室里两个孩子并排画画：文静的你，活泼的玲。\n梅的呼喊把你拉回现实——还是刚才说话的场景。\n他记得：玲失踪那天下午，来要了两张丰收祭演出的海报。\n剧院。线索指向剧院。", "前往剧院")
