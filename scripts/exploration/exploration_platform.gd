@@ -88,16 +88,18 @@ func _draw() -> void:
 				tile = texture
 			var segment_width: float = tile.get_width()/float(tile.get_height())*shown_height
 			var width: float = minf(segment_width, dimensions.x - x)
-			draw_texture_rect_region(tile,Rect2(x,0,width,shown_height),Rect2(0,0,tile.get_width()*width/segment_width,tile.get_height()))
+			var tile_tint := Color(0.79,0.75,0.70) if theme=="brass" else Color.WHITE
+			draw_texture_rect_region(tile,Rect2(x,0,width,shown_height),Rect2(0,0,tile.get_width()*width/segment_width,tile.get_height()),tile_tint)
 			x += width
 			segment += 1
 	else:
 		draw_rect(Rect2(0, 0, dimensions.x, shown_height), Color("343b41"))
 	var rim := visual_accent
 	if theme == "brass":
-		rim = Color("d8aa64")
-	draw_line(Vector2(0, 1), Vector2(dimensions.x, 1), Color(rim, 0.88), 2.0, true)
-	draw_line(Vector2(0, 4), Vector2(dimensions.x, 4), Color(rim, 0.22), 1.0, true)
+		# Brass keeps its material identity without turning every ledge copper-orange.
+		rim = rim.lerp(Color("b88c55"),0.32)
+	draw_line(Vector2(0,1),Vector2(dimensions.x,1),Color(rim,0.72),1.35,true)
+	draw_line(Vector2(0,3.5),Vector2(dimensions.x,3.5),Color(rim,0.13),0.8,true)
 	if manual_lift:
 		_draw_cabin()
 

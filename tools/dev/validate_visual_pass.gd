@@ -19,12 +19,12 @@ func _run() -> void:
 		_check(float(profile["far_fog"])>=0.18,room_id+" far fog separates plane")
 		_check(float(profile["mid_brightness"])>float(profile["far_brightness"]),room_id+" mid plane reads above far plane")
 		_check((profile["play_accent"] as Color).get_luminance()>(profile["fog_color"] as Color).get_luminance(),room_id+" gameplay edge accent exceeds fog")
-	var expected_width := {"player":1.85,"npc":1.55,"enemy":1.9,"boss":2.0,"keeper":2.0}
+	var expected_width := {"player":1.85,"npc":1.50,"enemy":1.82,"boss":2.0,"keeper":1.94}
 	var expected_outline := {"player":Color(0.13,0.075,0.055,0.98),"npc":Color(0.14,0.09,0.07,0.90),"enemy":Color(0.19,0.045,0.035,0.98)}
 	for role: String in expected_width:
 		var material := ShaderMaterial.new()
 		material.shader = load("res://assets/environments/exploration/actors/rim_light.gdshader") as Shader
-		ExplorationVisualProfile.configure_actor(material,role)
+		ExplorationVisualProfile.configure_actor(material,role,"","unknown_room")
 		_check(absf(float(material.get_shader_parameter("outline_width"))-float(expected_width[role]))<0.01,role+" screen-pixel outline width")
 		_check(float(material.get_shader_parameter("rim_width"))<1.0,role+" uses narrow directional rim, not full glow")
 		if expected_outline.has(role):

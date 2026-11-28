@@ -16,7 +16,7 @@ var _pose: String = ""
 var _clock: float = 0
 
 func _ready() -> void:
-	visual = ExplorationArt.visual(self,"keeper_back",HEIGHT["keeper_back"],-1,"keeper")
+	visual = ExplorationArt.visual(self,"keeper_back",HEIGHT["keeper_back"],-1,"keeper",session.room_id,"keeper_back")
 	_pose = "keeper_back"
 	visual.position.x = 25
 	z_index = 4
@@ -45,6 +45,7 @@ func _wear(pose: String) -> void:
 		return
 	_pose = pose
 	visual.texture = ExplorationArt.sprite(pose)
+	ExplorationVisualProfile.configure_actor(visual.material as ShaderMaterial,"keeper",pose,session.room_id)
 	visual.scale = Vector2.ONE*float(HEIGHT[pose])/visual.texture.get_height()
 	visual.position.y = -float(HEIGHT[pose])*.5
 	# keeper_back carries the key on its right; keep his body, not the key, over his feet.

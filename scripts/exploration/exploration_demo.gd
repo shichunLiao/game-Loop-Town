@@ -102,7 +102,7 @@ func start_game(continue_game: bool = false, initial_room: String = "") -> void:
 		player.position = session.checkpoint
 		camera.reset_smoothing()
 	else:
-		hud.toast("A/D 移动 · E 调查 · Space 跳跃 · J 攻击",true)
+		hud.toast("A/D 移动 · Space 跳跃 · E 调查",true)
 
 func request_room(id: String, source_exit: String = "") -> void:
 	if _transitioning:

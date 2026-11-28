@@ -28,6 +28,7 @@ var control_label: Label
 var status_label: Label
 var realm_label: Label
 var realm: String = "reality"
+var _last_layout_size: Vector2 = Vector2.ZERO
 
 func _ready() -> void:
 	layer = 20
@@ -98,6 +99,45 @@ func _ready() -> void:
 	overlay.mouse_filter = Control.MOUSE_FILTER_STOP
 	root.add_child(overlay)
 	overlay.hide()
+	_layout_viewport(Vector2(1280,720))
+
+static func hud_layout(viewport: Vector2, boss_active: bool = false, prompt_width: float = 520.0) -> Dictionary:
+	var width := clampf(prompt_width,280.0,minf(620.0,viewport.x-80.0))
+	return {
+		"objective":Rect2(viewport.x-520,20,490,64),
+		"counter":Rect2(viewport.x-450,92,420,23),
+		"direction":Rect2(viewport.x-450,122,420,28),
+		"toast":Rect2((viewport.x-620)*.5,148,620,42),
+		"prompt":Rect2((viewport.x-width)*.5,viewport.y-(171 if boss_active else 125),width,38),
+		"controls":Rect2(30,viewport.y-37,viewport.x-60,25),
+		"boss_label":Rect2((viewport.x-600)*.5,viewport.y-112,600,30),
+		"boss_health":Rect2((viewport.x-550)*.5,viewport.y-71,550,12)
+	}
+
+func _layout_viewport(viewport: Vector2, boss_active: bool = false) -> void:
+	if viewport.x<640 or viewport.y<360:
+		return
+	var prompt_width := 520.0
+	if prompt_label!=null and not prompt_label.text.is_empty() and _font!=null:
+		prompt_width = _font.get_string_size(prompt_label.text,HORIZONTAL_ALIGNMENT_LEFT,-1,19).x+52.0
+	var layout := hud_layout(viewport,boss_active,prompt_width)
+	objective_label.position = (layout.objective as Rect2).position
+	objective_label.size = (layout.objective as Rect2).size
+	counter_label.position = (layout.counter as Rect2).position
+	counter_label.size = (layout.counter as Rect2).size
+	direction_label.position = (layout.direction as Rect2).position
+	direction_label.size = (layout.direction as Rect2).size
+	toast_label.position = (layout.toast as Rect2).position
+	toast_label.size = (layout.toast as Rect2).size
+	prompt_label.position = (layout.prompt as Rect2).position
+	prompt_label.size = (layout.prompt as Rect2).size
+	control_label.position = (layout.controls as Rect2).position
+	control_label.size = (layout.controls as Rect2).size
+	boss_label.position = (layout.boss_label as Rect2).position
+	boss_label.size = (layout.boss_label as Rect2).size
+	boss_health.position = (layout.boss_health as Rect2).position
+	boss_health.size = (layout.boss_health as Rect2).size
+	_last_layout_size = viewport
 
 func label(host: Node, pos: Vector2, dimensions: Vector2, text: String, font_size: int = 18, color: Color = Color.WHITE) -> Label:
 	var node := Label.new()
@@ -413,8 +453,8 @@ func _process(delta: float) -> void:
 			boss = candidate
 			break
 	var show_boss: bool = boss != null and controller.mode=="play"
-	# The boss bar sits where prompts sit; a prompt during a fight may be all that saves Jerry.
-	prompt_label.position.y = 549.0 if show_boss else 595.0
+	var viewport_size := root.size if root.size.x>=640 else Vector2(1280,720)
+	_layout_viewport(viewport_size,show_boss)
 	boss_health.visible = show_boss
 	boss_label.visible = show_boss
 	if show_boss:

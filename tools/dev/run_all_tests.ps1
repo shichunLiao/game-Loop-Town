@@ -26,6 +26,7 @@ $Suites = @(
     @{ Name = "Demo 9 exploration (30 deaths + 92 exits + progression)"; Script = "validate_exploration" },
     @{ Name = "five playability improvements"; Script = "validate_experience_improvements" }
     @{ Name = "visual pass depth + outlines + scene profiles"; Script = "validate_visual_pass" }
+    @{ Name = "global visual families + quality + responsive HUD"; Script = "validate_visual_system" }
 )
 
 $Failed = 0
