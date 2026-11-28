@@ -16,7 +16,7 @@ var _pose: String = ""
 var _clock: float = 0
 
 func _ready() -> void:
-	visual = ExplorationArt.visual(self,"keeper_back",HEIGHT["keeper_back"])
+	visual = ExplorationArt.visual(self,"keeper_back",HEIGHT["keeper_back"],-1,"keeper")
 	_pose = "keeper_back"
 	visual.position.x = 25
 	z_index = 4

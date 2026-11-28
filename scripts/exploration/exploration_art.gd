@@ -44,7 +44,7 @@ static func still_sprite(id: String, cell: int = -1, folder: String = "actors") 
 	_textures[key] = texture
 	return texture
 
-static func visual(host: Node2D, id: String, height: float, cell: int = -1) -> Sprite2D:
+static func visual(host: Node2D, id: String, height: float, cell: int = -1, role: String = "npc") -> Sprite2D:
 	var visual := Sprite2D.new()
 	visual.texture = sprite(id,cell)
 	if visual.texture != null:
@@ -52,8 +52,14 @@ static func visual(host: Node2D, id: String, height: float, cell: int = -1) -> S
 	visual.position.y = -height*.5
 	var material := ShaderMaterial.new()
 	material.shader = load("res://assets/environments/exploration/actors/rim_light.gdshader") as Shader
+	ExplorationVisualProfile.configure_actor(material, role)
 	visual.material = material
 	host.add_child(visual)
+	var grounding := ExplorationActorGrounding.new()
+	grounding.name = "VisualGrounding"
+	grounding.visual = visual
+	grounding.role = role
+	host.add_child(grounding)
 	var animation := ExplorationPoseAnimation.new()
 	animation.name = "CGAnimation"
 	animation.visual = visual

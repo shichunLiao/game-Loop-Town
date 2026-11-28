@@ -36,6 +36,7 @@ func _ready() -> void:
 	var gameplay := Node2D.new()
 	gameplay.name = "Gameplay"
 	add_child(gameplay)
+	var visual_profile := ExplorationVisualProfile.room_profile(room_id)
 	for entry: Dictionary in data.get("platforms", []):
 		var platform := ExplorationPlatform.new()
 		var rect: Array = entry["rect"]
@@ -54,6 +55,7 @@ func _ready() -> void:
 		platform.lift_up = str(entry.get("lift_up",""))
 		platform.lift_speed = float(entry.get("lift_speed",430))
 		platform.session = session
+		platform.visual_accent = visual_profile["play_accent"]
 		gameplay.add_child(platform)
 		platforms.append(platform)
 	for entry: Dictionary in data.get("hazards", []):
@@ -110,6 +112,7 @@ func _ready() -> void:
 		decoration.scale = Vector2.ONE*display_height/decoration.texture.get_height()
 		decoration.position = ExplorationCatalog.vec(entry["pos"])-Vector2(0,display_height*.5)
 		decoration.position.y += ExplorationArt.foot_gap(str(entry["asset"]),int(entry["cell"]))*decoration.scale.y
+		decoration.material = ExplorationVisualProfile.atmosphere(visual_profile,"mid")
 		details.add_child(decoration)
 	actors = Node2D.new()
 	actors.name = "Actors"

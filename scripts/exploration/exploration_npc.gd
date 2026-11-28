@@ -20,7 +20,7 @@ func _ready() -> void:
 	if ExplorationArt.sprite(atlas_id, cell) == null:
 		atlas_id = "npcs_b"
 		cell = 1
-	visual = ExplorationArt.visual(self, atlas_id, 120, cell)
+	visual = ExplorationArt.visual(self, atlas_id, 120, cell, "npc")
 	_font = load("res://assets/ui/exploration/chinese.tres") as Font
 
 func talk() -> void:

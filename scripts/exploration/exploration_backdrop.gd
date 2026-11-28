@@ -49,6 +49,7 @@ func _update_theme() -> void:
 		far_sprite.scale = (room_size+Vector2(120,120))/far_sprite.texture.get_size()
 		far_sprite.position = room_size*.5
 	far_sprite.modulate = Color(.55,.66,.73) if session.stage<4 else Color(.63,.48,.43)
+	far_sprite.material = ExplorationVisualProfile.atmosphere(ExplorationVisualProfile.room_profile(str(room.get("id",""))), "far")
 	if is_instance_valid(_museum_gaze):
 		far_sprite.remove_child(_museum_gaze)
 		_museum_gaze.queue_free()

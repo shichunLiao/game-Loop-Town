@@ -40,7 +40,7 @@ func _ready() -> void:
 	collision.shape = rectangle
 	add_child(collision)
 	ExplorationHitArea.hurtbox(self,16,rectangle.size,collision.position)
-	visual = ExplorationArt.visual(self,str(data["atlas"]),float(data["height"]),int(data.get("cell",-1)))
+	visual = ExplorationArt.visual(self,str(data["atlas"]),float(data["height"]),int(data.get("cell",-1)),"boss" if boss else "enemy")
 	add_to_group("exploration_enemies")
 	if boss:
 		add_to_group("exploration_boss")

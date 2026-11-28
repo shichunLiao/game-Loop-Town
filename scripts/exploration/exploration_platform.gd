@@ -19,6 +19,7 @@ var flat_gallery: bool = false
 var lift_unlock: String = ""
 var lift_up: String = ""
 var lift_speed: float = 430.0
+var visual_accent: Color = Color("b4c4be")
 var _lift_progress: float = 0.0
 static var _textures: Dictionary = {}
 
@@ -92,11 +93,11 @@ func _draw() -> void:
 			segment += 1
 	else:
 		draw_rect(Rect2(0, 0, dimensions.x, shown_height), Color("343b41"))
-	var rim := Color("b4c4be")
+	var rim := visual_accent
 	if theme == "brass":
 		rim = Color("d8aa64")
-	if not flat_gallery:
-		draw_line(Vector2(0, 1), Vector2(dimensions.x, 1), Color(rim, 0.7), 1.5, true)
+	draw_line(Vector2(0, 1), Vector2(dimensions.x, 1), Color(rim, 0.88), 2.0, true)
+	draw_line(Vector2(0, 4), Vector2(dimensions.x, 4), Color(rim, 0.22), 1.0, true)
 	if manual_lift:
 		_draw_cabin()
 

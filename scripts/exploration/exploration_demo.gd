@@ -102,7 +102,7 @@ func start_game(continue_game: bool = false, initial_room: String = "") -> void:
 		player.position = session.checkpoint
 		camera.reset_smoothing()
 	else:
-		hud.toast("先试四件事：A/D 移动 · E 调查 · Space 跳跃 · J 攻击。其他操作会在需要时出现。",true)
+		hud.toast("A/D 移动 · E 调查 · Space 跳跃 · J 攻击",true)
 
 func request_room(id: String, source_exit: String = "") -> void:
 	if _transitioning:
@@ -693,6 +693,7 @@ func _check_capture_arguments() -> void:
 		player.set_physics_process(false)
 		player.visual.modulate.a = 1.0
 		await RenderingServer.frame_post_draw
+		print("VISUAL_PERF fps=",Performance.get_monitor(Performance.TIME_FPS)," draw_calls=",Performance.get_monitor(Performance.RENDER_TOTAL_DRAW_CALLS_IN_FRAME)," objects=",Performance.get_monitor(Performance.OBJECT_NODE_COUNT))
 		get_viewport().get_texture().get_image().save_png(_capture_request)
 		get_node("/root/AudioManager").stop_all()
 		await get_tree().create_timer(.1).timeout

@@ -71,7 +71,7 @@ func _ready() -> void:
 	add_child(shape)
 	add_to_group("exploration_player")
 	ExplorationHitArea.hurtbox(self,8,Vector2(28,61),Vector2(0,-31))
-	visual = ExplorationArt.visual(self,"hero",105)
+	visual = ExplorationArt.visual(self,"hero",105,-1,"player")
 	weapon = ExplorationWeapon.new()
 	weapon.fighter = self
 	add_child(weapon)
