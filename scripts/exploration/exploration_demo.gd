@@ -177,6 +177,11 @@ func load_room(id: String, source_exit: String = "") -> void:
 	room = packed.instantiate() as ExplorationRoom
 	room.session = session
 	add_child(room)
+	# Direct loads (respawn, story jumps) bypass the crossing animation but must
+	# still leave the persistent realm marker truthful.
+	if not _transitioning and is_instance_valid(hud):
+		_realm = _room_realm(id)
+		hud.set_realm(_realm)
 	var spawn: Vector2 = ExplorationCatalog.vec(room.data["spawn"])
 	if not source_exit.is_empty():
 		for exit: Dictionary in room.data["exits"]:
@@ -325,8 +330,16 @@ func _unhandled_input(event: InputEvent) -> void:
 		_on_died()
 
 func _set_playing(playing: bool) -> void:
+	# Input stops/starts immediately; the process-mode switch (which adds/removes
+	# collision objects from the physics space) is deferred so it is never applied
+	# while Area2D signals are being flushed — e.g. a killing blow that opens a story
+	# card or wakes a boss from inside a hit callback.
 	if is_instance_valid(player):
 		player.enabled = playing
+	_apply_playing.call_deferred(playing)
+
+func _apply_playing(playing: bool) -> void:
+	if is_instance_valid(player):
 		player.process_mode = Node.PROCESS_MODE_INHERIT if playing else Node.PROCESS_MODE_DISABLED
 	if is_instance_valid(room):
 		room.process_mode = Node.PROCESS_MODE_INHERIT if playing else Node.PROCESS_MODE_DISABLED
@@ -392,8 +405,12 @@ func _on_died() -> void:
 	_finish_death.call_deferred()
 
 func _finish_death() -> void:
+	# Duplicate died signals raised before this deferred call are blocked by
+	# _death_pending; once mode leaves "play" they are blocked by the mode check, so
+	# the flag is released here.  Holding it through the respawn fade swallowed a
+	# second death in that window and soft-locked a 0 HP player.
+	_death_pending = false
 	if mode != "play":
-		_death_pending = false
 		return
 	mode = "respawn"
 	_set_playing(false)
@@ -420,7 +437,6 @@ func _respawn() -> void:
 	mode = "play"
 	_set_playing(true)
 	await _fade_to(0,.35)
-	_death_pending = false
 	if session.checkpoint_room=="clock_tower" and session.tower_checkpoint_tier()>0:
 		hud.toast("回到钟楼第 %d 层永久检查点 · 只重做当前段；回声的伤害保留。" % session.tower_checkpoint_tier(),true)
 	else:
